@@ -8,10 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		026366C865BCD8CCE81B8DB2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3E25EB0578BADAF278F744 /* libPods.a */; };
-		A52637C51B5B467200E740C1 /* Rectangle 3.png in Resources */ = {isa = PBXBuildFile; fileRef = A52637C41B5B467200E740C1 /* Rectangle 3.png */; };
-		A5D461BD1B5B86F700F5F238 /* emoticon-smile-7.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D461BC1B5B86F700F5F238 /* emoticon-smile-7.png */; };
-		A5D461BF1B5B87C900F5F238 /* email-7.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D461BE1B5B87C900F5F238 /* email-7.png */; };
-		A5D461C11B5B914C00F5F238 /* star-7.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D461C01B5B914C00F5F238 /* star-7.png */; };
+		A58D3AE41B62A50E00FB1B2B /* SettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A58D3AE31B62A50E00FB1B2B /* SettingTableViewController.m */; };
 		F443FB431B60FBF300F30847 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F443FB421B60FBF300F30847 /* Map.storyboard */; };
 		F443FB451B610E8300F30847 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F443FB441B610E8300F30847 /* MapKit.framework */; };
 		F443FB4C1B6124D600F30847 /* WallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F443FB4B1B6124D600F30847 /* WallViewController.m */; };
@@ -44,8 +41,6 @@
 		F48B16DE1B5F40C700E96B0D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F48B16DD1B5F40C700E96B0D /* libsqlite3.dylib */; };
 		F48B16E01B5F40D200E96B0D /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48B16DF1B5F40D200E96B0D /* Accounts.framework */; };
 		F48B16E21B5F40D900E96B0D /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48B16E11B5F40D900E96B0D /* Social.framework */; };
-		F4C9EE421B629B50007C37B4 /* calendar31.png in Resources */ = {isa = PBXBuildFile; fileRef = F4C9EE401B629B50007C37B4 /* calendar31.png */; };
-		F4C9EE431B629B50007C37B4 /* kyoto_sample_photo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F4C9EE411B629B50007C37B4 /* kyoto_sample_photo.jpg */; };
 		F4DA4C5C1B4E9D0500421F2F /* UIColors.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DA4C5B1B4E9D0500421F2F /* UIColors.m */; };
 		F4DA4C601B4EC96F00421F2F /* HomePostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DA4C5F1B4EC96F00421F2F /* HomePostViewController.m */; };
 		F4DA4C661B4FF09200421F2F /* HomeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DA4C651B4FF09200421F2F /* HomeDetailViewController.m */; };
@@ -65,10 +60,8 @@
 		44BCC490976B2C9D75A6541C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		6F3E25EB0578BADAF278F744 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2A1A052438CEB9B22CC0114 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		A52637C41B5B467200E740C1 /* Rectangle 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rectangle 3.png"; sourceTree = "<group>"; };
-		A5D461BC1B5B86F700F5F238 /* emoticon-smile-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "emoticon-smile-7.png"; sourceTree = "<group>"; };
-		A5D461BE1B5B87C900F5F238 /* email-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "email-7.png"; sourceTree = "<group>"; };
-		A5D461C01B5B914C00F5F238 /* star-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-7.png"; sourceTree = "<group>"; };
+		A58D3AE21B62A50E00FB1B2B /* SettingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingTableViewController.h; sourceTree = "<group>"; };
+		A58D3AE31B62A50E00FB1B2B /* SettingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewController.m; sourceTree = "<group>"; };
 		F443FB421B60FBF300F30847 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
 		F443FB441B610E8300F30847 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		F443FB4A1B6124D600F30847 /* WallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallViewController.h; sourceTree = "<group>"; };
@@ -112,8 +105,6 @@
 		F48B16DD1B5F40C700E96B0D /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		F48B16DF1B5F40D200E96B0D /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		F48B16E11B5F40D900E96B0D /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
-		F4C9EE401B629B50007C37B4 /* calendar31.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar31.png; sourceTree = "<group>"; };
-		F4C9EE411B629B50007C37B4 /* kyoto_sample_photo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kyoto_sample_photo.jpg; sourceTree = "<group>"; };
 		F4DA4C5A1B4E9D0500421F2F /* UIColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIColors.h; sourceTree = "<group>"; };
 		F4DA4C5B1B4E9D0500421F2F /* UIColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIColors.m; sourceTree = "<group>"; };
 		F4DA4C5E1B4EC96F00421F2F /* HomePostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePostViewController.h; sourceTree = "<group>"; };
@@ -307,8 +298,6 @@
 				F443FB461B611CD500F30847 /* DetailView */,
 				F443FB491B6121DE00F30847 /* DynamicWall */,
 				F46573621B5545F700DA3D7B /* kyoto.jpg */,
-				F4C9EE401B629B50007C37B4 /* calendar31.png */,
-				F4C9EE411B629B50007C37B4 /* kyoto_sample_photo.jpg */,
 				F46573631B5545F700DA3D7B /* pic1.jpg */,
 				F47556A81B4BACF2008CEE3A /* Main.storyboard */,
 			);
@@ -327,10 +316,8 @@
 			isa = PBXGroup;
 			children = (
 				F486EF451B4C34D2008CB97B /* Setting.storyboard */,
-				A5D461BC1B5B86F700F5F238 /* emoticon-smile-7.png */,
-				A5D461C01B5B914C00F5F238 /* star-7.png */,
-				A5D461BE1B5B87C900F5F238 /* email-7.png */,
-				A52637C41B5B467200E740C1 /* Rectangle 3.png */,
+				A58D3AE21B62A50E00FB1B2B /* SettingTableViewController.h */,
+				A58D3AE31B62A50E00FB1B2B /* SettingTableViewController.m */,
 			);
 			name = SettingView;
 			sourceTree = "<group>";
@@ -428,19 +415,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A52637C51B5B467200E740C1 /* Rectangle 3.png in Resources */,
 				F443FB431B60FBF300F30847 /* Map.storyboard in Resources */,
 				F465736E1B5552D800DA3D7B /* JL2TableViewCell.xib in Resources */,
-				A5D461BF1B5B87C900F5F238 /* email-7.png in Resources */,
-				A5D461C11B5B914C00F5F238 /* star-7.png in Resources */,
-				F4C9EE431B629B50007C37B4 /* kyoto_sample_photo.jpg in Resources */,
 				F46573641B5545F700DA3D7B /* kyoto.jpg in Resources */,
 				F47556AA1B4BACF2008CEE3A /* Main.storyboard in Resources */,
 				F47556AF1B4BACF2008CEE3A /* LaunchScreen.xib in Resources */,
 				F465736F1B5552D800DA3D7B /* JLTableViewCell.xib in Resources */,
-				F4C9EE421B629B50007C37B4 /* calendar31.png in Resources */,
 				F486EF461B4C34D2008CB97B /* Setting.storyboard in Resources */,
-				A5D461BD1B5B86F700F5F238 /* emoticon-smile-7.png in Resources */,
 				F47556C51B4BD40F008CEE3A /* Favorite.storyboard in Resources */,
 				F46573651B5545F700DA3D7B /* pic1.jpg in Resources */,
 				F47556AC1B4BACF2008CEE3A /* Images.xcassets in Resources */,
@@ -498,6 +479,7 @@
 				F465736D1B5552D800DA3D7B /* JL2TableViewCell.m in Sources */,
 				F4DA4C5C1B4E9D0500421F2F /* UIColors.m in Sources */,
 				F486EF411B4C309A008CB97B /* HomeTableViewCell.m in Sources */,
+				A58D3AE41B62A50E00FB1B2B /* SettingTableViewController.m in Sources */,
 				F4DA4C601B4EC96F00421F2F /* HomePostViewController.m in Sources */,
 				F443FB4F1B612F9300F30847 /* WallTableViewCell.m in Sources */,
 				F47556A41B4BACF2008CEE3A /* AppDelegate.m in Sources */,
