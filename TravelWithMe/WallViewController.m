@@ -143,6 +143,19 @@
     wallTableViewCell.headPhoto.layer.borderWidth = 3.0f;
     wallTableViewCell.headPhoto.layer.borderColor = [UIColor boyPhotoBorderColor].CGColor;
     wallTableViewCell.headPhoto.clipsToBounds = YES;
+    
+    //字體粗細大小
+    wallTableViewCell.testAreaLabel.font = [UIFont systemFontOfSize:11];
+    //文字顏色
+    wallTableViewCell.testAreaLabel.textColor = [UIColor colorWithRed:0.373 green:0.710 blue:0.647 alpha:1.000];
+    //背景色
+    wallTableViewCell.testAreaLabel.backgroundColor = [UIColor clearColor];
+    //Lable邊框
+    wallTableViewCell.testAreaLabel.layer.borderColor = [UIColor colorWithRed:0.373 green:0.710 blue:0.647 alpha:1.000].CGColor;
+    wallTableViewCell.testAreaLabel.layer.borderWidth = 0.5;
+    wallTableViewCell.testAreaLabel.layer.cornerRadius = 3;
+    
+    wallTableViewCell.testAreaLabel.adjustsFontSizeToFitWidth = NO;
 }
 
 
