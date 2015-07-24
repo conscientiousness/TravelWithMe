@@ -42,7 +42,7 @@
     [_wallTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     //設定背景色
     //[_homeTableView setBackgroundView:nil];
-    _wallTableView.backgroundColor = [UIColor homeCellbgColor];
+    //_wallTableView.backgroundColor = [UIColor homeCellbgColor];
     //透明度
     _wallTableView.opaque = NO;
         
@@ -133,10 +133,10 @@
     //[[vocDataCell.vocDataCell layer] setMasksToBounds:YES];
     
     //設定背景顏色
-    [[wallTableViewCell.viewInTableViewCell layer] setBackgroundColor:[UIColor colorWithRed:0.984 green:0.984 blue:0.984 alpha:1.0].CGColor];
+    [[wallTableViewCell.viewInTableViewCell layer] setBackgroundColor:[UIColor whiteColor].CGColor];
     
     //設定圓角程度
-    [[wallTableViewCell.viewInTableViewCell layer] setCornerRadius:1.0];
+    [[wallTableViewCell.viewInTableViewCell layer] setCornerRadius:0];
     
     //照片圓形遮罩
     wallTableViewCell.headPhoto.layer.cornerRadius = wallTableViewCell.headPhoto.frame.size.width / 2;
