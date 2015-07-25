@@ -154,7 +154,9 @@
     wallTableViewCell.testAreaLabel.layer.borderColor = [UIColor colorWithRed:0.373 green:0.710 blue:0.647 alpha:1.000].CGColor;
     wallTableViewCell.testAreaLabel.layer.borderWidth = 0.5;
     wallTableViewCell.testAreaLabel.layer.cornerRadius = 3;
-    
+    //文字在Label置中
+    wallTableViewCell.testAreaLabel.textAlignment = NSTextAlignmentCenter;
+    //文字自動適應Lable大小
     wallTableViewCell.testAreaLabel.adjustsFontSizeToFitWidth = NO;
 }
 
