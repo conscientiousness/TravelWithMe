@@ -11,6 +11,7 @@
 		A52E4EB91B63817400285C83 /* VIPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A52E4EB81B63817400285C83 /* VIPViewController.m */; };
 		A5C8E33F1B63835B00393DC3 /* MailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C8E33E1B63835B00393DC3 /* MailViewController.m */; };
 		A5C8E3421B6383B500393DC3 /* StoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C8E3411B6383B500393DC3 /* StoreViewController.m */; };
+		A5D374921B646BEC00A57791 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5D374911B646BEC00A57791 /* MessageUI.framework */; };
 		F443FB431B60FBF300F30847 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F443FB421B60FBF300F30847 /* Map.storyboard */; };
 		F443FB451B610E8300F30847 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F443FB441B610E8300F30847 /* MapKit.framework */; };
 		F443FB4C1B6124D600F30847 /* WallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F443FB4B1B6124D600F30847 /* WallViewController.m */; };
@@ -72,6 +73,7 @@
 		A5C8E33E1B63835B00393DC3 /* MailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MailViewController.m; sourceTree = "<group>"; };
 		A5C8E3401B6383B500393DC3 /* StoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreViewController.h; sourceTree = "<group>"; };
 		A5C8E3411B6383B500393DC3 /* StoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreViewController.m; sourceTree = "<group>"; };
+		A5D374911B646BEC00A57791 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		F443FB421B60FBF300F30847 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
 		F443FB441B610E8300F30847 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		F443FB4A1B6124D600F30847 /* WallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallViewController.h; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5D374921B646BEC00A57791 /* MessageUI.framework in Frameworks */,
 				F443FB451B610E8300F30847 /* MapKit.framework in Frameworks */,
 				F48B16E21B5F40D900E96B0D /* Social.framework in Frameworks */,
 				F48B16E01B5F40D200E96B0D /* Accounts.framework in Frameworks */,
@@ -162,6 +165,7 @@
 		789577451EB4254F88441C4F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A5D374911B646BEC00A57791 /* MessageUI.framework */,
 				F443FB441B610E8300F30847 /* MapKit.framework */,
 				F48B16E11B5F40D900E96B0D /* Social.framework */,
 				F48B16DF1B5F40D200E96B0D /* Accounts.framework */,
@@ -687,6 +691,7 @@
 					"-weak_framework",
 					"\"UIKit\"",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.hank.TravelWithMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -742,6 +747,7 @@
 					"-weak_framework",
 					"\"UIKit\"",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.hank.TravelWithMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
