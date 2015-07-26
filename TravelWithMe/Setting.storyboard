@@ -133,6 +133,9 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <connections>
+                                            <segue destination="6jc-DW-sYN" kind="showDetail" id="mKQ-vz-hJF"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="O8y-uM-d2K" style="IBUITableViewCellStyleDefault" id="ZmX-RL-8lZ">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -166,10 +169,10 @@
             </objects>
             <point key="canvasLocation" x="-429" y="-31"/>
         </scene>
-        <!--View Controller-->
+        <!--Mail View Controller-->
         <scene sceneID="Gd3-gy-i6e">
             <objects>
-                <viewController id="y8q-uS-l1I" sceneMemberID="viewController">
+                <viewController id="y8q-uS-l1I" customClass="MailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="C34-2b-fWA"/>
                         <viewControllerLayoutGuide type="bottom" id="w08-63-fTl"/>
@@ -184,10 +187,10 @@
             </objects>
             <point key="canvasLocation" x="-429" y="713"/>
         </scene>
-        <!--View Controller-->
+        <!--Store View Controller-->
         <scene sceneID="dlH-mu-GM3">
             <objects>
-                <viewController id="6jc-DW-sYN" sceneMemberID="viewController">
+                <viewController id="6jc-DW-sYN" customClass="StoreViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NLs-Gw-aFe"/>
                         <viewControllerLayoutGuide type="bottom" id="MhD-LN-b1B"/>
@@ -213,7 +216,36 @@
                     <view key="view" contentMode="scaleToFill" id="PpH-Eo-27f">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="12" translatesAutoresizingMaskIntoConstraints="NO" id="AnE-BZ-2IL">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="版本 : 1.0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfL-XJ-5tc">
+                                <rect key="frame" x="266" y="564" width="67.5" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.70196080207824707" green="0.70196080207824707" blue="0.70196080207824707" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2015年 中壢資策會ZP102 TRAVEL WITH ME 專題作品" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tUU-ub-hip">
+                                <rect key="frame" x="140.5" y="540" width="319.5" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.70196080207824707" green="0.70196080207824707" blue="0.70196080207824707" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="AnE-BZ-2IL" firstAttribute="bottom" secondItem="tuP-BQ-K2c" secondAttribute="top" id="0XY-Mo-qks"/>
+                            <constraint firstItem="gfL-XJ-5tc" firstAttribute="top" secondItem="tUU-ub-hip" secondAttribute="bottom" constant="8" id="4s5-u0-MT9"/>
+                            <constraint firstAttribute="centerX" secondItem="gfL-XJ-5tc" secondAttribute="centerX" id="6yG-7f-CXb"/>
+                            <constraint firstAttribute="trailing" secondItem="AnE-BZ-2IL" secondAttribute="trailing" id="DA7-HE-YFD"/>
+                            <constraint firstAttribute="centerX" secondItem="AnE-BZ-2IL" secondAttribute="centerX" id="LNB-JO-NzZ"/>
+                            <constraint firstItem="AnE-BZ-2IL" firstAttribute="leading" secondItem="PpH-Eo-27f" secondAttribute="leading" id="Q2B-th-sS4"/>
+                            <constraint firstAttribute="centerX" secondItem="tUU-ub-hip" secondAttribute="centerX" id="Tjf-GO-kaX"/>
+                            <constraint firstItem="tuP-BQ-K2c" firstAttribute="top" secondItem="gfL-XJ-5tc" secondAttribute="bottom" constant="20" id="Tt1-D4-qNb"/>
+                            <constraint firstItem="AnE-BZ-2IL" firstAttribute="top" secondItem="PpH-Eo-27f" secondAttribute="top" id="aRS-RH-jMz"/>
+                            <constraint firstItem="tuP-BQ-K2c" firstAttribute="top" secondItem="AnE-BZ-2IL" secondAttribute="bottom" id="ta6-CN-0HR"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="關於" id="F17-Zu-rzS"/>
                 </viewController>
@@ -224,7 +256,7 @@
         <!--會員登入-->
         <scene sceneID="hVy-wa-tUb">
             <objects>
-                <viewController id="Tvq-nn-I3J" sceneMemberID="viewController">
+                <viewController id="Tvq-nn-I3J" customClass="VIPViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uLq-Tb-cqD"/>
                         <viewControllerLayoutGuide type="bottom" id="91j-8r-KEX"/>
@@ -262,4 +294,7 @@
             <point key="canvasLocation" x="288" y="-771"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="12" width="320" height="568"/>
+    </resources>
 </document>
