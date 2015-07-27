@@ -60,7 +60,7 @@
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     */
     
-    sleep(3);
+    sleep(2);
     
     return [[FBSDKApplicationDelegate sharedInstance] application:application
                                            didFinishLaunchingWithOptions:launchOptions];
