@@ -1,5 +1,5 @@
 //
-//  SettingTableViewController.h
+//  StoreViewController.h
 //  TravelWithMe
 //
 //  Created by Hank on 2015/7/25.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SettingTableViewController : UITableViewController
+@interface StoreViewController : UIViewController
 
 @end

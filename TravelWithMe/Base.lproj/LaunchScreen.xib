@@ -10,14 +10,16 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="travel with me" translatesAutoresizingMaskIntoConstraints="NO" id="CL3-lK-BMx">
-                    <rect key="frame" x="75" y="213" width="330" height="54"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TRAVEL WITH ME-1" translatesAutoresizingMaskIntoConstraints="NO" id="8kB-m9-xFM">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="centerX" secondItem="CL3-lK-BMx" secondAttribute="centerX" id="iAs-Jb-05I"/>
-                <constraint firstAttribute="centerY" secondItem="CL3-lK-BMx" secondAttribute="centerY" id="sqg-jx-V6D"/>
+                <constraint firstAttribute="trailing" secondItem="8kB-m9-xFM" secondAttribute="trailing" id="Lz9-cp-zUe"/>
+                <constraint firstAttribute="bottom" secondItem="8kB-m9-xFM" secondAttribute="bottom" id="ZPv-je-5SG"/>
+                <constraint firstItem="8kB-m9-xFM" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="hVg-zM-XCi"/>
+                <constraint firstItem="8kB-m9-xFM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="rvs-Rt-Uz4"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -25,6 +27,6 @@
         </view>
     </objects>
     <resources>
-        <image name="travel with me" width="330" height="54"/>
+        <image name="TRAVEL WITH ME-1" width="320" height="568"/>
     </resources>
 </document>
