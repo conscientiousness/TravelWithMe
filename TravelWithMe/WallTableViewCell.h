@@ -12,6 +12,11 @@
 @property (weak, nonatomic) IBOutlet UIView *viewInTableViewCell;
 @property (weak, nonatomic) IBOutlet UIImageView *headPhoto;
 @property (weak, nonatomic) IBOutlet UILabel *testAreaLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIView *viewBlock1;
+@property (weak, nonatomic) IBOutlet UIView *viewBlock2;
+@property (weak, nonatomic) IBOutlet UIView *viewBlock3;
+@property (weak, nonatomic) IBOutlet UIImageView *cellImageView;
+@property (weak, nonatomic) IBOutlet UILabel *intoLabel;
+
 
 @end

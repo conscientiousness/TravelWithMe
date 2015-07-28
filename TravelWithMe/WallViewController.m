@@ -20,7 +20,10 @@
 
 @implementation WallViewController
 {
-    WallTableViewCell *wallTableViewCell;
+    CGFloat imgWidth;
+    CGFloat imgHeight;
+    UIImage *image;
+    float imgRatio;
 }
 
 - (void)viewDidLoad {
@@ -30,6 +33,12 @@
     _wallTableView.scrollEnabled = YES;
     _wallTableView.delegate = self;
     _wallTableView.dataSource = self;
+    
+    image = [UIImage imageNamed:@"iphone_h_photo.jpg"];
+    
+    imgWidth = image.size.width;
+    imgHeight = image.size.height;
+    imgRatio = (float)imgWidth/(float)imgHeight;
     
 }
 
@@ -91,40 +100,36 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     // Return the number of rows in the section.
-    return 4;
+    return 10;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    wallTableViewCell = [tableView dequeueReusableCellWithIdentifier:@"wallTableViewCell" forIndexPath:indexPath];
     
-    // Configure the cell...
+    if(indexPath.section == 1){
+        if(indexPath.row == 1) {
+            
+        }
+    }
     
-    //設定cell外觀
-    [self setCellStyle:tableView];
+    NSString *identifier =@"wallTableViewCell";
     
-    /*取出資料
-     NSInteger targetIndex = indexPath.row;
-     
-     NSArray *allKeys = datas.allKeys;
-     
-     NSString *currentChinese = [allKeys objectAtIndex:targetIndex];
-     
-     vocDataCell.chineseLabel.text = currentChinese;
-     vocDataCell.englishLabel.text = datas[currentChinese];
-     */
-    return wallTableViewCell;
+    UITableViewCell *cell = [self prepareTableViewCell:tableView cellForRowAtIndexPath:indexPath cellIdentifier:identifier];
+    
+    return cell;
 }
 
 
-- (void) setCellStyle:(UITableView *)tableView {
+- (UITableViewCell *)prepareTableViewCell:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath cellIdentifier:(NSString *)identifier{
     
-    //    homeTableViewCell.textLabel.backgroundColor = [UIColor clearColor];
-    wallTableViewCell.contentView.backgroundColor =[UIColor homeCellbgColor];
+    WallTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     
-    wallTableViewCell.selectionStyle = UITableViewCellSelectionStyleNone;
+    //====Set Cell Style====
+    cell.contentView.backgroundColor =[UIColor homeCellbgColor];
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     //設定邊框粗細
-    [[wallTableViewCell.viewInTableViewCell layer] setBorderWidth:0];
+    [[cell.viewInTableViewCell layer] setBorderWidth:0];
     
     //邊框顏色
     //[[wallTableViewCell.viewInTableViewCell layer] setBorderColor:[UIColor colorWithRed:0.806 green:0.806 blue:0.806 alpha:1.0].CGColor];
@@ -133,32 +138,84 @@
     //[[vocDataCell.vocDataCell layer] setMasksToBounds:YES];
     
     //設定背景顏色
-    [[wallTableViewCell.viewInTableViewCell layer] setBackgroundColor:[UIColor whiteColor].CGColor];
+    [[cell.viewInTableViewCell layer] setBackgroundColor:[UIColor whiteColor].CGColor];
     
     //設定圓角程度
-    [[wallTableViewCell.viewInTableViewCell layer] setCornerRadius:0];
+    [[cell.viewInTableViewCell layer] setCornerRadius:0];
     
     //照片圓形遮罩
-    wallTableViewCell.headPhoto.layer.cornerRadius = wallTableViewCell.headPhoto.frame.size.width / 2;
-    wallTableViewCell.headPhoto.layer.borderWidth = 3.0f;
-    wallTableViewCell.headPhoto.layer.borderColor = [UIColor boyPhotoBorderColor].CGColor;
-    wallTableViewCell.headPhoto.clipsToBounds = YES;
+    cell.headPhoto.layer.cornerRadius = cell.headPhoto.frame.size.width / 2;
+    cell.headPhoto.layer.borderWidth = 3.0f;
+    cell.layer.borderColor = [UIColor boyPhotoBorderColor].CGColor;
+    cell.headPhoto.clipsToBounds = YES;
+    
     
     //字體粗細大小
-    wallTableViewCell.testAreaLabel.font = [UIFont systemFontOfSize:11];
+    cell.testAreaLabel.font = [UIFont systemFontOfSize:11];
     //文字顏色
-    wallTableViewCell.testAreaLabel.textColor = [UIColor colorWithRed:0.373 green:0.710 blue:0.647 alpha:1.000];
+    cell.testAreaLabel.textColor = [UIColor colorWithRed:0.373 green:0.710 blue:0.647 alpha:1.000];
     //背景色
-    wallTableViewCell.testAreaLabel.backgroundColor = [UIColor clearColor];
+    cell.testAreaLabel.backgroundColor = [UIColor clearColor];
     //Lable邊框
-    wallTableViewCell.testAreaLabel.layer.borderColor = [UIColor colorWithRed:0.373 green:0.710 blue:0.647 alpha:1.000].CGColor;
-    wallTableViewCell.testAreaLabel.layer.borderWidth = 0.5;
-    wallTableViewCell.testAreaLabel.layer.cornerRadius = 3;
+    cell.testAreaLabel.layer.borderColor = [UIColor colorWithRed:0.373 green:0.710 blue:0.647 alpha:1.000].CGColor;
+    cell.testAreaLabel.layer.borderWidth = 0.5;
+    cell.testAreaLabel.layer.cornerRadius = 3;
     //文字在Label置中
-    wallTableViewCell.testAreaLabel.textAlignment = NSTextAlignmentCenter;
+    cell.testAreaLabel.textAlignment = NSTextAlignmentCenter;
     //文字自動適應Lable大小
-    wallTableViewCell.testAreaLabel.adjustsFontSizeToFitWidth = NO;
+    cell.testAreaLabel.adjustsFontSizeToFitWidth = NO;
+    
+    cell.viewBlock1.backgroundColor = [UIColor whiteColor];
+    cell.viewBlock2.backgroundColor = [UIColor whiteColor];
+    cell.viewBlock3.backgroundColor = [UIColor whiteColor];
+
+    
+    /*/====Add Image View====
+    CGFloat viewInCellWidth = cell.viewInTableViewCell.frame.width;
+    CGFloat viewInCellHeight = cell.contentView.frame.size.height;
+    
+    NSLog(@"viewInCellWidth= %f, viewInCellHeight= %f , index = %ld",viewInCellWidth,viewInCellHeight,(long)indexPath.row);
+    
+    
+    // 初始化
+    UIImageView *dyImageView = [[UIImageView alloc] initWithFrame: CGRectMake(0,cell.viewBlock2.frame.origin.y + cell.viewBlock2.frame.size.height ,320,240)];
+    //320  橫：240  直：426.666666
+    
+    // 圖片檔案引入UIImage物件(需要先將圖片加入專案中)
+    // initWithNamed:@"cropped-Logo"]];
+    UIImage *dyImage = [UIImage imageNamed:@"iphone_h_photo.jpg"];
+    dyImageView.contentMode = UIViewContentModeTop;
+    dyImageView.contentMode = UIViewContentModeScaleAspectFit;
+    
+    
+    // 圖片影像物件指定至UIImageView之影象
+    dyImageView.image = dyImage;
+    dyImageView.backgroundColor =[UIColor redColor];
+    
+    
+    // UIImageView加入主要View中
+    //[cell.viewInTableViewCell addSubview:dyImageView];
+    
+    //NSLog(@"%@",cell.viewInTableViewCell.subviews);
+    */
+    
+    return cell;
+    
 }
+
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    
+    CGFloat result;
+    result = 492.0;
+ 
+    
+    return result;
+}
+
+
 
 
 //當選擇某一列Cell要做的的動作

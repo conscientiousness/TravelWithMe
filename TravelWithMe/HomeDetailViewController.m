@@ -125,19 +125,6 @@
     return cell;
 }
 
-- (void) setCellStyle:(UITableViewCell *)cell {
-    
-    //    homeTableViewCell.textLabel.backgroundColor = [UIColor clearColor];
-    //JLTableViewCell.contentView.backgroundColor =[UIColor homeCellbgColor];
-    
-    //設定點選編輯時背景色一致
-    //    UIView *backgrdView = [[UIView alloc] initWithFrame:homeTableViewCell.frame];
-    //    backgrdView.backgroundColor = [UIColor darkGrayColor];
-    //    homeTableViewCell.backgroundView = backgrdView;
-    
-  
-}
-
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
