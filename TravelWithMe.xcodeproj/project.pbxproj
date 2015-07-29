@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		A52E4EB91B63817400285C83 /* VIPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A52E4EB81B63817400285C83 /* VIPViewController.m */; };
-		A5C8E33F1B63835B00393DC3 /* MailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C8E33E1B63835B00393DC3 /* MailViewController.m */; };
-		A5C8E3421B6383B500393DC3 /* StoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C8E3411B6383B500393DC3 /* StoreViewController.m */; };
+		A53CBBB71B67FA630039369A /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A53CBBB61B67FA630039369A /* MapViewController.m */; };
 		A5D374921B646BEC00A57791 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5D374911B646BEC00A57791 /* MessageUI.framework */; };
+		A5E1670D1B6903B70036ABE4 /* SettingTableViewControlle.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E1670C1B6903B70036ABE4 /* SettingTableViewControlle.m */; };
 		E4C5C083123C6B727AF2A9F8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3E25EB0578BADAF278F744 /* libPods.a */; };
 		F42EBD661B6877BF00606D9B /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = F42EBD651B6877BF00606D9B /* location.png */; };
 		F42EBD6A1B68790500606D9B /* calendar31.png in Resources */ = {isa = PBXBuildFile; fileRef = F42EBD681B68790500606D9B /* calendar31.png */; };
@@ -77,19 +77,11 @@
 		A2A1A052438CEB9B22CC0114 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A52E4EB71B63817400285C83 /* VIPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VIPViewController.h; sourceTree = "<group>"; };
 		A52E4EB81B63817400285C83 /* VIPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VIPViewController.m; sourceTree = "<group>"; };
-		A5C8E33D1B63835B00393DC3 /* MailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MailViewController.h; sourceTree = "<group>"; };
-		A5C8E33E1B63835B00393DC3 /* MailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MailViewController.m; sourceTree = "<group>"; };
-		A5C8E3401B6383B500393DC3 /* StoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreViewController.h; sourceTree = "<group>"; };
-		A5C8E3411B6383B500393DC3 /* StoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreViewController.m; sourceTree = "<group>"; };
+		A53CBBB51B67FA630039369A /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		A53CBBB61B67FA630039369A /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		A5D374911B646BEC00A57791 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		F42EBD651B6877BF00606D9B /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location.png; sourceTree = "<group>"; };
-		F42EBD681B68790500606D9B /* calendar31.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar31.png; sourceTree = "<group>"; };
-		F42EBD691B68790500606D9B /* tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tag.png; sourceTree = "<group>"; };
-		F42EBDA31B68C8D400606D9B /* monkey1080X1080.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = monkey1080X1080.jpg; sourceTree = "<group>"; };
-		F42EBDAB1B68CED800606D9B /* pic800X600.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pic800X600.jpg; sourceTree = "<group>"; };
-		F42EBDAD1B68D0C100606D9B /* pic800X640.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pic800X640.jpg; sourceTree = "<group>"; };
-		F42EBDAF1B68D1EE00606D9B /* pic900X640.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pic900X640.jpg; sourceTree = "<group>"; };
-		F42EBDB11B68FF1400606D9B /* map_icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = map_icon.jpg; sourceTree = "<group>"; };
+		A5E1670B1B6903B70036ABE4 /* SettingTableViewControlle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingTableViewControlle.h; sourceTree = "<group>"; };
+		A5E1670C1B6903B70036ABE4 /* SettingTableViewControlle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewControlle.m; sourceTree = "<group>"; };
 		F443FB421B60FBF300F30847 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
 		F443FB441B610E8300F30847 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		F443FB4A1B6124D600F30847 /* WallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallViewController.h; sourceTree = "<group>"; };
@@ -223,6 +215,8 @@
 			isa = PBXGroup;
 			children = (
 				F443FB421B60FBF300F30847 /* Map.storyboard */,
+				A53CBBB51B67FA630039369A /* MapViewController.h */,
+				A53CBBB61B67FA630039369A /* MapViewController.m */,
 			);
 			name = MapView;
 			sourceTree = "<group>";
@@ -368,12 +362,10 @@
 			isa = PBXGroup;
 			children = (
 				F486EF451B4C34D2008CB97B /* Setting.storyboard */,
+				A5E1670B1B6903B70036ABE4 /* SettingTableViewControlle.h */,
+				A5E1670C1B6903B70036ABE4 /* SettingTableViewControlle.m */,
 				A52E4EB71B63817400285C83 /* VIPViewController.h */,
 				A52E4EB81B63817400285C83 /* VIPViewController.m */,
-				A5C8E33D1B63835B00393DC3 /* MailViewController.h */,
-				A5C8E33E1B63835B00393DC3 /* MailViewController.m */,
-				A5C8E3401B6383B500393DC3 /* StoreViewController.h */,
-				A5C8E3411B6383B500393DC3 /* StoreViewController.m */,
 			);
 			name = SettingView;
 			sourceTree = "<group>";
@@ -548,14 +540,14 @@
 				F486EF3E1B4C3084008CB97B /* HomeTableViewController.m in Sources */,
 				F465736D1B5552D800DA3D7B /* JL2TableViewCell.m in Sources */,
 				F4DA4C5C1B4E9D0500421F2F /* UIColors.m in Sources */,
-				A5C8E3421B6383B500393DC3 /* StoreViewController.m in Sources */,
 				F486EF411B4C309A008CB97B /* HomeTableViewCell.m in Sources */,
 				F4DA4C601B4EC96F00421F2F /* HomePostViewController.m in Sources */,
 				F443FB4F1B612F9300F30847 /* WallTableViewCell.m in Sources */,
 				F47556A41B4BACF2008CEE3A /* AppDelegate.m in Sources */,
-				A5C8E33F1B63835B00393DC3 /* MailViewController.m in Sources */,
+				A5E1670D1B6903B70036ABE4 /* SettingTableViewControlle.m in Sources */,
 				F465736C1B5552D800DA3D7B /* JLTableViewCell.m in Sources */,
 				F4DA4C661B4FF09200421F2F /* HomeDetailViewController.m in Sources */,
+				A53CBBB71B67FA630039369A /* MapViewController.m in Sources */,
 				F443FB4C1B6124D600F30847 /* WallViewController.m in Sources */,
 				F47556A11B4BACF2008CEE3A /* main.m in Sources */,
 			);

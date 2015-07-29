@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Map View Controller-->
         <scene sceneID="yZX-4I-Uuq">
             <objects>
-                <viewController storyboardIdentifier="mapViewController" id="ovO-1k-fH0" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mapViewController" id="ovO-1k-fH0" customClass="MapViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Gtj-mt-omA"/>
                         <viewControllerLayoutGuide type="bottom" id="ckQ-S5-xH7"/>
@@ -16,16 +16,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="AQP-RU-ECw">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AQP-RU-ECw">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <connections>
+                                    <outlet property="delegate" destination="ovO-1k-fH0" id="1O8-U6-3do"/>
+                                </connections>
                             </mapView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4Eb-RZ-zv6">
+                                <rect key="frame" x="239" y="20" width="122" height="29"/>
+                                <segments>
+                                    <segment title="標準"/>
+                                    <segment title="混合"/>
+                                    <segment title="衛星"/>
+                                </segments>
+                                <connections>
+                                    <action selector="mapTypeChanged:" destination="ovO-1k-fH0" eventType="valueChanged" id="OQ0-Fb-nef"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="AQP-RU-ECw" firstAttribute="leading" secondItem="zCh-kT-xNV" secondAttribute="leading" id="5Oe-ho-ajX"/>
+                            <constraint firstItem="AQP-RU-ECw" firstAttribute="bottom" secondItem="ckQ-S5-xH7" secondAttribute="top" id="DR4-IO-8Ac"/>
+                            <constraint firstAttribute="trailing" secondItem="AQP-RU-ECw" secondAttribute="trailing" id="GWa-I3-ryF"/>
+                            <constraint firstItem="AQP-RU-ECw" firstAttribute="top" secondItem="zCh-kT-xNV" secondAttribute="top" id="W1U-bl-439"/>
+                            <constraint firstItem="4Eb-RZ-zv6" firstAttribute="top" secondItem="Gtj-mt-omA" secondAttribute="bottom" id="fhK-LO-ybF"/>
+                            <constraint firstAttribute="centerX" secondItem="4Eb-RZ-zv6" secondAttribute="centerX" id="gqU-ip-YbH"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="theMapView" destination="AQP-RU-ECw" id="iGr-EG-60T"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hXY-Eh-NL5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="395" y="368"/>
+            <point key="canvasLocation" x="448" y="183"/>
         </scene>
     </scenes>
 </document>
