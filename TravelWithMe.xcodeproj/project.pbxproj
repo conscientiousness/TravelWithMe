@@ -8,13 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		026366C865BCD8CCE81B8DB2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3E25EB0578BADAF278F744 /* libPods.a */; };
-		A58D3AE41B62A50E00FB1B2B /* SettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A58D3AE31B62A50E00FB1B2B /* SettingTableViewController.m */; };
 		A52E4EB91B63817400285C83 /* VIPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A52E4EB81B63817400285C83 /* VIPViewController.m */; };
+		A53CBBB71B67FA630039369A /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A53CBBB61B67FA630039369A /* MapViewController.m */; };
 		A5C8E33F1B63835B00393DC3 /* MailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C8E33E1B63835B00393DC3 /* MailViewController.m */; };
 		A5C8E3421B6383B500393DC3 /* StoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C8E3411B6383B500393DC3 /* StoreViewController.m */; };
 		A5D374921B646BEC00A57791 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5D374911B646BEC00A57791 /* MessageUI.framework */; };
-		A58D3AE41B62A50E00FB1B2B /* SettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A58D3AE31B62A50E00FB1B2B /* SettingTableViewController.m */; };
-		F442CE151B64B8FC001CD62B /* myfovorite.png in Resources */ = {isa = PBXBuildFile; fileRef = F442CE141B64B8FC001CD62B /* myfovorite.png */; };
+		F442CE151B64B8FC001CD62B /* (null) in Resources */ = {isa = PBXBuildFile; };
 		F443FB431B60FBF300F30847 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F443FB421B60FBF300F30847 /* Map.storyboard */; };
 		F443FB451B610E8300F30847 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F443FB441B610E8300F30847 /* MapKit.framework */; };
 		F443FB4C1B6124D600F30847 /* WallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F443FB4B1B6124D600F30847 /* WallViewController.m */; };
@@ -72,6 +71,8 @@
 		A2A1A052438CEB9B22CC0114 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A52E4EB71B63817400285C83 /* VIPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VIPViewController.h; sourceTree = "<group>"; };
 		A52E4EB81B63817400285C83 /* VIPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VIPViewController.m; sourceTree = "<group>"; };
+		A53CBBB51B67FA630039369A /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		A53CBBB61B67FA630039369A /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		A5C8E33D1B63835B00393DC3 /* MailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MailViewController.h; sourceTree = "<group>"; };
 		A5C8E33E1B63835B00393DC3 /* MailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MailViewController.m; sourceTree = "<group>"; };
 		A5C8E3401B6383B500393DC3 /* StoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreViewController.h; sourceTree = "<group>"; };
@@ -204,6 +205,8 @@
 			isa = PBXGroup;
 			children = (
 				F443FB421B60FBF300F30847 /* Map.storyboard */,
+				A53CBBB51B67FA630039369A /* MapViewController.h */,
+				A53CBBB61B67FA630039369A /* MapViewController.m */,
 			);
 			name = MapView;
 			sourceTree = "<group>";
@@ -332,7 +335,6 @@
 				F46573631B5545F700DA3D7B /* pic1.jpg */,
 				F4459F0F1B669D82002791B7 /* monkey1080X1080.jpg */,
 				F4441C2F1B63812000272BF3 /* whiteBackgrounf.jpg */,
-				F442CE141B64B8FC001CD62B /* myfovorite.png */,
 				F47556A81B4BACF2008CEE3A /* Main.storyboard */,
 			);
 			name = HomeVIew;
@@ -455,19 +457,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4C9EE461B62B738007C37B4 /* calendar31.png in Resources */,
-				F4441C301B63812000272BF3 /* whiteBackgrounf.jpg in Resources */,
 				F443FB431B60FBF300F30847 /* Map.storyboard in Resources */,
 				F4441C2E1B6341AB00272BF3 /* iphone_v_photo.jpg in Resources */,
-				F4459F101B669D82002791B7 /* monkey1080X1080.jpg in Resources */,
 				F465736E1B5552D800DA3D7B /* JL2TableViewCell.xib in Resources */,
-				F442CE151B64B8FC001CD62B /* myfovorite.png in Resources */,
+				F442CE151B64B8FC001CD62B /* (null) in Resources */,
 				F46573641B5545F700DA3D7B /* kyoto.jpg in Resources */,
 				F47556AA1B4BACF2008CEE3A /* Main.storyboard in Resources */,
 				F47556AF1B4BACF2008CEE3A /* LaunchScreen.xib in Resources */,
 				F465736F1B5552D800DA3D7B /* JLTableViewCell.xib in Resources */,
 				F486EF461B4C34D2008CB97B /* Setting.storyboard in Resources */,
-				F4459F0C1B668EBE002791B7 /* location.png in Resources */,
-				F4459F0E1B669361002791B7 /* tag.png in Resources */,
 				F47556C51B4BD40F008CEE3A /* Favorite.storyboard in Resources */,
 				F4C9EE471B62B738007C37B4 /* kyoto_sample_photo.jpg in Resources */,
 				F46573651B5545F700DA3D7B /* pic1.jpg in Resources */,
@@ -535,6 +533,7 @@
 				A5C8E33F1B63835B00393DC3 /* MailViewController.m in Sources */,
 				F465736C1B5552D800DA3D7B /* JLTableViewCell.m in Sources */,
 				F4DA4C661B4FF09200421F2F /* HomeDetailViewController.m in Sources */,
+				A53CBBB71B67FA630039369A /* MapViewController.m in Sources */,
 				F443FB4C1B6124D600F30847 /* WallViewController.m in Sources */,
 				F47556A11B4BACF2008CEE3A /* main.m in Sources */,
 			);

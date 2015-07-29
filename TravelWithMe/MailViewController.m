@@ -13,10 +13,18 @@
 @end
 
 @implementation MailViewController
-
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+        [super viewDidLoad];
+        // Do any additional setup after loading the view, typically from a nib.
+        
+        NSString *to = @"TravelWithMe@gmail.com";
+        NSString *subject = @"TravelWithMe_Questione";
+        //        NSString *cc = @"TravelWithMe@gmail.com";
+        //        NSString *bcc = @"TravelWithMe@gmail.com";
+        NSString *mailStr = [NSString stringWithFormat:@"mailto:%@?subject=%@&", to, subject];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:mailStr]];
+        
+    
 }
 
 - (void)didReceiveMemoryWarning {

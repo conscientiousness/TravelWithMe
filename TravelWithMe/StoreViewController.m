@@ -16,7 +16,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+   
     // Do any additional setup after loading the view.
+    
+    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"http://itunes.apple.com/tw/app/angry-birds/id343200656?mt=8"]];
+
 }
 
 - (void)didReceiveMemoryWarning {
