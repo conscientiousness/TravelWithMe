@@ -8,11 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		026366C865BCD8CCE81B8DB2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3E25EB0578BADAF278F744 /* libPods.a */; };
+		A58D3AE41B62A50E00FB1B2B /* SettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A58D3AE31B62A50E00FB1B2B /* SettingTableViewController.m */; };
+		026366C865BCD8CCE81B8DB2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3E25EB0578BADAF278F744 /* libPods.a */; };
 		A52E4EB91B63817400285C83 /* VIPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A52E4EB81B63817400285C83 /* VIPViewController.m */; };
 		A53CBBB71B67FA630039369A /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A53CBBB61B67FA630039369A /* MapViewController.m */; };
 		A5C8E33F1B63835B00393DC3 /* MailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C8E33E1B63835B00393DC3 /* MailViewController.m */; };
 		A5C8E3421B6383B500393DC3 /* StoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C8E3411B6383B500393DC3 /* StoreViewController.m */; };
 		A5D374921B646BEC00A57791 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5D374911B646BEC00A57791 /* MessageUI.framework */; };
+		E4C5C083123C6B727AF2A9F8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3E25EB0578BADAF278F744 /* libPods.a */; };
 		F442CE151B64B8FC001CD62B /* (null) in Resources */ = {isa = PBXBuildFile; };
 		F443FB431B60FBF300F30847 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F443FB421B60FBF300F30847 /* Map.storyboard */; };
 		F443FB451B610E8300F30847 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F443FB441B610E8300F30847 /* MapKit.framework */; };
@@ -156,7 +159,7 @@
 				F48B16D21B5F407800E96B0D /* CoreLocation.framework in Frameworks */,
 				F48B16CE1B5F406300E96B0D /* CFNetwork.framework in Frameworks */,
 				F48B16CC1B5F405600E96B0D /* AudioToolbox.framework in Frameworks */,
-				026366C865BCD8CCE81B8DB2 /* libPods.a in Frameworks */,
+				E4C5C083123C6B727AF2A9F8 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -676,12 +679,6 @@
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
-					"-l\"Pods-Bolts\"",
-					"-l\"Pods-FBSDKCoreKit\"",
-					"-l\"Pods-FBSDKLoginKit\"",
-					"-l\"Pods-FBSDKShareKit\"",
-					"-l\"Pods-FXBlurView\"",
-					"-l\"Pods-ParallaxBlur\"",
 					"-framework",
 					"\"Accelerate\"",
 					"-framework",
@@ -728,12 +725,6 @@
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
-					"-l\"Pods-Bolts\"",
-					"-l\"Pods-FBSDKCoreKit\"",
-					"-l\"Pods-FBSDKLoginKit\"",
-					"-l\"Pods-FBSDKShareKit\"",
-					"-l\"Pods-FXBlurView\"",
-					"-l\"Pods-ParallaxBlur\"",
 					"-framework",
 					"\"Accelerate\"",
 					"-framework",
