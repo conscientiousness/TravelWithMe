@@ -10,7 +10,7 @@
 
 @interface WallTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIView *viewInTableViewCell;
-@property (weak, nonatomic) IBOutlet UIImageView *headPhoto;
+@property (weak, nonatomic) IBOutlet UIImageView *wallHeadPhoto;
 @property (weak, nonatomic) IBOutlet UILabel *testAreaLabel;
 @property (weak, nonatomic) IBOutlet UIView *viewBlock1;
 @property (weak, nonatomic) IBOutlet UIView *viewBlock2;

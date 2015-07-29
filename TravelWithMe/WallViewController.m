@@ -143,11 +143,11 @@
     //設定圓角程度
     [[cell.viewInTableViewCell layer] setCornerRadius:0];
     
-    //照片圓形遮罩
-    cell.headPhoto.layer.cornerRadius = cell.headPhoto.frame.size.width / 2;
-    cell.headPhoto.layer.borderWidth = 3.0f;
+    //大頭照圓形遮罩
+    cell.wallHeadPhoto.layer.cornerRadius = cell.wallHeadPhoto.frame.size.width / 2;
+    cell.wallHeadPhoto.layer.borderWidth = 3.0f;
     cell.layer.borderColor = [UIColor boyPhotoBorderColor].CGColor;
-    cell.headPhoto.clipsToBounds = YES;
+    cell.wallHeadPhoto.clipsToBounds = YES;
     
     
     //字體粗細大小
@@ -156,7 +156,7 @@
     cell.testAreaLabel.textColor = [UIColor colorWithRed:0.373 green:0.710 blue:0.647 alpha:1.000];
     //背景色
     cell.testAreaLabel.backgroundColor = [UIColor clearColor];
-    //Lable邊框
+    /*/Lable邊框
     cell.testAreaLabel.layer.borderColor = [UIColor colorWithRed:0.373 green:0.710 blue:0.647 alpha:1.000].CGColor;
     cell.testAreaLabel.layer.borderWidth = 0.5;
     cell.testAreaLabel.layer.cornerRadius = 3;
@@ -164,10 +164,14 @@
     cell.testAreaLabel.textAlignment = NSTextAlignmentCenter;
     //文字自動適應Lable大小
     cell.testAreaLabel.adjustsFontSizeToFitWidth = NO;
+    */
     
     cell.viewBlock1.backgroundColor = [UIColor whiteColor];
     cell.viewBlock2.backgroundColor = [UIColor whiteColor];
     cell.viewBlock3.backgroundColor = [UIColor whiteColor];
+
+    //UIImage *cellImage = [UIImage imageNamed: @"monkey1080X1080.jpg"];
+    //[cell.cellImageView setImage:cellImage];
 
     
     /*/====Add Image View====
@@ -204,7 +208,7 @@
 }
 
 
-
+/*
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     
@@ -213,7 +217,7 @@
  
     
     return result;
-}
+}*/
 
 
 

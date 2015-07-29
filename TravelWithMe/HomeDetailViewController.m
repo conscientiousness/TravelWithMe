@@ -29,7 +29,7 @@
     self.navigationController.navigationBar.translucent = YES;
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    [self setHeaderImage:[UIImage imageNamed:@"kyoto.jpg"]];
+    [self setHeaderImage:[UIImage imageNamed:@"pic900X640.jpg"]];
     [self setTitleText:@"日本"];
     [self setSubtitleText:@"Japan"];
     [self setLabelBackgroundGradientColor:[UIColor colorWithRed:0.0f green:0.0f blue:0.0f alpha:0.7f]];
