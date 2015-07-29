@@ -7,14 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		026366C865BCD8CCE81B8DB2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3E25EB0578BADAF278F744 /* libPods.a */; };
-		A58D3AE41B62A50E00FB1B2B /* SettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A58D3AE31B62A50E00FB1B2B /* SettingTableViewController.m */; };
 		A52E4EB91B63817400285C83 /* VIPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A52E4EB81B63817400285C83 /* VIPViewController.m */; };
 		A5C8E33F1B63835B00393DC3 /* MailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C8E33E1B63835B00393DC3 /* MailViewController.m */; };
 		A5C8E3421B6383B500393DC3 /* StoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C8E3411B6383B500393DC3 /* StoreViewController.m */; };
 		A5D374921B646BEC00A57791 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5D374911B646BEC00A57791 /* MessageUI.framework */; };
-		A58D3AE41B62A50E00FB1B2B /* SettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A58D3AE31B62A50E00FB1B2B /* SettingTableViewController.m */; };
-		F442CE151B64B8FC001CD62B /* myfovorite.png in Resources */ = {isa = PBXBuildFile; fileRef = F442CE141B64B8FC001CD62B /* myfovorite.png */; };
+		E4C5C083123C6B727AF2A9F8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3E25EB0578BADAF278F744 /* libPods.a */; };
+		F442CE151B64B8FC001CD62B /* (null) in Resources */ = {isa = PBXBuildFile; };
 		F443FB431B60FBF300F30847 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F443FB421B60FBF300F30847 /* Map.storyboard */; };
 		F443FB451B610E8300F30847 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F443FB441B610E8300F30847 /* MapKit.framework */; };
 		F443FB4C1B6124D600F30847 /* WallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F443FB4B1B6124D600F30847 /* WallViewController.m */; };
@@ -155,7 +153,7 @@
 				F48B16D21B5F407800E96B0D /* CoreLocation.framework in Frameworks */,
 				F48B16CE1B5F406300E96B0D /* CFNetwork.framework in Frameworks */,
 				F48B16CC1B5F405600E96B0D /* AudioToolbox.framework in Frameworks */,
-				026366C865BCD8CCE81B8DB2 /* libPods.a in Frameworks */,
+				E4C5C083123C6B727AF2A9F8 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,7 +330,6 @@
 				F46573631B5545F700DA3D7B /* pic1.jpg */,
 				F4459F0F1B669D82002791B7 /* monkey1080X1080.jpg */,
 				F4441C2F1B63812000272BF3 /* whiteBackgrounf.jpg */,
-				F442CE141B64B8FC001CD62B /* myfovorite.png */,
 				F47556A81B4BACF2008CEE3A /* Main.storyboard */,
 			);
 			name = HomeVIew;
@@ -455,19 +452,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4C9EE461B62B738007C37B4 /* calendar31.png in Resources */,
-				F4441C301B63812000272BF3 /* whiteBackgrounf.jpg in Resources */,
 				F443FB431B60FBF300F30847 /* Map.storyboard in Resources */,
 				F4441C2E1B6341AB00272BF3 /* iphone_v_photo.jpg in Resources */,
-				F4459F101B669D82002791B7 /* monkey1080X1080.jpg in Resources */,
 				F465736E1B5552D800DA3D7B /* JL2TableViewCell.xib in Resources */,
-				F442CE151B64B8FC001CD62B /* myfovorite.png in Resources */,
+				F442CE151B64B8FC001CD62B /* (null) in Resources */,
 				F46573641B5545F700DA3D7B /* kyoto.jpg in Resources */,
 				F47556AA1B4BACF2008CEE3A /* Main.storyboard in Resources */,
 				F47556AF1B4BACF2008CEE3A /* LaunchScreen.xib in Resources */,
 				F465736F1B5552D800DA3D7B /* JLTableViewCell.xib in Resources */,
 				F486EF461B4C34D2008CB97B /* Setting.storyboard in Resources */,
-				F4459F0C1B668EBE002791B7 /* location.png in Resources */,
-				F4459F0E1B669361002791B7 /* tag.png in Resources */,
 				F47556C51B4BD40F008CEE3A /* Favorite.storyboard in Resources */,
 				F4C9EE471B62B738007C37B4 /* kyoto_sample_photo.jpg in Resources */,
 				F46573651B5545F700DA3D7B /* pic1.jpg in Resources */,
@@ -677,12 +670,6 @@
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
-					"-l\"Pods-Bolts\"",
-					"-l\"Pods-FBSDKCoreKit\"",
-					"-l\"Pods-FBSDKLoginKit\"",
-					"-l\"Pods-FBSDKShareKit\"",
-					"-l\"Pods-FXBlurView\"",
-					"-l\"Pods-ParallaxBlur\"",
 					"-framework",
 					"\"Accelerate\"",
 					"-framework",
@@ -729,12 +716,6 @@
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
-					"-l\"Pods-Bolts\"",
-					"-l\"Pods-FBSDKCoreKit\"",
-					"-l\"Pods-FBSDKLoginKit\"",
-					"-l\"Pods-FBSDKShareKit\"",
-					"-l\"Pods-FXBlurView\"",
-					"-l\"Pods-ParallaxBlur\"",
 					"-framework",
 					"\"Accelerate\"",
 					"-framework",
