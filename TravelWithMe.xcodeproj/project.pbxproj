@@ -12,14 +12,15 @@
 		A5D374921B646BEC00A57791 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5D374911B646BEC00A57791 /* MessageUI.framework */; };
 		A5E1670D1B6903B70036ABE4 /* SettingTableViewControlle.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E1670C1B6903B70036ABE4 /* SettingTableViewControlle.m */; };
 		E4C5C083123C6B727AF2A9F8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3E25EB0578BADAF278F744 /* libPods.a */; };
-		F42EBD661B6877BF00606D9B /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = F42EBD651B6877BF00606D9B /* location.png */; };
-		F42EBD6A1B68790500606D9B /* calendar31.png in Resources */ = {isa = PBXBuildFile; fileRef = F42EBD681B68790500606D9B /* calendar31.png */; };
-		F42EBD6B1B68790500606D9B /* tag.png in Resources */ = {isa = PBXBuildFile; fileRef = F42EBD691B68790500606D9B /* tag.png */; };
-		F42EBDA41B68C8D400606D9B /* monkey1080X1080.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F42EBDA31B68C8D400606D9B /* monkey1080X1080.jpg */; };
-		F42EBDAC1B68CED800606D9B /* pic800X600.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F42EBDAB1B68CED800606D9B /* pic800X600.jpg */; };
-		F42EBDAE1B68D0C100606D9B /* pic800X640.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F42EBDAD1B68D0C100606D9B /* pic800X640.jpg */; };
-		F42EBDB01B68D1EE00606D9B /* pic900X640.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F42EBDAF1B68D1EE00606D9B /* pic900X640.jpg */; };
-		F42EBDB21B68FF1400606D9B /* map_icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F42EBDB11B68FF1400606D9B /* map_icon.jpg */; };
+		F4267BCD1B6A4FBC00F42330 /* FavoriteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4267BCC1B6A4FBC00F42330 /* FavoriteTableViewController.m */; };
+		F42EBD661B6877BF00606D9B /* (null) in Resources */ = {isa = PBXBuildFile; };
+		F42EBD6A1B68790500606D9B /* (null) in Resources */ = {isa = PBXBuildFile; };
+		F42EBD6B1B68790500606D9B /* (null) in Resources */ = {isa = PBXBuildFile; };
+		F42EBDA41B68C8D400606D9B /* (null) in Resources */ = {isa = PBXBuildFile; };
+		F42EBDAC1B68CED800606D9B /* (null) in Resources */ = {isa = PBXBuildFile; };
+		F42EBDAE1B68D0C100606D9B /* (null) in Resources */ = {isa = PBXBuildFile; };
+		F42EBDB01B68D1EE00606D9B /* (null) in Resources */ = {isa = PBXBuildFile; };
+		F42EBDB21B68FF1400606D9B /* (null) in Resources */ = {isa = PBXBuildFile; };
 		F442CE151B64B8FC001CD62B /* (null) in Resources */ = {isa = PBXBuildFile; };
 		F443FB431B60FBF300F30847 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F443FB421B60FBF300F30847 /* Map.storyboard */; };
 		F443FB451B610E8300F30847 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F443FB441B610E8300F30847 /* MapKit.framework */; };
@@ -72,8 +73,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2DA0CBC11B68F92A0014D302 /* FavoriteTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteTableViewController.h; sourceTree = "<group>"; };
-		2DA0CBC21B68F92A0014D302 /* FavoriteTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteTableViewController.m; sourceTree = "<group>"; };
 		2DA0CBC41B68F9AF0014D302 /* FavoriteDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteDetailViewController.h; sourceTree = "<group>"; };
 		2DA0CBC51B68F9AF0014D302 /* FavoriteDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteDetailViewController.m; sourceTree = "<group>"; };
 		2DA0CBC71B68F9CD0014D302 /* FavoriteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteTableViewCell.h; sourceTree = "<group>"; };
@@ -88,6 +87,8 @@
 		A5D374911B646BEC00A57791 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		A5E1670B1B6903B70036ABE4 /* SettingTableViewControlle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingTableViewControlle.h; sourceTree = "<group>"; };
 		A5E1670C1B6903B70036ABE4 /* SettingTableViewControlle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewControlle.m; sourceTree = "<group>"; };
+		F4267BCB1B6A4FBC00F42330 /* FavoriteTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteTableViewController.h; sourceTree = "<group>"; };
+		F4267BCC1B6A4FBC00F42330 /* FavoriteTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteTableViewController.m; sourceTree = "<group>"; };
 		F443FB421B60FBF300F30847 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
 		F443FB441B610E8300F30847 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		F443FB4A1B6124D600F30847 /* WallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallViewController.h; sourceTree = "<group>"; };
@@ -209,10 +210,6 @@
 		F42EBD671B6877C400606D9B /* icon */ = {
 			isa = PBXGroup;
 			children = (
-				F42EBD681B68790500606D9B /* calendar31.png */,
-				F42EBD691B68790500606D9B /* tag.png */,
-				F42EBD651B6877BF00606D9B /* location.png */,
-				F42EBDB11B68FF1400606D9B /* map_icon.jpg */,
 			);
 			name = icon;
 			sourceTree = "<group>";
@@ -346,10 +343,6 @@
 				F4441C2B1B6341AB00272BF3 /* iphone_h_photo.jpg */,
 				F4441C2C1B6341AB00272BF3 /* iphone_v_photo.jpg */,
 				F46573631B5545F700DA3D7B /* pic1.jpg */,
-				F42EBDA31B68C8D400606D9B /* monkey1080X1080.jpg */,
-				F42EBDAB1B68CED800606D9B /* pic800X600.jpg */,
-				F42EBDAD1B68D0C100606D9B /* pic800X640.jpg */,
-				F42EBDAF1B68D1EE00606D9B /* pic900X640.jpg */,
 				F42EBD671B6877C400606D9B /* icon */,
 				F47556A81B4BACF2008CEE3A /* Main.storyboard */,
 			);
@@ -360,8 +353,8 @@
 			isa = PBXGroup;
 			children = (
 				F47556C41B4BD40F008CEE3A /* Favorite.storyboard */,
-				2DA0CBC11B68F92A0014D302 /* FavoriteTableViewController.h */,
-				2DA0CBC21B68F92A0014D302 /* FavoriteTableViewController.m */,
+				F4267BCB1B6A4FBC00F42330 /* FavoriteTableViewController.h */,
+				F4267BCC1B6A4FBC00F42330 /* FavoriteTableViewController.m */,
 				2DA0CBC71B68F9CD0014D302 /* FavoriteTableViewCell.h */,
 				2DA0CBC81B68F9CD0014D302 /* FavoriteTableViewCell.m */,
 				2DA0CBC41B68F9AF0014D302 /* FavoriteDetailViewController.h */,
@@ -480,24 +473,24 @@
 				F4441C2E1B6341AB00272BF3 /* iphone_v_photo.jpg in Resources */,
 				F465736E1B5552D800DA3D7B /* JL2TableViewCell.xib in Resources */,
 				F442CE151B64B8FC001CD62B /* (null) in Resources */,
-				F42EBDA41B68C8D400606D9B /* monkey1080X1080.jpg in Resources */,
+				F42EBDA41B68C8D400606D9B /* (null) in Resources */,
 				F46573641B5545F700DA3D7B /* kyoto.jpg in Resources */,
 				F47556AA1B4BACF2008CEE3A /* Main.storyboard in Resources */,
 				F47556AF1B4BACF2008CEE3A /* LaunchScreen.xib in Resources */,
-				F42EBDAC1B68CED800606D9B /* pic800X600.jpg in Resources */,
-				F42EBD661B6877BF00606D9B /* location.png in Resources */,
-				F42EBD6B1B68790500606D9B /* tag.png in Resources */,
+				F42EBDAC1B68CED800606D9B /* (null) in Resources */,
+				F42EBD661B6877BF00606D9B /* (null) in Resources */,
+				F42EBD6B1B68790500606D9B /* (null) in Resources */,
 				F465736F1B5552D800DA3D7B /* JLTableViewCell.xib in Resources */,
 				F486EF461B4C34D2008CB97B /* Setting.storyboard in Resources */,
 				F47556C51B4BD40F008CEE3A /* Favorite.storyboard in Resources */,
 				F4C9EE471B62B738007C37B4 /* kyoto_sample_photo.jpg in Resources */,
 				F46573651B5545F700DA3D7B /* pic1.jpg in Resources */,
 				F4441C2D1B6341AB00272BF3 /* iphone_h_photo.jpg in Resources */,
-				F42EBDB21B68FF1400606D9B /* map_icon.jpg in Resources */,
+				F42EBDB21B68FF1400606D9B /* (null) in Resources */,
 				F47556AC1B4BACF2008CEE3A /* Images.xcassets in Resources */,
-				F42EBDB01B68D1EE00606D9B /* pic900X640.jpg in Resources */,
-				F42EBD6A1B68790500606D9B /* calendar31.png in Resources */,
-				F42EBDAE1B68D0C100606D9B /* pic800X640.jpg in Resources */,
+				F42EBDB01B68D1EE00606D9B /* (null) in Resources */,
+				F42EBD6A1B68790500606D9B /* (null) in Resources */,
+				F42EBDAE1B68D0C100606D9B /* (null) in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -558,13 +551,11 @@
 				F47556A41B4BACF2008CEE3A /* AppDelegate.m in Sources */,
 				A5E1670D1B6903B70036ABE4 /* SettingTableViewControlle.m in Sources */,
 				F465736C1B5552D800DA3D7B /* JLTableViewCell.m in Sources */,
+				F4267BCD1B6A4FBC00F42330 /* FavoriteTableViewController.m in Sources */,
 				F4DA4C661B4FF09200421F2F /* HomeDetailViewController.m in Sources */,
-				2DA0CBC61B68F9AF0014D302 /* FavoriteDetailViewController.m in Sources */,
 				A53CBBB71B67FA630039369A /* MapViewController.m in Sources */,
 				F443FB4C1B6124D600F30847 /* WallViewController.m in Sources */,
-				2DA0CBC91B68F9CD0014D302 /* FavoriteTableViewCell.m in Sources */,
 				F47556A11B4BACF2008CEE3A /* main.m in Sources */,
-				2DA0CBC31B68F92A0014D302 /* FavoriteTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
