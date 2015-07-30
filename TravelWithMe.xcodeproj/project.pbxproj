@@ -72,6 +72,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2DA0CBC11B68F92A0014D302 /* FavoriteTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteTableViewController.h; sourceTree = "<group>"; };
+		2DA0CBC21B68F92A0014D302 /* FavoriteTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteTableViewController.m; sourceTree = "<group>"; };
+		2DA0CBC41B68F9AF0014D302 /* FavoriteDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteDetailViewController.h; sourceTree = "<group>"; };
+		2DA0CBC51B68F9AF0014D302 /* FavoriteDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteDetailViewController.m; sourceTree = "<group>"; };
+		2DA0CBC71B68F9CD0014D302 /* FavoriteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteTableViewCell.h; sourceTree = "<group>"; };
+		2DA0CBC81B68F9CD0014D302 /* FavoriteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteTableViewCell.m; sourceTree = "<group>"; };
 		44BCC490976B2C9D75A6541C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		6F3E25EB0578BADAF278F744 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2A1A052438CEB9B22CC0114 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -354,6 +360,12 @@
 			isa = PBXGroup;
 			children = (
 				F47556C41B4BD40F008CEE3A /* Favorite.storyboard */,
+				2DA0CBC11B68F92A0014D302 /* FavoriteTableViewController.h */,
+				2DA0CBC21B68F92A0014D302 /* FavoriteTableViewController.m */,
+				2DA0CBC71B68F9CD0014D302 /* FavoriteTableViewCell.h */,
+				2DA0CBC81B68F9CD0014D302 /* FavoriteTableViewCell.m */,
+				2DA0CBC41B68F9AF0014D302 /* FavoriteDetailViewController.h */,
+				2DA0CBC51B68F9AF0014D302 /* FavoriteDetailViewController.m */,
 			);
 			name = FavoriteView;
 			sourceTree = "<group>";
@@ -547,9 +559,12 @@
 				A5E1670D1B6903B70036ABE4 /* SettingTableViewControlle.m in Sources */,
 				F465736C1B5552D800DA3D7B /* JLTableViewCell.m in Sources */,
 				F4DA4C661B4FF09200421F2F /* HomeDetailViewController.m in Sources */,
+				2DA0CBC61B68F9AF0014D302 /* FavoriteDetailViewController.m in Sources */,
 				A53CBBB71B67FA630039369A /* MapViewController.m in Sources */,
 				F443FB4C1B6124D600F30847 /* WallViewController.m in Sources */,
+				2DA0CBC91B68F9CD0014D302 /* FavoriteTableViewCell.m in Sources */,
 				F47556A11B4BACF2008CEE3A /* main.m in Sources */,
+				2DA0CBC31B68F92A0014D302 /* FavoriteTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
