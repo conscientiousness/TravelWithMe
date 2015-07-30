@@ -11,6 +11,7 @@
 #import "HomePostViewController.h"
 #import "HomeDetailViewController.h"
 #import "UIColors.h"
+#import <Parse/Parse.h>
 
 @interface WallViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *wallTableView;
@@ -24,6 +25,7 @@
     CGFloat imgHeight;
     UIImage *image;
     float imgRatio;
+    
 }
 
 - (void)viewDidLoad {
@@ -34,12 +36,16 @@
     _wallTableView.delegate = self;
     _wallTableView.dataSource = self;
     
-    image = [UIImage imageNamed:@"iphone_h_photo.jpg"];
-    
-    imgWidth = image.size.width;
-    imgHeight = image.size.height;
-    imgRatio = (float)imgWidth/(float)imgHeight;
-    
+    PFQuery *query = [PFQuery queryWithClassName:@"TestObject"];
+    //[query whereKey:@"playername" equalTo:@"Sean Plott"];
+    [query countObjectsInBackgroundWithBlock:^(int count, NSError *error) {
+        if (!error) {
+            // The count request succeeded. Log the count
+            NSLog(@"Sean has count %d ", count);
+        } else {
+            // The request failed
+        }
+    }];
 }
 
 
