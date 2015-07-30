@@ -11,7 +11,6 @@
 #import "UIColors.h"
 #import "FavoriteDetailViewController.h"
 @interface FavoriteTableViewController ()
-@property (strong, nonatomic) IBOutlet UITableView *favoriteTableView;
 
 @end
 

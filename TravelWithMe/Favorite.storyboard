@@ -75,9 +75,6 @@
                             <color key="tintColor" red="0.53545471749999995" green="1" blue="0.86292646699999997" alpha="1" colorSpace="calibratedRGB"/>
                         </segmentedControl>
                     </navigationItem>
-                    <connections>
-                        <outlet property="favoriteTableView" destination="ldF-qE-UkA" id="VFh-Xh-FDB"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cCJ-RB-GN7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
