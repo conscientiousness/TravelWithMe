@@ -24,7 +24,7 @@
         <!--設定-->
         <scene sceneID="Mm7-9k-CMF">
             <objects>
-                <tableViewController id="mNP-cx-g2U" sceneMemberID="viewController">
+                <tableViewController id="mNP-cx-g2U" customClass="SettingTableViewControlle" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="9w4-vo-p8U">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,7 +32,7 @@
                         <sections>
                             <tableViewSection headerTitle="個人資訊" id="Sb4-4K-OIe">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="nCd-x9-vHI" style="IBUITableViewCellStyleDefault" id="gTO-wF-ymv">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="nCd-x9-vHI" style="IBUITableViewCellStyleDefault" id="gTO-wF-ymv">
                                         <rect key="frame" x="0.0" y="113.5" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gTO-wF-ymv" id="6jp-Fj-ZgN">
@@ -52,7 +52,7 @@
                                             <segue destination="Tvq-nn-I3J" kind="show" id="Baa-BA-zVc"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="hS1-jO-ASm" style="IBUITableViewCellStyleDefault" id="LsU-g1-5da">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="hS1-jO-ASm" style="IBUITableViewCellStyleDefault" id="LsU-g1-5da">
                                         <rect key="frame" x="0.0" y="157.5" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LsU-g1-5da" id="hRb-dE-2bv">
@@ -77,7 +77,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="推播" id="xZU-17-WBQ">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="uEL-pT-fWZ">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="uEL-pT-fWZ">
                                         <rect key="frame" x="0.0" y="243.5" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uEL-pT-fWZ" id="qcD-5J-ftI">
@@ -106,7 +106,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="關於我們" id="Avc-jz-jkb">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="ynG-WX-inY" style="IBUITableViewCellStyleDefault" id="ENz-rM-FUE">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="ynG-WX-inY" style="IBUITableViewCellStyleDefault" id="ENz-rM-FUE">
                                         <rect key="frame" x="0.0" y="329.5" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ENz-rM-FUE" id="ZqJ-u1-M9S">
@@ -122,11 +122,8 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="y8q-uS-l1I" kind="show" id="bBi-iP-do3"/>
-                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="350-ft-iaA" style="IBUITableViewCellStyleDefault" id="Qkd-L7-lfT">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="350-ft-iaA" style="IBUITableViewCellStyleDefault" id="Qkd-L7-lfT">
                                         <rect key="frame" x="0.0" y="373.5" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qkd-L7-lfT" id="vj6-c9-qZ5">
@@ -142,11 +139,8 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <connections>
-                                            <segue destination="6jc-DW-sYN" kind="show" id="DPF-ch-Tia"/>
-                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="O8y-uM-d2K" style="IBUITableViewCellStyleDefault" id="ZmX-RL-8lZ">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="O8y-uM-d2K" style="IBUITableViewCellStyleDefault" id="ZmX-RL-8lZ">
                                         <rect key="frame" x="0.0" y="417.5" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZmX-RL-8lZ" id="Tdr-Sv-R72">
@@ -179,42 +173,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QCH-EV-jOl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-429" y="-31"/>
-        </scene>
-        <!--Mail View Controller-->
-        <scene sceneID="Gd3-gy-i6e">
-            <objects>
-                <viewController id="y8q-uS-l1I" customClass="MailViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="C34-2b-fWA"/>
-                        <viewControllerLayoutGuide type="bottom" id="w08-63-fTl"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="XXV-hu-dBm">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yht-I2-MMv" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-429" y="713"/>
-        </scene>
-        <!--Store View Controller-->
-        <scene sceneID="dlH-mu-GM3">
-            <objects>
-                <viewController id="6jc-DW-sYN" customClass="StoreViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="NLs-Gw-aFe"/>
-                        <viewControllerLayoutGuide type="bottom" id="MhD-LN-b1B"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="7f4-fS-lA7">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eYp-Ln-Fol" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="264" y="713"/>
         </scene>
         <!--關於-->
         <scene sceneID="0al-7v-snE">
@@ -254,7 +212,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cLh-AZ-ahZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1007" y="713"/>
+            <point key="canvasLocation" x="-429" y="751"/>
         </scene>
         <!--會員登入-->
         <scene sceneID="hVy-wa-tUb">
