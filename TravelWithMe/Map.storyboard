@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Map View Controller-->
@@ -33,6 +34,19 @@
                                     <action selector="mapTypeChanged:" destination="ovO-1k-fH0" eventType="valueChanged" id="OQ0-Fb-nef"/>
                                 </connections>
                             </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="niv-I0-PPS">
+                                <rect key="frame" x="559" y="545" width="25" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="BP9-PA-mk0"/>
+                                    <constraint firstAttribute="width" constant="25" id="RKK-kr-gKE"/>
+                                </constraints>
+                                <state key="normal" image="Artboard 1">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backClick:" destination="ovO-1k-fH0" eventType="touchUpInside" id="dLP-78-T8v"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -42,6 +56,8 @@
                             <constraint firstItem="AQP-RU-ECw" firstAttribute="top" secondItem="zCh-kT-xNV" secondAttribute="top" id="W1U-bl-439"/>
                             <constraint firstItem="4Eb-RZ-zv6" firstAttribute="top" secondItem="Gtj-mt-omA" secondAttribute="bottom" id="fhK-LO-ybF"/>
                             <constraint firstAttribute="centerX" secondItem="4Eb-RZ-zv6" secondAttribute="centerX" id="gqU-ip-YbH"/>
+                            <constraint firstItem="niv-I0-PPS" firstAttribute="trailing" secondItem="zCh-kT-xNV" secondAttribute="trailingMargin" id="l7H-uS-D0u"/>
+                            <constraint firstItem="ckQ-S5-xH7" firstAttribute="top" secondItem="niv-I0-PPS" secondAttribute="bottom" constant="20" id="v4Y-tb-XKN"/>
                         </constraints>
                     </view>
                     <connections>
@@ -53,4 +69,7 @@
             <point key="canvasLocation" x="448" y="183"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Artboard 1" width="61" height="94"/>
+    </resources>
 </document>

@@ -12,14 +12,14 @@
 		A5D374921B646BEC00A57791 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5D374911B646BEC00A57791 /* MessageUI.framework */; };
 		A5E1670D1B6903B70036ABE4 /* SettingTableViewControlle.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E1670C1B6903B70036ABE4 /* SettingTableViewControlle.m */; };
 		E4C5C083123C6B727AF2A9F8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3E25EB0578BADAF278F744 /* libPods.a */; };
-		F42EBD661B6877BF00606D9B /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = F42EBD651B6877BF00606D9B /* location.png */; };
-		F42EBD6A1B68790500606D9B /* calendar31.png in Resources */ = {isa = PBXBuildFile; fileRef = F42EBD681B68790500606D9B /* calendar31.png */; };
-		F42EBD6B1B68790500606D9B /* tag.png in Resources */ = {isa = PBXBuildFile; fileRef = F42EBD691B68790500606D9B /* tag.png */; };
-		F42EBDA41B68C8D400606D9B /* monkey1080X1080.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F42EBDA31B68C8D400606D9B /* monkey1080X1080.jpg */; };
-		F42EBDAC1B68CED800606D9B /* pic800X600.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F42EBDAB1B68CED800606D9B /* pic800X600.jpg */; };
-		F42EBDAE1B68D0C100606D9B /* pic800X640.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F42EBDAD1B68D0C100606D9B /* pic800X640.jpg */; };
-		F42EBDB01B68D1EE00606D9B /* pic900X640.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F42EBDAF1B68D1EE00606D9B /* pic900X640.jpg */; };
-		F42EBDB21B68FF1400606D9B /* map_icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F42EBDB11B68FF1400606D9B /* map_icon.jpg */; };
+		F42EBD661B6877BF00606D9B /* (null) in Resources */ = {isa = PBXBuildFile; };
+		F42EBD6A1B68790500606D9B /* (null) in Resources */ = {isa = PBXBuildFile; };
+		F42EBD6B1B68790500606D9B /* (null) in Resources */ = {isa = PBXBuildFile; };
+		F42EBDA41B68C8D400606D9B /* (null) in Resources */ = {isa = PBXBuildFile; };
+		F42EBDAC1B68CED800606D9B /* (null) in Resources */ = {isa = PBXBuildFile; };
+		F42EBDAE1B68D0C100606D9B /* (null) in Resources */ = {isa = PBXBuildFile; };
+		F42EBDB01B68D1EE00606D9B /* (null) in Resources */ = {isa = PBXBuildFile; };
+		F42EBDB21B68FF1400606D9B /* (null) in Resources */ = {isa = PBXBuildFile; };
 		F442CE151B64B8FC001CD62B /* (null) in Resources */ = {isa = PBXBuildFile; };
 		F443FB431B60FBF300F30847 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F443FB421B60FBF300F30847 /* Map.storyboard */; };
 		F443FB451B610E8300F30847 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F443FB441B610E8300F30847 /* MapKit.framework */; };
@@ -203,10 +203,6 @@
 		F42EBD671B6877C400606D9B /* icon */ = {
 			isa = PBXGroup;
 			children = (
-				F42EBD681B68790500606D9B /* calendar31.png */,
-				F42EBD691B68790500606D9B /* tag.png */,
-				F42EBD651B6877BF00606D9B /* location.png */,
-				F42EBDB11B68FF1400606D9B /* map_icon.jpg */,
 			);
 			name = icon;
 			sourceTree = "<group>";
@@ -340,10 +336,6 @@
 				F4441C2B1B6341AB00272BF3 /* iphone_h_photo.jpg */,
 				F4441C2C1B6341AB00272BF3 /* iphone_v_photo.jpg */,
 				F46573631B5545F700DA3D7B /* pic1.jpg */,
-				F42EBDA31B68C8D400606D9B /* monkey1080X1080.jpg */,
-				F42EBDAB1B68CED800606D9B /* pic800X600.jpg */,
-				F42EBDAD1B68D0C100606D9B /* pic800X640.jpg */,
-				F42EBDAF1B68D1EE00606D9B /* pic900X640.jpg */,
 				F42EBD671B6877C400606D9B /* icon */,
 				F47556A81B4BACF2008CEE3A /* Main.storyboard */,
 			);
@@ -432,7 +424,7 @@
 				TargetAttributes = {
 					F475569A1B4BACF2008CEE3A = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 2QJ2ML396S;
+						DevelopmentTeam = 7V83G63QL5;
 					};
 					F47556B31B4BACF2008CEE3A = {
 						CreatedOnToolsVersion = 6.4;
@@ -468,24 +460,24 @@
 				F4441C2E1B6341AB00272BF3 /* iphone_v_photo.jpg in Resources */,
 				F465736E1B5552D800DA3D7B /* JL2TableViewCell.xib in Resources */,
 				F442CE151B64B8FC001CD62B /* (null) in Resources */,
-				F42EBDA41B68C8D400606D9B /* monkey1080X1080.jpg in Resources */,
+				F42EBDA41B68C8D400606D9B /* (null) in Resources */,
 				F46573641B5545F700DA3D7B /* kyoto.jpg in Resources */,
 				F47556AA1B4BACF2008CEE3A /* Main.storyboard in Resources */,
 				F47556AF1B4BACF2008CEE3A /* LaunchScreen.xib in Resources */,
-				F42EBDAC1B68CED800606D9B /* pic800X600.jpg in Resources */,
-				F42EBD661B6877BF00606D9B /* location.png in Resources */,
-				F42EBD6B1B68790500606D9B /* tag.png in Resources */,
+				F42EBDAC1B68CED800606D9B /* (null) in Resources */,
+				F42EBD661B6877BF00606D9B /* (null) in Resources */,
+				F42EBD6B1B68790500606D9B /* (null) in Resources */,
 				F465736F1B5552D800DA3D7B /* JLTableViewCell.xib in Resources */,
 				F486EF461B4C34D2008CB97B /* Setting.storyboard in Resources */,
 				F47556C51B4BD40F008CEE3A /* Favorite.storyboard in Resources */,
 				F4C9EE471B62B738007C37B4 /* kyoto_sample_photo.jpg in Resources */,
 				F46573651B5545F700DA3D7B /* pic1.jpg in Resources */,
 				F4441C2D1B6341AB00272BF3 /* iphone_h_photo.jpg in Resources */,
-				F42EBDB21B68FF1400606D9B /* map_icon.jpg in Resources */,
+				F42EBDB21B68FF1400606D9B /* (null) in Resources */,
 				F47556AC1B4BACF2008CEE3A /* Images.xcassets in Resources */,
-				F42EBDB01B68D1EE00606D9B /* pic900X640.jpg in Resources */,
-				F42EBD6A1B68790500606D9B /* calendar31.png in Resources */,
-				F42EBDAE1B68D0C100606D9B /* pic800X640.jpg in Resources */,
+				F42EBDB01B68D1EE00606D9B /* (null) in Resources */,
+				F42EBD6A1B68790500606D9B /* (null) in Resources */,
+				F42EBDAE1B68D0C100606D9B /* (null) in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

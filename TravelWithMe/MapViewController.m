@@ -45,6 +45,12 @@
     
 }
 
+- (IBAction)backClick:(UIButton *)sender {
+    [self.theMapView setCenterCoordinate:self.theMapView.userLocation.coordinate animated:YES];
+}
+
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
