@@ -7,7 +7,6 @@
 //
 
 #import "HomePostViewController.h"
-//#import <Parse/Parse.h>
 
 @interface HomePostViewController ()
 {
@@ -37,7 +36,9 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:NO];
+    [self setExtendedLayoutIncludesOpaqueBars:YES];
     [self.tabBarController.tabBar setHidden:YES];
+    
 }
 
 - (void)initUI {

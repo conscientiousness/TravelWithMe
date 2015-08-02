@@ -7,8 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
-#import <Parse/Parse.h>
+
 
 @interface AppDelegate ()
 
@@ -21,10 +20,7 @@
     // Override point for customization after application launch.
     UITabBarController *tabBarController = (UITabBarController*)_window.rootViewController;
     
-    //NSLog(@"tabBarController's viewcontrollers: %@",[tabBarController.viewControllers description]);
-    
     UIStoryboard *favoriteStoryboard = [UIStoryboard storyboardWithName:@"Favorite" bundle:nil];
-    
     
     UIViewController *favoriteViewController = [favoriteStoryboard instantiateViewControllerWithIdentifier:@"favoriteViewController"];
     
@@ -82,8 +78,9 @@
     // [Optional] Track statistics around application opens.
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
+    [PFFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];
     
-    sleep(2);
+    //sleep(2);
     
     return [[FBSDKApplicationDelegate sharedInstance] application:application
                                            didFinishLaunchingWithOptions:launchOptions];

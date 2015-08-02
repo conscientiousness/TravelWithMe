@@ -12,11 +12,10 @@
 #import "HomeDetailViewController.h"
 #import "UIColors.h"
 #import <Parse/Parse.h>
+#import <MBProgressHUD/MBProgressHUD.h>
 
 @interface WallViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *wallTableView;
-
-
 @end
 
 @implementation WallViewController
@@ -25,7 +24,6 @@
     CGFloat imgHeight;
     UIImage *image;
     float imgRatio;
-    
 }
 
 - (void)viewDidLoad {
@@ -36,16 +34,20 @@
     _wallTableView.delegate = self;
     _wallTableView.dataSource = self;
     
-    PFQuery *query = [PFQuery queryWithClassName:@"TestObject"];
-    //[query whereKey:@"playername" equalTo:@"Sean Plott"];
-    [query countObjectsInBackgroundWithBlock:^(int count, NSError *error) {
-        if (!error) {
-            // The count request succeeded. Log the count
-            NSLog(@"Sean has count %d ", count);
-        } else {
-            // The request failed
-        }
-    }];
+    MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"讀取中...";
+
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        // Do something...
+        
+        [self getdata];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        });
+    });
+    
+    
 }
 
 
@@ -76,18 +78,31 @@
     self.tabBarController.tabBar.barTintColor = [UIColor tabBarColor];
     self.tabBarController.tabBar.translucent = NO;
 }
-
     
     
 - (void)postBtnPressed:(id *)sender {
+    
+    //NSLog(@"current= %@",currentUser);
+    UIViewController *targetViewController;
+    UIStoryboard *storyboard;
+    
+    if([FBSDKAccessToken currentAccessToken]) {
         
-        HomePostViewController *postVC = [self.storyboard instantiateViewControllerWithIdentifier:@"postViewController"];
+        targetViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"postViewController"];
         
-        [self.navigationController pushViewController:postVC animated:YES];
+        [self.navigationController pushViewController:targetViewController animated:YES];
         
+    } else {
         
-        //[self presentViewController:postVC animated:YES completion:nil];
-        //[self performSegueWithIdentifier:@"goPostView" sender:nil];
+        storyboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+        
+        targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"loginViewController"];
+        
+        [self presentViewController:targetViewController animated:YES completion:nil];
+    }
+ 
+    //[self presentViewController:postVC animated:YES completion:nil];
+    //[self performSegueWithIdentifier:@"goPostView" sender:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -110,13 +125,6 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    
-    if(indexPath.section == 1){
-        if(indexPath.row == 1) {
-            
-        }
-    }
     
     NSString *identifier =@"wallTableViewCell";
     
@@ -236,8 +244,8 @@
     [self.navigationController pushViewController:detailVC animated:YES];
     
     //傳值
-    NSNumber *value = [NSNumber numberWithLong:indexPath.row];
-    [detailVC setValue:value forKey:@"test"];
+    //NSNumber *value = [NSNumber numberWithLong:indexPath.row];
+    //[detailVC setValue:value forKey:@"test"];
     
     //NSLog(@"hey");
     
@@ -252,5 +260,26 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+#pragma mark - Get Data
+
+- (void) getdata
+{
+    /*PFQuery *query = [PFQuery queryWithClassName:@"TestObject"];
+    //[query whereKey:@"playername" equalTo:@"Sean Plott"];
+    
+    [query countObjectsInBackgroundWithBlock:^(int count, NSError *error) {
+        if (!error) {
+            // The count request succeeded. Log the count
+            NSLog(@"Sean has count %d ", count);
+        } else {
+            // The request failed
+        }
+    }];*/
+    
+    //sleep(2);
+}
+
 
 @end

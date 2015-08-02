@@ -13,6 +13,7 @@
 		A5E1670D1B6903B70036ABE4 /* SettingTableViewControlle.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E1670C1B6903B70036ABE4 /* SettingTableViewControlle.m */; };
 		E4C5C083123C6B727AF2A9F8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3E25EB0578BADAF278F744 /* libPods.a */; };
 		F4267BCD1B6A4FBC00F42330 /* FavoriteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4267BCC1B6A4FBC00F42330 /* FavoriteTableViewController.m */; };
+		F4267BCF1B6A632E00F42330 /* pic900X640.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F4267BCE1B6A632E00F42330 /* pic900X640.jpg */; };
 		F42EBD661B6877BF00606D9B /* (null) in Resources */ = {isa = PBXBuildFile; };
 		F42EBD6A1B68790500606D9B /* (null) in Resources */ = {isa = PBXBuildFile; };
 		F42EBD6B1B68790500606D9B /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -28,6 +29,8 @@
 		F443FB4F1B612F9300F30847 /* WallTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F443FB4E1B612F9300F30847 /* WallTableViewCell.m */; };
 		F4441C2D1B6341AB00272BF3 /* iphone_h_photo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F4441C2B1B6341AB00272BF3 /* iphone_h_photo.jpg */; };
 		F4441C2E1B6341AB00272BF3 /* iphone_v_photo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F4441C2C1B6341AB00272BF3 /* iphone_v_photo.jpg */; };
+		F445E3671B6E09CD00818A18 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F445E3661B6E09CD00818A18 /* Login.storyboard */; };
+		F445E36B1B6E0A1100818A18 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F445E36A1B6E0A1100818A18 /* LoginViewController.m */; };
 		F46573641B5545F700DA3D7B /* kyoto.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F46573621B5545F700DA3D7B /* kyoto.jpg */; };
 		F46573651B5545F700DA3D7B /* pic1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F46573631B5545F700DA3D7B /* pic1.jpg */; };
 		F465736C1B5552D800DA3D7B /* JLTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F46573671B5552D800DA3D7B /* JLTableViewCell.m */; };
@@ -41,8 +44,6 @@
 		F47556AF1B4BACF2008CEE3A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F47556AD1B4BACF2008CEE3A /* LaunchScreen.xib */; };
 		F47556BB1B4BACF2008CEE3A /* TravelWithMeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F47556BA1B4BACF2008CEE3A /* TravelWithMeTests.m */; };
 		F47556C51B4BD40F008CEE3A /* Favorite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F47556C41B4BD40F008CEE3A /* Favorite.storyboard */; };
-		F486EF3E1B4C3084008CB97B /* HomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F486EF3D1B4C3084008CB97B /* HomeTableViewController.m */; };
-		F486EF411B4C309A008CB97B /* HomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F486EF401B4C309A008CB97B /* HomeTableViewCell.m */; };
 		F486EF461B4C34D2008CB97B /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F486EF451B4C34D2008CB97B /* Setting.storyboard */; };
 		F48B16CC1B5F405600E96B0D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48B16CB1B5F405600E96B0D /* AudioToolbox.framework */; };
 		F48B16CE1B5F406300E96B0D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48B16CD1B5F406300E96B0D /* CFNetwork.framework */; };
@@ -89,6 +90,7 @@
 		A5E1670C1B6903B70036ABE4 /* SettingTableViewControlle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewControlle.m; sourceTree = "<group>"; };
 		F4267BCB1B6A4FBC00F42330 /* FavoriteTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteTableViewController.h; sourceTree = "<group>"; };
 		F4267BCC1B6A4FBC00F42330 /* FavoriteTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteTableViewController.m; sourceTree = "<group>"; };
+		F4267BCE1B6A632E00F42330 /* pic900X640.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pic900X640.jpg; sourceTree = "<group>"; };
 		F443FB421B60FBF300F30847 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
 		F443FB441B610E8300F30847 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		F443FB4A1B6124D600F30847 /* WallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallViewController.h; sourceTree = "<group>"; };
@@ -97,6 +99,10 @@
 		F443FB4E1B612F9300F30847 /* WallTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WallTableViewCell.m; sourceTree = "<group>"; };
 		F4441C2B1B6341AB00272BF3 /* iphone_h_photo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iphone_h_photo.jpg; sourceTree = "<group>"; };
 		F4441C2C1B6341AB00272BF3 /* iphone_v_photo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iphone_v_photo.jpg; sourceTree = "<group>"; };
+		F445E3661B6E09CD00818A18 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		F445E3691B6E0A1100818A18 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		F445E36A1B6E0A1100818A18 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		F445E36D1B6E0C4E00818A18 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		F46573621B5545F700DA3D7B /* kyoto.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kyoto.jpg; sourceTree = "<group>"; };
 		F46573631B5545F700DA3D7B /* pic1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pic1.jpg; sourceTree = "<group>"; };
 		F46573661B5552D800DA3D7B /* JLTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLTableViewCell.h; sourceTree = "<group>"; };
@@ -117,10 +123,6 @@
 		F47556B91B4BACF2008CEE3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F47556BA1B4BACF2008CEE3A /* TravelWithMeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TravelWithMeTests.m; sourceTree = "<group>"; };
 		F47556C41B4BD40F008CEE3A /* Favorite.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Favorite.storyboard; sourceTree = "<group>"; };
-		F486EF3C1B4C3084008CB97B /* HomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableViewController.h; sourceTree = "<group>"; };
-		F486EF3D1B4C3084008CB97B /* HomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewController.m; sourceTree = "<group>"; };
-		F486EF3F1B4C309A008CB97B /* HomeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableViewCell.h; sourceTree = "<group>"; };
-		F486EF401B4C309A008CB97B /* HomeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewCell.m; sourceTree = "<group>"; };
 		F486EF451B4C34D2008CB97B /* Setting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		F48B16CB1B5F405600E96B0D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		F48B16CD1B5F406300E96B0D /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -248,17 +250,6 @@
 			name = PostView;
 			sourceTree = "<group>";
 		};
-		F443FB481B6120D600F30847 /* HomeView */ = {
-			isa = PBXGroup;
-			children = (
-				F486EF3C1B4C3084008CB97B /* HomeTableViewController.h */,
-				F486EF3D1B4C3084008CB97B /* HomeTableViewController.m */,
-				F486EF3F1B4C309A008CB97B /* HomeTableViewCell.h */,
-				F486EF401B4C309A008CB97B /* HomeTableViewCell.m */,
-			);
-			name = HomeView;
-			sourceTree = "<group>";
-		};
 		F443FB491B6121DE00F30847 /* DynamicWall */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,11 +261,22 @@
 			name = DynamicWall;
 			sourceTree = "<group>";
 		};
+		F445E3681B6E09D700818A18 /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				F445E3661B6E09CD00818A18 /* Login.storyboard */,
+				F445E3691B6E0A1100818A18 /* LoginViewController.h */,
+				F445E36A1B6E0A1100818A18 /* LoginViewController.m */,
+			);
+			name = LoginView;
+			sourceTree = "<group>";
+		};
 		F47556921B4BACF2008CEE3A = {
 			isa = PBXGroup;
 			children = (
 				F475569D1B4BACF2008CEE3A /* TravelWithMe */,
 				F47556B71B4BACF2008CEE3A /* TravelWithMeTests */,
+				F445E36D1B6E0C4E00818A18 /* PrefixHeader.pch */,
 				F475569C1B4BACF2008CEE3A /* Products */,
 				F2BC6DDE6C40B624B4CA3196 /* Pods */,
 				789577451EB4254F88441C4F /* Frameworks */,
@@ -298,6 +300,7 @@
 				F486EF441B4C328E008CB97B /* SettingView */,
 				F443FB411B60FB9A00F30847 /* MapView */,
 				F4DA4C5D1B4E9D0C00421F2F /* Comm */,
+				F445E3681B6E09D700818A18 /* LoginView */,
 				F47556AB1B4BACF2008CEE3A /* Images.xcassets */,
 				F47556AD1B4BACF2008CEE3A /* LaunchScreen.xib */,
 				F475569E1B4BACF2008CEE3A /* Supporting Files */,
@@ -334,7 +337,6 @@
 		F486EF421B4C30A9008CB97B /* HomeVIew */ = {
 			isa = PBXGroup;
 			children = (
-				F443FB481B6120D600F30847 /* HomeView */,
 				F443FB471B61209500F30847 /* PostView */,
 				F443FB461B611CD500F30847 /* DetailView */,
 				F443FB491B6121DE00F30847 /* DynamicWall */,
@@ -343,6 +345,7 @@
 				F4441C2B1B6341AB00272BF3 /* iphone_h_photo.jpg */,
 				F4441C2C1B6341AB00272BF3 /* iphone_v_photo.jpg */,
 				F46573631B5545F700DA3D7B /* pic1.jpg */,
+				F4267BCE1B6A632E00F42330 /* pic900X640.jpg */,
 				F42EBD671B6877C400606D9B /* icon */,
 				F47556A81B4BACF2008CEE3A /* Main.storyboard */,
 			);
@@ -469,6 +472,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F445E3671B6E09CD00818A18 /* Login.storyboard in Resources */,
 				F443FB431B60FBF300F30847 /* Map.storyboard in Resources */,
 				F4441C2E1B6341AB00272BF3 /* iphone_v_photo.jpg in Resources */,
 				F465736E1B5552D800DA3D7B /* JL2TableViewCell.xib in Resources */,
@@ -487,6 +491,7 @@
 				F46573651B5545F700DA3D7B /* pic1.jpg in Resources */,
 				F4441C2D1B6341AB00272BF3 /* iphone_h_photo.jpg in Resources */,
 				F42EBDB21B68FF1400606D9B /* (null) in Resources */,
+				F4267BCF1B6A632E00F42330 /* pic900X640.jpg in Resources */,
 				F47556AC1B4BACF2008CEE3A /* Images.xcassets in Resources */,
 				F42EBDB01B68D1EE00606D9B /* (null) in Resources */,
 				F42EBD6A1B68790500606D9B /* (null) in Resources */,
@@ -542,11 +547,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A52E4EB91B63817400285C83 /* VIPViewController.m in Sources */,
-				F486EF3E1B4C3084008CB97B /* HomeTableViewController.m in Sources */,
 				F465736D1B5552D800DA3D7B /* JL2TableViewCell.m in Sources */,
 				F4DA4C5C1B4E9D0500421F2F /* UIColors.m in Sources */,
-				F486EF411B4C309A008CB97B /* HomeTableViewCell.m in Sources */,
 				F4DA4C601B4EC96F00421F2F /* HomePostViewController.m in Sources */,
+				F445E36B1B6E0A1100818A18 /* LoginViewController.m in Sources */,
 				F443FB4F1B612F9300F30847 /* WallTableViewCell.m in Sources */,
 				F47556A41B4BACF2008CEE3A /* AppDelegate.m in Sources */,
 				A5E1670D1B6903B70036ABE4 /* SettingTableViewControlle.m in Sources */,
@@ -690,6 +694,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/PrefixHeader.pch";
 				INFOPLIST_FILE = TravelWithMe/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -739,6 +745,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/PrefixHeader.pch";
 				INFOPLIST_FILE = TravelWithMe/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

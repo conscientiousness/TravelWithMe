@@ -1,0 +1,17 @@
+//
+//  PrefixHeader.pch
+//  TravelWithMe
+//
+//  Created by Jesselin on 2015/8/1.
+//  Copyright (c) 2015年 Jesse. All rights reserved.
+//
+
+#import <Availability.h>
+
+#ifdef __OBJC__
+#import <Parse/Parse.h>
+#import <ParseUI/ParseUI.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <ParseFacebookUtilsV4/PFFacebookUtils.h>
+#endif
+
