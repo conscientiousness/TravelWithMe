@@ -11,7 +11,6 @@
 #import "HomePostViewController.h"
 #import "HomeDetailViewController.h"
 #import "UIColors.h"
-#import <Parse/Parse.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 
 @interface WallViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -30,9 +29,9 @@
     [super viewDidLoad];
         
     [self initUI];
-    _wallTableView.scrollEnabled = YES;
-    _wallTableView.delegate = self;
-    _wallTableView.dataSource = self;
+    self.wallTableView.scrollEnabled = YES;
+    self.wallTableView.delegate = self;
+    self.wallTableView.dataSource = self;
     
     MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"讀取中...";
@@ -47,18 +46,22 @@
         });
     });
     
-    
+    UIRefreshControl *refresh = [UIRefreshControl new];
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"準備更新資料"];
+    [refresh addTarget:self action:@selector(refreshView:) forControlEvents:UIControlEventValueChanged];
+    [refresh setBackgroundColor:[UIColor homeCellbgColor]];
+    [self.wallTableView addSubview:refresh];
 }
 
 
 
 //初始化UI畫面
 - (void)initUI {
-        
+    
+    self.view.backgroundColor = [UIColor homeCellbgColor];
     //關閉分隔線
     [_wallTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     //設定背景色
-    //[_homeTableView setBackgroundView:nil];
     //_wallTableView.backgroundColor = [UIColor homeCellbgColor];
     //透明度
     _wallTableView.opaque = NO;
@@ -78,8 +81,24 @@
     self.tabBarController.tabBar.barTintColor = [UIColor tabBarColor];
     self.tabBarController.tabBar.translucent = NO;
 }
+
+- (void)refreshView:(UIRefreshControl*)refresh
+{
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"更新中..."];
     
+    sleep(2);
     
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    
+    [formatter setDateFormat:@"MM/dd,a h:mm "];
+    
+    NSString *lastUpdated = [NSString stringWithFormat:@"最後更新時間: %@",[formatter stringFromDate:[NSDate date]]];
+    
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:lastUpdated];
+    [refresh endRefreshing];
+}
+
+
 - (void)postBtnPressed:(id *)sender {
     
     //NSLog(@"current= %@",currentUser);
