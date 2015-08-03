@@ -55,10 +55,15 @@
 - (void) saveFacebookProfileData:(PFUser*)user completion:(void (^)(NSError *error))handler
 {
     if ([FBSDKAccessToken currentAccessToken]) {
-        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields":@"id,about,email,name,gender,locale,birthday,location,link"}] startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields":@"id,about,email,name,gender,locale,age_range,location,link,birthday,picture.width(500).height(500)"}] startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
             //            NSLog(@"result:%@",result);
             if (!error) {
-                //NSLog(@"name: %@ ,location: %@ ,gender: %@ ,id: %@ ,email: %@ ,link: %@",name,location_name,gender,userId,email,link);
+                //NSLog(@"PFUser: %@ ,picture: %@",[PFUser currentUser],result [@"picture"][@"data"][@"url"]);
+                
+                NSURL *profilePictureURL = [NSURL URLWithString: result [@"picture"][@"data"][@"url"]];
+                NSData *profilePictureData = [NSData dataWithContentsOfURL:profilePictureURL];
+                [PAPUtility processFacebookProfilePictureData:profilePictureData];
+                //NSLog(@"profilePictureURL: %@ ",profilePictureURL);
                 
                 [user setObject:[result objectForKey:@"id"] forKey:@"facebookId"];
                 [user setObject:[result objectForKey:@"name"] forKey:@"displayName"];
@@ -68,9 +73,11 @@
                 [user setObject:[result objectForKey:@"birthday"]?[result objectForKey:@"birthday"]:[NSNull null] forKey:@"birthday"];
                 [user setObject:[[result objectForKey:@"location"] objectForKey:@"name"]?[[result objectForKey:@"location"] objectForKey:@"name"]:[NSNull null] forKey:@"location"];
                 [user setObject:[result objectForKey:@"link"]?[result objectForKey:@"link"]:[NSNull null] forKey:@"link"];
+                
+                
                 [user saveInBackground];
-                handler(error);
             }
+            handler(error);
         }];
     }
     

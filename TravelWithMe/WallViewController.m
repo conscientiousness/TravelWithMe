@@ -12,6 +12,7 @@
 #import "HomeDetailViewController.h"
 #import "UIColors.h"
 #import <MBProgressHUD/MBProgressHUD.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface WallViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *wallTableView;
@@ -23,10 +24,16 @@
     CGFloat imgHeight;
     UIImage *image;
     float imgRatio;
+    PFUser *user;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    if (!user) {
+        user = [PFUser currentUser];
+        [[PFUser currentUser] fetchIfNeeded];
+    }
         
     [self initUI];
     self.wallTableView.scrollEnabled = YES;
@@ -177,9 +184,12 @@
     [[cell.viewInTableViewCell layer] setCornerRadius:0];
     
     //大頭照圓形遮罩
+    PFFile *proFilePicture = [user objectForKey:kPAPUserProfilePicMediumKey];
+    [cell.wallHeadPhoto sd_setImageWithURL:(NSURL*)proFilePicture.url];
+    
     cell.wallHeadPhoto.layer.cornerRadius = cell.wallHeadPhoto.frame.size.width / 2;
-    cell.wallHeadPhoto.layer.borderWidth = 3.0f;
-    cell.layer.borderColor = [UIColor boyPhotoBorderColor].CGColor;
+    cell.wallHeadPhoto.layer.borderWidth = 2.0f;
+    cell.wallHeadPhoto.layer.borderColor = [UIColor boyPhotoBorderColor].CGColor;
     cell.wallHeadPhoto.clipsToBounds = YES;
     
     
