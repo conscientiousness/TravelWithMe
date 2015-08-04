@@ -13,6 +13,9 @@
 #import <ParseUI/ParseUI.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
+#import "UIColors.h"
+#import <MBProgressHUD/MBProgressHUD.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "PAPConstants.h"
 #import "PAPUtility.h"
 #import "PAPCache.h"

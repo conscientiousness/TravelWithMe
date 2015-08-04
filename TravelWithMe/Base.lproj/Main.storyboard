@@ -587,6 +587,9 @@
                                 <state key="normal" title="選張最得意的照片或照張相吧">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="pictureBtnPressed:" destination="t2X-hB-iNd" eventType="touchUpInside" id="Uot-JV-I9D"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zES-Fo-Wk0">
                                 <rect key="frame" x="16" y="376" width="568" height="1"/>
@@ -664,6 +667,13 @@
                         </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="countryCityText" destination="pT6-EN-Ycd" id="Ehi-qN-kac"/>
+                        <outlet property="daysText" destination="yK1-5M-DqI" id="Hrp-J3-IXH"/>
+                        <outlet property="locationTagText" destination="sEK-28-dzt" id="tGS-IL-KaW"/>
+                        <outlet property="memoTextView" destination="S2O-I0-4lX" id="kVp-Rg-y3l"/>
+                        <outlet property="startDateText" destination="whK-Ah-egh" id="u46-5K-9Fb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AO8-kh-hOJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

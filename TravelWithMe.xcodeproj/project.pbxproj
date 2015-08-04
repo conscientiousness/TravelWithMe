@@ -223,13 +223,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		F42EBD671B6877C400606D9B /* icon */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = icon;
-			sourceTree = "<group>";
-		};
 		F443FB411B60FB9A00F30847 /* MapView */ = {
 			isa = PBXGroup;
 			children = (
@@ -360,7 +353,6 @@
 				F4441C2C1B6341AB00272BF3 /* iphone_v_photo.jpg */,
 				F46573631B5545F700DA3D7B /* pic1.jpg */,
 				F4267BCE1B6A632E00F42330 /* pic900X640.jpg */,
-				F42EBD671B6877C400606D9B /* icon */,
 				F47556A81B4BACF2008CEE3A /* Main.storyboard */,
 			);
 			name = HomeVIew;
