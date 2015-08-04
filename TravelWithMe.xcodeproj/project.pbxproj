@@ -31,6 +31,12 @@
 		F4441C2E1B6341AB00272BF3 /* iphone_v_photo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F4441C2C1B6341AB00272BF3 /* iphone_v_photo.jpg */; };
 		F445E3671B6E09CD00818A18 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F445E3661B6E09CD00818A18 /* Login.storyboard */; };
 		F445E36B1B6E0A1100818A18 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F445E36A1B6E0A1100818A18 /* LoginViewController.m */; };
+		F44829941B6FB9D800ED0EA1 /* UIImage+AlphaAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F448298F1B6FB9D800ED0EA1 /* UIImage+AlphaAdditions.m */; };
+		F44829951B6FB9D800ED0EA1 /* UIImage+ResizeAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F44829911B6FB9D800ED0EA1 /* UIImage+ResizeAdditions.m */; };
+		F44829961B6FB9D800ED0EA1 /* UIImage+RoundedCornerAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F44829931B6FB9D800ED0EA1 /* UIImage+RoundedCornerAdditions.m */; };
+		F448299A1B6FBA5800ED0EA1 /* PAPUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = F44829991B6FBA5800ED0EA1 /* PAPUtility.m */; };
+		F448299D1B6FBA8B00ED0EA1 /* PAPConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = F448299C1B6FBA8B00ED0EA1 /* PAPConstants.m */; };
+		F44829A01B6FBAFF00ED0EA1 /* PAPCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F448299F1B6FBAFF00ED0EA1 /* PAPCache.m */; };
 		F46573641B5545F700DA3D7B /* kyoto.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F46573621B5545F700DA3D7B /* kyoto.jpg */; };
 		F46573651B5545F700DA3D7B /* pic1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F46573631B5545F700DA3D7B /* pic1.jpg */; };
 		F465736C1B5552D800DA3D7B /* JLTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F46573671B5552D800DA3D7B /* JLTableViewCell.m */; };
@@ -102,6 +108,18 @@
 		F445E3691B6E0A1100818A18 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		F445E36A1B6E0A1100818A18 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		F445E36D1B6E0C4E00818A18 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		F448298E1B6FB9D800ED0EA1 /* UIImage+AlphaAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+AlphaAdditions.h"; sourceTree = "<group>"; };
+		F448298F1B6FB9D800ED0EA1 /* UIImage+AlphaAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+AlphaAdditions.m"; sourceTree = "<group>"; };
+		F44829901B6FB9D800ED0EA1 /* UIImage+ResizeAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ResizeAdditions.h"; sourceTree = "<group>"; };
+		F44829911B6FB9D800ED0EA1 /* UIImage+ResizeAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ResizeAdditions.m"; sourceTree = "<group>"; };
+		F44829921B6FB9D800ED0EA1 /* UIImage+RoundedCornerAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RoundedCornerAdditions.h"; sourceTree = "<group>"; };
+		F44829931B6FB9D800ED0EA1 /* UIImage+RoundedCornerAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RoundedCornerAdditions.m"; sourceTree = "<group>"; };
+		F44829981B6FBA5800ED0EA1 /* PAPUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAPUtility.h; sourceTree = "<group>"; };
+		F44829991B6FBA5800ED0EA1 /* PAPUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAPUtility.m; sourceTree = "<group>"; };
+		F448299B1B6FBA8B00ED0EA1 /* PAPConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAPConstants.h; sourceTree = "<group>"; };
+		F448299C1B6FBA8B00ED0EA1 /* PAPConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAPConstants.m; sourceTree = "<group>"; };
+		F448299E1B6FBAFF00ED0EA1 /* PAPCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAPCache.h; sourceTree = "<group>"; };
+		F448299F1B6FBAFF00ED0EA1 /* PAPCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAPCache.m; sourceTree = "<group>"; };
 		F46573621B5545F700DA3D7B /* kyoto.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kyoto.jpg; sourceTree = "<group>"; };
 		F46573631B5545F700DA3D7B /* pic1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pic1.jpg; sourceTree = "<group>"; };
 		F46573661B5552D800DA3D7B /* JLTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLTableViewCell.h; sourceTree = "<group>"; };
@@ -203,13 +221,6 @@
 				A2A1A052438CEB9B22CC0114 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		F42EBD671B6877C400606D9B /* icon */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = icon;
 			sourceTree = "<group>";
 		};
 		F443FB411B60FB9A00F30847 /* MapView */ = {
@@ -342,7 +353,6 @@
 				F4441C2C1B6341AB00272BF3 /* iphone_v_photo.jpg */,
 				F46573631B5545F700DA3D7B /* pic1.jpg */,
 				F4267BCE1B6A632E00F42330 /* pic900X640.jpg */,
-				F42EBD671B6877C400606D9B /* icon */,
 				F47556A81B4BACF2008CEE3A /* Main.storyboard */,
 			);
 			name = HomeVIew;
@@ -381,6 +391,18 @@
 				F47556A31B4BACF2008CEE3A /* AppDelegate.m */,
 				F4DA4C5A1B4E9D0500421F2F /* UIColors.h */,
 				F4DA4C5B1B4E9D0500421F2F /* UIColors.m */,
+				F448298E1B6FB9D800ED0EA1 /* UIImage+AlphaAdditions.h */,
+				F448298F1B6FB9D800ED0EA1 /* UIImage+AlphaAdditions.m */,
+				F44829901B6FB9D800ED0EA1 /* UIImage+ResizeAdditions.h */,
+				F44829911B6FB9D800ED0EA1 /* UIImage+ResizeAdditions.m */,
+				F44829921B6FB9D800ED0EA1 /* UIImage+RoundedCornerAdditions.h */,
+				F44829931B6FB9D800ED0EA1 /* UIImage+RoundedCornerAdditions.m */,
+				F44829981B6FBA5800ED0EA1 /* PAPUtility.h */,
+				F44829991B6FBA5800ED0EA1 /* PAPUtility.m */,
+				F448299B1B6FBA8B00ED0EA1 /* PAPConstants.h */,
+				F448299C1B6FBA8B00ED0EA1 /* PAPConstants.m */,
+				F448299E1B6FBAFF00ED0EA1 /* PAPCache.h */,
+				F448299F1B6FBAFF00ED0EA1 /* PAPCache.m */,
 			);
 			name = Comm;
 			sourceTree = "<group>";
@@ -548,18 +570,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				A52E4EB91B63817400285C83 /* VIPViewController.m in Sources */,
+				F44829951B6FB9D800ED0EA1 /* UIImage+ResizeAdditions.m in Sources */,
 				F465736D1B5552D800DA3D7B /* JL2TableViewCell.m in Sources */,
 				F4DA4C5C1B4E9D0500421F2F /* UIColors.m in Sources */,
 				F4DA4C601B4EC96F00421F2F /* HomePostViewController.m in Sources */,
+				F44829961B6FB9D800ED0EA1 /* UIImage+RoundedCornerAdditions.m in Sources */,
+				F448299D1B6FBA8B00ED0EA1 /* PAPConstants.m in Sources */,
 				F445E36B1B6E0A1100818A18 /* LoginViewController.m in Sources */,
 				F443FB4F1B612F9300F30847 /* WallTableViewCell.m in Sources */,
 				F47556A41B4BACF2008CEE3A /* AppDelegate.m in Sources */,
 				A5E1670D1B6903B70036ABE4 /* SettingTableViewControlle.m in Sources */,
 				F465736C1B5552D800DA3D7B /* JLTableViewCell.m in Sources */,
+				F44829941B6FB9D800ED0EA1 /* UIImage+AlphaAdditions.m in Sources */,
 				F4267BCD1B6A4FBC00F42330 /* FavoriteTableViewController.m in Sources */,
+				F44829A01B6FBAFF00ED0EA1 /* PAPCache.m in Sources */,
 				F4DA4C661B4FF09200421F2F /* HomeDetailViewController.m in Sources */,
 				A53CBBB71B67FA630039369A /* MapViewController.m in Sources */,
 				F443FB4C1B6124D600F30847 /* WallViewController.m in Sources */,
+				F448299A1B6FBA5800ED0EA1 /* PAPUtility.m in Sources */,
 				F47556A11B4BACF2008CEE3A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

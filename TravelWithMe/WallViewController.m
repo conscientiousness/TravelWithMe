@@ -10,28 +10,31 @@
 #import "WallTableViewCell.h"
 #import "HomePostViewController.h"
 #import "HomeDetailViewController.h"
-#import "UIColors.h"
-#import <MBProgressHUD/MBProgressHUD.h>
 
-@interface WallViewController () <UITableViewDelegate, UITableViewDataSource>
+
+@interface WallViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *wallTableView;
+@property (nonatomic) CGFloat previousScrollViewYOffset;
 @end
 
 @implementation WallViewController
 {
-    CGFloat imgWidth;
-    CGFloat imgHeight;
-    UIImage *image;
-    float imgRatio;
+    PFUser *user;
+    CGFloat originNavY;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    if (!user) {
+        user = [PFUser currentUser];
+        [[PFUser currentUser] fetchIfNeeded];
+    }
         
     [self initUI];
-    self.wallTableView.scrollEnabled = YES;
-    self.wallTableView.delegate = self;
-    self.wallTableView.dataSource = self;
+    _wallTableView.scrollEnabled = YES;
+    _wallTableView.delegate = self;
+    _wallTableView.dataSource = self;
     
     MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"讀取中...";
@@ -54,7 +57,6 @@
 }
 
 
-
 //初始化UI畫面
 - (void)initUI {
     
@@ -62,7 +64,7 @@
     //關閉分隔線
     [_wallTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     //設定背景色
-    //_wallTableView.backgroundColor = [UIColor homeCellbgColor];
+    _wallTableView.backgroundColor = [UIColor homeCellbgColor];
     //透明度
     _wallTableView.opaque = NO;
         
@@ -74,12 +76,16 @@
     //navigation bar color
     //[self.navigationController.navigationBar setBackgroundColor:[UIColor navigationBarColor]];
     self.navigationController.navigationBar.barTintColor = [UIColor navigationBarColor];
-    self.navigationController.navigationBar.translucent = NO;
+    self.navigationController.navigationBar.translucent = YES;
+    self.navigationController.view.backgroundColor = [UIColor clearColor];
+    originNavY = self.navigationController.navigationBar.frame.origin.y;
     
     //tab bar color
     //[self.tabBarController.tabBar setBackgroundColor:[UIColor tabBarColor]];
     self.tabBarController.tabBar.barTintColor = [UIColor tabBarColor];
-    self.tabBarController.tabBar.translucent = NO;
+    self.tabBarController.tabBar.translucent = YES;
+    self.tabBarController.view.backgroundColor = [UIColor homeCellbgColor];
+
 }
 
 - (void)refreshView:(UIRefreshControl*)refresh
@@ -177,9 +183,12 @@
     [[cell.viewInTableViewCell layer] setCornerRadius:0];
     
     //大頭照圓形遮罩
+    PFFile *proFilePicture = [user objectForKey:kPAPUserProfilePicSmallKey];
+    [cell.wallHeadPhoto sd_setImageWithURL:(NSURL*)proFilePicture.url placeholderImage:[UIImage imageNamed:@"pic1.jpg"]];
+    
     cell.wallHeadPhoto.layer.cornerRadius = cell.wallHeadPhoto.frame.size.width / 2;
-    cell.wallHeadPhoto.layer.borderWidth = 3.0f;
-    cell.layer.borderColor = [UIColor boyPhotoBorderColor].CGColor;
+    cell.wallHeadPhoto.layer.borderWidth = 2.0f;
+    cell.wallHeadPhoto.layer.borderColor = [UIColor boyPhotoBorderColor].CGColor;
     cell.wallHeadPhoto.clipsToBounds = YES;
     
     
@@ -270,15 +279,17 @@
     
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
+    CGRect frame = self.navigationController.navigationBar.frame;
+    frame.origin.y = 20.0;
+    [self.navigationController.navigationBar setFrame:frame];
 }
-*/
+
 
 
 #pragma mark - Get Data
@@ -300,5 +311,179 @@
     //sleep(2);
 }
 
+
+/*
+#pragma mark - UIScrollViewDelegate Method
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGRect frame = self.navigationController.navigationBar.frame;
+    CGFloat size = frame.size.height - 21;
+    CGFloat framePercentageHidden = ((20 - frame.origin.y) / (frame.size.height - 1));
+    CGFloat scrollOffset = scrollView.contentOffset.y;
+    CGFloat scrollDiff = scrollOffset - self.previousScrollViewYOffset;
+    CGFloat scrollHeight = scrollView.frame.size.height;
+    CGFloat scrollContentSizeHeight = scrollView.contentSize.height + scrollView.contentInset.bottom;
+    
+    if (scrollOffset <= -scrollView.contentInset.top) {
+        frame.origin.y = 20;
+    } else if ((scrollOffset + scrollHeight) >= scrollContentSizeHeight) {
+        frame.origin.y = -size;
+    } else {
+        frame.origin.y = MIN(20, MAX(-size, frame.origin.y - scrollDiff));
+    }
+    
+    [self.navigationController.navigationBar setFrame:frame];
+    [self updateBarButtonItems:(1 - framePercentageHidden)];
+    self.previousScrollViewYOffset = scrollOffset;
+    
+    //NSLog(@"y=%f, height=%f",frame.origin.y, frame.size.height);
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    [self stoppedScrolling];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView
+                  willDecelerate:(BOOL)decelerate
+{
+    if (!decelerate) {
+        [self stoppedScrolling];
+    }
+}
+
+- (void)stoppedScrolling
+{
+    CGRect frame = self.navigationController.navigationBar.frame;
+    if (frame.origin.y < 20) {
+        [self animateNavBarTo:-(frame.size.height - 21)];
+    }
+}
+
+- (void)updateBarButtonItems:(CGFloat)alpha
+{
+    [self.navigationItem.leftBarButtonItems enumerateObjectsUsingBlock:^(UIBarButtonItem* item, NSUInteger i, BOOL *stop) {
+        item.customView.alpha = alpha;
+    }];
+    [self.navigationItem.rightBarButtonItems enumerateObjectsUsingBlock:^(UIBarButtonItem* item, NSUInteger i, BOOL *stop) {
+        item.customView.alpha = alpha;
+    }];
+    self.navigationItem.titleView.alpha = alpha;
+    self.navigationController.navigationBar.tintColor = [self.navigationController.navigationBar.tintColor colorWithAlphaComponent:alpha];
+}
+
+- (void)animateNavBarTo:(CGFloat)y
+{
+    [UIView animateWithDuration:0.2 animations:^{
+        CGRect frame = self.navigationController.navigationBar.frame;
+        CGFloat alpha = (frame.origin.y >= y ? 0 : 1);
+        frame.origin.y = y;
+        [self.navigationController.navigationBar setFrame:frame];
+        [self updateBarButtonItems:alpha];
+    }];
+}
+
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    //navigation高度,位置與高度比例(不要全部移出畫面)
+    CGRect navFrame = self.navigationController.navigationBar.frame;
+    CGFloat navSize = navFrame.size.height - 21;
+    CGFloat navFramePercentageHidden = ((20 - navFrame.origin.y) / (navFrame.size.height - 1));
+    
+    //tabbar
+    CGRect tabFrame = self.tabBarController.tabBar.frame;
+    CGFloat tabSize = tabFrame.size.height;
+    //CGFloat tabFramePercentageHidden = (tabFrame.origin.y / tabFrame.size.height);
+    
+    
+    CGFloat scrollOffset = scrollView.contentOffset.y;
+    CGFloat scrollDiff = scrollOffset - self.previousScrollViewYOffset;
+    CGFloat scrollHeight = scrollView.frame.size.height;
+    CGFloat scrollContentSizeHeight = scrollView.contentSize.height + scrollView.contentInset.bottom;
+    
+   
+    if (scrollOffset <= -scrollView.contentInset.top) { //tableView 目前捲動位置在最上方
+        navFrame.origin.y = 20;
+        tabFrame.origin.y = self.view.frame.size.height - tabSize;
+    } else if ((scrollOffset + scrollHeight) >= scrollContentSizeHeight) { //捲動位置在最下面
+        navFrame.origin.y = -navSize;
+        tabFrame.origin.y = self.view.frame.size.height + tabSize;
+    } else {
+        navFrame.origin.y = MIN(20, MAX(-navSize, navFrame.origin.y - scrollDiff));
+        tabFrame.origin.y = MIN(self.view.frame.size.height, self.view.frame.size.height - tabSize + scrollDiff);
+        
+    }
+    
+    //NSLog(@"navY= %f, tabY= %f",navFrame.origin.y,tabFrame.origin.y);
+    
+    [self.navigationController.navigationBar setFrame:navFrame];
+    [self.tabBarController.tabBar setFrame:tabFrame];
+    
+    [self updateBarButtonItems:(1 - navFramePercentageHidden)];
+    self.previousScrollViewYOffset = scrollOffset;
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    [self stoppedScrolling];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView
+                  willDecelerate:(BOOL)decelerate
+{
+    if (!decelerate) {
+        [self stoppedScrolling];
+    }
+}
+
+//當滑動停止設定navigation與tabbar淡入淡出效果
+- (void)stoppedScrolling
+{
+    CGRect navFrame = self.navigationController.navigationBar.frame;
+    if (navFrame.origin.y < 20) {
+        [self animateNavBarTo:-(navFrame.size.height - 21)];
+        NSLog(@"navY= %f,",-(navFrame.size.height - 21));
+    }
+    
+    CGRect tabFrame = self.tabBarController.tabBar.frame;
+    if (tabFrame.origin.y > self.view.frame.size.height - 1) {
+        [self animateNavBarTo:self.view.frame.size.height];
+    }
+}
+
+//navigation bar item 等比例淡化
+- (void)updateBarButtonItems:(CGFloat)alpha
+{
+    [self.navigationItem.leftBarButtonItems enumerateObjectsUsingBlock:^(UIBarButtonItem* item, NSUInteger i, BOOL *stop) {
+        item.customView.alpha = alpha;
+    }];
+    [self.navigationItem.rightBarButtonItems enumerateObjectsUsingBlock:^(UIBarButtonItem* item, NSUInteger i, BOOL *stop) {
+        item.customView.alpha = alpha;
+    }];
+    self.navigationItem.titleView.alpha = alpha;
+    self.navigationController.navigationBar.tintColor = [self.navigationController.navigationBar.tintColor colorWithAlphaComponent:alpha];
+}
+
+//淡出效果
+- (void)animateNavBarTo:(CGFloat)y
+{
+    [UIView animateWithDuration:0.2 animations:^{
+        CGRect frame = self.navigationController.navigationBar.frame;
+        CGFloat alpha = (frame.origin.y >= y ? 0 : 1);
+        frame.origin.y = y;
+        [self.navigationController.navigationBar setFrame:frame];
+        [self updateBarButtonItems:alpha];
+    }];
+}
+
+- (void)animateTabBarTo:(CGFloat)y
+{
+    [UIView animateWithDuration:0.2 animations:^{
+        CGRect frame = self.tabBarController.tabBar.frame;
+        frame.origin.y = y;
+        [self.tabBarController.tabBar setFrame:frame];
+    }];
+}*/
 
 @end
