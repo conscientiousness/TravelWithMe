@@ -167,18 +167,18 @@
 
 - (void) setCellData:(WallTableViewCell *)cell cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    //PFUser *cuser = [[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"createUser"];
+    //NSArray *cuser = [[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"createUser"];
     
     //NSLog(@"objectId= %@",cuser.objectId);
     
     //名字
-    //cell.userNameLabel.text = [cuser objectForKey:@"displayName"];
+    cell.userNameLabel.text = arrayDatas[indexPath.row][@"createUser"][@"displayName"];
     
     //大頭照
     //PFFile *proFilePicture = [[[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"createUser"] objectForKey:@"profilePictureMedium"];
     
     //[user objectForKey:kPAPUserProfilePicSmallKey];
-    //[cell.wallHeadPhoto sd_setImageWithURL:(NSURL*)proFilePicture.url placeholderImage:[UIImage imageNamed:@"pic1.jpg"]];
+    [cell.wallHeadPhoto sd_setImageWithURL:(NSURL*)((PFFile*)arrayDatas[indexPath.row][@"createUser"][@"profilePictureMedium"]).url placeholderImage:[UIImage imageNamed:@"pic1.jpg"]];
         
     //國家城市
     cell.countryCityLabel.text = [[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"countryCity"];
@@ -342,7 +342,7 @@
     //PFRelation *relation = [user relationForKey:@"travelMatePosts"];
     //PFQuery *query = [relation query];
     PFQuery *query = [PFQuery queryWithClassName:@"TravelMatePost"];
-    //[query whereKey:@"playerName" equalTo:@"Dan Stemkoski"];
+    [query includeKey:@"createUser.User"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             // The find succeeded.
@@ -356,7 +356,7 @@
             });
             //NSLog(@"get1 = %ld", arrayDatas.count);
             //for (PFObject *object in objects) {
-                //NSLog(@"%@", [object objectForKey:@"createUser"]);
+                //NSLog(@"%@", object[@"createUser"][@"link"]);
             //}
         } else {
             // Log details of the failure
