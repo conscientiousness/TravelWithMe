@@ -19,7 +19,7 @@
 
 @implementation WallViewController
 {
-    PFUser *user;
+    //PFUser *user;
     CGFloat originNavY;
     NSMutableArray *arrayDatas;
 }
@@ -27,23 +27,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if (!user) {
-        user = [PFUser currentUser];
-        [[PFUser currentUser] fetchIfNeeded];
-    }
+//    if (!user) {
+//        user = [PFUser currentUser];
+//        [[PFUser currentUser] fetchIfNeeded];
+//    }
     
     
     MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"讀取中...";
-    
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         // Do something...
         [self getdata];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            sleep(2);
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-        });
     });
     
     
@@ -173,9 +167,18 @@
 
 - (void) setCellData:(WallTableViewCell *)cell cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    //PFUser *cuser = [[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"createUser"];
+    
+    //NSLog(@"objectId= %@",cuser.objectId);
+    
+    //名字
+    //cell.userNameLabel.text = [cuser objectForKey:@"displayName"];
+    
     //大頭照
-    PFFile *proFilePicture = [user objectForKey:kPAPUserProfilePicSmallKey];
-    [cell.wallHeadPhoto sd_setImageWithURL:(NSURL*)proFilePicture.url placeholderImage:[UIImage imageNamed:@"pic1.jpg"]];
+    //PFFile *proFilePicture = [[[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"createUser"] objectForKey:@"profilePictureMedium"];
+    
+    //[user objectForKey:kPAPUserProfilePicSmallKey];
+    //[cell.wallHeadPhoto sd_setImageWithURL:(NSURL*)proFilePicture.url placeholderImage:[UIImage imageNamed:@"pic1.jpg"]];
         
     //國家城市
     cell.countryCityLabel.text = [[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"countryCity"];
@@ -196,7 +199,7 @@
     PFFile *photo = (PFFile *)[[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"photo"];
     [cell.cellImageView sd_setImageWithURL:(NSURL*)photo.url placeholderImage:[UIImage imageNamed:@"tmp900X640.png"]];
     
-    //NSLog(@"%ld => %@",indexPath.row,[arrayDatas objectAtIndex:indexPath.row]);
+    //NSLog(@"%ld => %@",indexPath.row,[[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"createUser"]);
 }
 
 - (UITableViewCell *)prepareTableViewCell:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath cellIdentifier:(NSString *)identifier{
@@ -336,20 +339,24 @@
 
 - (void) getdata
 {
-    PFQuery *query = [PFQuery queryWithClassName:@"TravelMate"];
+    //PFRelation *relation = [user relationForKey:@"travelMatePosts"];
+    //PFQuery *query = [relation query];
+    PFQuery *query = [PFQuery queryWithClassName:@"TravelMatePost"];
     //[query whereKey:@"playerName" equalTo:@"Dan Stemkoski"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             // The find succeeded.
             //NSLog(@"Successfully = %ld", objects.count);
+            //NSLog(@"objects = %@", [objects);
             // Do something with the found objects
             arrayDatas = [[NSMutableArray alloc] initWithArray:objects];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [_wallTableView reloadData];
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
             });
             //NSLog(@"get1 = %ld", arrayDatas.count);
             //for (PFObject *object in objects) {
-                //NSLog(@"%@", object.);
+                //NSLog(@"%@", [object objectForKey:@"createUser"]);
             //}
         } else {
             // Log details of the failure

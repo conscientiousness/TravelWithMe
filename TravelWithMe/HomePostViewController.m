@@ -71,30 +71,33 @@
         
         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
             
-            PFObject *travelMate = [PFObject objectWithClassName:@"TravelMate"];
-            travelMate[@"countryCity"] = _countryCityText.text;
-            travelMate[@"memo"] = _memoTextView.text;
-            travelMate[@"locationTag"] = _locationTagText.text;
+            PFObject *travelMatePost = [PFObject objectWithClassName:@"TravelMatePost"];
+            travelMatePost[@"countryCity"] = _countryCityText.text;
+            travelMatePost[@"memo"] = _memoTextView.text;
+            travelMatePost[@"locationTag"] = _locationTagText.text;
             
             //出發日期
             NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
             [dateFormatter setDateFormat:@"yyyy-MM-dd"];
             NSDate *startDate = [dateFormatter dateFromString:_startDateText.text];
-            travelMate[@"startDate"] = startDate;
+            travelMatePost[@"startDate"] = startDate;
             
             //照片 UIImage imageNamed:@"pic900X640.jpg"
             
             NSData *imageData = [PAPUtility resizeImage:pickImage];
             
             PFFile *imageFile = [PFFile fileWithName:[NSString stringWithFormat:@"testPhoto.jpg"] data:imageData];
-            travelMate[@"photo"] = imageFile;
+            travelMatePost[@"photo"] = imageFile;
             
-            travelMate[@"days"] = [NSNumber numberWithInteger: [_daysText.text integerValue]];;
+            travelMatePost[@"days"] = [NSNumber numberWithInteger: [_daysText.text integerValue]];;
             
-            PFRelation *relation = [user relationForKey:@"travelMateposts"];
-            [relation addObject:travelMate];
+            travelMatePost[@"createUser"] = user;
             
-            [travelMate save];
+            [travelMatePost save];
+            
+            PFRelation *relation = [user relationForKey:@"travelMatePosts"];
+            [relation addObject:travelMatePost];
+            [user save];
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 [MBProgressHUD hideHUDForView:self.view animated:YES];
