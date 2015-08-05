@@ -58,6 +58,8 @@
     UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveBtnPressed:)];
     
     self.navigationItem.rightBarButtonItem = saveButton;
+    
+    self.view.backgroundColor = [UIColor homeCellbgColor];
 }
 
 - (void)saveBtnPressed:(id *)sender {

@@ -411,8 +411,11 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="cellImageView" destination="sl8-7Z-K1Y" id="i0X-Wd-ntT"/>
-                                            <outlet property="intoLabel" destination="VVp-xr-5O5" id="SYx-dC-h1I"/>
-                                            <outlet property="testAreaLabel" destination="0qe-ZE-tsL" id="5wo-jf-0D8"/>
+                                            <outlet property="countryCityLabel" destination="kqv-E9-kBZ" id="ZDx-se-FIh"/>
+                                            <outlet property="locationTagLabel" destination="0qe-ZE-tsL" id="5Ks-CC-snU"/>
+                                            <outlet property="memoLabel" destination="VVp-xr-5O5" id="RXV-xL-np2"/>
+                                            <outlet property="travelDateLabel" destination="2ql-KD-OA8" id="Gvm-Bq-bJD"/>
+                                            <outlet property="userNameLabel" destination="E0N-tA-xXP" id="qEt-4G-DKH"/>
                                             <outlet property="viewBlock1" destination="lpu-Fn-e50" id="l3j-PM-m37"/>
                                             <outlet property="viewBlock2" destination="rjG-LN-Jip" id="X70-kr-WlF"/>
                                             <outlet property="viewBlock3" destination="Lem-ij-Hkn" id="UPo-HQ-mlX"/>

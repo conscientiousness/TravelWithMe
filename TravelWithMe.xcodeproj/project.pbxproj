@@ -22,6 +22,7 @@
 		F42EBDAE1B68D0C100606D9B /* (null) in Resources */ = {isa = PBXBuildFile; };
 		F42EBDB01B68D1EE00606D9B /* (null) in Resources */ = {isa = PBXBuildFile; };
 		F42EBDB21B68FF1400606D9B /* (null) in Resources */ = {isa = PBXBuildFile; };
+		F43C831A1B71B13200D2A389 /* tmp900X640.png in Resources */ = {isa = PBXBuildFile; fileRef = F43C83191B71B13200D2A389 /* tmp900X640.png */; };
 		F442CE151B64B8FC001CD62B /* (null) in Resources */ = {isa = PBXBuildFile; };
 		F443FB431B60FBF300F30847 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F443FB421B60FBF300F30847 /* Map.storyboard */; };
 		F443FB451B610E8300F30847 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F443FB441B610E8300F30847 /* MapKit.framework */; };
@@ -96,6 +97,7 @@
 		F4267BCB1B6A4FBC00F42330 /* FavoriteTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteTableViewController.h; sourceTree = "<group>"; };
 		F4267BCC1B6A4FBC00F42330 /* FavoriteTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteTableViewController.m; sourceTree = "<group>"; };
 		F4267BCE1B6A632E00F42330 /* pic900X640.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pic900X640.jpg; sourceTree = "<group>"; };
+		F43C83191B71B13200D2A389 /* tmp900X640.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tmp900X640.png; sourceTree = "<group>"; };
 		F443FB421B60FBF300F30847 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
 		F443FB441B610E8300F30847 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		F443FB4A1B6124D600F30847 /* WallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallViewController.h; sourceTree = "<group>"; };
@@ -353,6 +355,7 @@
 				F4441C2C1B6341AB00272BF3 /* iphone_v_photo.jpg */,
 				F46573631B5545F700DA3D7B /* pic1.jpg */,
 				F4267BCE1B6A632E00F42330 /* pic900X640.jpg */,
+				F43C83191B71B13200D2A389 /* tmp900X640.png */,
 				F47556A81B4BACF2008CEE3A /* Main.storyboard */,
 			);
 			name = HomeVIew;
@@ -516,6 +519,7 @@
 				F42EBDB21B68FF1400606D9B /* (null) in Resources */,
 				F4267BCF1B6A632E00F42330 /* pic900X640.jpg in Resources */,
 				F47556AC1B4BACF2008CEE3A /* Images.xcassets in Resources */,
+				F43C831A1B71B13200D2A389 /* tmp900X640.png in Resources */,
 				F42EBDB01B68D1EE00606D9B /* (null) in Resources */,
 				F42EBD6A1B68790500606D9B /* (null) in Resources */,
 				F42EBDAE1B68D0C100606D9B /* (null) in Resources */,
