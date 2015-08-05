@@ -40,7 +40,7 @@
                                     <constraint firstAttribute="width" constant="35" id="Thd-3X-fMb"/>
                                     <constraint firstAttribute="height" constant="35" id="gv9-gw-pgB"/>
                                 </constraints>
-                                <state key="normal" image="icon 透明">
+                                <state key="normal" image="icon-bgwhite">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -70,6 +70,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon 透明" width="246" height="246"/>
+        <image name="icon-bgwhite" width="246" height="246"/>
     </resources>
 </document>
