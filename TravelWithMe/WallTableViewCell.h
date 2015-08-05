@@ -11,12 +11,15 @@
 @interface WallTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIView *viewInTableViewCell;
 @property (weak, nonatomic) IBOutlet UIImageView *wallHeadPhoto;
-@property (weak, nonatomic) IBOutlet UILabel *testAreaLabel;
+@property (weak, nonatomic) IBOutlet UILabel *locationTagLabel;
 @property (weak, nonatomic) IBOutlet UIView *viewBlock1;
 @property (weak, nonatomic) IBOutlet UIView *viewBlock2;
 @property (weak, nonatomic) IBOutlet UIView *viewBlock3;
 @property (weak, nonatomic) IBOutlet UIImageView *cellImageView;
-@property (weak, nonatomic) IBOutlet UILabel *intoLabel;
+@property (weak, nonatomic) IBOutlet UILabel *memoLabel;
+@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *travelDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *countryCityLabel;
 
 
 @end

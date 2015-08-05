@@ -21,6 +21,7 @@
 {
     PFUser *user;
     CGFloat originNavY;
+    NSMutableArray *arrayDatas;
 }
 
 - (void)viewDidLoad {
@@ -30,24 +31,29 @@
         user = [PFUser currentUser];
         [[PFUser currentUser] fetchIfNeeded];
     }
+    
+    
+    MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"讀取中...";
+    
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        // Do something...
+        [self getdata];
         
+        dispatch_async(dispatch_get_main_queue(), ^{
+            sleep(2);
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        });
+    });
+    
+    
+   
+    //NSLog(@"get2 = %ld", arrayDatas.count);
+    
     [self initUI];
     _wallTableView.scrollEnabled = YES;
     _wallTableView.delegate = self;
     _wallTableView.dataSource = self;
-    
-    MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"讀取中...";
-
-    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        // Do something...
-        
-        [self getdata];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-        });
-    });
     
     UIRefreshControl *refresh = [UIRefreshControl new];
     refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"準備更新資料"];
@@ -55,6 +61,11 @@
     [refresh setBackgroundColor:[UIColor homeCellbgColor]];
     [self.wallTableView addSubview:refresh];
 }
+
+//- (void)viewDidDisappear {
+//    [super viewDidDisappear:YES];
+//    
+//    }
 
 
 //初始化UI畫面
@@ -146,7 +157,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     // Return the number of rows in the section.
-    return 10;
+    return arrayDatas.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -154,64 +165,93 @@
     NSString *identifier =@"wallTableViewCell";
     
     UITableViewCell *cell = [self prepareTableViewCell:tableView cellForRowAtIndexPath:indexPath cellIdentifier:identifier];
+    [self setCellData:(WallTableViewCell *)cell cellForRowAtIndexPath:indexPath];
     
     return cell;
 }
 
 
-- (UITableViewCell *)prepareTableViewCell:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath cellIdentifier:(NSString *)identifier{
+- (void) setCellData:(WallTableViewCell *)cell cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    WallTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
-    
-    //====Set Cell Style====
-    cell.contentView.backgroundColor =[UIColor homeCellbgColor];
-    
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    //設定邊框粗細
-    [[cell.viewInTableViewCell layer] setBorderWidth:0];
-    
-    //邊框顏色
-    //[[wallTableViewCell.viewInTableViewCell layer] setBorderColor:[UIColor colorWithRed:0.806 green:0.806 blue:0.806 alpha:1.0].CGColor];
-    
-    //將超出邊框的部份做遮罩
-    //[[vocDataCell.vocDataCell layer] setMasksToBounds:YES];
-    
-    //設定背景顏色
-    [[cell.viewInTableViewCell layer] setBackgroundColor:[UIColor whiteColor].CGColor];
-    
-    //設定圓角程度
-    [[cell.viewInTableViewCell layer] setCornerRadius:0];
-    
-    //大頭照圓形遮罩
+    //大頭照
     PFFile *proFilePicture = [user objectForKey:kPAPUserProfilePicSmallKey];
     [cell.wallHeadPhoto sd_setImageWithURL:(NSURL*)proFilePicture.url placeholderImage:[UIImage imageNamed:@"pic1.jpg"]];
+        
+    //國家城市
+    cell.countryCityLabel.text = [[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"countryCity"];
     
-    cell.wallHeadPhoto.layer.cornerRadius = cell.wallHeadPhoto.frame.size.width / 2;
-    cell.wallHeadPhoto.layer.borderWidth = 2.0f;
-    cell.wallHeadPhoto.layer.borderColor = [UIColor boyPhotoBorderColor].CGColor;
-    cell.wallHeadPhoto.clipsToBounds = YES;
+    //出發日期
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *strDate = [dateFormatter stringFromDate:[[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"startDate"]];
+    cell.travelDateLabel.text = strDate;
     
+    //地點標籤
+    cell.locationTagLabel.text = [[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"locationTag"];
     
-    //字體粗細大小
-    cell.testAreaLabel.font = [UIFont systemFontOfSize:11];
-    //文字顏色
-    cell.testAreaLabel.textColor = [UIColor colorWithRed:0.373 green:0.710 blue:0.647 alpha:1.000];
-    //背景色
-    cell.testAreaLabel.backgroundColor = [UIColor clearColor];
-    /*/Lable邊框
-    cell.testAreaLabel.layer.borderColor = [UIColor colorWithRed:0.373 green:0.710 blue:0.647 alpha:1.000].CGColor;
-    cell.testAreaLabel.layer.borderWidth = 0.5;
-    cell.testAreaLabel.layer.cornerRadius = 3;
-    //文字在Label置中
-    cell.testAreaLabel.textAlignment = NSTextAlignmentCenter;
-    //文字自動適應Lable大小
-    cell.testAreaLabel.adjustsFontSizeToFitWidth = NO;
-    */
+    //備註
+    cell.memoLabel.text = [[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"memo"];
     
-    cell.viewBlock1.backgroundColor = [UIColor whiteColor];
-    cell.viewBlock2.backgroundColor = [UIColor whiteColor];
-    cell.viewBlock3.backgroundColor = [UIColor whiteColor];
+    //照片
+    PFFile *photo = (PFFile *)[[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"photo"];
+    [cell.cellImageView sd_setImageWithURL:(NSURL*)photo.url placeholderImage:[UIImage imageNamed:@"tmp900X640.png"]];
+    
+    //NSLog(@"%ld => %@",indexPath.row,[arrayDatas objectAtIndex:indexPath.row]);
+}
 
+- (UITableViewCell *)prepareTableViewCell:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath cellIdentifier:(NSString *)identifier{
+    
+    
+   
+        WallTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+    
+        //====Set Cell Style====
+        cell.contentView.backgroundColor =[UIColor homeCellbgColor];
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        //設定邊框粗細
+        [[cell.viewInTableViewCell layer] setBorderWidth:0];
+        
+        //邊框顏色
+        //[[wallTableViewCell.viewInTableViewCell layer] setBorderColor:[UIColor colorWithRed:0.806 green:0.806 blue:0.806 alpha:1.0].CGColor];
+        
+        //將超出邊框的部份做遮罩
+        //[[vocDataCell.vocDataCell layer] setMasksToBounds:YES];
+        
+        //設定背景顏色
+        [[cell.viewInTableViewCell layer] setBackgroundColor:[UIColor whiteColor].CGColor];
+        
+        //設定圓角程度
+        [[cell.viewInTableViewCell layer] setCornerRadius:0];
+        
+        //大頭照圓形遮罩
+        cell.wallHeadPhoto.layer.cornerRadius = cell.wallHeadPhoto.frame.size.width / 2;
+        cell.wallHeadPhoto.layer.borderWidth = 2.0f;
+        cell.wallHeadPhoto.layer.borderColor = [UIColor boyPhotoBorderColor].CGColor;
+        cell.wallHeadPhoto.clipsToBounds = YES;
+        
+        
+        //字體粗細大小
+        cell.locationTagLabel.font = [UIFont systemFontOfSize:11];
+        //文字顏色
+        cell.locationTagLabel.textColor = [UIColor colorWithRed:0.373 green:0.710 blue:0.647 alpha:1.000];
+        //背景色
+        cell.locationTagLabel.backgroundColor = [UIColor clearColor];
+        /*/Lable邊框
+         cell.testAreaLabel.layer.borderColor = [UIColor colorWithRed:0.373 green:0.710 blue:0.647 alpha:1.000].CGColor;
+         cell.testAreaLabel.layer.borderWidth = 0.5;
+         cell.testAreaLabel.layer.cornerRadius = 3;
+         //文字在Label置中
+         cell.testAreaLabel.textAlignment = NSTextAlignmentCenter;
+         //文字自動適應Lable大小
+         cell.testAreaLabel.adjustsFontSizeToFitWidth = NO;
+         */
+        
+        cell.viewBlock1.backgroundColor = [UIColor whiteColor];
+        cell.viewBlock2.backgroundColor = [UIColor whiteColor];
+        cell.viewBlock3.backgroundColor = [UIColor whiteColor];
+
+    
     //UIImage *cellImage = [UIImage imageNamed: @"monkey1080X1080.jpg"];
     //[cell.cellImageView setImage:cellImage];
 
@@ -296,19 +336,26 @@
 
 - (void) getdata
 {
-    /*PFQuery *query = [PFQuery queryWithClassName:@"TestObject"];
-    //[query whereKey:@"playername" equalTo:@"Sean Plott"];
-    
-    [query countObjectsInBackgroundWithBlock:^(int count, NSError *error) {
+    PFQuery *query = [PFQuery queryWithClassName:@"TravelMate"];
+    //[query whereKey:@"playerName" equalTo:@"Dan Stemkoski"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            // The count request succeeded. Log the count
-            NSLog(@"Sean has count %d ", count);
+            // The find succeeded.
+            //NSLog(@"Successfully = %ld", objects.count);
+            // Do something with the found objects
+            arrayDatas = [[NSMutableArray alloc] initWithArray:objects];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [_wallTableView reloadData];
+            });
+            //NSLog(@"get1 = %ld", arrayDatas.count);
+            //for (PFObject *object in objects) {
+                //NSLog(@"%@", object.);
+            //}
         } else {
-            // The request failed
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
-    }];*/
-    
-    //sleep(2);
+    }];
 }
 
 
