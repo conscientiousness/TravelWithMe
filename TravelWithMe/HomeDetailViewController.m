@@ -12,10 +12,11 @@
 #import "JL2TableViewCell.h"
 
 @interface HomeDetailViewController ()
-
+@property (nonatomic, strong) UITableViewCell *prototypeCell;
 @end
 
 @implementation HomeDetailViewController
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -92,7 +93,7 @@
     if (section == 0) {
         return 1;
     }else if (section == 1){
-        return 10;
+        return 1;
     }
     
     return 1;
@@ -111,31 +112,15 @@
     }
     
     UINib *nib = [UINib nibWithNibName:nibName bundle:nil];
+    
     [tableView registerNib:nib forCellReuseIdentifier:identifier];
     JLTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     
     if (indexPath.section == 0) {
-        //設定邊框粗細
-        //[[cell.firstSectionView layer] setBorderWidth:1.5];
         
-        //邊框顏色
-        //[[cell.firstSectionView layer] setBorderColor:[UIColor colorWithRed:0.806 green:0.806 blue:0.806 alpha:1.0].CGColor];
+        [self prepareJLCellstyle:cell cellForRowAtIndexPath:indexPath];
+        [self setJLCellData:cell cellForRowAtIndexPath:indexPath];
         
-        //設定背景顏色
-        [[cell.firstSectionView layer] setBackgroundColor:[UIColor whiteColor].CGColor];
-        cell.backgroundColor = [UIColor homeCellbgColor];
-        
-        //設定圓角程度
-        //[[cell.firstSectionView layer] setCornerRadius:10.0];
-        
-        //照片圓形遮罩
-        cell.headPhoto.layer.cornerRadius = cell.headPhoto.frame.size.width / 2;
-        cell.headPhoto.layer.borderWidth = 3.0f;
-        cell.headPhoto.layer.borderColor = [UIColor boyPhotoBorderColor].CGColor;
-        cell.headPhoto.clipsToBounds = YES;
-        
-        //按鈕
-        cell.joinBtn.layer.cornerRadius = 15.0;
     } else {
         //JL2TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     }
@@ -144,27 +129,57 @@
     return cell;
 }
 
-/*
-- (void) setUserData {
+- (void) prepareJLCellstyle:(JLTableViewCell *)cell cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    //設定邊框粗細
+    //[[cell.firstSectionView layer] setBorderWidth:1.5];
+    
+    //邊框顏色
+    //[[cell.firstSectionView layer] setBorderColor:[UIColor colorWithRed:0.806 green:0.806 blue:0.806 alpha:1.0].CGColor];
+    
+    //設定背景顏色
+    [[cell.firstSectionView layer] setBackgroundColor:[UIColor whiteColor].CGColor];
+    cell.backgroundColor = [UIColor homeCellbgColor];
+    
+    //設定圓角程度
+    //[[cell.firstSectionView layer] setCornerRadius:10.0];
+    
+    //照片圓形遮罩
+    cell.headPhoto.layer.cornerRadius = cell.headPhoto.frame.size.width / 2;
+    cell.headPhoto.layer.borderWidth = 3.0f;
+    cell.headPhoto.layer.borderColor = [UIColor boyPhotoBorderColor].CGColor;
+    cell.headPhoto.clipsToBounds = YES;
+    
+    //按鈕
+    cell.joinBtn.layer.cornerRadius = 15.0;
+}
+
+- (void) setJLCellData:(JLTableViewCell *)cell cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    //大頭照
+    [cell.headPhoto setImage:[UIImage imageNamed:@"pic1.jpg"]];
+    PFFile *PFPhoto = (PFFile*)_cellDictData[@"profilePictureMedium"];
+    [PFPhoto getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+        if (!error) {
+            [cell.headPhoto setImage:[UIImage imageWithData:imageData]];
+        }
+    }];
+    
     //名字
-    cell.userNameLabel.text = arrayDatas[indexPath.row][@"createUser"][@"displayName"];
-    
-    [cell.wallHeadPhoto sd_setImageWithURL:(NSURL*)((PFFile*)arrayDatas[indexPath.row][@"createUser"][@"profilePictureMedium"]).url placeholderImage:[UIImage imageNamed:@"pic1.jpg"]];
-    
+    cell.displayName.text = _cellDictData[@"displayName"];
     //出發日期
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-    NSString *strDate = [dateFormatter stringFromDate:[[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"startDate"]];
-    cell.travelDateLabel.text = strDate;
+    cell.travelDate.text = _cellDictData[@"startDate"];
+    //更多說明
+    
+    cell.memo.numberOfLines = 0;  //需定義為0才會換行
+    cell.memo.textColor = [UIColor whiteColor];
+    cell.memo.textAlignment = NSTextAlignmentLeft;  //內文對齊方式
+    [cell.memo setBackgroundColor:[UIColor redColor]];
+    cell.memo.text = _cellDictData[@"memo"];
     
     
-    
-    //備註
-    cell.memoLabel.text = [[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"memo"];
-    
-    
-    
-}*/
+}
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -172,6 +187,31 @@
     
     if(indexPath.section == 0){
         result = 200.0f;
+        
+        NSString * memo = _cellDictData[@"memo"];
+        NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:12]};
+        NSAttributedString * attrString = [[NSAttributedString alloc] initWithString:memo attributes:attributes];
+        
+        //CGSizeZero 建議限制高度
+        CGRect rect = [attrString boundingRectWithSize:CGSizeZero options:NSStringDrawingUsesFontLeading context:nil];
+        NSLog(@"string= %@",memo);
+//        NSLog(@"rect:%@",NSStringFromCGRect(rect));
+        result += rect.size.height;
+//        result = 20.0f;
+//        cell.memo.text = _cellDictData[@"memo"];
+//        
+//        
+//        
+//        CGFloat textWidth = cell.memo.frame.size.width;
+//        
+//        CGRect rect = [cell.memo.text boundingRectWithSize:CGSizeMake(textWidth, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil];
+//        
+//        cell.memo.frame = CGRectMake(0, 0, textWidth,rect.size.height);
+//        
+//        result += rect.size.height;
+//        
+//        NSLog(@"%f",rect.size.height);
+        
     }else{
         result = 44.0f;
     }
