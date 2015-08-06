@@ -21,16 +21,30 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    //NSLog(@"Cell Array Data = %@",_cellArrayData);
+    
     //設定Navigation bar為透明
     self.navigationController.navigationBar.translucent = YES;
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    [self setHeaderImage:[UIImage imageNamed:@"pic900X640.jpg"]];
-    [self setTitleText:@"日本"];
-    [self setSubtitleText:@"Japan"];
+    
+    //[user objectForKey:kPAPUserProfilePicSmallKey];
+
+    
+    //置頂照片
+    [self setHeaderImage:[UIImage imageNamed:@"tmp900X640.png"]];
+    PFFile *PFPhoto = (PFFile*)_cellDictData[@"photo"];
+    [PFPhoto getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+        if (!error) {
+            [self setHeaderImage:[UIImage imageWithData:imageData]];
+        }
+    }];
+    //置頂標題:國家城市
+    [self setTitleText:_cellDictData[@"countryCity"]];
+    //置頂副標題:地區
+    [self setSubtitleText:_cellDictData[@"locationTag"]];
     [self setLabelBackgroundGradientColor:[UIColor colorWithRed:0.0f green:0.0f blue:0.0f alpha:0.7f]];
     //[self setInteractionsDelegate:self];
-    
     CGFloat headerHeight = [self headerHeight];
     
     UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(5, headerHeight - 55, 44, 44)];
@@ -101,8 +115,6 @@
     JLTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     
     if (indexPath.section == 0) {
-        
-        
         //設定邊框粗細
         //[[cell.firstSectionView layer] setBorderWidth:1.5];
         
@@ -127,10 +139,32 @@
     } else {
         //JL2TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }
 
+/*
+- (void) setUserData {
+    //名字
+    cell.userNameLabel.text = arrayDatas[indexPath.row][@"createUser"][@"displayName"];
+    
+    [cell.wallHeadPhoto sd_setImageWithURL:(NSURL*)((PFFile*)arrayDatas[indexPath.row][@"createUser"][@"profilePictureMedium"]).url placeholderImage:[UIImage imageNamed:@"pic1.jpg"]];
+    
+    //出發日期
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *strDate = [dateFormatter stringFromDate:[[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"startDate"]];
+    cell.travelDateLabel.text = strDate;
+    
+    
+    
+    //備註
+    cell.memoLabel.text = [[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"memo"];
+    
+    
+    
+}*/
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     

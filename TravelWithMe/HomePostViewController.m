@@ -29,6 +29,9 @@
     [self initUI];
 }
 
+- (void)viewDidLayoutSubviews {
+    //
+}
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:NO];

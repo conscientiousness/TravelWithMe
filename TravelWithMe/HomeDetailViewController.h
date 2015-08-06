@@ -11,7 +11,7 @@
 
 @interface HomeDetailViewController : JPBFloatingTextViewController
 
-@property (nonatomic,strong) NSMutableDictionary *cellData;
-@property (nonatomic,strong) NSNumber *test;
+@property (nonatomic,strong) NSDictionary *cellDictData;
+@property (nonatomic,strong) NSArray *cellArrayData;
 
 @end

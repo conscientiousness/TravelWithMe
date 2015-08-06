@@ -22,6 +22,8 @@
     //PFUser *user;
     CGFloat originNavY;
     NSMutableArray *arrayDatas;
+    NSDictionary *dictData;
+    NSDateFormatter *cellDateFormatter;
 }
 
 - (void)viewDidLoad {
@@ -35,7 +37,7 @@
     
     MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"讀取中...";
-    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         // Do something...
         [self getdata];
     });
@@ -54,12 +56,12 @@
     [refresh addTarget:self action:@selector(refreshView:) forControlEvents:UIControlEventValueChanged];
     [refresh setBackgroundColor:[UIColor homeCellbgColor]];
     [self.wallTableView addSubview:refresh];
+    
+    //格式化日期
+    cellDateFormatter = [[NSDateFormatter alloc]init];
+    [cellDateFormatter setDateFormat:@"yyyy-MM-dd"];
 }
 
-//- (void)viewDidDisappear {
-//    [super viewDidDisappear:YES];
-//    
-//    }
 
 
 //初始化UI畫面
@@ -184,9 +186,7 @@
     cell.countryCityLabel.text = [[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"countryCity"];
     
     //出發日期
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-    NSString *strDate = [dateFormatter stringFromDate:[[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"startDate"]];
+    NSString *strDate = [cellDateFormatter stringFromDate:[[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"startDate"]];
     cell.travelDateLabel.text = strDate;
     
     //地點標籤
@@ -199,6 +199,7 @@
     PFFile *photo = (PFFile *)[[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"photo"];
     [cell.cellImageView sd_setImageWithURL:(NSURL*)photo.url placeholderImage:[UIImage imageNamed:@"tmp900X640.png"]];
     
+ 
     //NSLog(@"%ld => %@",indexPath.row,[[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"createUser"]);
 }
 
@@ -313,23 +314,28 @@
     [self.navigationController pushViewController:detailVC animated:YES];
     
     //傳值
-    //NSNumber *value = [NSNumber numberWithLong:indexPath.row];
-    //[detailVC setValue:value forKey:@"test"];
-    
-    //NSLog(@"hey");
-    
+    dictData = [NSDictionary new];
+    dictData = @{@"displayName":arrayDatas[indexPath.row][@"createUser"][@"displayName"],
+                 @"profilePictureMedium":arrayDatas[indexPath.row][@"createUser"][@"profilePictureMedium"],
+                 @"countryCity":arrayDatas[indexPath.row][@"countryCity"],
+                 @"photo":arrayDatas[indexPath.row][@"photo"],
+                 @"locationTag":arrayDatas[indexPath.row][@"locationTag"],
+                 @"memo":arrayDatas[indexPath.row][@"memo"],
+                 @"startDate":[cellDateFormatter stringFromDate:arrayDatas[indexPath.row][@"startDate"]]
+                 };
+    [detailVC setValue:dictData forKey:@"cellDictData"];
 }
 
 
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-    CGRect frame = self.navigationController.navigationBar.frame;
-    frame.origin.y = 20.0;
-    [self.navigationController.navigationBar setFrame:frame];
-}
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    
+//    CGRect frame = self.navigationController.navigationBar.frame;
+//    frame.origin.y = 20.0;
+//    [self.navigationController.navigationBar setFrame:frame];
+//}
 
 
 
@@ -348,14 +354,18 @@
             //NSLog(@"objects = %@", [objects);
             // Do something with the found objects
             arrayDatas = [[NSMutableArray alloc] initWithArray:objects];
+            
+            //arrayDatas = [NSMutableArray new];
+            //dictData = [NSMutableDictionary new];
+            
+//            for (PFObject *object in objects) {
+//                [arrayDatas addObject:dictData[@{@"key":object}]];
+//            }
             dispatch_async(dispatch_get_main_queue(), ^{
                 [_wallTableView reloadData];
                 [MBProgressHUD hideHUDForView:self.view animated:YES];
             });
-            //NSLog(@"get1 = %ld", arrayDatas.count);
-            //for (PFObject *object in objects) {
-                //NSLog(@"%@", object[@"createUser"][@"link"]);
-            //}
+            
         } else {
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
@@ -434,8 +444,9 @@
         [self updateBarButtonItems:alpha];
     }];
 }
+*/
 
-
+/*
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     //navigation高度,位置與高度比例(不要全部移出畫面)
