@@ -83,7 +83,7 @@
     self.navigationController.navigationBar.barTintColor = [UIColor navigationBarColor];
     self.navigationController.navigationBar.translucent = YES;
     self.navigationController.view.backgroundColor = [UIColor clearColor];
-    originNavY = self.navigationController.navigationBar.frame.origin.y;
+    //originNavY = self.navigationController.navigationBar.frame.origin.y;
     
     //tab bar color
     //[self.tabBarController.tabBar setBackgroundColor:[UIColor tabBarColor]];
@@ -204,8 +204,6 @@
 
 - (UITableViewCell *)prepareTableViewCell:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath cellIdentifier:(NSString *)identifier{
     
-    
-   
         WallTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     
         //====Set Cell Style====
@@ -229,7 +227,7 @@
         
         //大頭照圓形遮罩
         cell.wallHeadPhoto.layer.cornerRadius = cell.wallHeadPhoto.frame.size.width / 2;
-        cell.wallHeadPhoto.layer.borderWidth = 2.0f;
+        cell.wallHeadPhoto.layer.borderWidth = 3.0f;
         cell.wallHeadPhoto.layer.borderColor = [UIColor boyPhotoBorderColor].CGColor;
         cell.wallHeadPhoto.clipsToBounds = YES;
         

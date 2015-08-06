@@ -20,4 +20,8 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)joinBtnPressed:(id)sender {
+    NSLog(@"inin");
+}
+
 @end

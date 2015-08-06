@@ -11,8 +11,13 @@
 @interface JLTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *headPhoto;
-
 @property (weak, nonatomic) IBOutlet UIView *firstSectionView;
+@property (weak, nonatomic) IBOutlet UILabel *displayName;
+@property (weak, nonatomic) IBOutlet UILabel *postStatus;
+@property (weak, nonatomic) IBOutlet UILabel *travelDate;
+@property (weak, nonatomic) IBOutlet UILabel *memo;
+@property (weak, nonatomic) IBOutlet UIButton *joinBtn;
+
 
 
 @end

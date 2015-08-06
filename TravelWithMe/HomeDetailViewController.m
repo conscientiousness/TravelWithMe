@@ -16,10 +16,6 @@
 @end
 
 @implementation HomeDetailViewController
-{
-    JLTableViewCell *JLTableViewCell;
-    JL2TableViewCell *JL2TableViewCell;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -44,6 +40,10 @@
     
     //關閉分隔線
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    self.view.backgroundColor = [UIColor homeCellbgColor];
+    self.view.opaque = NO;
+    self.tableView.backgroundColor = [UIColor homeCellbgColor];
+    self.tableView.opaque = NO;
 
 }
 
@@ -101,25 +101,31 @@
     JLTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     
     if (indexPath.section == 0) {
-        //設定cell外觀
+        
         
         //設定邊框粗細
-        [[cell.firstSectionView layer] setBorderWidth:1.5];
+        //[[cell.firstSectionView layer] setBorderWidth:1.5];
         
         //邊框顏色
-        [[cell.firstSectionView layer] setBorderColor:[UIColor colorWithRed:0.806 green:0.806 blue:0.806 alpha:1.0].CGColor];
+        //[[cell.firstSectionView layer] setBorderColor:[UIColor colorWithRed:0.806 green:0.806 blue:0.806 alpha:1.0].CGColor];
         
         //設定背景顏色
-        [[cell.firstSectionView layer] setBackgroundColor:[UIColor colorWithRed:0.984 green:0.984 blue:0.984 alpha:1.0].CGColor];
+        [[cell.firstSectionView layer] setBackgroundColor:[UIColor whiteColor].CGColor];
+        cell.backgroundColor = [UIColor homeCellbgColor];
         
         //設定圓角程度
-        [[cell.firstSectionView layer] setCornerRadius:10.0];
+        //[[cell.firstSectionView layer] setCornerRadius:10.0];
         
         //照片圓形遮罩
         cell.headPhoto.layer.cornerRadius = cell.headPhoto.frame.size.width / 2;
-        cell.headPhoto.layer.borderWidth = 2.0f;
-        cell.headPhoto.layer.borderColor = [UIColor grayColor].CGColor;
+        cell.headPhoto.layer.borderWidth = 3.0f;
+        cell.headPhoto.layer.borderColor = [UIColor boyPhotoBorderColor].CGColor;
         cell.headPhoto.clipsToBounds = YES;
+        
+        //按鈕
+        cell.joinBtn.layer.cornerRadius = 15.0;
+    } else {
+        //JL2TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     }
     
     return cell;
