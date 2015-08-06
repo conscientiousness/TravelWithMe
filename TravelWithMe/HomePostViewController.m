@@ -27,13 +27,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self initUI];
-    
-    if (!user) {
-        user = [PFUser currentUser];
-        [[PFUser currentUser] fetchIfNeeded];
-    }
-
 }
+
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:NO];
@@ -49,7 +44,10 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:NO];
-    
+    if (!user) {
+        user = [PFUser currentUser];
+        [[PFUser currentUser] fetchIfNeeded];
+    }
 }
 
 - (void)initUI {
