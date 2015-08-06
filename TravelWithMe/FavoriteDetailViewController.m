@@ -2,19 +2,18 @@
 //  FavoriteDetailViewController.m
 //  TravelWithMe
 //
-//  Created by ajay on 2015/7/29.
+//  Created by ajay on 2015/8/6.
 //  Copyright (c) 2015年 Jesse. All rights reserved.
 //
 
 #import "FavoriteDetailViewController.h"
-#import "UIColors.h"
+
 @interface FavoriteDetailViewController ()
-@property (strong, nonatomic) IBOutlet UIView *inDetailViewTable;
+@property (strong, nonatomic) IBOutlet UIView *detailView;
 
 @end
 
 @implementation FavoriteDetailViewController
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -22,50 +21,18 @@
 
     // Do any additional setup after loading the view.
 }
-//初始化UI畫面
-- (void)initUI {
-    
-    //設定背景色
-    _inDetailViewTable.backgroundColor = [UIColor homeCellbgColor];
-    //透明度
-    _inDetailViewTable.opaque = NO;
-    
-    //navigation bar color
-    [self.navigationController.navigationBar setBackgroundColor:[UIColor navigationBarColor]];
-    
-    //tab bar color
-    [self.tabBarController.tabBar setBackgroundColor:[UIColor tabBarColor]];
-    
-    
-}
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (void)initUI {
     
-    // Return the number of sections.
-    return 1;
+    _detailView.backgroundColor = [UIColor homeCellbgColor];
+    //透明度
+    _detailView.opaque = NO;
+    
 }
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    // Return the number of rows in the section.
-    return 1;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    
-    
-    return 0;
-}
-
-
 
 /*
 #pragma mark - Navigation

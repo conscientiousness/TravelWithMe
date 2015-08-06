@@ -2,7 +2,7 @@
 //  FavoriteTableViewCell.m
 //  TravelWithMe
 //
-//  Created by ajay on 2015/7/29.
+//  Created by ajay on 2015/8/6.
 //  Copyright (c) 2015年 Jesse. All rights reserved.
 //
 
