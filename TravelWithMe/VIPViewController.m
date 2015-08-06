@@ -9,6 +9,7 @@
 #import "VIPViewController.h"
 
 @interface VIPViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *theImageView;
 
 @end
 
@@ -17,6 +18,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    //大頭照圓形遮罩
+    _theImageView.layer.cornerRadius =_theImageView.frame.size.width / 2;
+    _theImageView.layer.borderWidth = 2.0f;
+    _theImageView.layer.borderColor = [UIColor boyPhotoBorderColor].CGColor;
+    _theImageView.clipsToBounds = YES;
+    
+
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

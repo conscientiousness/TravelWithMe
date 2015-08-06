@@ -258,18 +258,18 @@
                                 <rect key="frame" x="16" y="64" width="568" height="138"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic1.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="IU3-Bo-iyJ">
-                                        <rect key="frame" x="249" y="38" width="70" height="70"/>
+                                        <rect key="frame" x="239" y="24" width="90" height="90"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="70" id="jOL-gP-bjO"/>
-                                            <constraint firstAttribute="height" constant="70" id="viw-Bh-D5s"/>
+                                            <constraint firstAttribute="height" constant="90" id="XcY-Ei-acI"/>
+                                            <constraint firstAttribute="width" constant="90" id="aOU-Cg-NsN"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="centerX" secondItem="IU3-Bo-iyJ" secondAttribute="centerX" id="Glf-Lq-Xck"/>
+                                    <constraint firstItem="IU3-Bo-iyJ" firstAttribute="top" secondItem="NZ7-Ta-VjE" secondAttribute="top" constant="24" id="LiX-Na-kxh"/>
+                                    <constraint firstAttribute="centerX" secondItem="IU3-Bo-iyJ" secondAttribute="centerX" id="U0C-OJ-uqm"/>
                                     <constraint firstAttribute="height" constant="138" id="Xab-1c-ZIx"/>
-                                    <constraint firstItem="IU3-Bo-iyJ" firstAttribute="top" secondItem="NZ7-Ta-VjE" secondAttribute="top" constant="38" id="lYt-m5-N0I"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -293,6 +293,9 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="會員登入" id="hW0-f7-VK9"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="theImageView" destination="IU3-Bo-iyJ" id="N0J-SY-xAe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N4Y-Ry-ruh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
