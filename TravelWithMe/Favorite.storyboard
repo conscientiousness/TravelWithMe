@@ -13,7 +13,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="iU8-Aj-MtW" kind="relationship" relationship="rootViewController" id="p9j-X1-n58"/>
+                        <segue destination="If6-dB-kJi" kind="relationship" relationship="rootViewController" id="jAL-Kx-NK6"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xu6-FH-4sX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -21,64 +21,67 @@
             <point key="canvasLocation" x="-879" y="331"/>
         </scene>
         <!--Favorite Detail View Controller-->
-        <scene sceneID="qlO-RN-1m1">
+        <scene sceneID="aSR-6n-46g">
             <objects>
-                <viewController storyboardIdentifier="favoriteDetailViewController" id="fKS-cG-Gwi" customClass="FavoriteDetailViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FavoriteDetailViewController" id="NVE-Ww-9Hm" customClass="FavoriteDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="3no-lP-2JO"/>
-                        <viewControllerLayoutGuide type="bottom" id="Q5G-ta-MZl"/>
+                        <viewControllerLayoutGuide type="top" id="weE-rr-mfO"/>
+                        <viewControllerLayoutGuide type="bottom" id="ljp-Iw-sGl"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="bvh-XQ-bzm">
+                    <view key="view" contentMode="scaleToFill" id="IdV-vK-gNS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="inDetailViewTable" destination="bvh-XQ-bzm" id="5Aq-Dq-Ebd"/>
+                        <outlet property="detailView" destination="IdV-vK-gNS" id="TvZ-FD-Lz9"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iR3-hR-ZDo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nbP-4a-sVq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="31" y="-378"/>
+            <point key="canvasLocation" x="115" y="-401"/>
         </scene>
         <!--Favorite Table View Controller-->
-        <scene sceneID="pUb-Cz-Nu9">
+        <scene sceneID="r1h-Ga-ubG">
             <objects>
-                <tableViewController id="iU8-Aj-MtW" customClass="FavoriteTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ldF-qE-UkA">
+                <tableViewController id="If6-dB-kJi" customClass="FavoriteTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="qOx-st-cb0">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="favoriteTableViewCell" id="MqE-9z-Esh" customClass="FavoriteTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Uxc-1V-8Nn" customClass="FavoriteTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MqE-9z-Esh" id="FdV-Pd-sow">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Uxc-1V-8Nn" id="aX8-q3-ZLC">
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="iU8-Aj-MtW" id="jDv-e5-6d7"/>
-                            <outlet property="delegate" destination="iU8-Aj-MtW" id="uWc-ms-fS2"/>
+                            <outlet property="dataSource" destination="If6-dB-kJi" id="fzu-6C-QWH"/>
+                            <outlet property="delegate" destination="If6-dB-kJi" id="m9X-gd-uEG"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="tO1-Fc-cPk">
+                    <navigationItem key="navigationItem" id="vDb-hu-oq0">
                         <nil key="title"/>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="dK6-UK-7D4">
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="X45-GP-3bG">
                             <rect key="frame" x="180" y="7" width="240" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="1" green="0.83874719259999997" blue="0.66360706940000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="1" green="0.77254901960784317" blue="0.6588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                             <segments>
-                                <segment title="First"/>
+                                <segment title="我已參加"/>
                                 <segment title="我追蹤的"/>
                             </segments>
-                            <color key="tintColor" red="0.53545471749999995" green="1" blue="0.86292646699999997" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.52549019607843139" green="1" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
                         </segmentedControl>
                     </navigationItem>
+                    <connections>
+                        <outlet property="favoriteTableView" destination="qOx-st-cb0" id="had-1l-Y4C"/>
+                    </connections>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cCJ-RB-GN7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hvO-gy-i9j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-133" y="341"/>
+            <point key="canvasLocation" x="108" y="329"/>
         </scene>
     </scenes>
 </document>
