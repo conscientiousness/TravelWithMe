@@ -151,6 +151,7 @@
                 <outlet property="memberImageView3" destination="pJr-mO-lYw" id="5Pr-QT-TRV"/>
                 <outlet property="memberImageView4" destination="9g7-fm-jr9" id="AM6-Re-XYO"/>
                 <outlet property="moreMemberBtn" destination="XlP-8B-2wC" id="j25-o5-YqB"/>
+                <outlet property="secondSectionView" destination="jnE-Da-vdY" id="lEI-op-Oqq"/>
             </connections>
             <point key="canvasLocation" x="95" y="162"/>
         </tableViewCell>

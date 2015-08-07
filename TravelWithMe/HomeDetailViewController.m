@@ -110,13 +110,15 @@
     [tableView registerNib:nib forCellReuseIdentifier:identifier];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     
-    if (indexPath.section == 0) {
+    if(indexPath.section == 0) {
         
-        [self prepareJLCellstyle:(JLTableViewCell*)cell cellForRowAtIndexPath:indexPath];
+        [self prepareJLCellstyle:(JLTableViewCell *)cell cellForRowAtIndexPath:indexPath];
         [self setJLCellData:(JLTableViewCell*)cell cellForRowAtIndexPath:indexPath];
         
-    } else {
-        //JL2TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+    } else if(indexPath.section == 1) {
+        [self prepareJL2Cellstyle:(JL2TableViewCell *)cell cellForRowAtIndexPath:indexPath];
+        //[self setJLCellData:(JLTableViewCell*)cell cellForRowAtIndexPath:indexPath];
+
     }
     
     
@@ -138,7 +140,7 @@
     cell.backgroundColor = [UIColor homeCellbgColor];
     
     //設定圓角程度
-    //[[cell.firstSectionView layer] setCornerRadius:10.0];
+    [[cell.firstSectionView layer] setCornerRadius:5.0];
     
     //照片圓形遮罩
     cell.headPhoto.layer.cornerRadius = cell.headPhoto.frame.size.width / 2;
@@ -173,8 +175,33 @@
     //[cell.memo setBackgroundColor:[UIColor redColor]];
     cell.memo.text = _cellDictData[@"memo"];
     //NSLog(@"label height= %f, width= %f",cell.memo.frame.size.height,cell.memo.frame.size.width);
+}
+
+- (void) prepareJL2Cellstyle:(JL2TableViewCell *)cell cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    //點選時的顏色
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    //設定邊框粗細
+    //[[cell.firstSectionView layer] setBorderWidth:1.5];
     
+    //邊框顏色
+    //[[cell.firstSectionView layer] setBorderColor:[UIColor colorWithRed:0.806 green:0.806 blue:0.806 alpha:1.0].CGColor];
+    
+    //設定背景顏色
+    [[cell.secondSectionView layer] setBackgroundColor:[UIColor whiteColor].CGColor];
+    cell.backgroundColor = [UIColor homeCellbgColor];
+    
+    //設定圓角程度
+    [[cell.secondSectionView layer] setCornerRadius:10.0];
+    
+    //照片圓形遮罩
+    //cell.headPhoto.layer.cornerRadius = cell.headPhoto.frame.size.width / 2;
+    //cell.headPhoto.layer.borderWidth = 3.0f;
+    //cell.headPhoto.layer.borderColor = [UIColor boyPhotoBorderColor].CGColor;
+    //cell.headPhoto.clipsToBounds = YES;
+    
+    //按鈕
+    //cell.joinBtn.layer.cornerRadius = 15.0;
 }
 
 
