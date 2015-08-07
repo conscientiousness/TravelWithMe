@@ -41,7 +41,6 @@
 		F448299D1B6FBA8B00ED0EA1 /* PAPConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = F448299C1B6FBA8B00ED0EA1 /* PAPConstants.m */; };
 		F44829A01B6FBAFF00ED0EA1 /* PAPCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F448299F1B6FBAFF00ED0EA1 /* PAPCache.m */; };
 		F46573641B5545F700DA3D7B /* kyoto.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F46573621B5545F700DA3D7B /* kyoto.jpg */; };
-		F46573651B5545F700DA3D7B /* pic1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F46573631B5545F700DA3D7B /* pic1.jpg */; };
 		F465736C1B5552D800DA3D7B /* JLTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F46573671B5552D800DA3D7B /* JLTableViewCell.m */; };
 		F465736D1B5552D800DA3D7B /* JL2TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F46573691B5552D800DA3D7B /* JL2TableViewCell.m */; };
 		F465736E1B5552D800DA3D7B /* JL2TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F465736A1B5552D800DA3D7B /* JL2TableViewCell.xib */; };
@@ -125,7 +124,6 @@
 		F448299E1B6FBAFF00ED0EA1 /* PAPCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAPCache.h; sourceTree = "<group>"; };
 		F448299F1B6FBAFF00ED0EA1 /* PAPCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAPCache.m; sourceTree = "<group>"; };
 		F46573621B5545F700DA3D7B /* kyoto.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kyoto.jpg; sourceTree = "<group>"; };
-		F46573631B5545F700DA3D7B /* pic1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pic1.jpg; sourceTree = "<group>"; };
 		F46573661B5552D800DA3D7B /* JLTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLTableViewCell.h; sourceTree = "<group>"; };
 		F46573671B5552D800DA3D7B /* JLTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLTableViewCell.m; sourceTree = "<group>"; };
 		F46573681B5552D800DA3D7B /* JL2TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JL2TableViewCell.h; sourceTree = "<group>"; };
@@ -355,7 +353,6 @@
 				F4C9EE451B62B738007C37B4 /* kyoto_sample_photo.jpg */,
 				F4441C2B1B6341AB00272BF3 /* iphone_h_photo.jpg */,
 				F4441C2C1B6341AB00272BF3 /* iphone_v_photo.jpg */,
-				F46573631B5545F700DA3D7B /* pic1.jpg */,
 				F4267BCE1B6A632E00F42330 /* pic900X640.jpg */,
 				F43C83191B71B13200D2A389 /* tmp900X640.png */,
 				F47556A81B4BACF2008CEE3A /* Main.storyboard */,
@@ -516,7 +513,6 @@
 				F486EF461B4C34D2008CB97B /* Setting.storyboard in Resources */,
 				F47556C51B4BD40F008CEE3A /* Favorite.storyboard in Resources */,
 				F4C9EE471B62B738007C37B4 /* kyoto_sample_photo.jpg in Resources */,
-				F46573651B5545F700DA3D7B /* pic1.jpg in Resources */,
 				F4441C2D1B6341AB00272BF3 /* iphone_h_photo.jpg in Resources */,
 				F42EBDB21B68FF1400606D9B /* (null) in Resources */,
 				F4267BCF1B6A632E00F42330 /* pic900X640.jpg in Resources */,

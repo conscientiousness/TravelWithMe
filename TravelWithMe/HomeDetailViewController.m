@@ -20,17 +20,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
-    //NSLog(@"Cell Array Data = %@",_cellArrayData);
     
     //設定Navigation bar為透明
     self.navigationController.navigationBar.translucent = YES;
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-    
-    //[user objectForKey:kPAPUserProfilePicSmallKey];
-
     
     //置頂照片
     [self setHeaderImage:[UIImage imageNamed:@"tmp900X640.png"]];
@@ -49,7 +42,8 @@
     CGFloat headerHeight = [self headerHeight];
     
     UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(5, headerHeight - 55, 44, 44)];
-    [button setTitle:@"按鈕" forState:UIControlStateNormal];
+    [button setTitle:@"分享" forState:UIControlStateNormal];
+    //[button setImage:[UIImage imageNamed:@"share-icon"] forState:UIControlStateNormal];
     [button addTarget:self action:@selector(alert:) forControlEvents:UIControlEventTouchUpInside];
     [self addHeaderOverlayView:button];
     
@@ -114,23 +108,25 @@
     UINib *nib = [UINib nibWithNibName:nibName bundle:nil];
     
     [tableView registerNib:nib forCellReuseIdentifier:identifier];
-    JLTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     
     if (indexPath.section == 0) {
         
-        [self prepareJLCellstyle:cell cellForRowAtIndexPath:indexPath];
-        [self setJLCellData:cell cellForRowAtIndexPath:indexPath];
+        [self prepareJLCellstyle:(JLTableViewCell*)cell cellForRowAtIndexPath:indexPath];
+        [self setJLCellData:(JLTableViewCell*)cell cellForRowAtIndexPath:indexPath];
         
     } else {
         //JL2TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     }
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     
     return cell;
 }
 
 - (void) prepareJLCellstyle:(JLTableViewCell *)cell cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    //點選時的顏色
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     //設定邊框粗細
     //[[cell.firstSectionView layer] setBorderWidth:1.5];
     
@@ -169,13 +165,14 @@
     cell.displayName.text = _cellDictData[@"displayName"];
     //出發日期
     cell.travelDate.text = _cellDictData[@"startDate"];
-    //更多說明
     
+    //更多說明
     cell.memo.numberOfLines = 0;  //需定義為0才會換行
-    cell.memo.textColor = [UIColor whiteColor];
+    //cell.memo.textColor = [UIColor whiteColor];
     cell.memo.textAlignment = NSTextAlignmentLeft;  //內文對齊方式
-    [cell.memo setBackgroundColor:[UIColor redColor]];
+    //[cell.memo setBackgroundColor:[UIColor redColor]];
     cell.memo.text = _cellDictData[@"memo"];
+    //NSLog(@"label height= %f, width= %f",cell.memo.frame.size.height,cell.memo.frame.size.width);
     
     
 }
@@ -186,34 +183,20 @@
     CGFloat result;
     
     if(indexPath.section == 0){
-        result = 200.0f;
+        result = 194.0;
         
         NSString * memo = _cellDictData[@"memo"];
         NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:12]};
         NSAttributedString * attrString = [[NSAttributedString alloc] initWithString:memo attributes:attributes];
         
-        //CGSizeZero 建議限制高度
-        CGRect rect = [attrString boundingRectWithSize:CGSizeZero options:NSStringDrawingUsesFontLeading context:nil];
-        NSLog(@"string= %@",memo);
-//        NSLog(@"rect:%@",NSStringFromCGRect(rect));
+        //寬度固定計算行高(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
+        CGRect rect = [attrString boundingRectWithSize:CGSizeMake(296.0, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin context:nil];
+        //NSLog(@"rect:%@",NSStringFromCGRect(rect));
+        //NSLog(@"rect height = %f",rect.size.height);
         result += rect.size.height;
-//        result = 20.0f;
-//        cell.memo.text = _cellDictData[@"memo"];
-//        
-//        
-//        
-//        CGFloat textWidth = cell.memo.frame.size.width;
-//        
-//        CGRect rect = [cell.memo.text boundingRectWithSize:CGSizeMake(textWidth, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil];
-//        
-//        cell.memo.frame = CGRectMake(0, 0, textWidth,rect.size.height);
-//        
-//        result += rect.size.height;
-//        
-//        NSLog(@"%f",rect.size.height);
         
     }else{
-        result = 44.0f;
+        result = 80.0;
     }
     
     return result;

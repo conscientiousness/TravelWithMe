@@ -375,8 +375,9 @@
                                                         </mask>
                                                     </variation>
                                                 </view>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic1.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="RdS-QX-kTc">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tmp-head-icon" translatesAutoresizingMaskIntoConstraints="NO" id="RdS-QX-kTc">
                                                     <rect key="frame" x="6" y="18" width="70" height="70"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="70" id="MEQ-tw-c4t"/>
                                                         <constraint firstAttribute="width" constant="70" id="qsa-Zw-5x0"/>
@@ -682,11 +683,11 @@
             </objects>
             <point key="canvasLocation" x="1018" y="-764"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="7xM-ZD-v62">
             <objects>
                 <navigationController id="sNg-K5-jJc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="i01-1" id="Gxo-Ft-ohm"/>
+                    <tabBarItem key="tabBarItem" title="" id="Gxo-Ft-ohm"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="se5-1W-36h">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -702,10 +703,9 @@
     </scenes>
     <resources>
         <image name="calendar31" width="32" height="32"/>
-        <image name="i01-1" width="24" height="29"/>
         <image name="location" width="32" height="32"/>
-        <image name="pic1.jpg" width="500" height="500"/>
         <image name="pic900X640.jpg" width="900" height="640"/>
         <image name="tag" width="32" height="32"/>
+        <image name="tmp-head-icon" width="68" height="70"/>
     </resources>
 </document>

@@ -37,7 +37,8 @@
 //Tab Bar
 
 + (UIColor *) tabBarColor {
-    return [UIColor colorWithRed:0.9266 green:0.6583 blue:0.2071 alpha:1.0];
+    //return [UIColor colorWithRed:0.9266 green:0.6583 blue:0.2071 alpha:1.0];
+    return [UIColor colorWithWhite:0.980 alpha:0.100];
 }
 
 //大頭照邊框-boy

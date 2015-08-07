@@ -15,7 +15,7 @@
 
 + (void)processFacebookProfilePictureData:(NSData *)data;
 
-+ (BOOL)userHasValidFacebookData:(PFUser *)user;
+//+ (BOOL)userHasValidFacebookData:(PFUser *)user;
 + (BOOL)userHasProfilePictures:(PFUser *)user;
 + (UIImage *)defaultProfilePicture;
 

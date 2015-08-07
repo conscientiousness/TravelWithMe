@@ -76,7 +76,7 @@
     _wallTableView.opaque = NO;
         
     //Add post Button
-    UIBarButtonItem *postButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(postBtnPressed:)];
+    UIBarButtonItem *postButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(postBtnPressed:)];
         
     self.navigationItem.rightBarButtonItem = postButton;
         
@@ -92,6 +92,9 @@
     self.tabBarController.tabBar.barTintColor = [UIColor tabBarColor];
     self.tabBarController.tabBar.translucent = YES;
     self.tabBarController.view.backgroundColor = [UIColor homeCellbgColor];
+    self.tabBarController.tabBar.layer.borderWidth = 0.5;
+    self.tabBarController.tabBar.layer.borderColor = self.tabBarController.tabBar.barTintColor.CGColor;
+    self.tabBarController.tabBar.clipsToBounds = YES;
 
 }
 

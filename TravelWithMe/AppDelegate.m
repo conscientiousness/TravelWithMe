@@ -49,23 +49,27 @@
     //tab bar icon
     UITabBarItem *tabBarItem0 = [tabBarController.tabBar.items objectAtIndex:0];
     
-    tabBarItem0.selectedImage = [[UIImage imageNamed:@"i01-1"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    tabBarItem0.image = [[UIImage imageNamed:@"i01"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    
+    tabBarItem0.selectedImage = [[UIImage imageNamed:@"tabbar0-selected-icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    tabBarItem0.image = [[UIImage imageNamed:@"tabbar0-unselect-icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    [tabBarItem0 setImageInsets:UIEdgeInsetsMake(8, 0, -8, 0)];
+
     UITabBarItem *tabBarItem1 = [tabBarController.tabBar.items objectAtIndex:1];
     
-    tabBarItem1.selectedImage = [[UIImage imageNamed:@"tag"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    tabBarItem1.image = [[UIImage imageNamed:@"tag"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    tabBarItem1.selectedImage = [[UIImage imageNamed:@"tabbar1-selected-icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    tabBarItem1.image = [[UIImage imageNamed:@"tabbar1-unselect-icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    [tabBarItem1 setImageInsets:UIEdgeInsetsMake(8, 0, -8, 0)];
     
     UITabBarItem *tabBarItem2 = [tabBarController.tabBar.items objectAtIndex:2];
     
-    tabBarItem2.selectedImage = [[UIImage imageNamed:@"calendar31"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    tabBarItem2.image = [[UIImage imageNamed:@"calendar31"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    tabBarItem2.selectedImage = [[UIImage imageNamed:@"tabbar2-selected-icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    tabBarItem2.image = [[UIImage imageNamed:@"tabbar2-unselect-icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    [tabBarItem2 setImageInsets:UIEdgeInsetsMake(8, 0, -8, 0)];
     
     UITabBarItem *tabBarItem3 = [tabBarController.tabBar.items objectAtIndex:3];
     
-    tabBarItem3.selectedImage = [[UIImage imageNamed:@"location"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    tabBarItem3.image = [[UIImage imageNamed:@"location"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    tabBarItem3.selectedImage = [[UIImage imageNamed:@"tabbar3-selected-icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    tabBarItem3.image = [[UIImage imageNamed:@"tabbar3-unselect-icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    [tabBarItem3 setImageInsets:UIEdgeInsetsMake(8, 0, -8, 0)];
     
     
     

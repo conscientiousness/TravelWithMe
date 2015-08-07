@@ -185,10 +185,10 @@
   NSLog(@"Processed profile picture");
 }
 
-+ (BOOL)userHasValidFacebookData:(PFUser *)user {
-    // Check that PFUser has valid fbid that matches current FBSessions userId
-    return [FBSDKAccessToken currentAccessToken];
-}
+//+ (BOOL)userHasValidFacebookData:(PFUser *)user {
+//    // Check that PFUser has valid fbid that matches current FBSessions userId
+//    return [FBSDKAccessToken currentAccessToken];
+//}
 
 + (BOOL)userHasProfilePictures:(PFUser *)user {
     PFFile *profilePictureMedium = [user objectForKey:kPAPUserProfilePicMediumKey];

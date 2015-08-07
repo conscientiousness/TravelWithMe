@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *travelDate;
 @property (weak, nonatomic) IBOutlet UILabel *memo;
 @property (weak, nonatomic) IBOutlet UIButton *joinBtn;
+@property (weak, nonatomic) IBOutlet UILabel *colorLabel;
 
 
 
