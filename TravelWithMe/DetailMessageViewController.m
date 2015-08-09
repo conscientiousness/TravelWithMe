@@ -15,10 +15,16 @@
 
 @interface DetailMessageViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UIImageView *blurImageView;
 @property (weak, nonatomic) IBOutlet UITableView *detailTableView;
 @end
 
 @implementation DetailMessageViewController
+{
+    UIImage *headerPhoto;
+    UIImage *blurImage;
+    ParallaxHeaderView *headerView;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -26,12 +32,36 @@
     _detailTableView.scrollEnabled = YES;
     _detailTableView.delegate = self;
     _detailTableView.dataSource = self;
+
+    //[_blurImageView setImage:[blurImage applyDarkEffect]];
+     
+    /*/blur效果
+    UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    UIVisualEffectView *blurredView = [[UIVisualEffectView alloc]initWithEffect:blurEffect];
+    blurredView.frame = self.view.bounds;
+    blurredView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [self.view addSubview:blurredView];//*/
     
+    MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"讀取中...";
     
-    CGFloat tableViewWidth = [_cellDictData[@"tableViewWidth"] floatValue];
-    ParallaxHeaderView *headerView = [ParallaxHeaderView parallaxHeaderViewWithImage:[UIImage imageNamed:@"pic900X640.jpg"] forSize:CGSizeMake(tableViewWidth, 300)];
-    headerView.headerTitleLabel.text = @"Test GOGOGO";
-    [_detailTableView setTableHeaderView:headerView];
+    //置頂照片
+    PFFile *PFPhoto = (PFFile*)_cellDictData[@"photo"];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        headerPhoto = [UIImage imageWithData:[PFPhoto getData]];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            CGFloat tableViewWidth = [_cellDictData[@"tableViewWidth"] floatValue];
+            headerView = [ParallaxHeaderView parallaxHeaderViewWithImage:headerPhoto forSize:CGSizeMake(tableViewWidth, 300)];
+            //置頂標題:國家城市
+            headerView.headerTitleLabel.text = _cellDictData[@"countryCity"];
+            [_detailTableView setTableHeaderView:headerView];
+
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        });
+    });
+
+    
     
     //設定Navigation bar為透明
     self.navigationController.navigationBar.translucent = YES;

@@ -8,7 +8,6 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
-
 #import "ParallaxHeaderView.h"
 #import "UIImage+ImageEffects.h"
 
@@ -25,7 +24,13 @@ static CGFloat kParallaxDeltaFactor = 0.5f;
 static CGFloat kMaxTitleAlphaOffset = 100.0f;
 static CGFloat kLabelPaddingDist = 8.0f;
 
+
 @implementation ParallaxHeaderView
+{
+    UILabel *_titleLabel;
+    UILabel *_subtitleLabel;
+    UIView *_labelBackground;
+}
 
 + (id)parallaxHeaderViewWithImage:(UIImage *)image forSize:(CGSize)headerSize;
 {

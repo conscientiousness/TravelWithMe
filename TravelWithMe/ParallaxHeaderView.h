@@ -17,4 +17,5 @@
 + (id)parallaxHeaderViewWithSubView:(UIView *)subView;
 - (void)layoutHeaderViewForScrollViewOffset:(CGPoint)offset;
 - (void)refreshBlurViewForNewImage;
+
 @end

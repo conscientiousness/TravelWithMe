@@ -36,6 +36,7 @@
 		F4457C1B1B77553C00A4952B /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = F4457C1A1B77553C00A4952B /* UIImage+ImageEffects.m */; };
 		F4457C201B7755D000A4952B /* ParallaxHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4457C1F1B7755D000A4952B /* ParallaxHeaderView.m */; };
 		F4457C231B7756B900A4952B /* DetailMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4457C221B7756B900A4952B /* DetailMessageViewController.m */; };
+		F4457C281B77B71400A4952B /* background-blur-image.png in Resources */ = {isa = PBXBuildFile; fileRef = F4457C271B77B71400A4952B /* background-blur-image.png */; };
 		F445E3671B6E09CD00818A18 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F445E3661B6E09CD00818A18 /* Login.storyboard */; };
 		F445E36B1B6E0A1100818A18 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F445E36A1B6E0A1100818A18 /* LoginViewController.m */; };
 		F4461ECC1B7622CE00052C94 /* JL3MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4461ECB1B7622CE00052C94 /* JL3MessageTableViewCell.m */; };
@@ -119,6 +120,7 @@
 		F4457C1F1B7755D000A4952B /* ParallaxHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParallaxHeaderView.m; sourceTree = "<group>"; };
 		F4457C211B7756B900A4952B /* DetailMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailMessageViewController.h; sourceTree = "<group>"; };
 		F4457C221B7756B900A4952B /* DetailMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailMessageViewController.m; sourceTree = "<group>"; };
+		F4457C271B77B71400A4952B /* background-blur-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-blur-image.png"; sourceTree = "<group>"; };
 		F445E3661B6E09CD00818A18 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		F445E3691B6E0A1100818A18 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		F445E36A1B6E0A1100818A18 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -414,6 +416,7 @@
 				F4441C2C1B6341AB00272BF3 /* iphone_v_photo.jpg */,
 				F4267BCE1B6A632E00F42330 /* pic900X640.jpg */,
 				F43C83191B71B13200D2A389 /* tmp900X640.png */,
+				F4457C271B77B71400A4952B /* background-blur-image.png */,
 				F47556A81B4BACF2008CEE3A /* Main.storyboard */,
 			);
 			name = HomeVIew;
@@ -548,6 +551,7 @@
 				F443FB431B60FBF300F30847 /* Map.storyboard in Resources */,
 				F4441C2E1B6341AB00272BF3 /* iphone_v_photo.jpg in Resources */,
 				F465736E1B5552D800DA3D7B /* JL2TableViewCell.xib in Resources */,
+				F4457C281B77B71400A4952B /* background-blur-image.png in Resources */,
 				F442CE151B64B8FC001CD62B /* (null) in Resources */,
 				F42EBDA41B68C8D400606D9B /* (null) in Resources */,
 				F46573641B5545F700DA3D7B /* kyoto.jpg in Resources */,

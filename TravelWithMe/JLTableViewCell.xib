@@ -94,7 +94,7 @@
                         </state>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hgq-pS-586">
-                        <rect key="frame" x="89" y="266" width="150" height="36"/>
+                        <rect key="frame" x="89" y="263.5" width="150" height="36"/>
                         <color key="backgroundColor" red="0.34509803919999998" green="0.72156862749999995" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="150" id="tbL-w2-WGa"/>
@@ -128,7 +128,7 @@
                     <constraint firstItem="H2a-TT-0J7" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="SYu-s7-xQd"/>
                     <constraint firstItem="h6w-Y2-8uf" firstAttribute="top" secondItem="cdk-w1-BML" secondAttribute="top" id="UdF-9X-8cN"/>
                     <constraint firstAttribute="centerX" secondItem="rd1-a9-TkV" secondAttribute="centerX" id="Ypb-kv-zb8"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="hgq-pS-586" secondAttribute="bottom" id="blm-GF-GI3"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="hgq-pS-586" secondAttribute="bottom" constant="2" id="blm-GF-GI3"/>
                     <constraint firstItem="ztV-Rc-y0O" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="cY2-yP-bch"/>
                     <constraint firstItem="h6w-Y2-8uf" firstAttribute="top" secondItem="XCT-DB-nYh" secondAttribute="top" id="dhP-Jo-wQW"/>
                     <constraint firstItem="H2a-TT-0J7" firstAttribute="top" secondItem="GSV-95-4XQ" secondAttribute="bottom" constant="8" id="e2H-YP-Ouu"/>
