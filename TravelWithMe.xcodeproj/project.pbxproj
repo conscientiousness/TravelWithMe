@@ -10,6 +10,10 @@
 		2D3778851B73472500EBF77D /* FavoriteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3778841B73472500EBF77D /* FavoriteTableViewController.m */; };
 		2D3778881B7348B300EBF77D /* FavoriteDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3778871B7348B300EBF77D /* FavoriteDetailViewController.m */; };
 		2DAA761F1B7353F700B84782 /* FavoriteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAA761E1B7353F700B84782 /* FavoriteTableViewCell.m */; };
+		A50ED43B1B784F9C00651C3E /* AnimationTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = A50ED43A1B784F9C00651C3E /* AnimationTableView.m */; };
+		A50ED43F1B7852AD00651C3E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A50ED43E1B7852AD00651C3E /* UIKit.framework */; };
+		A50ED4411B7852D200651C3E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A50ED4401B7852D200651C3E /* Foundation.framework */; };
+		A50ED4431B78584500651C3E /* B@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A50ED4421B78584500651C3E /* B@3x.png */; };
 		A52E4EB91B63817400285C83 /* VIPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A52E4EB81B63817400285C83 /* VIPViewController.m */; };
 		A53CBBB71B67FA630039369A /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A53CBBB61B67FA630039369A /* MapViewController.m */; };
 		A5D374921B646BEC00A57791 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5D374911B646BEC00A57791 /* MessageUI.framework */; };
@@ -98,6 +102,11 @@
 		44BCC490976B2C9D75A6541C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		6F3E25EB0578BADAF278F744 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2A1A052438CEB9B22CC0114 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		A50ED4391B784F9C00651C3E /* AnimationTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationTableView.h; sourceTree = "<group>"; };
+		A50ED43A1B784F9C00651C3E /* AnimationTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationTableView.m; sourceTree = "<group>"; };
+		A50ED43E1B7852AD00651C3E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A50ED4401B7852D200651C3E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A50ED4421B78584500651C3E /* B@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "B@3x.png"; sourceTree = "<group>"; };
 		A52E4EB71B63817400285C83 /* VIPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VIPViewController.h; sourceTree = "<group>"; };
 		A52E4EB81B63817400285C83 /* VIPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VIPViewController.m; sourceTree = "<group>"; };
 		A53CBBB51B67FA630039369A /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
@@ -188,6 +197,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A50ED4411B7852D200651C3E /* Foundation.framework in Frameworks */,
+				A50ED43F1B7852AD00651C3E /* UIKit.framework in Frameworks */,
 				A5D374921B646BEC00A57791 /* MessageUI.framework in Frameworks */,
 				F443FB451B610E8300F30847 /* MapKit.framework in Frameworks */,
 				F48B16E21B5F40D900E96B0D /* Social.framework in Frameworks */,
@@ -218,6 +229,8 @@
 		789577451EB4254F88441C4F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A50ED4401B7852D200651C3E /* Foundation.framework */,
+				A50ED43E1B7852AD00651C3E /* UIKit.framework */,
 				A5D374911B646BEC00A57791 /* MessageUI.framework */,
 				F443FB441B610E8300F30847 /* MapKit.framework */,
 				F48B16E11B5F40D900E96B0D /* Social.framework */,
@@ -445,11 +458,14 @@
 		F486EF441B4C328E008CB97B /* SettingView */ = {
 			isa = PBXGroup;
 			children = (
+				A50ED4421B78584500651C3E /* B@3x.png */,
 				F486EF451B4C34D2008CB97B /* Setting.storyboard */,
 				A5E1670B1B6903B70036ABE4 /* SettingTableViewControlle.h */,
 				A5E1670C1B6903B70036ABE4 /* SettingTableViewControlle.m */,
 				A52E4EB71B63817400285C83 /* VIPViewController.h */,
 				A52E4EB81B63817400285C83 /* VIPViewController.m */,
+				A50ED4391B784F9C00651C3E /* AnimationTableView.h */,
+				A50ED43A1B784F9C00651C3E /* AnimationTableView.m */,
 			);
 			name = SettingView;
 			sourceTree = "<group>";
@@ -553,6 +569,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A50ED4431B78584500651C3E /* B@3x.png in Resources */,
 				F445E3671B6E09CD00818A18 /* Login.storyboard in Resources */,
 				F443FB431B60FBF300F30847 /* Map.storyboard in Resources */,
 				F4441C2E1B6341AB00272BF3 /* iphone_v_photo.jpg in Resources */,
@@ -634,6 +651,7 @@
 				A52E4EB91B63817400285C83 /* VIPViewController.m in Sources */,
 				F44829951B6FB9D800ED0EA1 /* UIImage+ResizeAdditions.m in Sources */,
 				F465736D1B5552D800DA3D7B /* JL2TableViewCell.m in Sources */,
+				A50ED43B1B784F9C00651C3E /* AnimationTableView.m in Sources */,
 				2DAA761F1B7353F700B84782 /* FavoriteTableViewCell.m in Sources */,
 				F4DA4C5C1B4E9D0500421F2F /* UIColors.m in Sources */,
 				F4DA4C601B4EC96F00421F2F /* HomePostViewController.m in Sources */,

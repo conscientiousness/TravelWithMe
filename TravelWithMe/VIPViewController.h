@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AnimationTableView.h"
 
-@interface VIPViewController : UIViewController
+
+
+@interface VIPViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+
 
 @end
