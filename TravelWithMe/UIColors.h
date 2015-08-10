@@ -15,6 +15,6 @@
 + (UIColor *) tabBarColor;
 + (UIColor *) boyPhotoBorderColor;
 + (UIColor *) girlPhotoBorderColor;
-
++ (UIColor *) customGreenColor;
 
 @end

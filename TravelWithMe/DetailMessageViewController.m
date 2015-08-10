@@ -14,6 +14,7 @@
 #import "ParallaxHeaderView.h"
 #import "IHKeyboardAvoiding.h"
 #import "UIImage+ImageEffects.h"
+#import "SSBouncyButton.h"
 
 @interface DetailMessageViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, UITextFieldDelegate>
 
@@ -27,10 +28,18 @@
     UIImageView *blurImageView;
     UIVisualEffectView *blurredView;
     ParallaxHeaderView *headerView;
+    SSBouncyButton *customJoinButton;
+    PFUser *user;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    if (!user) {
+        user = [PFUser currentUser];
+        [[PFUser currentUser] fetchIfNeeded];
+    }
+    //NSLog(@"%@",_cellDictData);
     
     _detailTableView.scrollEnabled = YES;
     _detailTableView.delegate = self;
@@ -121,10 +130,11 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [(ParallaxHeaderView *)_detailTableView.tableHeaderView refreshBlurViewForNewImage];
+    [(ParallaxHeaderView *)headerView refreshBlurViewForNewImage];
     //NSLog(@"view = %f",self.view.frame.size.height);
     //[IHKeyboardAvoiding setAvoidingView:(UIView *)self.view];
 }
+
 
 #pragma mark - Table View
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -168,21 +178,23 @@
     [tableView registerNib:nib forCellReuseIdentifier:identifier];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     
-    if(indexPath.section == 0) {
-        
-        [self prepareJLCellstyle:(JLTableViewCell *)cell cellForRowAtIndexPath:indexPath];
-        [self setJLCellData:(JLTableViewCell*)cell cellForRowAtIndexPath:indexPath];
-        
-    } else if(indexPath.section == 1) {
-        [self prepareJL2Cellstyle:(JL2TableViewCell *)cell cellForRowAtIndexPath:indexPath];
-        //[self setJLCellData:(JLTableViewCell*)cell cellForRowAtIndexPath:indexPath];
-        
-    } else if(indexPath.section == 2) {
-        [self prepareJL3MessagCellstyle:(JL3MessageTableViewCell *)cell cellForRowAtIndexPath:indexPath];
-    }
-    
+    //NSLog(@"cell = %@ ,section = %ld,row = %ld",cell,indexPath.section,indexPath.row);
+ 
+        if(indexPath.section == 0) {
+            [self prepareJLCellstyle:(JLTableViewCell *)cell cellForRowAtIndexPath:indexPath];
+            [self setJLCellData:(JLTableViewCell*)cell cellForRowAtIndexPath:indexPath];
+            
+        } else if(indexPath.section == 1) {
+            [self prepareJL2Cellstyle:(JL2TableViewCell *)cell cellForRowAtIndexPath:indexPath];
+            //[self setJLCellData:(JLTableViewCell*)cell cellForRowAtIndexPath:indexPath];
+            
+        } else if(indexPath.section == 2) {
+            [self prepareJL3MessagCellstyle:(JL3MessageTableViewCell *)cell cellForRowAtIndexPath:indexPath];
+        }
+
     return cell;
 }
+
 
 - (void) prepareJLCellstyle:(JLTableViewCell *)cell cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -207,8 +219,64 @@
     cell.headPhoto.layer.borderColor = [UIColor boyPhotoBorderColor].CGColor;
     cell.headPhoto.clipsToBounds = YES;
     
-    //按鈕
-    cell.joinBtn.layer.cornerRadius = 15.0;
+    //參加按鈕
+    if (customJoinButton==nil) {
+        CGRect btnBounds = cell.joinBtn.bounds;
+        if([[UIScreen mainScreen] bounds].size.height >= 667.0){
+            btnBounds.origin.y = cell.frame.size.height - btnBounds.size.height - 20;
+            btnBounds.size.height += 5;
+            btnBounds.size.width += 5;
+        }else{
+            btnBounds.origin.y = cell.frame.size.height - btnBounds.size.height - 5;
+        }
+        
+        btnBounds.origin.x = cell.frame.size.width/2 - btnBounds.size.width/2;
+        //NSLog(@"height = %f",[[UIScreen mainScreen] bounds].size.height);
+        // tintColor, cornerRadius
+        customJoinButton = [[SSBouncyButton alloc] initWithFrame:btnBounds];
+        
+        customJoinButton.tintColor = [UIColor customGreenColor];
+        customJoinButton.cornerRadius = 10;
+        customJoinButton.titleLabel.font = [UIFont systemFontOfSize:20.0];
+        [customJoinButton setTitle:@"參加" forState:UIControlStateNormal];
+        [customJoinButton setTitle:@"退出" forState:UIControlStateSelected];
+        [customJoinButton addTarget:self action:@selector(buttonDidPress:) forControlEvents:UIControlEventTouchUpInside];
+        //customJoinButton.selected = YES;
+        [cell.joinBtn removeFromSuperview];
+        [cell addSubview:customJoinButton];
+    }
+    
+    
+}
+
+- (void)buttonDidPress:(UIButton *)button
+{
+    button.selected = !button.selected;
+    
+    if(user) {
+        
+        MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.labelText = @"發送中...";
+        
+        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            
+            PFObject *travelMatePost = [PFObject objectWithoutDataWithClassName:@"TravelMatePost" objectId:_cellDictData[@"objectId"]];
+            
+            PFRelation *relation = [user relationForKey:@"joinPosts"];
+            [relation addObject:travelMatePost];
+            [user save];
+            
+            relation = [travelMatePost relationForKey:@"joinUsers"];
+            [relation addObject:user];
+            [travelMatePost save];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+            });
+        });
+        
+        
+    }
 }
 
 - (void) setJLCellData:(JLTableViewCell *)cell cellForRowAtIndexPath:(NSIndexPath *)indexPath {

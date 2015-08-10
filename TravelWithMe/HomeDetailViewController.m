@@ -23,6 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
 
     //置頂照片
     [self setHeaderImage:[UIImage imageNamed:@"tmp900X640.png"]];

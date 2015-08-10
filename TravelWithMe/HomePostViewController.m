@@ -68,9 +68,9 @@
     if(user) {
         
         MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.labelText = @"上傳中...";
+        hud.labelText = @"發送中...";
         
-        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             
             PFObject *travelMatePost = [PFObject objectWithClassName:@"TravelMatePost"];
             travelMatePost[@"countryCity"] = _countryCityText.text;
@@ -90,7 +90,7 @@
             PFFile *imageFile = [PFFile fileWithName:[NSString stringWithFormat:@"testPhoto.jpg"] data:imageData];
             travelMatePost[@"photo"] = imageFile;
             
-            travelMatePost[@"days"] = [NSNumber numberWithInteger: [_daysText.text integerValue]];;
+            travelMatePost[@"days"] = [NSNumber numberWithInteger: [_daysText.text integerValue]];
             
             travelMatePost[@"createUser"] = user;
             

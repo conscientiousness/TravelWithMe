@@ -11,3 +11,4 @@ pod "ParseFacebookUtilsV4"
 pod "JDFPeekaboo"
 pod "TPKeyboardAvoiding"
 pod "IHKeyboardAvoiding"
+pod "SSBouncyButton", '~> 1.0'

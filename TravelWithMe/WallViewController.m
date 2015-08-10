@@ -184,6 +184,7 @@
     UITableViewCell *cell = [self prepareTableViewCell:tableView cellForRowAtIndexPath:indexPath cellIdentifier:identifier];
     [self setCellData:(WallTableViewCell *)cell cellForRowAtIndexPath:indexPath];
     
+
     return cell;
 }
 
@@ -192,7 +193,7 @@
     
     //NSArray *cuser = [[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"createUser"];
     
-    //NSLog(@"objectId= %@",cuser.objectId);
+    //NSLog(@"objectId= %@",((PFObject *)arrayDatas[indexPath.row]).objectId);
     
     //名字
     cell.userNameLabel.text = arrayDatas[indexPath.row][@"createUser"][@"displayName"];
@@ -345,8 +346,10 @@
                  @"locationTag":arrayDatas[indexPath.row][@"locationTag"],
                  @"memo":arrayDatas[indexPath.row][@"memo"],
                  @"startDate":[cellDateFormatter stringFromDate:arrayDatas[indexPath.row][@"startDate"]],
-                 @"tableViewWidth":@(_wallTableView.frame.size.width)
+                 @"tableViewWidth":@(_wallTableView.frame.size.width),
+                 @"objectId":((PFObject *)arrayDatas[indexPath.row]).objectId
                  };
+    
     [detailVC setValue:dictData forKey:@"cellDictData"];
 }
 
@@ -371,11 +374,12 @@
     //PFQuery *query = [relation query];
     PFQuery *query = [PFQuery queryWithClassName:@"TravelMatePost"];
     [query includeKey:@"createUser.User"];
+    [query orderByDescending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             // The find succeeded.
             //NSLog(@"Successfully = %ld", objects.count);
-            //NSLog(@"objects = %@", [objects);
+            //NSLog(@"objects = %@", objects);
             // Do something with the found objects
             arrayDatas = [[NSMutableArray alloc] initWithArray:objects];
             

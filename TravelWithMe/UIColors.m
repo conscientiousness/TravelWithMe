@@ -35,7 +35,6 @@
 }
 
 //Tab Bar
-
 + (UIColor *) tabBarColor {
     //return [UIColor colorWithRed:0.9266 green:0.6583 blue:0.2071 alpha:1.0];
     return [UIColor colorWithWhite:0.980 alpha:0.100];
@@ -53,7 +52,10 @@
     return [UIColor colorWithRed:0.9632 green:0.7918 blue:0.7941 alpha:1.0];
 }
 
-
+//專屬綠色
++ (UIColor *) customGreenColor {
+    return [UIColor colorWithRed:0.082 green:0.647 blue:0.698 alpha:1.000];
+}
 
 
 
