@@ -19,6 +19,6 @@
 #import "PAPConstants.h"
 #import "PAPUtility.h"
 #import "PAPCache.h"
-#import "UIImage+ImageEffects.h"
+#import "UIImage+ResizeAdditions.h"
 #endif
 

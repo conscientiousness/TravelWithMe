@@ -130,6 +130,8 @@
 {
     // 取得使用者拍攝的照片
     pickImage = [info valueForKey:UIImagePickerControllerOriginalImage];
+    //縮圖
+    pickImage = [pickImage thumbnailImage:500 transparentBorder:0 cornerRadius:0 interpolationQuality:kCGInterpolationHigh];
     // 存檔
     //UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
     // 關閉拍照程式

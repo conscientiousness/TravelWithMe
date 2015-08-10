@@ -465,9 +465,12 @@
                                         <rect key="frame" x="8" y="10" width="480" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="5ae-DC-X4l" id="oPG-Dy-7zc"/>
+                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TTI-PQ-uck">
-                                        <rect key="frame" x="559" y="8" width="33" height="33"/>
+                                        <rect key="frame" x="557" y="8" width="33" height="33"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="33" id="K0t-20-veG"/>
                                             <constraint firstAttribute="width" constant="33" id="fgU-qb-7mh"/>
@@ -483,7 +486,7 @@
                                     <constraint firstAttribute="centerY" secondItem="TTI-PQ-uck" secondAttribute="centerY" id="CGa-RC-kdC"/>
                                     <constraint firstAttribute="centerY" secondItem="zaT-Vj-PKK" secondAttribute="centerY" id="clq-dI-49Z"/>
                                     <constraint firstAttribute="width" secondItem="TTI-PQ-uck" secondAttribute="width" multiplier="10/2" id="q4t-hz-fA7"/>
-                                    <constraint firstAttribute="trailing" secondItem="TTI-PQ-uck" secondAttribute="trailing" constant="8" id="qxT-uU-MVg"/>
+                                    <constraint firstAttribute="trailing" secondItem="TTI-PQ-uck" secondAttribute="trailing" constant="10" id="qxT-uU-MVg"/>
                                     <constraint firstItem="zaT-Vj-PKK" firstAttribute="width" secondItem="JAZ-NO-PSa" secondAttribute="width" multiplier="8/10" id="ynO-aX-Z4U"/>
                                     <constraint firstItem="zaT-Vj-PKK" firstAttribute="leading" secondItem="JAZ-NO-PSa" secondAttribute="leading" constant="8" id="zqd-Lx-oHV"/>
                                 </constraints>
@@ -501,28 +504,20 @@
                                     <outlet property="delegate" destination="5ae-DC-X4l" id="BrN-3L-iaF"/>
                                 </connections>
                             </tableView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background-blur-image.png" translatesAutoresizingMaskIntoConstraints="NO" id="7dg-RZ-h8q">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="JAZ-NO-PSa" firstAttribute="leading" secondItem="MVm-k5-MJJ" secondAttribute="leadingMargin" constant="-16" id="2KO-Xo-BFL"/>
                             <constraint firstItem="g0S-Pa-fEf" firstAttribute="top" secondItem="MVm-k5-MJJ" secondAttribute="topMargin" constant="64" id="5CI-xG-ljT"/>
                             <constraint firstAttribute="bottomMargin" secondItem="JAZ-NO-PSa" secondAttribute="bottom" id="CUG-80-ODP"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="7dg-RZ-h8q" secondAttribute="trailing" constant="-16" id="F7n-wb-9Al"/>
                             <constraint firstAttribute="trailingMargin" secondItem="g0S-Pa-fEf" secondAttribute="trailing" constant="-16" id="Mbf-wX-6uU"/>
-                            <constraint firstItem="7dg-RZ-h8q" firstAttribute="leading" secondItem="MVm-k5-MJJ" secondAttribute="leadingMargin" constant="-16" id="Qqt-fc-Ozo"/>
                             <constraint firstItem="JAZ-NO-PSa" firstAttribute="top" secondItem="g0S-Pa-fEf" secondAttribute="bottom" id="WwU-el-hab"/>
-                            <constraint firstItem="7dg-RZ-h8q" firstAttribute="top" secondItem="MVm-k5-MJJ" secondAttribute="topMargin" id="hDP-V8-Dwo"/>
-                            <constraint firstItem="Vry-qW-Nlv" firstAttribute="top" secondItem="7dg-RZ-h8q" secondAttribute="bottom" id="rhN-Wi-EKA"/>
                             <constraint firstItem="g0S-Pa-fEf" firstAttribute="leading" secondItem="MVm-k5-MJJ" secondAttribute="leadingMargin" constant="-16" id="sya-E6-uZr"/>
                             <constraint firstAttribute="trailingMargin" secondItem="JAZ-NO-PSa" secondAttribute="trailing" constant="-16" id="xKb-g9-2jQ"/>
                         </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="blurImageView" destination="7dg-RZ-h8q" id="vXd-zI-t6r"/>
                         <outlet property="detailTableView" destination="g0S-Pa-fEf" id="qhZ-2P-mdJ"/>
                     </connections>
                 </viewController>
@@ -786,7 +781,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="background-blur-image.png" width="100" height="100"/>
         <image name="calendar31" width="32" height="32"/>
         <image name="location" width="32" height="32"/>
         <image name="message-icon" width="64" height="64"/>

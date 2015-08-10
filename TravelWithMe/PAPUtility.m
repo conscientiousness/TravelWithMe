@@ -158,7 +158,7 @@
     UIImage *image = [UIImage imageWithData:newProfilePictureData];
 
     UIImage *mediumImage = [image thumbnailImage:280 transparentBorder:0 cornerRadius:0 interpolationQuality:kCGInterpolationHigh];
-    UIImage *smallRoundedImage = [image thumbnailImage:64 transparentBorder:0 cornerRadius:0 interpolationQuality:kCGInterpolationLow];
+    UIImage *smallRoundedImage = [image thumbnailImage:70 transparentBorder:0 cornerRadius:0 interpolationQuality:kCGInterpolationMedium];
 
     NSData *mediumImageData = UIImageJPEGRepresentation(mediumImage, 0.5); // using JPEG for larger pictures
     NSData *smallRoundedImageData = UIImagePNGRepresentation(smallRoundedImage);

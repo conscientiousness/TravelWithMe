@@ -8,6 +8,7 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
+
 #import "ParallaxHeaderView.h"
 #import "UIImage+ImageEffects.h"
 
@@ -24,13 +25,7 @@ static CGFloat kParallaxDeltaFactor = 0.5f;
 static CGFloat kMaxTitleAlphaOffset = 100.0f;
 static CGFloat kLabelPaddingDist = 8.0f;
 
-
 @implementation ParallaxHeaderView
-{
-    UILabel *_titleLabel;
-    UILabel *_subtitleLabel;
-    UIView *_labelBackground;
-}
 
 + (id)parallaxHeaderViewWithImage:(UIImage *)image forSize:(CGSize)headerSize;
 {
@@ -67,7 +62,7 @@ static CGFloat kLabelPaddingDist = 8.0f;
     {
         frame.origin.y = MAX(offset.y *kParallaxDeltaFactor, 0);
         self.imageScrollView.frame = frame;
-        self.bluredImageView.alpha =   1 / kDefaultHeaderFrame.size.height * offset.y * 2;
+        self.bluredImageView.alpha =   1 / kDefaultHeaderFrame.size.height * offset.y * 1.5;
         self.clipsToBounds = YES;
     }
     else
@@ -86,7 +81,7 @@ static CGFloat kLabelPaddingDist = 8.0f;
 - (void)refreshBlurViewForNewImage
 {
     UIImage *screenShot = [self screenShotOfView:self];
-    screenShot = [screenShot applyBlurWithRadius:5 tintColor:[UIColor colorWithWhite:0.6 alpha:0.2] saturationDeltaFactor:1.0 maskImage:nil];
+    screenShot = [screenShot applyBlurWithRadius:5 tintColor:[UIColor colorWithRed:0.518 green:0.600 blue:0.555 alpha:0.200] saturationDeltaFactor:1.0 maskImage:nil];
     self.bluredImageView.image = screenShot;
 }
 

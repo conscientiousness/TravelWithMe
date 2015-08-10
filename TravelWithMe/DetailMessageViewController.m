@@ -12,10 +12,11 @@
 #import "JL2TableViewCell.h"
 #import "JL3MessageTableViewCell.h"
 #import "ParallaxHeaderView.h"
+#import "IHKeyboardAvoiding.h"
+#import "UIImage+ImageEffects.h"
 
-@interface DetailMessageViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
+@interface DetailMessageViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, UITextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet UIImageView *blurImageView;
 @property (weak, nonatomic) IBOutlet UITableView *detailTableView;
 @end
 
@@ -23,6 +24,8 @@
 {
     UIImage *headerPhoto;
     UIImage *blurImage;
+    UIImageView *blurImageView;
+    UIVisualEffectView *blurredView;
     ParallaxHeaderView *headerView;
 }
 
@@ -33,14 +36,27 @@
     _detailTableView.delegate = self;
     _detailTableView.dataSource = self;
 
-    //[_blurImageView setImage:[blurImage applyDarkEffect]];
-     
-    /*/blur效果
-    UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
-    UIVisualEffectView *blurredView = [[UIVisualEffectView alloc]initWithEffect:blurEffect];
-    blurredView.frame = self.view.bounds;
-    blurredView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    [self.view addSubview:blurredView];//*/
+    if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_7_1)
+    {
+        blurImage = [UIImage imageNamed:@"bg-blur-image"];
+        blurImageView = [[UIImageView alloc]initWithFrame:self.view.bounds];
+        blurImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        [blurImageView setImage:[blurImage applyDarkEffect]];
+    }
+    else
+    {
+        //blur效果
+        UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+        blurredView = [[UIVisualEffectView alloc]initWithEffect:blurEffect];
+        blurredView.frame = self.view.bounds;
+        blurredView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        [self.view addSubview:blurredView];
+    }
+    
+    //手勢控制鍵盤縮放
+    UITapGestureRecognizer *clickGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(clickMethof:)];
+    
+    [self.view addGestureRecognizer:clickGesture];
     
     MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"讀取中...";
@@ -56,12 +72,19 @@
             //置頂標題:國家城市
             headerView.headerTitleLabel.text = _cellDictData[@"countryCity"];
             [_detailTableView setTableHeaderView:headerView];
+            
+            if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_7_1)
+            {
+                [blurImageView removeFromSuperview];
+            } else {
+                [blurredView removeFromSuperview];
+            }
+            
 
             [MBProgressHUD hideHUDForView:self.view animated:YES];
         });
     });
-
-    
+  
     
     //設定Navigation bar為透明
     self.navigationController.navigationBar.translucent = YES;
@@ -71,6 +94,8 @@
     self.view.opaque = NO;
     _detailTableView.backgroundColor = [UIColor homeCellbgColor];
     _detailTableView.opaque = NO;
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardHeightChange:) name:UIKeyboardWillShowNotification object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -91,13 +116,14 @@
 
 - (void) viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
-
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [(ParallaxHeaderView *)_detailTableView.tableHeaderView refreshBlurViewForNewImage];
     [super viewDidAppear:animated];
+    [(ParallaxHeaderView *)_detailTableView.tableHeaderView refreshBlurViewForNewImage];
+    //NSLog(@"view = %f",self.view.frame.size.height);
+    //[IHKeyboardAvoiding setAvoidingView:(UIView *)self.view];
 }
 
 #pragma mark - Table View
@@ -297,4 +323,31 @@
     }
 }
 
+#pragma mark - TextField Delegate
+//- (BOOL)textFieldShouldBeginEditing:(UITextView *)textView {
+//    
+//    //[_detailTableView setContentOffset:CGPointMake(0, CGFLOAT_MAX)];
+//    return YES;
+//}
+
+
+#pragma mark - keyboard move view method
+- (void)clickMethof:(UITapGestureRecognizer*)recognizer{
+    [self.view endEditing:YES];
+    CGRect frame = self.view.frame;
+    frame.origin.y = 0;
+    [self.view setFrame:frame];
+    //    [_txtFiledComment resignFirstResponder];
+    //    [_txtFieldName resignFirstResponder];
+    
+}
+
+- (void)keyboardHeightChange:(NSNotification*)notification{
+    NSDictionary *userInfo = [notification userInfo];
+    CGSize keyboardSize = [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    
+    CGRect frame = self.view.frame;
+    frame.origin.y = -(keyboardSize.height);
+    [self.view setFrame:frame];
+}
 @end
