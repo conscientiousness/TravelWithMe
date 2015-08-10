@@ -30,6 +30,7 @@
     ParallaxHeaderView *headerView;
     SSBouncyButton *customJoinButton;
     PFUser *user;
+    bool isJoin;
 }
 
 - (void)viewDidLoad {
@@ -70,28 +71,8 @@
     MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"讀取中...";
     
-    //置頂照片
-    PFFile *PFPhoto = (PFFile*)_cellDictData[@"photo"];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        headerPhoto = [UIImage imageWithData:[PFPhoto getData]];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            CGFloat tableViewWidth = [_cellDictData[@"tableViewWidth"] floatValue];
-            headerView = [ParallaxHeaderView parallaxHeaderViewWithImage:headerPhoto forSize:CGSizeMake(tableViewWidth, 300)];
-            //置頂標題:國家城市
-            headerView.headerTitleLabel.text = _cellDictData[@"countryCity"];
-            [_detailTableView setTableHeaderView:headerView];
-            
-            if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_7_1)
-            {
-                [blurImageView removeFromSuperview];
-            } else {
-                [blurredView removeFromSuperview];
-            }
-            
-
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-        });
+        [self getData];
     });
   
     
@@ -220,63 +201,74 @@
     cell.headPhoto.clipsToBounds = YES;
     
     //參加按鈕
-    if (customJoinButton==nil) {
-        CGRect btnBounds = cell.joinBtn.bounds;
-        if([[UIScreen mainScreen] bounds].size.height >= 667.0){
-            btnBounds.origin.y = cell.frame.size.height - btnBounds.size.height - 20;
-            btnBounds.size.height += 5;
-            btnBounds.size.width += 5;
-        }else{
-            btnBounds.origin.y = cell.frame.size.height - btnBounds.size.height - 5;
+    if(![user.objectId isEqualToString:_cellDictData[@"userObjectId"]]) {
+        if (customJoinButton==nil) {
+            CGRect btnBounds = cell.joinBtn.bounds;
+            if([[UIScreen mainScreen] bounds].size.height >= 667.0){
+                btnBounds.origin.y = cell.frame.size.height - btnBounds.size.height - 20;
+                btnBounds.size.height += 5;
+                btnBounds.size.width += 5;
+            }else{
+                btnBounds.origin.y = cell.frame.size.height - btnBounds.size.height - 5;
+            }
+            
+            btnBounds.origin.x = cell.frame.size.width/2 - btnBounds.size.width/2;
+            //NSLog(@"height = %f",[[UIScreen mainScreen] bounds].size.height);
+            // tintColor, cornerRadius
+            customJoinButton = [[SSBouncyButton alloc] initWithFrame:btnBounds];
+            
+            customJoinButton.tintColor = [UIColor customGreenColor];
+            customJoinButton.cornerRadius = 10;
+            customJoinButton.titleLabel.font = [UIFont systemFontOfSize:20.0];
+            [customJoinButton setTitle:@"參加" forState:UIControlStateNormal];
+            [customJoinButton setTitle:@"退出" forState:UIControlStateSelected];
+            [customJoinButton addTarget:self action:@selector(buttonDidPress:) forControlEvents:UIControlEventTouchUpInside];
+            if(isJoin)//目前User已參加
+                customJoinButton.selected = YES;
+            [cell addSubview:customJoinButton];
         }
-        
-        btnBounds.origin.x = cell.frame.size.width/2 - btnBounds.size.width/2;
-        //NSLog(@"height = %f",[[UIScreen mainScreen] bounds].size.height);
-        // tintColor, cornerRadius
-        customJoinButton = [[SSBouncyButton alloc] initWithFrame:btnBounds];
-        
-        customJoinButton.tintColor = [UIColor customGreenColor];
-        customJoinButton.cornerRadius = 10;
-        customJoinButton.titleLabel.font = [UIFont systemFontOfSize:20.0];
-        [customJoinButton setTitle:@"參加" forState:UIControlStateNormal];
-        [customJoinButton setTitle:@"退出" forState:UIControlStateSelected];
-        [customJoinButton addTarget:self action:@selector(buttonDidPress:) forControlEvents:UIControlEventTouchUpInside];
-        //customJoinButton.selected = YES;
-        [cell.joinBtn removeFromSuperview];
-        [cell addSubview:customJoinButton];
     }
-    
-    
+    cell.joinBtn.hidden = YES;
 }
 
 - (void)buttonDidPress:(UIButton *)button
 {
     button.selected = !button.selected;
     
-    if(user) {
-        
-        MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.labelText = @"發送中...";
-        
-        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            
-            PFObject *travelMatePost = [PFObject objectWithoutDataWithClassName:@"TravelMatePost" objectId:_cellDictData[@"objectId"]];
-            
-            PFRelation *relation = [user relationForKey:@"joinPosts"];
-            [relation addObject:travelMatePost];
-            [user save];
-            
-            relation = [travelMatePost relationForKey:@"joinUsers"];
-            [relation addObject:user];
-            [travelMatePost save];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [MBProgressHUD hideHUDForView:self.view animated:YES];
-            });
-        });
-        
-        
-    }
+    NSLog(@"%d",button.selected);
+    
+    UIViewController *targetViewController;
+    UIStoryboard *storyboard;
+    
+//    if(user) {
+//        
+//        MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//        hud.labelText = @"發送中...";
+//        
+//        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//            
+//            PFObject *travelMatePost = [PFObject objectWithoutDataWithClassName:@"TravelMatePost" objectId:_cellDictData[@"objectId"]];
+//            
+//            PFRelation *relation = [user relationForKey:@"joinPosts"];
+//            [relation addObject:travelMatePost];
+//            [user save];
+//            
+//            relation = [travelMatePost relationForKey:@"joinUsers"];
+//            [relation addObject:user];
+//            [travelMatePost save];
+//            
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [MBProgressHUD hideHUDForView:self.view animated:YES];
+//            });
+//        });
+//    } else {
+//        storyboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+//        
+//        targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"loginViewController"];
+//        
+//        [self presentViewController:targetViewController animated:YES completion:nil];
+//
+//    }
 }
 
 - (void) setJLCellData:(JLTableViewCell *)cell cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -375,6 +367,10 @@
         //NSLog(@"rect height = %f",rect.size.height);
         result += rect.size.height;
         
+        //如果使用者為原PO,參加按鈕隱藏
+        if([user.objectId isEqualToString:_cellDictData[@"userObjectId"]])
+            result -= 50.0;
+        
     }else{
         result = 80.0;
     }
@@ -418,4 +414,42 @@
     frame.origin.y = -(keyboardSize.height);
     [self.view setFrame:frame];
 }
+
+#pragma mark - Loading Parse Data
+- (void)getData {
+    
+    //取得目前使用者是否有參加該活動
+    PFObject *post = [PFObject objectWithoutDataWithClassName:@"TravelMatePost" objectId:_cellDictData[@"objectId"]];
+    PFRelation *relation = [post relationForKey:@"joinUsers"];
+    PFQuery *query = [relation query];
+    if(query.countObjects > 0)
+        isJoin = true;
+
+    
+    //NSLog(@"%ld",[query findObjects].count);
+    
+    
+    CGFloat tableViewWidth = [_cellDictData[@"tableViewWidth"] floatValue];
+    //置頂照片
+    PFFile *PFPhoto = (PFFile*)_cellDictData[@"photo"];
+    headerPhoto = [UIImage imageWithData:[PFPhoto getData]];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        headerView = [ParallaxHeaderView parallaxHeaderViewWithImage:headerPhoto forSize:CGSizeMake(tableViewWidth, 300)];
+        //置頂標題:國家城市
+        headerView.headerTitleLabel.text = _cellDictData[@"countryCity"];
+        [_detailTableView setTableHeaderView:headerView];
+        
+        if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_7_1)
+        {
+            [blurImageView removeFromSuperview];
+        } else {
+            [blurredView removeFromSuperview];
+        }
+        
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    });
+
+}
+
 @end

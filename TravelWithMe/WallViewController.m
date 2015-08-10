@@ -193,7 +193,7 @@
     
     //NSArray *cuser = [[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"createUser"];
     
-    //NSLog(@"objectId= %@",((PFObject *)arrayDatas[indexPath.row]).objectId);
+    //NSLog(@"objectId= %@",((PFObject *)arrayDatas[indexPath.row][@"createUser"]).objectId);
     
     //名字
     cell.userNameLabel.text = arrayDatas[indexPath.row][@"createUser"][@"displayName"];
@@ -347,7 +347,8 @@
                  @"memo":arrayDatas[indexPath.row][@"memo"],
                  @"startDate":[cellDateFormatter stringFromDate:arrayDatas[indexPath.row][@"startDate"]],
                  @"tableViewWidth":@(_wallTableView.frame.size.width),
-                 @"objectId":((PFObject *)arrayDatas[indexPath.row]).objectId
+                 @"objectId":((PFObject *)arrayDatas[indexPath.row]).objectId,
+                 @"userObjectId":((PFObject *)arrayDatas[indexPath.row][@"createUser"]).objectId
                  };
     
     [detailVC setValue:dictData forKey:@"cellDictData"];
