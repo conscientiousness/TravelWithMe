@@ -17,7 +17,6 @@
 #import "SSBouncyButton.h"
 
 @interface DetailMessageViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, UITextFieldDelegate>
-
 @property (weak, nonatomic) IBOutlet UITableView *detailTableView;
 @end
 
@@ -30,7 +29,7 @@
     ParallaxHeaderView *headerView;
     SSBouncyButton *customJoinButton;
     PFUser *user;
-    bool isJoin;
+    NSNumber *isJoin;
 }
 
 - (void)viewDidLoad {
@@ -223,12 +222,13 @@
             [customJoinButton setTitle:@"參加" forState:UIControlStateNormal];
             [customJoinButton setTitle:@"退出" forState:UIControlStateSelected];
             [customJoinButton addTarget:self action:@selector(buttonDidPress:) forControlEvents:UIControlEventTouchUpInside];
-            if(isJoin)//目前User已參加
-                customJoinButton.selected = YES;
             [cell addSubview:customJoinButton];
         }
     }
     cell.joinBtn.hidden = YES;
+    if(isJoin)//目前User已參加
+        customJoinButton.selected = YES;
+    //NSLog(@"what??? = %ld",[isJoin integerValue]);
 }
 
 - (void)buttonDidPress:(UIButton *)button
@@ -422,18 +422,16 @@
     PFObject *post = [PFObject objectWithoutDataWithClassName:@"TravelMatePost" objectId:_cellDictData[@"objectId"]];
     PFRelation *relation = [post relationForKey:@"joinUsers"];
     PFQuery *query = [relation query];
-    if(query.countObjects > 0)
-        isJoin = true;
-
-    
-    //NSLog(@"%ld",[query findObjects].count);
-    
+    //NSLog(@"%ld",query.countObjects);
+    isJoin = @(query.countObjects);
+    //NSLog(@"%ld",[isJoin integerValue]);
     
     CGFloat tableViewWidth = [_cellDictData[@"tableViewWidth"] floatValue];
     //置頂照片
     PFFile *PFPhoto = (PFFile*)_cellDictData[@"photo"];
     headerPhoto = [UIImage imageWithData:[PFPhoto getData]];
     dispatch_async(dispatch_get_main_queue(), ^{
+        
         headerView = [ParallaxHeaderView parallaxHeaderViewWithImage:headerPhoto forSize:CGSizeMake(tableViewWidth, 300)];
         //置頂標題:國家城市
         headerView.headerTitleLabel.text = _cellDictData[@"countryCity"];
@@ -446,7 +444,7 @@
             [blurredView removeFromSuperview];
         }
         
-        
+        [_detailTableView reloadData];
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     });
 
