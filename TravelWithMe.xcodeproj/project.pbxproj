@@ -24,6 +24,7 @@
 		F42EBDAE1B68D0C100606D9B /* (null) in Resources */ = {isa = PBXBuildFile; };
 		F42EBDB01B68D1EE00606D9B /* (null) in Resources */ = {isa = PBXBuildFile; };
 		F42EBDB21B68FF1400606D9B /* (null) in Resources */ = {isa = PBXBuildFile; };
+		F43B3B7F1B75C03F0034B20F /* JL3MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F43B3B7D1B75C03F0034B20F /* JL3MessageTableViewCell.xib */; };
 		F43C831A1B71B13200D2A389 /* tmp900X640.png in Resources */ = {isa = PBXBuildFile; fileRef = F43C83191B71B13200D2A389 /* tmp900X640.png */; };
 		F442CE151B64B8FC001CD62B /* (null) in Resources */ = {isa = PBXBuildFile; };
 		F443FB431B60FBF300F30847 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F443FB421B60FBF300F30847 /* Map.storyboard */; };
@@ -32,8 +33,13 @@
 		F443FB4F1B612F9300F30847 /* WallTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F443FB4E1B612F9300F30847 /* WallTableViewCell.m */; };
 		F4441C2D1B6341AB00272BF3 /* iphone_h_photo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F4441C2B1B6341AB00272BF3 /* iphone_h_photo.jpg */; };
 		F4441C2E1B6341AB00272BF3 /* iphone_v_photo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F4441C2C1B6341AB00272BF3 /* iphone_v_photo.jpg */; };
+		F4457C1B1B77553C00A4952B /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = F4457C1A1B77553C00A4952B /* UIImage+ImageEffects.m */; };
+		F4457C201B7755D000A4952B /* ParallaxHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4457C1F1B7755D000A4952B /* ParallaxHeaderView.m */; };
+		F4457C231B7756B900A4952B /* DetailMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4457C221B7756B900A4952B /* DetailMessageViewController.m */; };
+		F4457C281B77B71400A4952B /* background-blur-image.png in Resources */ = {isa = PBXBuildFile; fileRef = F4457C271B77B71400A4952B /* background-blur-image.png */; };
 		F445E3671B6E09CD00818A18 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F445E3661B6E09CD00818A18 /* Login.storyboard */; };
 		F445E36B1B6E0A1100818A18 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F445E36A1B6E0A1100818A18 /* LoginViewController.m */; };
+		F4461ECC1B7622CE00052C94 /* JL3MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4461ECB1B7622CE00052C94 /* JL3MessageTableViewCell.m */; };
 		F44829941B6FB9D800ED0EA1 /* UIImage+AlphaAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F448298F1B6FB9D800ED0EA1 /* UIImage+AlphaAdditions.m */; };
 		F44829951B6FB9D800ED0EA1 /* UIImage+ResizeAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F44829911B6FB9D800ED0EA1 /* UIImage+ResizeAdditions.m */; };
 		F44829961B6FB9D800ED0EA1 /* UIImage+RoundedCornerAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F44829931B6FB9D800ED0EA1 /* UIImage+RoundedCornerAdditions.m */; };
@@ -98,6 +104,7 @@
 		A5E1670B1B6903B70036ABE4 /* SettingTableViewControlle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingTableViewControlle.h; sourceTree = "<group>"; };
 		A5E1670C1B6903B70036ABE4 /* SettingTableViewControlle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewControlle.m; sourceTree = "<group>"; };
 		F4267BCE1B6A632E00F42330 /* pic900X640.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pic900X640.jpg; sourceTree = "<group>"; };
+		F43B3B7D1B75C03F0034B20F /* JL3MessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JL3MessageTableViewCell.xib; sourceTree = "<group>"; };
 		F43C83191B71B13200D2A389 /* tmp900X640.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tmp900X640.png; sourceTree = "<group>"; };
 		F443FB421B60FBF300F30847 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
 		F443FB441B610E8300F30847 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -107,10 +114,19 @@
 		F443FB4E1B612F9300F30847 /* WallTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WallTableViewCell.m; sourceTree = "<group>"; };
 		F4441C2B1B6341AB00272BF3 /* iphone_h_photo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iphone_h_photo.jpg; sourceTree = "<group>"; };
 		F4441C2C1B6341AB00272BF3 /* iphone_v_photo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iphone_v_photo.jpg; sourceTree = "<group>"; };
+		F4457C191B77553C00A4952B /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		F4457C1A1B77553C00A4952B /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		F4457C1E1B7755D000A4952B /* ParallaxHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParallaxHeaderView.h; sourceTree = "<group>"; };
+		F4457C1F1B7755D000A4952B /* ParallaxHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParallaxHeaderView.m; sourceTree = "<group>"; };
+		F4457C211B7756B900A4952B /* DetailMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailMessageViewController.h; sourceTree = "<group>"; };
+		F4457C221B7756B900A4952B /* DetailMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailMessageViewController.m; sourceTree = "<group>"; };
+		F4457C271B77B71400A4952B /* background-blur-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-blur-image.png"; sourceTree = "<group>"; };
 		F445E3661B6E09CD00818A18 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		F445E3691B6E0A1100818A18 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		F445E36A1B6E0A1100818A18 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		F445E36D1B6E0C4E00818A18 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		F4461ECA1B7622CE00052C94 /* JL3MessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JL3MessageTableViewCell.h; sourceTree = "<group>"; };
+		F4461ECB1B7622CE00052C94 /* JL3MessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JL3MessageTableViewCell.m; sourceTree = "<group>"; };
 		F448298E1B6FB9D800ED0EA1 /* UIImage+AlphaAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+AlphaAdditions.h"; sourceTree = "<group>"; };
 		F448298F1B6FB9D800ED0EA1 /* UIImage+AlphaAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+AlphaAdditions.m"; sourceTree = "<group>"; };
 		F44829901B6FB9D800ED0EA1 /* UIImage+ResizeAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ResizeAdditions.h"; sourceTree = "<group>"; };
@@ -240,12 +256,17 @@
 			children = (
 				F4DA4C641B4FF09200421F2F /* HomeDetailViewController.h */,
 				F4DA4C651B4FF09200421F2F /* HomeDetailViewController.m */,
+				F4457C211B7756B900A4952B /* DetailMessageViewController.h */,
+				F4457C221B7756B900A4952B /* DetailMessageViewController.m */,
 				F46573661B5552D800DA3D7B /* JLTableViewCell.h */,
 				F46573671B5552D800DA3D7B /* JLTableViewCell.m */,
 				F46573681B5552D800DA3D7B /* JL2TableViewCell.h */,
 				F46573691B5552D800DA3D7B /* JL2TableViewCell.m */,
 				F465736A1B5552D800DA3D7B /* JL2TableViewCell.xib */,
 				F465736B1B5552D800DA3D7B /* JLTableViewCell.xib */,
+				F4461ECA1B7622CE00052C94 /* JL3MessageTableViewCell.h */,
+				F4461ECB1B7622CE00052C94 /* JL3MessageTableViewCell.m */,
+				F43B3B7D1B75C03F0034B20F /* JL3MessageTableViewCell.xib */,
 			);
 			name = DetailView;
 			sourceTree = "<group>";
@@ -268,6 +289,45 @@
 				F443FB4E1B612F9300F30847 /* WallTableViewCell.m */,
 			);
 			name = DynamicWall;
+			sourceTree = "<group>";
+		};
+		F4457C1C1B77557500A4952B /* ParseSampleCode */ = {
+			isa = PBXGroup;
+			children = (
+				F44829981B6FBA5800ED0EA1 /* PAPUtility.h */,
+				F44829991B6FBA5800ED0EA1 /* PAPUtility.m */,
+				F448299B1B6FBA8B00ED0EA1 /* PAPConstants.h */,
+				F448299C1B6FBA8B00ED0EA1 /* PAPConstants.m */,
+				F448299E1B6FBAFF00ED0EA1 /* PAPCache.h */,
+				F448299F1B6FBAFF00ED0EA1 /* PAPCache.m */,
+				F448298E1B6FB9D800ED0EA1 /* UIImage+AlphaAdditions.h */,
+				F448298F1B6FB9D800ED0EA1 /* UIImage+AlphaAdditions.m */,
+				F44829901B6FB9D800ED0EA1 /* UIImage+ResizeAdditions.h */,
+				F44829911B6FB9D800ED0EA1 /* UIImage+ResizeAdditions.m */,
+				F44829921B6FB9D800ED0EA1 /* UIImage+RoundedCornerAdditions.h */,
+				F44829931B6FB9D800ED0EA1 /* UIImage+RoundedCornerAdditions.m */,
+			);
+			name = ParseSampleCode;
+			sourceTree = "<group>";
+		};
+		F4457C1D1B7755A200A4952B /* ParallaxTableViewHeader */ = {
+			isa = PBXGroup;
+			children = (
+				F4457C191B77553C00A4952B /* UIImage+ImageEffects.h */,
+				F4457C1A1B77553C00A4952B /* UIImage+ImageEffects.m */,
+				F4457C1E1B7755D000A4952B /* ParallaxHeaderView.h */,
+				F4457C1F1B7755D000A4952B /* ParallaxHeaderView.m */,
+			);
+			name = ParallaxTableViewHeader;
+			sourceTree = "<group>";
+		};
+		F4457C241B7783F400A4952B /* OpenSource */ = {
+			isa = PBXGroup;
+			children = (
+				F4457C1D1B7755A200A4952B /* ParallaxTableViewHeader */,
+				F4457C1C1B77557500A4952B /* ParseSampleCode */,
+			);
+			name = OpenSource;
 			sourceTree = "<group>";
 		};
 		F445E3681B6E09D700818A18 /* LoginView */ = {
@@ -310,6 +370,7 @@
 				F443FB411B60FB9A00F30847 /* MapView */,
 				F4DA4C5D1B4E9D0C00421F2F /* Comm */,
 				F445E3681B6E09D700818A18 /* LoginView */,
+				F4457C241B7783F400A4952B /* OpenSource */,
 				F47556AB1B4BACF2008CEE3A /* Images.xcassets */,
 				F47556AD1B4BACF2008CEE3A /* LaunchScreen.xib */,
 				F475569E1B4BACF2008CEE3A /* Supporting Files */,
@@ -355,6 +416,7 @@
 				F4441C2C1B6341AB00272BF3 /* iphone_v_photo.jpg */,
 				F4267BCE1B6A632E00F42330 /* pic900X640.jpg */,
 				F43C83191B71B13200D2A389 /* tmp900X640.png */,
+				F4457C271B77B71400A4952B /* background-blur-image.png */,
 				F47556A81B4BACF2008CEE3A /* Main.storyboard */,
 			);
 			name = HomeVIew;
@@ -393,18 +455,6 @@
 				F47556A31B4BACF2008CEE3A /* AppDelegate.m */,
 				F4DA4C5A1B4E9D0500421F2F /* UIColors.h */,
 				F4DA4C5B1B4E9D0500421F2F /* UIColors.m */,
-				F448298E1B6FB9D800ED0EA1 /* UIImage+AlphaAdditions.h */,
-				F448298F1B6FB9D800ED0EA1 /* UIImage+AlphaAdditions.m */,
-				F44829901B6FB9D800ED0EA1 /* UIImage+ResizeAdditions.h */,
-				F44829911B6FB9D800ED0EA1 /* UIImage+ResizeAdditions.m */,
-				F44829921B6FB9D800ED0EA1 /* UIImage+RoundedCornerAdditions.h */,
-				F44829931B6FB9D800ED0EA1 /* UIImage+RoundedCornerAdditions.m */,
-				F44829981B6FBA5800ED0EA1 /* PAPUtility.h */,
-				F44829991B6FBA5800ED0EA1 /* PAPUtility.m */,
-				F448299B1B6FBA8B00ED0EA1 /* PAPConstants.h */,
-				F448299C1B6FBA8B00ED0EA1 /* PAPConstants.m */,
-				F448299E1B6FBAFF00ED0EA1 /* PAPCache.h */,
-				F448299F1B6FBAFF00ED0EA1 /* PAPCache.m */,
 			);
 			name = Comm;
 			sourceTree = "<group>";
@@ -501,6 +551,7 @@
 				F443FB431B60FBF300F30847 /* Map.storyboard in Resources */,
 				F4441C2E1B6341AB00272BF3 /* iphone_v_photo.jpg in Resources */,
 				F465736E1B5552D800DA3D7B /* JL2TableViewCell.xib in Resources */,
+				F4457C281B77B71400A4952B /* background-blur-image.png in Resources */,
 				F442CE151B64B8FC001CD62B /* (null) in Resources */,
 				F42EBDA41B68C8D400606D9B /* (null) in Resources */,
 				F46573641B5545F700DA3D7B /* kyoto.jpg in Resources */,
@@ -517,6 +568,7 @@
 				F42EBDB21B68FF1400606D9B /* (null) in Resources */,
 				F4267BCF1B6A632E00F42330 /* pic900X640.jpg in Resources */,
 				F47556AC1B4BACF2008CEE3A /* Images.xcassets in Resources */,
+				F43B3B7F1B75C03F0034B20F /* JL3MessageTableViewCell.xib in Resources */,
 				F43C831A1B71B13200D2A389 /* tmp900X640.png in Resources */,
 				F42EBDB01B68D1EE00606D9B /* (null) in Resources */,
 				F42EBD6A1B68790500606D9B /* (null) in Resources */,
@@ -579,6 +631,7 @@
 				F4DA4C601B4EC96F00421F2F /* HomePostViewController.m in Sources */,
 				F44829961B6FB9D800ED0EA1 /* UIImage+RoundedCornerAdditions.m in Sources */,
 				F448299D1B6FBA8B00ED0EA1 /* PAPConstants.m in Sources */,
+				F4457C1B1B77553C00A4952B /* UIImage+ImageEffects.m in Sources */,
 				F445E36B1B6E0A1100818A18 /* LoginViewController.m in Sources */,
 				F443FB4F1B612F9300F30847 /* WallTableViewCell.m in Sources */,
 				F47556A41B4BACF2008CEE3A /* AppDelegate.m in Sources */,
@@ -590,7 +643,10 @@
 				F4DA4C661B4FF09200421F2F /* HomeDetailViewController.m in Sources */,
 				2D3778851B73472500EBF77D /* FavoriteTableViewController.m in Sources */,
 				A53CBBB71B67FA630039369A /* MapViewController.m in Sources */,
+				F4457C201B7755D000A4952B /* ParallaxHeaderView.m in Sources */,
+				F4457C231B7756B900A4952B /* DetailMessageViewController.m in Sources */,
 				F443FB4C1B6124D600F30847 /* WallViewController.m in Sources */,
+				F4461ECC1B7622CE00052C94 /* JL3MessageTableViewCell.m in Sources */,
 				F448299A1B6FBA5800ED0EA1 /* PAPUtility.m in Sources */,
 				F47556A11B4BACF2008CEE3A /* main.m in Sources */,
 			);

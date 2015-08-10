@@ -1,72 +1,81 @@
 //
-//  HomeDetailViewController.m
+//  DetailMessageViewController.m
 //  TravelWithMe
 //
-//  Created by Jesselin on 2015/7/10.
+//  Created by Jesselin on 2015/8/9.
 //  Copyright (c) 2015年 Jesse. All rights reserved.
 //
 
-#import "HomeDetailViewController.h"
+#import "DetailMessageViewController.h"
 #import "UIColors.h"
 #import "JLTableViewCell.h"
 #import "JL2TableViewCell.h"
 #import "JL3MessageTableViewCell.h"
+#import "ParallaxHeaderView.h"
 
-@interface HomeDetailViewController ()
+@interface DetailMessageViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UIImageView *blurImageView;
+@property (weak, nonatomic) IBOutlet UITableView *detailTableView;
 @end
 
-@implementation HomeDetailViewController
+@implementation DetailMessageViewController
 {
-    UIView *menuViewRelative;
+    UIImage *headerPhoto;
+    UIImage *blurImage;
+    ParallaxHeaderView *headerView;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    //置頂照片
-    [self setHeaderImage:[UIImage imageNamed:@"tmp900X640.png"]];
-    PFFile *PFPhoto = (PFFile*)_cellDictData[@"photo"];
-    [PFPhoto getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-        if (!error) {
-            [self setHeaderImage:[UIImage imageWithData:imageData]];
-        }
-    }];
-    //置頂標題:國家城市
-    [self setTitleText:_cellDictData[@"countryCity"]];
-    //置頂副標題:地區
-    [self setSubtitleText:_cellDictData[@"locationTag"]];
-    [self setLabelBackgroundGradientColor:[UIColor colorWithRed:0.0f green:0.0f blue:0.0f alpha:0.7f]];
-    //[self setInteractionsDelegate:self];
-    CGFloat headerHeight = [self headerHeight];
     
-    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(5, headerHeight - 55, 44, 44)];
-    [button setTitle:@"分享" forState:UIControlStateNormal];
-    //[button setImage:[UIImage imageNamed:@"share-icon"] forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(alert:) forControlEvents:UIControlEventTouchUpInside];
-    [self addHeaderOverlayView:button];
+    _detailTableView.scrollEnabled = YES;
+    _detailTableView.delegate = self;
+    _detailTableView.dataSource = self;
+
+    //[_blurImageView setImage:[blurImage applyDarkEffect]];
+     
+    /*/blur效果
+    UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    UIVisualEffectView *blurredView = [[UIVisualEffectView alloc]initWithEffect:blurEffect];
+    blurredView.frame = self.view.bounds;
+    blurredView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [self.view addSubview:blurredView];//*/
+    
+    MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"讀取中...";
+    
+    //置頂照片
+    PFFile *PFPhoto = (PFFile*)_cellDictData[@"photo"];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        headerPhoto = [UIImage imageWithData:[PFPhoto getData]];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            CGFloat tableViewWidth = [_cellDictData[@"tableViewWidth"] floatValue];
+            headerView = [ParallaxHeaderView parallaxHeaderViewWithImage:headerPhoto forSize:CGSizeMake(tableViewWidth, 300)];
+            //置頂標題:國家城市
+            headerView.headerTitleLabel.text = _cellDictData[@"countryCity"];
+            [_detailTableView setTableHeaderView:headerView];
+
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        });
+    });
+
+    
     
     //設定Navigation bar為透明
     self.navigationController.navigationBar.translucent = YES;
     //關閉分隔線
-    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [_detailTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     self.view.backgroundColor = [UIColor homeCellbgColor];
     self.view.opaque = NO;
-    self.tableView.backgroundColor = [UIColor homeCellbgColor];
-    self.tableView.opaque = NO;
-    
-    
-    /*NSArray *subviewArray = [[NSBundle mainBundle] loadNibNamed:@"JL2TableViewCell" owner:self options:nil];
-    UIView *mainView = [subviewArray objectAtIndex:0];
-    mainView.layer.zPosition = 0.1;
-    [self.view addSubview:mainView];*/
-    
-
+    _detailTableView.backgroundColor = [UIColor homeCellbgColor];
+    _detailTableView.opaque = NO;
 }
 
-
-- (void)alert:(UIButton*)sender{
-    [[[UIAlertView alloc] initWithTitle:@"Alert" message:@"You can even add buttons to the header!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:@":)", nil] show];
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -77,13 +86,19 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:NO];
     [self.tabBarController.tabBar setHidden:YES];
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void) viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [(ParallaxHeaderView *)_detailTableView.tableHeaderView refreshBlurViewForNewImage];
+    [super viewDidAppear:animated];
+}
 
 #pragma mark - Table View
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -135,7 +150,7 @@
     } else if(indexPath.section == 1) {
         [self prepareJL2Cellstyle:(JL2TableViewCell *)cell cellForRowAtIndexPath:indexPath];
         //[self setJLCellData:(JLTableViewCell*)cell cellForRowAtIndexPath:indexPath];
-
+        
     } else if(indexPath.section == 2) {
         [self prepareJL3MessagCellstyle:(JL3MessageTableViewCell *)cell cellForRowAtIndexPath:indexPath];
     }
@@ -254,7 +269,7 @@
     CGFloat result;
     
     if(indexPath.section == 0){
-        result = 304.0;
+        result = 310.0;
         
         NSString * memo = _cellDictData[@"memo"];
         NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:12]};
@@ -273,23 +288,13 @@
     return result;
 }
 
-- (CGFloat)horizontalOffset{
-    return 50.0f;
-}
-
-- (void)didTapHeaderImageView:(UIImageView *)imageView
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    NSLog(@"The header imageview was tapped: %@", imageView.description);
+    if (scrollView == _detailTableView)
+    {
+        // pass the current offset of the UITableView so that the ParallaxHeaderView layouts the subViews.
+        [(ParallaxHeaderView *)_detailTableView.tableHeaderView layoutHeaderViewForScrollViewOffset:scrollView.contentOffset];
+    }
 }
-
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    
-}
-
 
 @end

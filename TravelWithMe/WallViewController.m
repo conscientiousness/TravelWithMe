@@ -10,17 +10,19 @@
 #import "WallTableViewCell.h"
 #import "HomePostViewController.h"
 #import "HomeDetailViewController.h"
+//#import "JDFPeekabooCoordinator.h"
 
 
 @interface WallViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *wallTableView;
-@property (nonatomic) CGFloat previousScrollViewYOffset;
+//@property (nonatomic, strong) JDFPeekabooCoordinator *scrollCoordinator;
+//@property (nonatomic) CGFloat previousScrollViewYOffset;
 @end
 
 @implementation WallViewController
 {
     //PFUser *user;
-    CGFloat originNavY;
+    CGRect originNavFrame;
     NSMutableArray *arrayDatas;
     NSDictionary *dictData;
     NSDateFormatter *cellDateFormatter;
@@ -34,6 +36,8 @@
 //        [[PFUser currentUser] fetchIfNeeded];
 //    }
     
+
+    //originNavFrame = self.navigationController.navigationBar.frame;
     
     MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"讀取中...";
@@ -51,6 +55,8 @@
     _wallTableView.delegate = self;
     _wallTableView.dataSource = self;
     
+    //self.scrollCoordinator = [[JDFPeekabooCoordinator alloc] init];
+      
     UIRefreshControl *refresh = [UIRefreshControl new];
     refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"準備更新資料"];
     [refresh addTarget:self action:@selector(refreshView:) forControlEvents:UIControlEventValueChanged];
@@ -62,7 +68,19 @@
     [cellDateFormatter setDateFormat:@"yyyy-MM-dd"];
 }
 
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:YES];
+    
+    // nav tabbar 滾動縮放
+    //self.scrollCoordinator.scrollView = _wallTableView;
+    //self.scrollCoordinator.topView = self.navigationController.navigationBar;
+    //self.scrollCoordinator.bottomView = self.tabBarController.tabBar;
+}
 
+- (void) viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:YES];
+    //[self.navigationController.navigationBar setFrame:originNavFrame];
+}
 
 //初始化UI畫面
 - (void)initUI {
@@ -313,7 +331,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     //跳轉到HomePostViewController
-    HomePostViewController *detailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"detailViewController"];
+    NSString *identifier = @"detailMessageViewController";
+    
+    HomePostViewController *detailVC = [self.storyboard instantiateViewControllerWithIdentifier:identifier];
     [self.navigationController pushViewController:detailVC animated:YES];
     
     //傳值
@@ -324,7 +344,8 @@
                  @"photo":arrayDatas[indexPath.row][@"photo"],
                  @"locationTag":arrayDatas[indexPath.row][@"locationTag"],
                  @"memo":arrayDatas[indexPath.row][@"memo"],
-                 @"startDate":[cellDateFormatter stringFromDate:arrayDatas[indexPath.row][@"startDate"]]
+                 @"startDate":[cellDateFormatter stringFromDate:arrayDatas[indexPath.row][@"startDate"]],
+                 @"tableViewWidth":@(_wallTableView.frame.size.width)
                  };
     [detailVC setValue:dictData forKey:@"cellDictData"];
 }
@@ -448,108 +469,5 @@
     }];
 }
 */
-
-/*
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    //navigation高度,位置與高度比例(不要全部移出畫面)
-    CGRect navFrame = self.navigationController.navigationBar.frame;
-    CGFloat navSize = navFrame.size.height - 21;
-    CGFloat navFramePercentageHidden = ((20 - navFrame.origin.y) / (navFrame.size.height - 1));
-    
-    //tabbar
-    CGRect tabFrame = self.tabBarController.tabBar.frame;
-    CGFloat tabSize = tabFrame.size.height;
-    //CGFloat tabFramePercentageHidden = (tabFrame.origin.y / tabFrame.size.height);
-    
-    
-    CGFloat scrollOffset = scrollView.contentOffset.y;
-    CGFloat scrollDiff = scrollOffset - self.previousScrollViewYOffset;
-    CGFloat scrollHeight = scrollView.frame.size.height;
-    CGFloat scrollContentSizeHeight = scrollView.contentSize.height + scrollView.contentInset.bottom;
-    
-   
-    if (scrollOffset <= -scrollView.contentInset.top) { //tableView 目前捲動位置在最上方
-        navFrame.origin.y = 20;
-        tabFrame.origin.y = self.view.frame.size.height - tabSize;
-    } else if ((scrollOffset + scrollHeight) >= scrollContentSizeHeight) { //捲動位置在最下面
-        navFrame.origin.y = -navSize;
-        tabFrame.origin.y = self.view.frame.size.height + tabSize;
-    } else {
-        navFrame.origin.y = MIN(20, MAX(-navSize, navFrame.origin.y - scrollDiff));
-        tabFrame.origin.y = MIN(self.view.frame.size.height, self.view.frame.size.height - tabSize + scrollDiff);
-        
-    }
-    
-    //NSLog(@"navY= %f, tabY= %f",navFrame.origin.y,tabFrame.origin.y);
-    
-    [self.navigationController.navigationBar setFrame:navFrame];
-    [self.tabBarController.tabBar setFrame:tabFrame];
-    
-    [self updateBarButtonItems:(1 - navFramePercentageHidden)];
-    self.previousScrollViewYOffset = scrollOffset;
-}
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{
-    [self stoppedScrolling];
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView
-                  willDecelerate:(BOOL)decelerate
-{
-    if (!decelerate) {
-        [self stoppedScrolling];
-    }
-}
-
-//當滑動停止設定navigation與tabbar淡入淡出效果
-- (void)stoppedScrolling
-{
-    CGRect navFrame = self.navigationController.navigationBar.frame;
-    if (navFrame.origin.y < 20) {
-        [self animateNavBarTo:-(navFrame.size.height - 21)];
-        NSLog(@"navY= %f,",-(navFrame.size.height - 21));
-    }
-    
-    CGRect tabFrame = self.tabBarController.tabBar.frame;
-    if (tabFrame.origin.y > self.view.frame.size.height - 1) {
-        [self animateNavBarTo:self.view.frame.size.height];
-    }
-}
-
-//navigation bar item 等比例淡化
-- (void)updateBarButtonItems:(CGFloat)alpha
-{
-    [self.navigationItem.leftBarButtonItems enumerateObjectsUsingBlock:^(UIBarButtonItem* item, NSUInteger i, BOOL *stop) {
-        item.customView.alpha = alpha;
-    }];
-    [self.navigationItem.rightBarButtonItems enumerateObjectsUsingBlock:^(UIBarButtonItem* item, NSUInteger i, BOOL *stop) {
-        item.customView.alpha = alpha;
-    }];
-    self.navigationItem.titleView.alpha = alpha;
-    self.navigationController.navigationBar.tintColor = [self.navigationController.navigationBar.tintColor colorWithAlphaComponent:alpha];
-}
-
-//淡出效果
-- (void)animateNavBarTo:(CGFloat)y
-{
-    [UIView animateWithDuration:0.2 animations:^{
-        CGRect frame = self.navigationController.navigationBar.frame;
-        CGFloat alpha = (frame.origin.y >= y ? 0 : 1);
-        frame.origin.y = y;
-        [self.navigationController.navigationBar setFrame:frame];
-        [self updateBarButtonItems:alpha];
-    }];
-}
-
-- (void)animateTabBarTo:(CGFloat)y
-{
-    [UIView animateWithDuration:0.2 animations:^{
-        CGRect frame = self.tabBarController.tabBar.frame;
-        frame.origin.y = y;
-        [self.tabBarController.tabBar setFrame:frame];
-    }];
-}*/
 
 @end
