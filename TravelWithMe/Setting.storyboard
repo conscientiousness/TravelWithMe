@@ -225,77 +225,11 @@
                     <view key="view" contentMode="scaleToFill" id="dWo-ro-Jot">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iig-Id-4h9">
-                                <rect key="frame" x="16" y="203" width="568" height="49"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="49" id="LN2-hx-oYY"/>
-                                </constraints>
-                            </view>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="DMq-UW-vRu">
-                                <rect key="frame" x="16" y="253" width="568" height="29"/>
-                                <segments>
-                                    <segment title="旅遊紀錄"/>
-                                    <segment title="足跡"/>
-                                </segments>
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </segmentedControl>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="GYX-mj-jOc">
-                                <rect key="frame" x="16" y="283" width="568" height="273"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Settingcell" rowHeight="90" id="LNg-1h-yiH">
-                                        <rect key="frame" x="0.0" y="0.0" width="568" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LNg-1h-yiH" id="eMg-k3-N1I">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NZ7-Ta-VjE">
-                                <rect key="frame" x="16" y="64" width="568" height="138"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic1.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="IU3-Bo-iyJ">
-                                        <rect key="frame" x="239" y="24" width="90" height="90"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="90" id="XcY-Ei-acI"/>
-                                            <constraint firstAttribute="width" constant="90" id="aOU-Cg-NsN"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstItem="IU3-Bo-iyJ" firstAttribute="top" secondItem="NZ7-Ta-VjE" secondAttribute="top" constant="24" id="LiX-Na-kxh"/>
-                                    <constraint firstAttribute="centerX" secondItem="IU3-Bo-iyJ" secondAttribute="centerX" id="U0C-OJ-uqm"/>
-                                    <constraint firstAttribute="height" constant="138" id="Xab-1c-ZIx"/>
-                                </constraints>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" red="0.98431372549999996" green="0.86666666670000003" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="NZ7-Ta-VjE" firstAttribute="trailing" secondItem="dWo-ro-Jot" secondAttribute="trailingMargin" id="2LC-Nk-qIy"/>
-                            <constraint firstItem="DMq-UW-vRu" firstAttribute="top" secondItem="iig-Id-4h9" secondAttribute="bottom" constant="1" id="4zj-St-p5Q"/>
-                            <constraint firstItem="iig-Id-4h9" firstAttribute="trailing" secondItem="dWo-ro-Jot" secondAttribute="trailingMargin" id="A79-Mi-eU8"/>
-                            <constraint firstItem="NZ7-Ta-VjE" firstAttribute="top" secondItem="uLq-Tb-cqD" secondAttribute="bottom" id="F6Y-i4-J2F"/>
-                            <constraint firstItem="GYX-mj-jOc" firstAttribute="leading" secondItem="dWo-ro-Jot" secondAttribute="leadingMargin" id="LJ6-Ro-Q5V"/>
-                            <constraint firstItem="DMq-UW-vRu" firstAttribute="leading" secondItem="dWo-ro-Jot" secondAttribute="leadingMargin" id="Lp6-Hk-Zx3"/>
-                            <constraint firstItem="91j-8r-KEX" firstAttribute="top" secondItem="GYX-mj-jOc" secondAttribute="bottom" id="MZV-iF-MHn"/>
-                            <constraint firstItem="NZ7-Ta-VjE" firstAttribute="leading" secondItem="dWo-ro-Jot" secondAttribute="leadingMargin" id="OZt-TV-KTy"/>
-                            <constraint firstItem="iig-Id-4h9" firstAttribute="top" secondItem="NZ7-Ta-VjE" secondAttribute="bottom" constant="1" id="RTO-tj-kzO"/>
-                            <constraint firstItem="GYX-mj-jOc" firstAttribute="top" secondItem="DMq-UW-vRu" secondAttribute="bottom" constant="2" id="fAQ-Ws-X2k"/>
-                            <constraint firstItem="DMq-UW-vRu" firstAttribute="trailing" secondItem="dWo-ro-Jot" secondAttribute="trailingMargin" id="hQc-pM-aVs"/>
-                            <constraint firstItem="iig-Id-4h9" firstAttribute="leading" secondItem="dWo-ro-Jot" secondAttribute="leadingMargin" id="rH5-77-ems"/>
-                            <constraint firstItem="GYX-mj-jOc" firstAttribute="trailing" secondItem="dWo-ro-Jot" secondAttribute="trailingMargin" id="thF-en-5Ub"/>
-                        </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="會員登入" id="hW0-f7-VK9"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="theImageView" destination="IU3-Bo-iyJ" id="N0J-SY-xAe"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N4Y-Ry-ruh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -323,6 +257,5 @@
     </scenes>
     <resources>
         <image name="Travel With Me" width="320" height="568"/>
-        <image name="pic1.jpg" width="500" height="500"/>
     </resources>
 </document>
