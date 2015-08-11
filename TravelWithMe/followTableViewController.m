@@ -1,32 +1,28 @@
 //
-//  FavoriteTableViewController.m
+//  followTableViewController.m
 //  TravelWithMe
 //
-//  Created by ajay on 2015/8/6.
+//  Created by ajay on 2015/8/11.
 //  Copyright (c) 2015年 Jesse. All rights reserved.
 //
 
-#import "FavoriteTableViewController.h"
+#import "followTableViewController.h"
 #import "UIColors.h"
 #import "FavoriteDetailViewController.h"
-#import "FavoriteTableViewCell.h"
-@interface FavoriteTableViewController ()
-@property (strong, nonatomic) IBOutlet UITableView *favoriteTableView;
-
+@interface followTableViewController ()
+@property (strong, nonatomic) IBOutlet UITableView *followTableView;
 @end
 
-@implementation FavoriteTableViewController
+@implementation followTableViewController
 {
-    
-    NSMutableArray *cellitem;
-    
+    NSMutableArray *list2;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initUI];
     
+    list2 = [[NSMutableArray alloc]initWithObjects:@"東京",@"北京",@"南京",@"西京",@"中空", nil];
     
-    cellitem = [[NSMutableArray alloc ]initWithObjects:@"東北亞", @"東南亞", @"亞洲", @"歐洲", @"美洲", @"澳洲",nil];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -35,14 +31,13 @@
 }
 - (void)initUI {
     
-    _favoriteTableView.backgroundColor = [UIColor homeCellbgColor];
+    _followTableView.backgroundColor = [UIColor homeCellbgColor];
     //透明度
-    _favoriteTableView.opaque = NO;
+    _followTableView.opaque = NO;
     
-   
+    
     
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -59,27 +54,21 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
     // Return the number of rows in the section.
-    return[cellitem count];
-
+    return [list2 count];
 }
-
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellIdentifier"];
+    static NSString *identifier =@"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"identifier" ];
     if(cell == nil){
         
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         
     }
-    cell.textLabel.text = [cellitem objectAtIndex:[indexPath row]];
+    cell.textLabel.text = [list2 objectAtIndex:[indexPath row]];
     // Configure the cell...
     
-    return cell;
-}
-
+    return cell;}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     //透過標簽取得目標實體
@@ -89,7 +78,6 @@
     //切換畫面
     [self.navigationController pushViewController:detailView animated:YES];
 }
-
 
 
 /*

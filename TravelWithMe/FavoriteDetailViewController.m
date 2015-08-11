@@ -2,14 +2,14 @@
 //  FavoriteDetailViewController.m
 //  TravelWithMe
 //
-//  Created by ajay on 2015/8/6.
+//  Created by ajay on 2015/8/11.
 //  Copyright (c) 2015年 Jesse. All rights reserved.
 //
 
 #import "FavoriteDetailViewController.h"
-
+#import "UIColors.h"
 @interface FavoriteDetailViewController ()
-@property (strong, nonatomic) IBOutlet UIView *detailView;
+@property (strong, nonatomic) IBOutlet UIView *detailTableView;
 
 @end
 
@@ -18,20 +18,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initUI];
-
     // Do any additional setup after loading the view.
+}
+- (void)initUI {
+    
+    _detailTableView.backgroundColor = [UIColor homeCellbgColor];
+    //透明度
+    _detailTableView.opaque = NO;
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-- (void)initUI {
-    
-    _detailView.backgroundColor = [UIColor homeCellbgColor];
-    //透明度
-    _detailView.opaque = NO;
-    
 }
 
 /*
