@@ -1,1 +1,0 @@
-../../../ParallaxBlur/Pod/Classes/JPBParallaxBlurViewController.h
