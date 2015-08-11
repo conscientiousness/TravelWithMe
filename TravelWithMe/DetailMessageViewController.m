@@ -70,6 +70,9 @@
     MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"讀取中...";
     
+    
+    //dispatch_queue_t downloadQueue = dispatch_queue_create("Download", nil);
+    //dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [self getData];
     });
@@ -226,8 +229,10 @@
         }
     }
     cell.joinBtn.hidden = YES;
-    if(isJoin)//目前User已參加
+    if([isJoin integerValue]>0)//目前User已參加
         customJoinButton.selected = YES;
+    else
+        customJoinButton.selected = NO;
     //NSLog(@"what??? = %ld",[isJoin integerValue]);
 }
 
@@ -235,40 +240,53 @@
 {
     button.selected = !button.selected;
     
-    NSLog(@"%d",button.selected);
+    //NSLog(@"%d",button.selected);
     
     UIViewController *targetViewController;
     UIStoryboard *storyboard;
     
-//    if(user) {
-//        
-//        MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-//        hud.labelText = @"發送中...";
-//        
-//        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//            
-//            PFObject *travelMatePost = [PFObject objectWithoutDataWithClassName:@"TravelMatePost" objectId:_cellDictData[@"objectId"]];
-//            
-//            PFRelation *relation = [user relationForKey:@"joinPosts"];
-//            [relation addObject:travelMatePost];
-//            [user save];
-//            
-//            relation = [travelMatePost relationForKey:@"joinUsers"];
-//            [relation addObject:user];
-//            [travelMatePost save];
-//            
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                [MBProgressHUD hideHUDForView:self.view animated:YES];
-//            });
-//        });
-//    } else {
-//        storyboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
-//        
-//        targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"loginViewController"];
-//        
-//        [self presentViewController:targetViewController animated:YES completion:nil];
-//
-//    }
+    if(user) {
+        
+        MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.labelText = @"發送中...";
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            
+            PFObject *travelMatePost = [PFObject objectWithoutDataWithClassName:@"TravelMatePost" objectId:_cellDictData[@"objectId"]];
+            PFRelation *userRelation = [user relationForKey:@"joinPosts"];
+            PFRelation *postRelation = [travelMatePost relationForKey:@"joinUsers"];
+            
+            if(button.selected) { //儲存"參加"關聯
+                
+                
+                [userRelation addObject:travelMatePost];
+                [user save];
+                
+                [postRelation addObject:user];
+                [travelMatePost save];
+            
+            } else { //解除"參加"關聯
+                
+                [userRelation removeObject:travelMatePost];
+                [user save];
+                
+                [postRelation removeObject:user];
+                [travelMatePost save];
+            }
+            
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+            });
+        });
+    } else {
+        storyboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+        
+        targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"loginViewController"];
+        
+        [self presentViewController:targetViewController animated:YES completion:nil];
+
+    }
 }
 
 - (void) setJLCellData:(JLTableViewCell *)cell cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -417,14 +435,13 @@
 
 #pragma mark - Loading Parse Data
 - (void)getData {
-    
+        
     //取得目前使用者是否有參加該活動
     PFObject *post = [PFObject objectWithoutDataWithClassName:@"TravelMatePost" objectId:_cellDictData[@"objectId"]];
     PFRelation *relation = [post relationForKey:@"joinUsers"];
     PFQuery *query = [relation query];
     //NSLog(@"%ld",query.countObjects);
     isJoin = @(query.countObjects);
-    //NSLog(@"%ld",[isJoin integerValue]);
     
     CGFloat tableViewWidth = [_cellDictData[@"tableViewWidth"] floatValue];
     //置頂照片
