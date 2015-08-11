@@ -19,6 +19,7 @@
 		B51A23331B7A5C9900CFD674 /* FavoriteDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51A232D1B7A5C9900CFD674 /* FavoriteDetailViewController.m */; };
 		B51A23341B7A5C9900CFD674 /* favoriteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51A232F1B7A5C9900CFD674 /* favoriteTableViewController.m */; };
 		B51A23351B7A5C9900CFD674 /* followTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51A23311B7A5C9900CFD674 /* followTableViewController.m */; };
+		B5453E271B7A670E008964CE /* mapPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5453E261B7A670E008964CE /* mapPostViewController.m */; };
 		E4C5C083123C6B727AF2A9F8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3E25EB0578BADAF278F744 /* libPods.a */; };
 		F4267BCF1B6A632E00F42330 /* pic900X640.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F4267BCE1B6A632E00F42330 /* pic900X640.jpg */; };
 		F42EBD661B6877BF00606D9B /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -117,6 +118,8 @@
 		B51A232F1B7A5C9900CFD674 /* favoriteTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = favoriteTableViewController.m; sourceTree = "<group>"; };
 		B51A23301B7A5C9900CFD674 /* followTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = followTableViewController.h; sourceTree = "<group>"; };
 		B51A23311B7A5C9900CFD674 /* followTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = followTableViewController.m; sourceTree = "<group>"; };
+		B5453E251B7A670E008964CE /* mapPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mapPostViewController.h; sourceTree = "<group>"; };
+		B5453E261B7A670E008964CE /* mapPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mapPostViewController.m; sourceTree = "<group>"; };
 		F4267BCE1B6A632E00F42330 /* pic900X640.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pic900X640.jpg; sourceTree = "<group>"; };
 		F43B3B7D1B75C03F0034B20F /* JL3MessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JL3MessageTableViewCell.xib; sourceTree = "<group>"; };
 		F43C83191B71B13200D2A389 /* tmp900X640.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tmp900X640.png; sourceTree = "<group>"; };
@@ -267,6 +270,8 @@
 				F443FB421B60FBF300F30847 /* Map.storyboard */,
 				A53CBBB51B67FA630039369A /* MapViewController.h */,
 				A53CBBB61B67FA630039369A /* MapViewController.m */,
+				B5453E251B7A670E008964CE /* mapPostViewController.h */,
+				B5453E261B7A670E008964CE /* mapPostViewController.m */,
 			);
 			name = MapView;
 			sourceTree = "<group>";
@@ -673,6 +678,7 @@
 				B51A23321B7A5C9900CFD674 /* favoriteMainViewController.m in Sources */,
 				F44829A01B6FBAFF00ED0EA1 /* PAPCache.m in Sources */,
 				F4DA4C661B4FF09200421F2F /* HomeDetailViewController.m in Sources */,
+				B5453E271B7A670E008964CE /* mapPostViewController.m in Sources */,
 				A53CBBB71B67FA630039369A /* MapViewController.m in Sources */,
 				F4457C201B7755D000A4952B /* ParallaxHeaderView.m in Sources */,
 				F4457C231B7756B900A4952B /* DetailMessageViewController.m in Sources */,
