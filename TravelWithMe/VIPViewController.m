@@ -33,19 +33,19 @@
     
     
     
-    UIView *headerView;
-    headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,40)]; // x,y,width,height
-    
-    NSArray *itemArray = [NSArray arrayWithObjects: @"我的討論", @"我的足跡", nil];
-    UISegmentedControl *control = [[UISegmentedControl alloc] initWithItems:itemArray];
-    [control setFrame:CGRectMake(1.0, 15, 400, 25.0)];
-    
-    [control setSelectedSegmentIndex:0];
-    [control setEnabled:YES];
-    
-    [headerView addSubview:control];
-    
-    [self.theTableView setTableHeaderView:headerView];
+//    UIView *headerView;
+//    headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,40)]; // x,y,width,height
+//    
+//    NSArray *itemArray = [NSArray arrayWithObjects: @"我的討論", @"我的足跡", nil];
+//    UISegmentedControl *control = [[UISegmentedControl alloc] initWithItems:itemArray];
+//    [control setFrame:CGRectMake(1.0, 15, 400, 25.0)];
+//    
+//    [control setSelectedSegmentIndex:0];
+//    [control setEnabled:YES];
+//    
+//    [headerView addSubview:control];
+//    
+//    [self.theTableView setTableHeaderView:headerView];
     
     
     //大頭照圓形遮罩
@@ -86,7 +86,7 @@
     {
         UITableViewCell *cell = [self.theTableView dequeueReusableCellWithIdentifier:@"cell"];
         
-        cell.textLabel.text = [NSString stringWithFormat:@"%ld",indexPath.row];
+        //cell.textLabel.text = [NSString stringWithFormat:@"%ld",indexPath.row];
         
         return cell;
         
