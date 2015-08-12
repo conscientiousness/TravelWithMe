@@ -240,7 +240,7 @@
 {
     button.selected = !button.selected;
     
-    //NSLog(@"%d",button.selected);
+    NSLog(@"%d",button.selected);
     
     UIViewController *targetViewController;
     UIStoryboard *storyboard;
@@ -437,16 +437,39 @@
 - (void)getData {
         
     //取得目前使用者是否有參加該活動
-    PFObject *post = [PFObject objectWithoutDataWithClassName:@"TravelMatePost" objectId:_cellDictData[@"objectId"]];
-    PFRelation *relation = [post relationForKey:@"joinUsers"];
+    //PFObject *post = [PFObject objectWithoutDataWithClassName:@"TravelMatePost" objectId:_cellDictData[@"objectId"]];
+    PFRelation *relation = [user relationForKey:@"joinPosts"];
     PFQuery *query = [relation query];
-    //NSLog(@"%ld",query.countObjects);
-    isJoin = @(query.countObjects);
+    //query = [query whereKey:@"" equalTo:_cellDictData[@"objectId"]]
+    //NSLog(@"%@",query.findObjects);
     
+    isJoin = @(query.countObjects);
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        
+        if(!error){
+            isJoin = @(objects.count);
+            for(PFObject *object in objects) {
+                NSLog(@"%@",object.objectId);
+            }
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+        
+    }];
+
     CGFloat tableViewWidth = [_cellDictData[@"tableViewWidth"] floatValue];
     //置頂照片
     PFFile *PFPhoto = (PFFile*)_cellDictData[@"photo"];
+    
+//    [PFPhoto getDataInBackgroundWithProgressBlock:^(BOOL succeeded, NSError *error) {
+//        // Handle success or failure here ...
+//    } progressBlock:^(int percentDone) {
+//        // Update your progress spinner here. percentDone will be between 0 and 100.
+//    }];
     headerPhoto = [UIImage imageWithData:[PFPhoto getData]];
+    
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         
         headerView = [ParallaxHeaderView parallaxHeaderViewWithImage:headerPhoto forSize:CGSizeMake(tableViewWidth, 300)];
