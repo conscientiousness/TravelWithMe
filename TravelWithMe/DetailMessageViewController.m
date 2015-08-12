@@ -37,7 +37,6 @@
     
     if (!user) {
         user = [PFUser currentUser];
-        [[PFUser currentUser] fetchIfNeeded];
     }
     //NSLog(@"%@",_cellDictData);
     
@@ -440,23 +439,9 @@
     //PFObject *post = [PFObject objectWithoutDataWithClassName:@"TravelMatePost" objectId:_cellDictData[@"objectId"]];
     PFRelation *relation = [user relationForKey:@"joinPosts"];
     PFQuery *query = [relation query];
-    //query = [query whereKey:@"" equalTo:_cellDictData[@"objectId"]]
-    //NSLog(@"%@",query.findObjects);
-    
+    query = [query whereKey:@"objectId" equalTo:_cellDictData[@"objectId"]];
     isJoin = @(query.countObjects);
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        
-        if(!error){
-            isJoin = @(objects.count);
-            for(PFObject *object in objects) {
-                NSLog(@"%@",object.objectId);
-            }
-        } else {
-            // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-        
-    }];
+    
 
     CGFloat tableViewWidth = [_cellDictData[@"tableViewWidth"] floatValue];
     //置頂照片
