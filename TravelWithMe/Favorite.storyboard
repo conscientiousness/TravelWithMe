@@ -25,7 +25,7 @@
             <objects>
                 <tableViewController id="xg1-5p-8xQ" customClass="favoriteTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="kmx-Ok-64g">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="528"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="530"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -83,35 +83,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WaU-a7-hPy">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="28" width="600" height="620"/>
                                 <connections>
                                     <segue destination="QXW-ge-TAD" kind="embed" id="m7P-zD-GcN"/>
                                 </connections>
                             </containerView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="QkN-W2-ehl">
+                                <rect key="frame" x="0.0" y="64" width="600" height="29"/>
+                                <color key="backgroundColor" red="1" green="0.83211312150000005" blue="0.5507469546" alpha="1" colorSpace="calibratedRGB"/>
+                                <segments>
+                                    <segment title="我參加的"/>
+                                    <segment title="我追蹤的"/>
+                                </segments>
+                                <color key="tintColor" red="0.49479337979999999" green="1" blue="0.93790749240000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="btn:" destination="Z3G-jl-y2E" eventType="valueChanged" id="2b4-ew-mqP"/>
+                                </connections>
+                            </segmentedControl>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8mo-81-2Db">
-                                <rect key="frame" x="0.0" y="64" width="600" height="528"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="530"/>
                                 <connections>
                                     <segue destination="xg1-5p-8xQ" kind="embed" id="od6-9y-Gjy"/>
                                 </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="QkN-W2-ehl" firstAttribute="leading" secondItem="gus-IG-L7W" secondAttribute="leading" id="ARh-fx-biO"/>
+                            <constraint firstAttribute="trailing" secondItem="QkN-W2-ehl" secondAttribute="trailing" id="Oba-bK-Ct1"/>
+                            <constraint firstItem="QkN-W2-ehl" firstAttribute="top" secondItem="3EY-e4-tCo" secondAttribute="bottom" id="j9T-X7-JWX"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="27b-lv-gPF">
                         <nil key="title"/>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="QkN-W2-ehl">
-                            <rect key="frame" x="180" y="7" width="240" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="1" green="0.83211312150000005" blue="0.5507469546" alpha="1" colorSpace="calibratedRGB"/>
-                            <segments>
-                                <segment title="我參加的"/>
-                                <segment title="我追蹤的"/>
-                            </segments>
-                            <color key="tintColor" red="0.49479337979999999" green="1" blue="0.93790749240000004" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="btn:" destination="Z3G-jl-y2E" eventType="valueChanged" id="2b4-ew-mqP"/>
-                            </connections>
-                        </segmentedControl>
                     </navigationItem>
                     <connections>
                         <outlet property="favoriteView" destination="WaU-a7-hPy" id="WYo-1h-QB2"/>
@@ -120,14 +124,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tx0-gE-8EW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="188" y="306"/>
+            <point key="canvasLocation" x="259" y="308"/>
         </scene>
         <!--Follow Table View Controller-->
         <scene sceneID="1u4-8o-8Wn">
             <objects>
                 <tableViewController id="QXW-ge-TAD" customClass="followTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="RJn-5u-Pi1">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="620"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
