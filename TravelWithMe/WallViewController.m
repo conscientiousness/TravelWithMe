@@ -21,7 +21,7 @@
 
 @implementation WallViewController
 {
-    //PFUser *user;
+    PFUser *user;
     CGRect originNavFrame;
     NSMutableArray *arrayDatas;
     NSDictionary *dictData;
@@ -31,10 +31,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    if (!user) {
-//        user = [PFUser currentUser];
-//        [[PFUser currentUser] fetchIfNeeded];
-//    }
+    if (!user) {
+        user = [PFUser currentUser];
+    }
     
 
     //originNavFrame = self.navigationController.navigationBar.frame;

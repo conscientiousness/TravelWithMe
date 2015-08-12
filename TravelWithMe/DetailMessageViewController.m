@@ -18,6 +18,7 @@
 
 @interface DetailMessageViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *detailTableView;
+@property (weak, nonatomic) IBOutlet UITextField *messageTextField;
 @end
 
 @implementation DetailMessageViewController
@@ -30,6 +31,8 @@
     SSBouncyButton *customJoinButton;
     PFUser *user;
     NSNumber *isJoin;
+    MBProgressHUD *hud;
+    NSMutableArray *commentAry;
 }
 
 - (void)viewDidLoad {
@@ -66,10 +69,10 @@
     
     [self.view addGestureRecognizer:clickGesture];
     
-    MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    
+    hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"讀取中...";
-    
-    
     //dispatch_queue_t downloadQueue = dispatch_queue_create("Download", nil);
     //dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -131,7 +134,7 @@
     } else if (section == 1){
         return 0;
     } else if (section == 2){
-        return 10;
+        return commentAry.count;
     }
     
     return 1;
@@ -171,7 +174,8 @@
             //[self setJLCellData:(JLTableViewCell*)cell cellForRowAtIndexPath:indexPath];
             
         } else if(indexPath.section == 2) {
-            [self prepareJL3MessagCellstyle:(JL3MessageTableViewCell *)cell cellForRowAtIndexPath:indexPath];
+            [self prepareJL3MessageCellstyle:(JL3MessageTableViewCell *)cell cellForRowAtIndexPath:indexPath];
+            [self setJL3MessageCellData:(JL3MessageTableViewCell *)cell cellForRowAtIndexPath:indexPath];
         }
 
     return cell;
@@ -246,7 +250,7 @@
     
     if(user) {
         
-        MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         hud.labelText = @"發送中...";
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -340,7 +344,7 @@
     //cell.joinBtn.layer.cornerRadius = 15.0;
 }
 
-- (void) prepareJL3MessagCellstyle:(JL3MessageTableViewCell *)cell cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void) prepareJL3MessageCellstyle:(JL3MessageTableViewCell *)cell cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     //點選時的顏色
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -365,6 +369,32 @@
     
     //按鈕
     //cell.joinBtn.layer.cornerRadius = 15.0;
+}
+
+- (void) setJL3MessageCellData:(JL3MessageTableViewCell *)cell cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    
+    //大頭照
+    [cell.messageUserPhoto setImage:[UIImage imageNamed:@"pic1.jpg"]];
+    PFFile *PFPhoto = (PFFile*)commentAry[indexPath.row][@"createUser"][@"profilePictureSmall"];
+    [PFPhoto getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+        if (!error) {
+            [cell.messageUserPhoto setImage:[UIImage imageWithData:imageData]];
+        }
+    }];
+    
+    //名字
+    cell.messageUserName.text = commentAry[indexPath.row][@"createUser"][@"displayName"];
+
+    
+    //訊息
+    cell.messageLabel.numberOfLines = 0;  //需定義為0才會換行
+    //cell.memo.textColor = [UIColor whiteColor];
+    cell.messageLabel.textAlignment = NSTextAlignmentLeft;  //內文對齊方式
+    //[cell.memo setBackgroundColor:[UIColor redColor]];
+    cell.messageLabel.text = commentAry[indexPath.row][@"message"];
+    NSLog(@"commentAry[indexPath.row]= %@",commentAry[indexPath.row][@"createUser"][@"displayName"]);
+
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -442,21 +472,19 @@
     query = [query whereKey:@"objectId" equalTo:_cellDictData[@"objectId"]];
     isJoin = @(query.countObjects);
     
-
-    CGFloat tableViewWidth = [_cellDictData[@"tableViewWidth"] floatValue];
     //置頂照片
     PFFile *PFPhoto = (PFFile*)_cellDictData[@"photo"];
-    
-//    [PFPhoto getDataInBackgroundWithProgressBlock:^(BOOL succeeded, NSError *error) {
-//        // Handle success or failure here ...
-//    } progressBlock:^(int percentDone) {
-//        // Update your progress spinner here. percentDone will be between 0 and 100.
-//    }];
     headerPhoto = [UIImage imageWithData:[PFPhoto getData]];
     
+    //留言
+    PFObject *travelMatePost = [PFObject objectWithoutDataWithClassName:@"TravelMatePost" objectId:_cellDictData[@"objectId"]];
+    relation = [travelMatePost relationForKey:@"comments"];
+    query = [relation query];
+    commentAry = [[NSMutableArray alloc] initWithArray:query.findObjects];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         
+        CGFloat tableViewWidth = [_cellDictData[@"tableViewWidth"] floatValue];
         headerView = [ParallaxHeaderView parallaxHeaderViewWithImage:headerPhoto forSize:CGSizeMake(tableViewWidth, 300)];
         //置頂標題:國家城市
         headerView.headerTitleLabel.text = _cellDictData[@"countryCity"];
@@ -473,6 +501,33 @@
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     });
 
+}
+
+#pragma mark - Add message to Parse
+- (IBAction)sendMessageBtnPressed:(id)sender {
+   
+    hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"發送中...";
+    dispatch_queue_t sendQueue = dispatch_queue_create("Send", nil);
+    dispatch_async(sendQueue, ^{
+        
+        PFObject *comment = [PFObject objectWithClassName:@"Comment"];
+        comment[@"message"] = _messageTextField.text;
+        comment[@"createUser"] = user;
+        comment[@"postObjectId"] = _cellDictData[@"objectId"];
+        [comment save];
+        
+        PFObject *travelMatePost = [PFObject objectWithoutDataWithClassName:@"TravelMatePost" objectId:_cellDictData[@"objectId"]];
+        PFRelation *relation = [travelMatePost relationForKey:@"comments"];
+        [relation addObject:comment];
+        [travelMatePost save];
+    
+        dispatch_async(dispatch_get_main_queue(), ^{
+            _messageTextField.text = @"";
+            [_detailTableView reloadData];
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        });
+    });
 }
 
 @end

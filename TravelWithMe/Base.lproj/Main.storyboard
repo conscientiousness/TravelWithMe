@@ -478,6 +478,9 @@
                                         <state key="normal" image="message-icon">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="sendMessageBtnPressed:" destination="5ae-DC-X4l" eventType="touchUpInside" id="O1B-Ld-gPd"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.94117647058823528" green="0.61960784313725492" blue="0.16470588235294117" alpha="1" colorSpace="calibratedRGB"/>
@@ -519,6 +522,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="detailTableView" destination="g0S-Pa-fEf" id="qhZ-2P-mdJ"/>
+                        <outlet property="messageTextField" destination="zaT-Vj-PKK" id="ETw-Fi-1w3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WR7-Bv-XuU" userLabel="First Responder" sceneMemberID="firstResponder"/>
