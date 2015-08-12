@@ -75,6 +75,39 @@
     }
 }
 
+- (IBAction)backToWhite:(UIStoryboardSegue*)
+segue{
+    //;
+}
+
+- (IBAction)mapPostClick:(id)sender {
+    
+    //NSLog(@"current= %@",currentUser);
+    UIViewController *targetViewController;
+    UIStoryboard *storyboard;
+    
+    if([FBSDKAccessToken currentAccessToken]) {
+        
+        targetViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"mapPostViewController"];
+        
+        [self.navigationController pushViewController:targetViewController animated:YES];
+        
+    } else {
+        
+        storyboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+        
+        targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"loginViewController"];
+        
+        [self presentViewController:targetViewController animated:YES completion:nil];
+    }
+    
+    //[self presentViewController:postVC animated:YES completion:nil];
+    //[self performSegueWithIdentifier:@"goPostView" sender:nil];
+    
+}
+
+
+
 #pragma mark - CLLocationManager Delegate Methoods
 
 -(void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{

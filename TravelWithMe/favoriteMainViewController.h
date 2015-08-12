@@ -1,5 +1,5 @@
 //
-//  FavoriteDetailViewController.h
+//  favoriteMainViewController.h
 //  TravelWithMe
 //
 //  Created by ajay on 2015/8/11.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FavoriteDetailViewController : UIViewController
+@interface favoriteMainViewController : UIViewController
 
 @end
