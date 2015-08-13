@@ -17,6 +17,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eCz-Eb-HQG">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tvt-9K-fAu">
                                 <rect key="frame" x="277" y="361" width="46" height="30"/>
                                 <state key="normal" title="Login">
@@ -40,10 +44,14 @@
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="tvt-9K-fAu" secondAttribute="centerY" constant="-76" id="1z8-Bg-gbP"/>
                             <constraint firstItem="pRQ-32-Gr9" firstAttribute="leading" secondItem="dC9-Tz-WEU" secondAttribute="leadingMargin" id="28R-9D-eeP"/>
+                            <constraint firstItem="eCz-Eb-HQG" firstAttribute="leading" secondItem="dC9-Tz-WEU" secondAttribute="leading" id="4OX-dg-485"/>
                             <constraint firstAttribute="centerX" secondItem="tvt-9K-fAu" secondAttribute="centerX" id="4Z2-yh-5FZ"/>
+                            <constraint firstItem="eCz-Eb-HQG" firstAttribute="centerX" secondItem="tvt-9K-fAu" secondAttribute="centerX" id="NJ7-G5-OYh"/>
+                            <constraint firstItem="eCz-Eb-HQG" firstAttribute="bottom" secondItem="gmc-Ed-TMr" secondAttribute="top" id="SuZ-6v-KLq"/>
                             <constraint firstItem="pRQ-32-Gr9" firstAttribute="top" secondItem="dd8-Cy-rF8" secondAttribute="bottom" id="ekB-LK-hfs"/>
                             <constraint firstAttribute="centerX" secondItem="tvt-9K-fAu" secondAttribute="centerX" id="giy-ek-bbZ"/>
                             <constraint firstAttribute="centerY" secondItem="tvt-9K-fAu" secondAttribute="centerY" constant="-76" id="lk5-V4-him"/>
+                            <constraint firstItem="eCz-Eb-HQG" firstAttribute="top" secondItem="dC9-Tz-WEU" secondAttribute="top" id="q3O-6T-YH3"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -54,6 +62,7 @@
                     </view>
                     <connections>
                         <outlet property="FBLoginBtn" destination="tvt-9K-fAu" id="kDn-HM-Tdf"/>
+                        <outlet property="videoView" destination="eCz-Eb-HQG" id="YBc-3A-uQl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zrN-RN-gtF" userLabel="First Responder" sceneMemberID="firstResponder"/>

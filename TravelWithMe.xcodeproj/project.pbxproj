@@ -32,6 +32,7 @@
 		F42EBDB21B68FF1400606D9B /* (null) in Resources */ = {isa = PBXBuildFile; };
 		F43B3B7F1B75C03F0034B20F /* JL3MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F43B3B7D1B75C03F0034B20F /* JL3MessageTableViewCell.xib */; };
 		F43C831A1B71B13200D2A389 /* tmp900X640.png in Resources */ = {isa = PBXBuildFile; fileRef = F43C83191B71B13200D2A389 /* tmp900X640.png */; };
+		F44127F71B7C899400AE7A8E /* login-background-video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F44127F61B7C899400AE7A8E /* login-background-video.mp4 */; };
 		F442CE151B64B8FC001CD62B /* (null) in Resources */ = {isa = PBXBuildFile; };
 		F44307DD1B78488300DE5625 /* bg-blur-image.png in Resources */ = {isa = PBXBuildFile; fileRef = F44307DC1B78488300DE5625 /* bg-blur-image.png */; };
 		F44307DF1B78A01600DE5625 /* FriendsBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = F44307DE1B78A01600DE5625 /* FriendsBackground.png */; };
@@ -123,6 +124,7 @@
 		F4267BCE1B6A632E00F42330 /* pic900X640.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pic900X640.jpg; sourceTree = "<group>"; };
 		F43B3B7D1B75C03F0034B20F /* JL3MessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JL3MessageTableViewCell.xib; sourceTree = "<group>"; };
 		F43C83191B71B13200D2A389 /* tmp900X640.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tmp900X640.png; sourceTree = "<group>"; };
+		F44127F61B7C899400AE7A8E /* login-background-video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "login-background-video.mp4"; sourceTree = "<group>"; };
 		F44307DC1B78488300DE5625 /* bg-blur-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-blur-image.png"; sourceTree = "<group>"; };
 		F44307DE1B78A01600DE5625 /* FriendsBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FriendsBackground.png; sourceTree = "<group>"; };
 		F44307E01B78A1C900DE5625 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
@@ -361,6 +363,7 @@
 				F445E3661B6E09CD00818A18 /* Login.storyboard */,
 				F445E3691B6E0A1100818A18 /* LoginViewController.h */,
 				F445E36A1B6E0A1100818A18 /* LoginViewController.m */,
+				F44127F61B7C899400AE7A8E /* login-background-video.mp4 */,
 			);
 			name = LoginView;
 			sourceTree = "<group>";
@@ -580,6 +583,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A50ED4431B78584500651C3E /* B@3x.png in Resources */,
+				F44127F71B7C899400AE7A8E /* login-background-video.mp4 in Resources */,
 				F445E3671B6E09CD00818A18 /* Login.storyboard in Resources */,
 				F443FB431B60FBF300F30847 /* Map.storyboard in Resources */,
 				F4441C2E1B6341AB00272BF3 /* iphone_v_photo.jpg in Resources */,
