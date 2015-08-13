@@ -459,10 +459,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JAZ-NO-PSa">
-                                <rect key="frame" x="0.0" y="550" width="600" height="50"/>
+                                <rect key="frame" x="0.0" y="555" width="600" height="45"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zaT-Vj-PKK">
-                                        <rect key="frame" x="8" y="10" width="480" height="30"/>
+                                        <rect key="frame" x="8" y="7.5" width="510" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -470,10 +470,10 @@
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TTI-PQ-uck">
-                                        <rect key="frame" x="557" y="8" width="33" height="33"/>
+                                        <rect key="frame" x="565" y="9.5" width="25" height="25"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="33" id="K0t-20-veG"/>
-                                            <constraint firstAttribute="width" constant="33" id="fgU-qb-7mh"/>
+                                            <constraint firstAttribute="height" constant="25" id="K0t-20-veG"/>
+                                            <constraint firstAttribute="width" constant="25" id="fgU-qb-7mh"/>
                                         </constraints>
                                         <state key="normal" image="message-icon">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -485,12 +485,12 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.94117647058823528" green="0.61960784313725492" blue="0.16470588235294117" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="3Pc-2U-vEX"/>
+                                    <constraint firstAttribute="height" constant="45" id="3Pc-2U-vEX"/>
                                     <constraint firstAttribute="centerY" secondItem="TTI-PQ-uck" secondAttribute="centerY" id="CGa-RC-kdC"/>
                                     <constraint firstAttribute="centerY" secondItem="zaT-Vj-PKK" secondAttribute="centerY" id="clq-dI-49Z"/>
                                     <constraint firstAttribute="width" secondItem="TTI-PQ-uck" secondAttribute="width" multiplier="10/2" id="q4t-hz-fA7"/>
                                     <constraint firstAttribute="trailing" secondItem="TTI-PQ-uck" secondAttribute="trailing" constant="10" id="qxT-uU-MVg"/>
-                                    <constraint firstItem="zaT-Vj-PKK" firstAttribute="width" secondItem="JAZ-NO-PSa" secondAttribute="width" multiplier="8/10" id="ynO-aX-Z4U"/>
+                                    <constraint firstItem="zaT-Vj-PKK" firstAttribute="width" secondItem="JAZ-NO-PSa" secondAttribute="width" multiplier="8.5/10" id="ynO-aX-Z4U"/>
                                     <constraint firstItem="zaT-Vj-PKK" firstAttribute="leading" secondItem="JAZ-NO-PSa" secondAttribute="leading" constant="8" id="zqd-Lx-oHV"/>
                                 </constraints>
                                 <variation key="default">
@@ -500,7 +500,7 @@
                                 </variation>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="g0S-Pa-fEf">
-                                <rect key="frame" x="0.0" y="64" width="600" height="486"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="491"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="MVm-k5-MJJ" id="Rjc-JR-ffc"/>
@@ -522,7 +522,9 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="detailTableView" destination="g0S-Pa-fEf" id="qhZ-2P-mdJ"/>
+                        <outlet property="messageBtn" destination="TTI-PQ-uck" id="8nO-59-x50"/>
                         <outlet property="messageTextField" destination="zaT-Vj-PKK" id="ETw-Fi-1w3"/>
+                        <outlet property="messageView" destination="JAZ-NO-PSa" id="163-Rd-N5q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WR7-Bv-XuU" userLabel="First Responder" sceneMemberID="firstResponder"/>

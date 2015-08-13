@@ -62,7 +62,7 @@ static CGFloat kLabelPaddingDist = 8.0f;
     {
         frame.origin.y = MAX(offset.y *kParallaxDeltaFactor, 0);
         self.imageScrollView.frame = frame;
-        self.bluredImageView.alpha =   1 / kDefaultHeaderFrame.size.height * offset.y * 1.5;
+        //self.bluredImageView.alpha =   1 / kDefaultHeaderFrame.size.height * offset.y * 1.5;
         self.clipsToBounds = YES;
     }
     else

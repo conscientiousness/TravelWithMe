@@ -16,8 +16,13 @@
 #import "UIImage+ImageEffects.h"
 #import "SSBouncyButton.h"
 
+#define HEIGHT_FOR_INFO_SECTION 310.0
+#define HEIGHT_FOR_MESSAGE_SECTION 75.0
+
 @interface DetailMessageViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *detailTableView;
+@property (weak, nonatomic) IBOutlet UIView *messageView;
+@property (weak, nonatomic) IBOutlet UIButton *messageBtn;
 @property (weak, nonatomic) IBOutlet UITextField *messageTextField;
 @end
 
@@ -41,7 +46,6 @@
     if (!user) {
         user = [PFUser currentUser];
     }
-    //NSLog(@"%@",_cellDictData);
     
     _detailTableView.scrollEnabled = YES;
     _detailTableView.delegate = self;
@@ -73,10 +77,18 @@
     
     hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"讀取中...";
-    //dispatch_queue_t downloadQueue = dispatch_queue_create("Download", nil);
+    dispatch_queue_t downloadDatasQueue = dispatch_queue_create("Download", nil);
     //dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    dispatch_async(downloadDatasQueue, ^{
+        
+        //Get Data from Parse
         [self getData];
+        [self getCommentData];
+        
+        //Back main Thread update UI
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self didGotDatasUpdateUI];
+        });
     });
   
     
@@ -89,7 +101,16 @@
     _detailTableView.backgroundColor = [UIColor homeCellbgColor];
     _detailTableView.opaque = NO;
     
+    //鍵盤出現時View向上移動
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardHeightChange:) name:UIKeyboardWillShowNotification object:nil];
+    
+    //留言尚未登入時鎖定
+    if(!user){
+        _messageTextField.userInteractionEnabled = NO;
+        _messageTextField.placeholder = @"要先登入才能留言哦";
+        _messageBtn.userInteractionEnabled = NO;
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -115,9 +136,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [(ParallaxHeaderView *)headerView refreshBlurViewForNewImage];
-    //NSLog(@"view = %f",self.view.frame.size.height);
-    //[IHKeyboardAvoiding setAvoidingView:(UIView *)self.view];
+    
 }
 
 
@@ -243,7 +262,7 @@
 {
     button.selected = !button.selected;
     
-    NSLog(@"%d",button.selected);
+    //NSLog(@"%d",button.selected);
     
     UIViewController *targetViewController;
     UIStoryboard *storyboard;
@@ -393,20 +412,21 @@
     cell.messageLabel.textAlignment = NSTextAlignmentLeft;  //內文對齊方式
     //[cell.memo setBackgroundColor:[UIColor redColor]];
     cell.messageLabel.text = commentAry[indexPath.row][@"message"];
-    NSLog(@"commentAry[indexPath.row]= %@",commentAry[indexPath.row][@"createUser"][@"displayName"]);
+    //NSLog(@"commentAry[indexPath.row]= %@",commentAry[indexPath.row][@"createUser"][@"displayName"]);
 
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     CGFloat result;
+    NSString *tmpStr;
     
     if(indexPath.section == 0){
-        result = 310.0;
+        result = HEIGHT_FOR_INFO_SECTION;
         
-        NSString * memo = _cellDictData[@"memo"];
+        tmpStr = _cellDictData[@"memo"];
         NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:12]};
-        NSAttributedString * attrString = [[NSAttributedString alloc] initWithString:memo attributes:attributes];
+        NSAttributedString * attrString = [[NSAttributedString alloc] initWithString:tmpStr attributes:attributes];
         
         //寬度固定計算行高(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
         CGRect rect = [attrString boundingRectWithSize:CGSizeMake(296.0, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin context:nil];
@@ -418,7 +438,18 @@
         if([user.objectId isEqualToString:_cellDictData[@"userObjectId"]])
             result -= 50.0;
         
-    }else{
+    }else if(indexPath.section == 2){
+        result = HEIGHT_FOR_MESSAGE_SECTION;
+        
+        tmpStr = commentAry[indexPath.row][@"message"];
+        NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:12]};
+        NSAttributedString * attrString = [[NSAttributedString alloc] initWithString:tmpStr attributes:attributes];
+        
+        //寬度固定計算行高(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
+        CGRect rect = [attrString boundingRectWithSize:CGSizeMake(296.0, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin context:nil];
+        
+        result += rect.size.height;
+    }else {
         result = 80.0;
     }
     
@@ -472,18 +503,22 @@
     query = [query whereKey:@"objectId" equalTo:_cellDictData[@"objectId"]];
     isJoin = @(query.countObjects);
     
-    //置頂照片
+    //取得Header照片
     PFFile *PFPhoto = (PFFile*)_cellDictData[@"photo"];
     headerPhoto = [UIImage imageWithData:[PFPhoto getData]];
-    
+}
+
+- (void) getCommentData {
     //留言
     PFObject *travelMatePost = [PFObject objectWithoutDataWithClassName:@"TravelMatePost" objectId:_cellDictData[@"objectId"]];
-    relation = [travelMatePost relationForKey:@"comments"];
-    query = [relation query];
-    commentAry = [[NSMutableArray alloc] initWithArray:query.findObjects];
+    PFRelation *relation = [travelMatePost relationForKey:@"comments"];
+    PFQuery *query = [relation query];
+    [query orderByAscending:@"createdAt"];
+    commentAry = [[NSMutableArray alloc] initWithArray:[query findObjects]];
+}
+
+- (void) didGotDatasUpdateUI {
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
         CGFloat tableViewWidth = [_cellDictData[@"tableViewWidth"] floatValue];
         headerView = [ParallaxHeaderView parallaxHeaderViewWithImage:headerPhoto forSize:CGSizeMake(tableViewWidth, 300)];
         //置頂標題:國家城市
@@ -499,9 +534,8 @@
         
         [_detailTableView reloadData];
         [MBProgressHUD hideHUDForView:self.view animated:YES];
-    });
-
 }
+
 
 #pragma mark - Add message to Parse
 - (IBAction)sendMessageBtnPressed:(id)sender {
@@ -521,7 +555,10 @@
         PFRelation *relation = [travelMatePost relationForKey:@"comments"];
         [relation addObject:comment];
         [travelMatePost save];
-    
+        
+        //取得新資料
+        [self getCommentData];
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             _messageTextField.text = @"";
             [_detailTableView reloadData];
