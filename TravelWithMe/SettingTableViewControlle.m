@@ -9,7 +9,9 @@
 #import "SettingTableViewControlle.h"
 #import <MessageUI/MessageUI.h>
 @interface SettingTableViewControlle ()<MFMailComposeViewControllerDelegate>
-
+{
+    PFUser *user;
+}
 @end
 
 @implementation SettingTableViewControlle
@@ -22,6 +24,10 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    if(!user){
+        user = [PFUser currentUser];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,6 +38,29 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    if(indexPath.section == 0){
+    if(indexPath.row == 0){
+            UIViewController *targetViewController;
+            UIStoryboard *storyboard;
+        //[FBSDKAccessToken currentAccessToken]
+            if(user) {
+                targetViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"VIPViewController"];
+                
+            [self.navigationController pushViewController:targetViewController animated:YES];
+            }
+            else {
+            storyboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+                
+                targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"loginViewController"];
+                
+                [self presentViewController:targetViewController animated:YES completion:nil];
+            }
+            
+            
+        }
+    }
+
     //  打印
     //  NSLog(@"indexPath :%@",indexPath);
     if(indexPath.section == 2){
@@ -43,15 +72,7 @@
     
     if(indexPath.section == 2){
         if(indexPath.row == 0){
-            // 方法一
-            /*NSString *to = @"TravelWithMe@gmail.com";
-            NSString *subject = @"TravelWithMe_Questione";
-            //        NSString *cc = @"TravelWithMe@gmail.com";
-            //        NSString *bcc = @"TravelWithMe@gmail.com";
-            NSString *mailStr = [NSString stringWithFormat:@"mailto:%@?subject=%@&", to, subject];
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:mailStr]];*/
-           
-            // 方法二
+            // mail
             MFMailComposeViewController * mailViewController = [[MFMailComposeViewController alloc] init];
             mailViewController.mailComposeDelegate = self;
              [mailViewController setSubject:@"TravelWithMe_Questione"];
@@ -59,10 +80,14 @@
              [self presentViewController:mailViewController animated:YES completion:^{
              }];
         }
-        
-        
-        
-        
+    }
+    
+    if(indexPath.section == 3){
+        if(indexPath.row == 0){
+            //NSLog(@"%@",user);
+            [PFUser logOut];
+            //NSLog(@"%@",user);
+        }
     }
     
     
