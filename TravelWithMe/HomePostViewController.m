@@ -34,19 +34,19 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:NO];
+    [super viewWillDisappear:animated];
     [self.tabBarController.tabBar setHidden:NO];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:NO];
+    [super viewWillAppear:animated];
     [self setExtendedLayoutIncludesOpaqueBars:YES];
     [self.tabBarController.tabBar setHidden:YES];
     
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:NO];
+    [super viewDidAppear:animated];
     if (!user) {
         user = [PFUser currentUser];
         [[PFUser currentUser] fetchIfNeeded];

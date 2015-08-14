@@ -32,7 +32,6 @@
 		F42EBDB21B68FF1400606D9B /* (null) in Resources */ = {isa = PBXBuildFile; };
 		F43B3B7F1B75C03F0034B20F /* JL3MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F43B3B7D1B75C03F0034B20F /* JL3MessageTableViewCell.xib */; };
 		F43C831A1B71B13200D2A389 /* tmp900X640.png in Resources */ = {isa = PBXBuildFile; fileRef = F43C83191B71B13200D2A389 /* tmp900X640.png */; };
-		F44127F71B7C899400AE7A8E /* login-background-video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F44127F61B7C899400AE7A8E /* login-background-video.mp4 */; };
 		F442CE151B64B8FC001CD62B /* (null) in Resources */ = {isa = PBXBuildFile; };
 		F44307DD1B78488300DE5625 /* bg-blur-image.png in Resources */ = {isa = PBXBuildFile; fileRef = F44307DC1B78488300DE5625 /* bg-blur-image.png */; };
 		F44307DF1B78A01600DE5625 /* FriendsBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = F44307DE1B78A01600DE5625 /* FriendsBackground.png */; };
@@ -79,6 +78,7 @@
 		F48B16DE1B5F40C700E96B0D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F48B16DD1B5F40C700E96B0D /* libsqlite3.dylib */; };
 		F48B16E01B5F40D200E96B0D /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48B16DF1B5F40D200E96B0D /* Accounts.framework */; };
 		F48B16E21B5F40D900E96B0D /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48B16E11B5F40D900E96B0D /* Social.framework */; };
+		F4BC50D51B7E3419008C3EC4 /* login-background-video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F4BC50D41B7E3419008C3EC4 /* login-background-video.mp4 */; };
 		F4C9EE471B62B738007C37B4 /* kyoto_sample_photo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F4C9EE451B62B738007C37B4 /* kyoto_sample_photo.jpg */; };
 		F4DA4C5C1B4E9D0500421F2F /* UIColors.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DA4C5B1B4E9D0500421F2F /* UIColors.m */; };
 		F4DA4C601B4EC96F00421F2F /* HomePostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DA4C5F1B4EC96F00421F2F /* HomePostViewController.m */; };
@@ -124,7 +124,6 @@
 		F4267BCE1B6A632E00F42330 /* pic900X640.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pic900X640.jpg; sourceTree = "<group>"; };
 		F43B3B7D1B75C03F0034B20F /* JL3MessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JL3MessageTableViewCell.xib; sourceTree = "<group>"; };
 		F43C83191B71B13200D2A389 /* tmp900X640.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tmp900X640.png; sourceTree = "<group>"; };
-		F44127F61B7C899400AE7A8E /* login-background-video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "login-background-video.mp4"; sourceTree = "<group>"; };
 		F44307DC1B78488300DE5625 /* bg-blur-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-blur-image.png"; sourceTree = "<group>"; };
 		F44307DE1B78A01600DE5625 /* FriendsBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FriendsBackground.png; sourceTree = "<group>"; };
 		F44307E01B78A1C900DE5625 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
@@ -191,6 +190,7 @@
 		F48B16DD1B5F40C700E96B0D /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		F48B16DF1B5F40D200E96B0D /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		F48B16E11B5F40D900E96B0D /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		F4BC50D41B7E3419008C3EC4 /* login-background-video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "login-background-video.mp4"; sourceTree = "<group>"; };
 		F4C9EE451B62B738007C37B4 /* kyoto_sample_photo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kyoto_sample_photo.jpg; sourceTree = "<group>"; };
 		F4DA4C5A1B4E9D0500421F2F /* UIColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIColors.h; sourceTree = "<group>"; };
 		F4DA4C5B1B4E9D0500421F2F /* UIColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIColors.m; sourceTree = "<group>"; };
@@ -363,7 +363,7 @@
 				F445E3661B6E09CD00818A18 /* Login.storyboard */,
 				F445E3691B6E0A1100818A18 /* LoginViewController.h */,
 				F445E36A1B6E0A1100818A18 /* LoginViewController.m */,
-				F44127F61B7C899400AE7A8E /* login-background-video.mp4 */,
+				F4BC50D41B7E3419008C3EC4 /* login-background-video.mp4 */,
 			);
 			name = LoginView;
 			sourceTree = "<group>";
@@ -583,7 +583,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A50ED4431B78584500651C3E /* B@3x.png in Resources */,
-				F44127F71B7C899400AE7A8E /* login-background-video.mp4 in Resources */,
+				F4BC50D51B7E3419008C3EC4 /* login-background-video.mp4 in Resources */,
 				F445E3671B6E09CD00818A18 /* Login.storyboard in Resources */,
 				F443FB431B60FBF300F30847 /* Map.storyboard in Resources */,
 				F4441C2E1B6341AB00272BF3 /* iphone_v_photo.jpg in Resources */,

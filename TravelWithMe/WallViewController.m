@@ -68,7 +68,7 @@
 }
 
 - (void) viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:YES];
+    [super viewDidAppear:animated];
     
     // nav tabbar 滾動縮放
     //self.scrollCoordinator.scrollView = _wallTableView;
@@ -77,7 +77,7 @@
 }
 
 - (void) viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:YES];
+    [super viewDidDisappear:animated];
     //[self.navigationController.navigationBar setFrame:originNavFrame];
 }
 

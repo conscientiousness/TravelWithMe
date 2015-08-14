@@ -17,7 +17,7 @@
 #import "SSBouncyButton.h"
 
 #define HEIGHT_FOR_INFO_SECTION 310.0
-#define HEIGHT_FOR_MESSAGE_SECTION 75.0
+#define HEIGHT_FOR_MESSAGE_SECTION 64.0
 
 @interface DetailMessageViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *detailTableView;
@@ -119,12 +119,12 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:NO];
+    [super viewWillDisappear:animated];
     [self.tabBarController.tabBar setHidden:NO];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:NO];
+    [super viewWillAppear:animated];
     [self.tabBarController.tabBar setHidden:YES];
     
 }
