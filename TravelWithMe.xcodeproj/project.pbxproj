@@ -79,6 +79,12 @@
 		F48B16E01B5F40D200E96B0D /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48B16DF1B5F40D200E96B0D /* Accounts.framework */; };
 		F48B16E21B5F40D900E96B0D /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48B16E11B5F40D900E96B0D /* Social.framework */; };
 		F4BC50D51B7E3419008C3EC4 /* login-background-video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F4BC50D41B7E3419008C3EC4 /* login-background-video.mp4 */; };
+		F4BC50DA1B7E4C4D008C3EC4 /* demo_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F4BC50D61B7E4C4D008C3EC4 /* demo_1.jpg */; };
+		F4BC50DB1B7E4C4D008C3EC4 /* demo_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F4BC50D71B7E4C4D008C3EC4 /* demo_2.jpg */; };
+		F4BC50DC1B7E4C4D008C3EC4 /* demo_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F4BC50D81B7E4C4D008C3EC4 /* demo_3.jpg */; };
+		F4BC50DD1B7E4C4D008C3EC4 /* demo_4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F4BC50D91B7E4C4D008C3EC4 /* demo_4.jpg */; };
+		F4BC50E21B7E54ED008C3EC4 /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BC50DF1B7E54ED008C3EC4 /* HomePageViewController.m */; };
+		F4BC50E31B7E54ED008C3EC4 /* ParallaxTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BC50E11B7E54ED008C3EC4 /* ParallaxTableViewCell.m */; };
 		F4C9EE471B62B738007C37B4 /* kyoto_sample_photo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F4C9EE451B62B738007C37B4 /* kyoto_sample_photo.jpg */; };
 		F4DA4C5C1B4E9D0500421F2F /* UIColors.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DA4C5B1B4E9D0500421F2F /* UIColors.m */; };
 		F4DA4C601B4EC96F00421F2F /* HomePostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DA4C5F1B4EC96F00421F2F /* HomePostViewController.m */; };
@@ -191,6 +197,14 @@
 		F48B16DF1B5F40D200E96B0D /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		F48B16E11B5F40D900E96B0D /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		F4BC50D41B7E3419008C3EC4 /* login-background-video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "login-background-video.mp4"; sourceTree = "<group>"; };
+		F4BC50D61B7E4C4D008C3EC4 /* demo_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = demo_1.jpg; sourceTree = "<group>"; };
+		F4BC50D71B7E4C4D008C3EC4 /* demo_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = demo_2.jpg; sourceTree = "<group>"; };
+		F4BC50D81B7E4C4D008C3EC4 /* demo_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = demo_3.jpg; sourceTree = "<group>"; };
+		F4BC50D91B7E4C4D008C3EC4 /* demo_4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = demo_4.jpg; sourceTree = "<group>"; };
+		F4BC50DE1B7E54ED008C3EC4 /* HomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageViewController.h; sourceTree = "<group>"; };
+		F4BC50DF1B7E54ED008C3EC4 /* HomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
+		F4BC50E01B7E54ED008C3EC4 /* ParallaxTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParallaxTableViewCell.h; sourceTree = "<group>"; };
+		F4BC50E11B7E54ED008C3EC4 /* ParallaxTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParallaxTableViewCell.m; sourceTree = "<group>"; };
 		F4C9EE451B62B738007C37B4 /* kyoto_sample_photo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kyoto_sample_photo.jpg; sourceTree = "<group>"; };
 		F4DA4C5A1B4E9D0500421F2F /* UIColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIColors.h; sourceTree = "<group>"; };
 		F4DA4C5B1B4E9D0500421F2F /* UIColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIColors.m; sourceTree = "<group>"; };
@@ -435,6 +449,7 @@
 		F486EF421B4C30A9008CB97B /* HomeVIew */ = {
 			isa = PBXGroup;
 			children = (
+				F4BC50E41B7E54F3008C3EC4 /* HomePage */,
 				F443FB471B61209500F30847 /* PostView */,
 				F443FB461B611CD500F30847 /* DetailView */,
 				F443FB491B6121DE00F30847 /* DynamicWall */,
@@ -447,6 +462,10 @@
 				F43C83191B71B13200D2A389 /* tmp900X640.png */,
 				F4457C271B77B71400A4952B /* background-blur-image.png */,
 				F44307DC1B78488300DE5625 /* bg-blur-image.png */,
+				F4BC50D61B7E4C4D008C3EC4 /* demo_1.jpg */,
+				F4BC50D71B7E4C4D008C3EC4 /* demo_2.jpg */,
+				F4BC50D81B7E4C4D008C3EC4 /* demo_3.jpg */,
+				F4BC50D91B7E4C4D008C3EC4 /* demo_4.jpg */,
 				F47556A81B4BACF2008CEE3A /* Main.storyboard */,
 			);
 			name = HomeVIew;
@@ -481,6 +500,17 @@
 				A50ED43A1B784F9C00651C3E /* AnimationTableView.m */,
 			);
 			name = SettingView;
+			sourceTree = "<group>";
+		};
+		F4BC50E41B7E54F3008C3EC4 /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				F4BC50DE1B7E54ED008C3EC4 /* HomePageViewController.h */,
+				F4BC50DF1B7E54ED008C3EC4 /* HomePageViewController.m */,
+				F4BC50E01B7E54ED008C3EC4 /* ParallaxTableViewCell.h */,
+				F4BC50E11B7E54ED008C3EC4 /* ParallaxTableViewCell.m */,
+			);
+			name = HomePage;
 			sourceTree = "<group>";
 		};
 		F4DA4C5D1B4E9D0C00421F2F /* Comm */ = {
@@ -589,6 +619,7 @@
 				F4441C2E1B6341AB00272BF3 /* iphone_v_photo.jpg in Resources */,
 				F465736E1B5552D800DA3D7B /* JL2TableViewCell.xib in Resources */,
 				F4457C281B77B71400A4952B /* background-blur-image.png in Resources */,
+				F4BC50DC1B7E4C4D008C3EC4 /* demo_3.jpg in Resources */,
 				F442CE151B64B8FC001CD62B /* (null) in Resources */,
 				F42EBDA41B68C8D400606D9B /* (null) in Resources */,
 				F46573641B5545F700DA3D7B /* kyoto.jpg in Resources */,
@@ -597,11 +628,14 @@
 				F42EBDAC1B68CED800606D9B /* (null) in Resources */,
 				F42EBD661B6877BF00606D9B /* (null) in Resources */,
 				F42EBD6B1B68790500606D9B /* (null) in Resources */,
+				F4BC50DB1B7E4C4D008C3EC4 /* demo_2.jpg in Resources */,
+				F4BC50DA1B7E4C4D008C3EC4 /* demo_1.jpg in Resources */,
 				F465736F1B5552D800DA3D7B /* JLTableViewCell.xib in Resources */,
 				F486EF461B4C34D2008CB97B /* Setting.storyboard in Resources */,
 				F47556C51B4BD40F008CEE3A /* Favorite.storyboard in Resources */,
 				F44307DD1B78488300DE5625 /* bg-blur-image.png in Resources */,
 				F4C9EE471B62B738007C37B4 /* kyoto_sample_photo.jpg in Resources */,
+				F4BC50DD1B7E4C4D008C3EC4 /* demo_4.jpg in Resources */,
 				F4441C2D1B6341AB00272BF3 /* iphone_h_photo.jpg in Resources */,
 				F44307DF1B78A01600DE5625 /* FriendsBackground.png in Resources */,
 				F42EBDB21B68FF1400606D9B /* (null) in Resources */,
@@ -664,6 +698,8 @@
 			files = (
 				A52E4EB91B63817400285C83 /* VIPViewController.m in Sources */,
 				F44829951B6FB9D800ED0EA1 /* UIImage+ResizeAdditions.m in Sources */,
+				F4BC50E31B7E54ED008C3EC4 /* ParallaxTableViewCell.m in Sources */,
+				F4BC50E21B7E54ED008C3EC4 /* HomePageViewController.m in Sources */,
 				F465736D1B5552D800DA3D7B /* JL2TableViewCell.m in Sources */,
 				A50ED43B1B784F9C00651C3E /* AnimationTableView.m in Sources */,
 				B51A23351B7A5C9900CFD674 /* followTableViewController.m in Sources */,
