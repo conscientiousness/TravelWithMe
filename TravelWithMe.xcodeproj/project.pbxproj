@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		2D29963B6B29A5916F2797E5 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD38E21F3C22A68B1A59632E /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		A50ED43B1B784F9C00651C3E /* AnimationTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = A50ED43A1B784F9C00651C3E /* AnimationTableView.m */; };
 		A50ED43F1B7852AD00651C3E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A50ED43E1B7852AD00651C3E /* UIKit.framework */; };
 		A50ED4411B7852D200651C3E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A50ED4401B7852D200651C3E /* Foundation.framework */; };
-		A50ED4431B78584500651C3E /* B@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A50ED4421B78584500651C3E /* B@3x.png */; };
 		A52E4EB91B63817400285C83 /* VIPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A52E4EB81B63817400285C83 /* VIPViewController.m */; };
 		A53CBBB71B67FA630039369A /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A53CBBB61B67FA630039369A /* MapViewController.m */; };
+		A55669951B80EAE300F588E3 /* CExpandHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = A55669941B80EAE300F588E3 /* CExpandHeader.m */; };
+		A56DC6261B80EC3E009C621F /* 22.png in Resources */ = {isa = PBXBuildFile; fileRef = A56DC6251B80EC3E009C621F /* 22.png */; };
 		A5D374921B646BEC00A57791 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5D374911B646BEC00A57791 /* MessageUI.framework */; };
 		A5E1670D1B6903B70036ABE4 /* SettingTableViewControlle.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E1670C1B6903B70036ABE4 /* SettingTableViewControlle.m */; };
 		B51A23321B7A5C9900CFD674 /* favoriteMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51A232B1B7A5C9900CFD674 /* favoriteMainViewController.m */; };
@@ -106,15 +106,15 @@
 /* Begin PBXFileReference section */
 		44BCC490976B2C9D75A6541C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A2A1A052438CEB9B22CC0114 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		A50ED4391B784F9C00651C3E /* AnimationTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationTableView.h; sourceTree = "<group>"; };
-		A50ED43A1B784F9C00651C3E /* AnimationTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationTableView.m; sourceTree = "<group>"; };
 		A50ED43E1B7852AD00651C3E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A50ED4401B7852D200651C3E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		A50ED4421B78584500651C3E /* B@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "B@3x.png"; sourceTree = "<group>"; };
 		A52E4EB71B63817400285C83 /* VIPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VIPViewController.h; sourceTree = "<group>"; };
 		A52E4EB81B63817400285C83 /* VIPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VIPViewController.m; sourceTree = "<group>"; };
 		A53CBBB51B67FA630039369A /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		A53CBBB61B67FA630039369A /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		A55669931B80EAE300F588E3 /* CExpandHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CExpandHeader.h; sourceTree = "<group>"; };
+		A55669941B80EAE300F588E3 /* CExpandHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CExpandHeader.m; sourceTree = "<group>"; };
+		A56DC6251B80EC3E009C621F /* 22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 22.png; sourceTree = "<group>"; };
 		A5D374911B646BEC00A57791 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		A5E1670B1B6903B70036ABE4 /* SettingTableViewControlle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingTableViewControlle.h; sourceTree = "<group>"; };
 		A5E1670C1B6903B70036ABE4 /* SettingTableViewControlle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewControlle.m; sourceTree = "<group>"; };
@@ -274,6 +274,15 @@
 				DD38E21F3C22A68B1A59632E /* Pods.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A55669961B80EAEF00F588E3 /* CExpandHeader */ = {
+			isa = PBXGroup;
+			children = (
+				A55669931B80EAE300F588E3 /* CExpandHeader.h */,
+				A55669941B80EAE300F588E3 /* CExpandHeader.m */,
+			);
+			name = CExpandHeader;
 			sourceTree = "<group>";
 		};
 		F2BC6DDE6C40B624B4CA3196 /* Pods */ = {
@@ -498,14 +507,13 @@
 		F486EF441B4C328E008CB97B /* SettingView */ = {
 			isa = PBXGroup;
 			children = (
-				A50ED4421B78584500651C3E /* B@3x.png */,
+				A55669961B80EAEF00F588E3 /* CExpandHeader */,
 				F486EF451B4C34D2008CB97B /* Setting.storyboard */,
+				A56DC6251B80EC3E009C621F /* 22.png */,
 				A5E1670B1B6903B70036ABE4 /* SettingTableViewControlle.h */,
 				A5E1670C1B6903B70036ABE4 /* SettingTableViewControlle.m */,
 				A52E4EB71B63817400285C83 /* VIPViewController.h */,
 				A52E4EB81B63817400285C83 /* VIPViewController.m */,
-				A50ED4391B784F9C00651C3E /* AnimationTableView.h */,
-				A50ED43A1B784F9C00651C3E /* AnimationTableView.m */,
 			);
 			name = SettingView;
 			sourceTree = "<group>";
@@ -621,7 +629,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A50ED4431B78584500651C3E /* B@3x.png in Resources */,
 				F4BC50D51B7E3419008C3EC4 /* login-background-video.mp4 in Resources */,
 				F445E3671B6E09CD00818A18 /* Login.storyboard in Resources */,
 				F443FB431B60FBF300F30847 /* Map.storyboard in Resources */,
@@ -637,6 +644,7 @@
 				F47556AF1B4BACF2008CEE3A /* LaunchScreen.xib in Resources */,
 				F42EBDAC1B68CED800606D9B /* (null) in Resources */,
 				F42EBD661B6877BF00606D9B /* (null) in Resources */,
+				A56DC6261B80EC3E009C621F /* 22.png in Resources */,
 				F42EBD6B1B68790500606D9B /* (null) in Resources */,
 				F4BC50DB1B7E4C4D008C3EC4 /* demo_2.jpg in Resources */,
 				F4BC50DA1B7E4C4D008C3EC4 /* demo_1.jpg in Resources */,
@@ -726,7 +734,6 @@
 				F4BC50E31B7E54ED008C3EC4 /* ParallaxTableViewCell.m in Sources */,
 				F4BC50E21B7E54ED008C3EC4 /* HomePageViewController.m in Sources */,
 				F465736D1B5552D800DA3D7B /* JL2TableViewCell.m in Sources */,
-				A50ED43B1B784F9C00651C3E /* AnimationTableView.m in Sources */,
 				B51A23351B7A5C9900CFD674 /* followTableViewController.m in Sources */,
 				F4DA4C5C1B4E9D0500421F2F /* UIColors.m in Sources */,
 				F4DA4C601B4EC96F00421F2F /* HomePostViewController.m in Sources */,
@@ -744,6 +751,7 @@
 				B51A23321B7A5C9900CFD674 /* favoriteMainViewController.m in Sources */,
 				F44829A01B6FBAFF00ED0EA1 /* PAPCache.m in Sources */,
 				F4DA4C661B4FF09200421F2F /* HomeDetailViewController.m in Sources */,
+				A55669951B80EAE300F588E3 /* CExpandHeader.m in Sources */,
 				B5453E271B7A670E008964CE /* mapPostViewController.m in Sources */,
 				A53CBBB71B67FA630039369A /* MapViewController.m in Sources */,
 				F4457C201B7755D000A4952B /* ParallaxHeaderView.m in Sources */,
