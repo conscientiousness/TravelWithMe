@@ -1,4 +1,4 @@
-platform :ios,'7'
+platform :ios,'8.0'
 pod "ParallaxBlur"
 pod "FBSDKCoreKit"
 pod "FBSDKLoginKit"
@@ -9,6 +9,7 @@ pod "SDWebImage", '~>3.7'
 pod "MBProgressHUD", '~> 0.9.1'
 pod "ParseFacebookUtilsV4"
 pod "JDFPeekaboo"
-pod "TPKeyboardAvoiding"
-pod "IHKeyboardAvoiding"
 pod "SSBouncyButton", '~> 1.0'
+
+use_frameworks!
+pod "TextFieldEffects"

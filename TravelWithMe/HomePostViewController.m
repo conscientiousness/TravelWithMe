@@ -8,9 +8,8 @@
 
 #import "HomePostViewController.h"
 
-@interface HomePostViewController ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface HomePostViewController ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *countryCityText;
-@property (weak, nonatomic) IBOutlet UITextField *locationTagText;
 @property (weak, nonatomic) IBOutlet UITextField *startDateText;
 @property (weak, nonatomic) IBOutlet UITextField *daysText;
 @property (weak, nonatomic) IBOutlet UITextView *memoTextView;
@@ -26,6 +25,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    if (!user) {
+        user = [PFUser currentUser];
+    }
+    
     [self initUI];
 }
 
@@ -47,20 +51,34 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    if (!user) {
-        user = [PFUser currentUser];
-        [[PFUser currentUser] fetchIfNeeded];
-    }
+
 }
 
 - (void)initUI {
     
     //Add Save Button
-    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveBtnPressed:)];
+//    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveBtnPressed:)];
+//    self.navigationItem.rightBarButtonItem = saveButton;
     
-    self.navigationItem.rightBarButtonItem = saveButton;
-    
+    UIBarButtonItem *nextStepButton = [[UIBarButtonItem alloc] initWithTitle:@"下一步" style:UIBarButtonItemStylePlain target:self action:@selector(nextStepBtnPressed:)];
+    self.navigationItem.rightBarButtonItem = nextStepButton;
+
     self.view.backgroundColor = [UIColor homeCellbgColor];
+    
+    [_memoTextView.layer setBackgroundColor: [[UIColor clearColor] CGColor]];
+    [_memoTextView.layer setBorderColor: [[UIColor colorWithRed:0.533 green:0.544 blue:0.562 alpha:1.000] CGColor]];
+    [_memoTextView.layer setBorderWidth: 1.0];
+    [_memoTextView.layer setCornerRadius:8.0f];
+    [_memoTextView.layer setMasksToBounds:YES];
+}
+
+- (void)nextStepBtnPressed:(id *)sender {
+    
+    UIViewController *targetViewController;
+    
+    targetViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"postStep2ViewController"];
+    
+    [self.navigationController pushViewController:targetViewController animated:YES];
 }
 
 - (void)saveBtnPressed:(id *)sender {
@@ -75,7 +93,7 @@
             PFObject *travelMatePost = [PFObject objectWithClassName:@"TravelMatePost"];
             travelMatePost[@"countryCity"] = _countryCityText.text;
             travelMatePost[@"memo"] = _memoTextView.text;
-            travelMatePost[@"locationTag"] = _locationTagText.text;
+            //travelMatePost[@"locationTag"] = _locationTagText.text;
             
             //出發日期
             NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -124,6 +142,13 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
   
+}
+
+#pragma mark - textView
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
+    
+    [_memoTextView.layer setBorderColor: [[UIColor colorWithRed:0.263 green:0.718 blue:0.608 alpha:1.000] CGColor]];
+    return true;
 }
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info

@@ -12,7 +12,6 @@
 #import "JL2TableViewCell.h"
 #import "JL3MessageTableViewCell.h"
 #import "ParallaxHeaderView.h"
-#import "IHKeyboardAvoiding.h"
 #import "UIImage+ImageEffects.h"
 #import "SSBouncyButton.h"
 

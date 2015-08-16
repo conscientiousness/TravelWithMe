@@ -15,7 +15,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jnE-Da-vdY">
-                        <rect key="frame" x="6" y="8" width="312" height="56.5"/>
+                        <rect key="frame" x="6" y="8" width="312" height="57"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tmp-head-icon" translatesAutoresizingMaskIntoConstraints="NO" id="nRI-bH-hKH">
                                 <rect key="frame" x="8" y="7" width="44" height="44"/>
