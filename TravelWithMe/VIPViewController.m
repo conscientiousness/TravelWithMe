@@ -64,7 +64,7 @@ CGPoint tableOffset2;
     
     // build section view 位置和顏色
     _sectionView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
-    _sectionView.backgroundColor=[UIColor colorWithRed: 0.9897 green: 0.8915 blue: 0.7872 alpha: 1.0];
+    _sectionView.backgroundColor=[UIColor colorWithRed: 1.0 green: 1.0 blue: 1.0 alpha: 1.0];
     
     [self.view addSubview:imageView];
     //  _headBg=imageView;
@@ -113,7 +113,7 @@ CGPoint tableOffset2;
     [_sectionView addSubview:btn];
     
     lineView=[[UIView alloc] initWithFrame:CGRectMake(0, _sectionView.frame.size.height-2, _sectionView.frame.size.width/2, 2)];
-    lineView.backgroundColor=[UIColor colorWithRed: 0.2894 green: 0.7154 blue: 0.6361 alpha: 1.0];
+    lineView.backgroundColor=[UIColor colorWithRed: 0.9897 green: 0.8915 blue: 0.7872 alpha: 1.0];
     [_sectionView addSubview:lineView];
     
     // set table height

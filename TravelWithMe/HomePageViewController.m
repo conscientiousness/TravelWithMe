@@ -40,14 +40,16 @@
                         [UIImage imageNamed:@"demo_2.jpg"],
                         [UIImage imageNamed:@"demo_3.jpg"],
                         [UIImage imageNamed:@"demo_4.jpg"],
-                        [UIImage imageNamed:@"demo_1.jpg"],
-                        [UIImage imageNamed:@"demo_2.jpg"],
-                        [UIImage imageNamed:@"demo_3.jpg"],
-                        [UIImage imageNamed:@"demo_4.jpg"],
-                        [UIImage imageNamed:@"demo_1.jpg"],
-                        [UIImage imageNamed:@"demo_2.jpg"],
-                        [UIImage imageNamed:@"demo_3.jpg"],
-                        [UIImage imageNamed:@"demo_4.jpg"]];
+                        [UIImage imageNamed:@"demo_5.jpg"],
+                        [UIImage imageNamed:@"demo_6.jpg"],
+                        [UIImage imageNamed:@"demo_7.jpg"],
+                        [UIImage imageNamed:@"demo_8.jpg"],
+                        [UIImage imageNamed:@"demo_9.jpg"],
+                        [UIImage imageNamed:@"demo_10.jpg"],
+                        [UIImage imageNamed:@"demo_11.jpg"],
+                        [UIImage imageNamed:@"demo_12.jpg"],
+                        [UIImage imageNamed:@"demo_13.jpg"],
+                        [UIImage imageNamed:@"demo_14.jpg"]];
    
 }
 

@@ -39,28 +39,28 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    if(indexPath.section == 0){
-    if(indexPath.row == 0){
-            UIViewController *targetViewController;
-            UIStoryboard *storyboard;
-        //[FBSDKAccessToken currentAccessToken]
-            if(user) {
-                targetViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"VIPViewController"];
-                
-            [self.navigationController pushViewController:targetViewController animated:YES];
-            }
-            else {
-            storyboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
-                
-                targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"loginViewController"];
-                
-                [self presentViewController:targetViewController animated:YES completion:nil];
-            }
-            
-            
-        }
-    }
-
+//    if(indexPath.section == 0){
+//    if(indexPath.row == 0){
+//            UIViewController *targetViewController;
+//            UIStoryboard *storyboard;
+//        //[FBSDKAccessToken currentAccessToken]
+//            if(user) {
+//                targetViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"VIPViewController"];
+//                
+//            [self.navigationController pushViewController:targetViewController animated:YES];
+//            }
+//            else {
+//            storyboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+//                
+//                targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"loginViewController"];
+//                
+//                [self presentViewController:targetViewController animated:YES completion:nil];
+//            }
+//            
+//            
+//        }
+//    }
+//
     //  打印
     //  NSLog(@"indexPath :%@",indexPath);
     if(indexPath.section == 2){

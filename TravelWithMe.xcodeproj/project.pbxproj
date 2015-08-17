@@ -14,6 +14,10 @@
 		A53CBBB71B67FA630039369A /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A53CBBB61B67FA630039369A /* MapViewController.m */; };
 		A55669951B80EAE300F588E3 /* CExpandHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = A55669941B80EAE300F588E3 /* CExpandHeader.m */; };
 		A56DC6261B80EC3E009C621F /* 22.png in Resources */ = {isa = PBXBuildFile; fileRef = A56DC6251B80EC3E009C621F /* 22.png */; };
+		A5867BE41B81C13E003D807B /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A52B782F1B81BE1E00F8DEF2 /* NotificationCenter.framework */; };
+		A5867BEA1B81C13E003D807B /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5867BE91B81C13E003D807B /* TodayViewController.m */; };
+		A5867BEC1B81C13E003D807B /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5867BEB1B81C13E003D807B /* MainInterface.storyboard */; };
+		A5867BEF1B81C13E003D807B /* TravelWithMeWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A5867BE31B81C13E003D807B /* TravelWithMeWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A5D374921B646BEC00A57791 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5D374911B646BEC00A57791 /* MessageUI.framework */; };
 		A5E1670D1B6903B70036ABE4 /* SettingTableViewControlle.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E1670C1B6903B70036ABE4 /* SettingTableViewControlle.m */; };
 		B51A23321B7A5C9900CFD674 /* favoriteMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51A232B1B7A5C9900CFD674 /* favoriteMainViewController.m */; };
@@ -79,10 +83,6 @@
 		F48B16E01B5F40D200E96B0D /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48B16DF1B5F40D200E96B0D /* Accounts.framework */; };
 		F48B16E21B5F40D900E96B0D /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48B16E11B5F40D900E96B0D /* Social.framework */; };
 		F4BC50D51B7E3419008C3EC4 /* login-background-video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F4BC50D41B7E3419008C3EC4 /* login-background-video.mp4 */; };
-		F4BC50DA1B7E4C4D008C3EC4 /* demo_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F4BC50D61B7E4C4D008C3EC4 /* demo_1.jpg */; };
-		F4BC50DB1B7E4C4D008C3EC4 /* demo_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F4BC50D71B7E4C4D008C3EC4 /* demo_2.jpg */; };
-		F4BC50DC1B7E4C4D008C3EC4 /* demo_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F4BC50D81B7E4C4D008C3EC4 /* demo_3.jpg */; };
-		F4BC50DD1B7E4C4D008C3EC4 /* demo_4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F4BC50D91B7E4C4D008C3EC4 /* demo_4.jpg */; };
 		F4BC50E21B7E54ED008C3EC4 /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BC50DF1B7E54ED008C3EC4 /* HomePageViewController.m */; };
 		F4BC50E31B7E54ED008C3EC4 /* ParallaxTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BC50E11B7E54ED008C3EC4 /* ParallaxTableViewCell.m */; };
 		F4C9EE471B62B738007C37B4 /* kyoto_sample_photo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F4C9EE451B62B738007C37B4 /* kyoto_sample_photo.jpg */; };
@@ -94,6 +94,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		A5867BED1B81C13E003D807B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F47556931B4BACF2008CEE3A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A5867BE21B81C13E003D807B;
+			remoteInfo = TravelWithMeWidget;
+		};
 		F47556B51B4BACF2008CEE3A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F47556931B4BACF2008CEE3A /* Project object */;
@@ -103,11 +110,26 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		A52B783F1B81BE1E00F8DEF2 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A5867BEF1B81C13E003D807B /* TravelWithMeWidget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		44BCC490976B2C9D75A6541C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A2A1A052438CEB9B22CC0114 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A50ED43E1B7852AD00651C3E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A50ED4401B7852D200651C3E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A52B782F1B81BE1E00F8DEF2 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		A52E4EB71B63817400285C83 /* VIPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VIPViewController.h; sourceTree = "<group>"; };
 		A52E4EB81B63817400285C83 /* VIPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VIPViewController.m; sourceTree = "<group>"; };
 		A53CBBB51B67FA630039369A /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
@@ -115,6 +137,11 @@
 		A55669931B80EAE300F588E3 /* CExpandHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CExpandHeader.h; sourceTree = "<group>"; };
 		A55669941B80EAE300F588E3 /* CExpandHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CExpandHeader.m; sourceTree = "<group>"; };
 		A56DC6251B80EC3E009C621F /* 22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 22.png; sourceTree = "<group>"; };
+		A5867BE31B81C13E003D807B /* TravelWithMeWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TravelWithMeWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5867BE71B81C13E003D807B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5867BE81B81C13E003D807B /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
+		A5867BE91B81C13E003D807B /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
+		A5867BEB1B81C13E003D807B /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 		A5D374911B646BEC00A57791 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		A5E1670B1B6903B70036ABE4 /* SettingTableViewControlle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingTableViewControlle.h; sourceTree = "<group>"; };
 		A5E1670C1B6903B70036ABE4 /* SettingTableViewControlle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewControlle.m; sourceTree = "<group>"; };
@@ -199,10 +226,6 @@
 		F48B16DF1B5F40D200E96B0D /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		F48B16E11B5F40D900E96B0D /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		F4BC50D41B7E3419008C3EC4 /* login-background-video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "login-background-video.mp4"; sourceTree = "<group>"; };
-		F4BC50D61B7E4C4D008C3EC4 /* demo_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = demo_1.jpg; sourceTree = "<group>"; };
-		F4BC50D71B7E4C4D008C3EC4 /* demo_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = demo_2.jpg; sourceTree = "<group>"; };
-		F4BC50D81B7E4C4D008C3EC4 /* demo_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = demo_3.jpg; sourceTree = "<group>"; };
-		F4BC50D91B7E4C4D008C3EC4 /* demo_4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = demo_4.jpg; sourceTree = "<group>"; };
 		F4BC50DE1B7E54ED008C3EC4 /* HomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageViewController.h; sourceTree = "<group>"; };
 		F4BC50DF1B7E54ED008C3EC4 /* HomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
 		F4BC50E01B7E54ED008C3EC4 /* ParallaxTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParallaxTableViewCell.h; sourceTree = "<group>"; };
@@ -220,6 +243,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A5867BE01B81C13E003D807B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5867BE41B81C13E003D807B /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F47556981B4BACF2008CEE3A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -272,6 +303,7 @@
 				F48B16CD1B5F406300E96B0D /* CFNetwork.framework */,
 				F48B16CB1B5F405600E96B0D /* AudioToolbox.framework */,
 				DD38E21F3C22A68B1A59632E /* Pods.framework */,
+				A52B782F1B81BE1E00F8DEF2 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -283,6 +315,25 @@
 				A55669941B80EAE300F588E3 /* CExpandHeader.m */,
 			);
 			name = CExpandHeader;
+			sourceTree = "<group>";
+		};
+		A5867BE51B81C13E003D807B /* TravelWithMeWidget */ = {
+			isa = PBXGroup;
+			children = (
+				A5867BE81B81C13E003D807B /* TodayViewController.h */,
+				A5867BE91B81C13E003D807B /* TodayViewController.m */,
+				A5867BEB1B81C13E003D807B /* MainInterface.storyboard */,
+				A5867BE61B81C13E003D807B /* Supporting Files */,
+			);
+			path = TravelWithMeWidget;
+			sourceTree = "<group>";
+		};
+		A5867BE61B81C13E003D807B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A5867BE71B81C13E003D807B /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		F2BC6DDE6C40B624B4CA3196 /* Pods */ = {
@@ -404,6 +455,7 @@
 				F475569D1B4BACF2008CEE3A /* TravelWithMe */,
 				F47556B71B4BACF2008CEE3A /* TravelWithMeTests */,
 				F445E36D1B6E0C4E00818A18 /* PrefixHeader.pch */,
+				A5867BE51B81C13E003D807B /* TravelWithMeWidget */,
 				F475569C1B4BACF2008CEE3A /* Products */,
 				F2BC6DDE6C40B624B4CA3196 /* Pods */,
 				789577451EB4254F88441C4F /* Frameworks */,
@@ -415,6 +467,7 @@
 			children = (
 				F475569B1B4BACF2008CEE3A /* TravelWithMe.app */,
 				F47556B41B4BACF2008CEE3A /* TravelWithMeTests.xctest */,
+				A5867BE31B81C13E003D807B /* TravelWithMeWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -478,10 +531,6 @@
 				F43C83191B71B13200D2A389 /* tmp900X640.png */,
 				F4457C271B77B71400A4952B /* background-blur-image.png */,
 				F44307DC1B78488300DE5625 /* bg-blur-image.png */,
-				F4BC50D61B7E4C4D008C3EC4 /* demo_1.jpg */,
-				F4BC50D71B7E4C4D008C3EC4 /* demo_2.jpg */,
-				F4BC50D81B7E4C4D008C3EC4 /* demo_3.jpg */,
-				F4BC50D91B7E4C4D008C3EC4 /* demo_4.jpg */,
 				F4CEF11D1B805F82006D2B71 /* share_photo.png */,
 				F47556A81B4BACF2008CEE3A /* Main.storyboard */,
 			);
@@ -543,6 +592,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		A5867BE21B81C13E003D807B /* TravelWithMeWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5867BF21B81C13E003D807B /* Build configuration list for PBXNativeTarget "TravelWithMeWidget" */;
+			buildPhases = (
+				A5867BDF1B81C13E003D807B /* Sources */,
+				A5867BE01B81C13E003D807B /* Frameworks */,
+				A5867BE11B81C13E003D807B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TravelWithMeWidget;
+			productName = TravelWithMeWidget;
+			productReference = A5867BE31B81C13E003D807B /* TravelWithMeWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		F475569A1B4BACF2008CEE3A /* TravelWithMe */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F47556BE1B4BACF2008CEE3A /* Build configuration list for PBXNativeTarget "TravelWithMe" */;
@@ -553,10 +619,12 @@
 				F47556991B4BACF2008CEE3A /* Resources */,
 				9AC75E90ACAFD2D8CE5C8A16 /* Copy Pods Resources */,
 				C9D133E5ADC5A9A033573354 /* Embed Pods Frameworks */,
+				A52B783F1B81BE1E00F8DEF2 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A5867BEE1B81C13E003D807B /* PBXTargetDependency */,
 			);
 			name = TravelWithMe;
 			productName = TravelWithMe;
@@ -590,6 +658,10 @@
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = Jesse;
 				TargetAttributes = {
+					A5867BE21B81C13E003D807B = {
+						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = X69W8ZBR5M;
+					};
 					F475569A1B4BACF2008CEE3A = {
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = X69W8ZBR5M;
@@ -620,11 +692,20 @@
 			targets = (
 				F475569A1B4BACF2008CEE3A /* TravelWithMe */,
 				F47556B31B4BACF2008CEE3A /* TravelWithMeTests */,
+				A5867BE21B81C13E003D807B /* TravelWithMeWidget */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A5867BE11B81C13E003D807B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5867BEC1B81C13E003D807B /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F47556991B4BACF2008CEE3A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -635,7 +716,6 @@
 				F4441C2E1B6341AB00272BF3 /* iphone_v_photo.jpg in Resources */,
 				F465736E1B5552D800DA3D7B /* JL2TableViewCell.xib in Resources */,
 				F4457C281B77B71400A4952B /* background-blur-image.png in Resources */,
-				F4BC50DC1B7E4C4D008C3EC4 /* demo_3.jpg in Resources */,
 				F442CE151B64B8FC001CD62B /* (null) in Resources */,
 				F42EBDA41B68C8D400606D9B /* (null) in Resources */,
 				F46573641B5545F700DA3D7B /* kyoto.jpg in Resources */,
@@ -646,14 +726,11 @@
 				F42EBD661B6877BF00606D9B /* (null) in Resources */,
 				A56DC6261B80EC3E009C621F /* 22.png in Resources */,
 				F42EBD6B1B68790500606D9B /* (null) in Resources */,
-				F4BC50DB1B7E4C4D008C3EC4 /* demo_2.jpg in Resources */,
-				F4BC50DA1B7E4C4D008C3EC4 /* demo_1.jpg in Resources */,
 				F465736F1B5552D800DA3D7B /* JLTableViewCell.xib in Resources */,
 				F486EF461B4C34D2008CB97B /* Setting.storyboard in Resources */,
 				F47556C51B4BD40F008CEE3A /* Favorite.storyboard in Resources */,
 				F44307DD1B78488300DE5625 /* bg-blur-image.png in Resources */,
 				F4C9EE471B62B738007C37B4 /* kyoto_sample_photo.jpg in Resources */,
-				F4BC50DD1B7E4C4D008C3EC4 /* demo_4.jpg in Resources */,
 				F4441C2D1B6341AB00272BF3 /* iphone_h_photo.jpg in Resources */,
 				F44307DF1B78A01600DE5625 /* FriendsBackground.png in Resources */,
 				F42EBDB21B68FF1400606D9B /* (null) in Resources */,
@@ -725,6 +802,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A5867BDF1B81C13E003D807B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5867BEA1B81C13E003D807B /* TodayViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F47556971B4BACF2008CEE3A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -775,6 +860,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		A5867BEE1B81C13E003D807B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A5867BE21B81C13E003D807B /* TravelWithMeWidget */;
+			targetProxy = A5867BED1B81C13E003D807B /* PBXContainerItemProxy */;
+		};
 		F47556B61B4BACF2008CEE3A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F475569A1B4BACF2008CEE3A /* TravelWithMe */;
@@ -802,6 +892,36 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		A5867BF01B81C13E003D807B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = TravelWithMeWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		A5867BF11B81C13E003D807B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = TravelWithMeWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		F47556BC1B4BACF2008CEE3A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1023,6 +1143,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A5867BF21B81C13E003D807B /* Build configuration list for PBXNativeTarget "TravelWithMeWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5867BF01B81C13E003D807B /* Debug */,
+				A5867BF11B81C13E003D807B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F47556961B4BACF2008CEE3A /* Build configuration list for PBXProject "TravelWithMe" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
