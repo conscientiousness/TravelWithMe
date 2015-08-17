@@ -139,7 +139,7 @@
     UIStoryboard *storyboard;
     
     if([FBSDKAccessToken currentAccessToken]) {
-        
+        // postTableViewController
         targetViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"postViewController"];
         
         [self.navigationController pushViewController:targetViewController animated:YES];
@@ -270,10 +270,7 @@
          cell.testAreaLabel.adjustsFontSizeToFitWidth = NO;
          */
         
-        cell.viewBlock1.backgroundColor = [UIColor whiteColor];
-        cell.viewBlock2.backgroundColor = [UIColor whiteColor];
-        cell.viewBlock3.backgroundColor = [UIColor whiteColor];
-
+       
     
     //UIImage *cellImage = [UIImage imageNamed: @"monkey1080X1080.jpg"];
     //[cell.cellImageView setImage:cellImage];
@@ -401,6 +398,11 @@
     }];
 }
 
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    return 530.0;
+}
 
 /*
 #pragma mark - UIScrollViewDelegate Method
