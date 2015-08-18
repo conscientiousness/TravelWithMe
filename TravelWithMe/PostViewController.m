@@ -10,13 +10,14 @@
 #import "CountryCityTableViewCell.h"
 #import "StartDateDaysTableViewCell.h"
 #import "SharePhotoTableViewCell.h"
+#import "MemoTableViewCell.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 
-#define POSTVIEWCONTROLLER_COUNTRYCITY_KEY @"countryCity"
-#define POSTVIEWCONTROLLER_STARTDATE_KEY @"srartDate"
-#define POSTVIEWCONTROLLER_DAYS_KEY @"days"
-#define POSTVIEWCONTROLLER_MEMO_KEY @"memo"
-#define POSTVIEWCONTROLLER_PHOTO_KEY @"photo"
+#define TRAVELMATEPOST_COUNTRYCITY_KEY @"countryCity"
+#define TRAVELMATEPOST_STARTDATE_KEY @"srartDate"
+#define TRAVELMATEPOST_DAYS_KEY @"days"
+#define TRAVELMATEPOST_MEMO_KEY @"memo"
+#define TRAVELMATEPOST_PHOTO_KEY @"photo"
 
 #define NUMBER_OF_SECTIONS 1
 #define NUMBER_OF_ROWS 4
@@ -27,13 +28,15 @@
 #define IMAGEVIEW_SHAREPHOTO_TAG 3000
 #define TEXTVIEW_MEMO_TAG 4000
 
-@interface PostViewController ()<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface PostViewController ()<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate>
 {
     UIImage *pickImage;
     PFUser *user;
     NSMutableDictionary *datas;
     UIImagePickerController *imagePicker;
     UIImageView *selectedImageView;
+    UIDatePicker *datepicker;
+    UIToolbar *toolBar;
 }
 @property (weak, nonatomic) IBOutlet UITableView *postTableView;
 @end
@@ -73,11 +76,7 @@
 }
 
 - (void)initUI {
-    
-    //Add Save Button
-    //    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveBtnPressed:)];
-    //    self.navigationItem.rightBarButtonItem = saveButton;
-    
+
     UIBarButtonItem *nextStepButton = [[UIBarButtonItem alloc] initWithTitle:@"發佈" style:UIBarButtonItemStylePlain target:self action:@selector(publishBtnPressed:)];
     nextStepButton.enabled = YES;
     self.navigationItem.rightBarButtonItem = nextStepButton;
@@ -86,8 +85,11 @@
     
 }
 
+
 - (void)publishBtnPressed:(id *)sender {
     [self.view endEditing:YES];
+    
+    NSLog(@"%@",datas);
 //    NSIndexPath *indexPath;
 //    UITableViewCell *cell;
 //    
@@ -155,7 +157,7 @@
     if (indexPath.row == 0) {
         CountryCityTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
         [cell.CountryCityTextField setTag:TEXTFIELD_COUNTRYCITY_TAG];
-        
+    
         return cell;
         
     } else if (indexPath.row == 1) {
@@ -165,9 +167,12 @@
         [cell.startDateTextField setTag:TEXTFIELD_STARTDATE_TAG];
         [cell.daysTextField setTag:TEXTFIELD_DAYS_TAG];
 
-        //[datas setObject:cell.startDateTextField forKey:POSTVIEWCONTROLLER_STARTDATE_KEY];
-        //[datas setObject:cell.daysTextField forKey:POSTVIEWCONTROLLER_DAYS_KEY];
+        [self prepareDataPicker];
+        [cell.startDateTextField setInputView:datepicker];
+        [cell.startDateTextField setInputAccessoryView:toolBar];
+
         return cell;
+        
     } else if (indexPath.row == 2) {
         
         SharePhotoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
@@ -178,10 +183,18 @@
         cell.sharePhotoImageView.userInteractionEnabled = YES;
         
         return cell;
-    }
-    else {
         
-         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+    } else if (indexPath.row == 3) {
+        
+        MemoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+        
+        [cell.memoTextField setTag:TEXTVIEW_MEMO_TAG];
+        
+        [cell.memoTextField.layer setBackgroundColor: [[UIColor clearColor] CGColor]];
+        [cell.memoTextField.layer setBorderColor: [[UIColor colorWithRed:0.533 green:0.544 blue:0.562 alpha:1.000] CGColor]];
+        [cell.memoTextField.layer setBorderWidth: 2.0];
+        [cell.memoTextField.layer setCornerRadius:5.0f];
+        [cell.memoTextField.layer setMasksToBounds:YES];
         
         return cell;
     }
@@ -283,7 +296,27 @@
     [datas setObject:textField.text forKey:[NSNumber numberWithInteger:textField.tag]];
 }
 
-#pragma mark - Camera Picker Method
+#pragma mark - TextView Delegate Method
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    if((textView.tag == TEXTVIEW_MEMO_TAG) && ([textView.text isEqual:@""]||textView.text==nil)) {
+        [textView.layer setBorderColor: [[UIColor colorWithRed:0.533 green:0.544 blue:0.562 alpha:1.000] CGColor]];
+    }
+    
+    
+    [datas setObject:textView.text forKey:[NSNumber numberWithInteger:textView.tag]];
+}
+
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
+    
+    if(textView.tag == TEXTVIEW_MEMO_TAG) {
+         
+         [textView.layer setBorderColor: [[UIColor colorWithRed:0.263 green:0.718 blue:0.608 alpha:1.000] CGColor]];
+    }
+    
+    return true;
+}
+
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     // 當使用者按下取消按鈕後關閉拍照程式
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -316,6 +349,43 @@
 //    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
     // 關閉拍照程式
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - datePicker Method
+- (void) prepareDataPicker
+{
+    
+    if(datepicker==nil) {
+        
+        datepicker=[[UIDatePicker alloc]init];
+        [datepicker setBackgroundColor:[UIColor colorWithRed: 1.0 green: 1.0 blue: 1.0 alpha: 1.0]];
+        datepicker.datePickerMode=UIDatePickerModeDate;
+    }
+    
+    if(toolBar==nil){
+        
+        toolBar=[[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
+        [toolBar setTintColor:[UIColor colorWithRed: 1.0 green: 0.5781 blue: 0.0 alpha: 1.0]];
+        [toolBar setTranslucent:YES];
+        [toolBar setBackgroundColor:[UIColor colorWithRed: 1.0 green: 1.0 blue: 1.0 alpha: 1.0]];
+        UIBarButtonItem *doneBtn=[[UIBarButtonItem alloc]initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(showSelectedDate)];
+        UIBarButtonItem *space=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        [toolBar setItems:[NSArray arrayWithObjects:space,doneBtn, nil]];
+    }
+}
+
+-(void)showSelectedDate
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *strDate = [dateFormatter stringFromDate:datepicker.date];
+    
+    UITextField *targetTextField = (UITextField*)[_postTableView viewWithTag:TEXTFIELD_STARTDATE_TAG];
+    
+    NSLog(@"%@",[_postTableView viewWithTag:TEXTFIELD_STARTDATE_TAG]);
+    
+    targetTextField.text = strDate;
+    [targetTextField resignFirstResponder];
 }
 
 @end
