@@ -8,12 +8,13 @@
 
 #import "HomePostViewController.h"
 
-@interface HomePostViewController ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate>
+@interface HomePostViewController ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *countryCityText;
 @property (weak, nonatomic) IBOutlet UITextField *startDateText;
 @property (weak, nonatomic) IBOutlet UITextField *daysText;
 @property (weak, nonatomic) IBOutlet UITextView *memoTextView;
 
+@property (weak, nonatomic) IBOutlet UIScrollView *postScrollView;
 @end
 
 @implementation HomePostViewController
@@ -30,11 +31,24 @@
         user = [PFUser currentUser];
     }
     
+    [_postScrollView setScrollEnabled:true];
+    [_postScrollView setContentSize:CGSizeMake(self.view.frame.size.width, 3000)];
+    _postScrollView.delegate = self;
+    
+    NSLog(@"%f,%f",self.view.frame.size.width,self.view.frame.size.height);
+    
     [self initUI];
+    
+    //手勢控制鍵盤縮放
+    UITapGestureRecognizer *clickGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(clickMethof:)];
+    [self.view addGestureRecognizer:clickGesture];
+    
+    //鍵盤出現時發出通知
+    //[[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardHeightDidChange:) name:UIKeyboardWillShowNotification object:nil];
 }
 
 - (void)viewDidLayoutSubviews {
-    //
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -61,13 +75,14 @@
 //    self.navigationItem.rightBarButtonItem = saveButton;
     
     UIBarButtonItem *nextStepButton = [[UIBarButtonItem alloc] initWithTitle:@"下一步" style:UIBarButtonItemStylePlain target:self action:@selector(nextStepBtnPressed:)];
+    nextStepButton.enabled = NO;
     self.navigationItem.rightBarButtonItem = nextStepButton;
 
-    self.view.backgroundColor = [UIColor homeCellbgColor];
+    self.view.backgroundColor = [UIColor whiteColor];
     
     [_memoTextView.layer setBackgroundColor: [[UIColor clearColor] CGColor]];
     [_memoTextView.layer setBorderColor: [[UIColor colorWithRed:0.533 green:0.544 blue:0.562 alpha:1.000] CGColor]];
-    [_memoTextView.layer setBorderWidth: 1.0];
+    [_memoTextView.layer setBorderWidth: 2.0];
     [_memoTextView.layer setCornerRadius:8.0f];
     [_memoTextView.layer setMasksToBounds:YES];
 }
@@ -103,7 +118,7 @@
             
             //照片 UIImage imageNamed:@"pic900X640.jpg"
             
-            NSData *imageData = [PAPUtility resizeImage:pickImage];
+            NSData *imageData;// = [PAPUtility resizeImage:pickImage];
             
             PFFile *imageFile = [PFFile fileWithName:[NSString stringWithFormat:@"testPhoto.jpg"] data:imageData];
             travelMatePost[@"photo"] = imageFile;
@@ -144,79 +159,36 @@
   
 }
 
+#pragma mark - keyboard move view method
+- (void)clickMethof:(UITapGestureRecognizer*)recognizer{
+    [self.view endEditing:YES];
+    CGRect frame = self.view.frame;
+    frame.origin.y = 0;
+    [self.view setFrame:frame];
+    //    [_txtFiledComment resignFirstResponder];
+    //    [_txtFieldName resignFirstResponder];
+
+    
+}
+
+- (void)keyboardHeightDidChange:(NSNotification*)notification{
+    NSDictionary *userInfo = [notification userInfo];
+    CGSize keyboardSize = [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    
+    CGRect frame = self.view.frame;
+    frame.origin.y = -((keyboardSize.height));
+    [self.view setFrame:frame];
+}
+
 #pragma mark - textView
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
     
     [_memoTextView.layer setBorderColor: [[UIColor colorWithRed:0.263 green:0.718 blue:0.608 alpha:1.000] CGColor]];
+    
+    
     return true;
 }
 
--(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
-    // 取得使用者拍攝的照片
-    pickImage = [info valueForKey:UIImagePickerControllerOriginalImage];
-    //縮圖
-    pickImage = [pickImage thumbnailImage:500 transparentBorder:0 cornerRadius:0 interpolationQuality:kCGInterpolationHigh];
-    // 存檔
-    //UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
-    // 關閉拍照程式
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
--(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    // 當使用者按下取消按鈕後關閉拍照程式
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (IBAction)pictureBtnPressed:(id)sender {
-    
-    UIAlertController * alertController = [UIAlertController new];//[UIAlertController alertControllerWithTitle:@"照相機" message:@"gg" preferredStyle:UIAlertControllerStyleActionSheet];
-    UIAlertAction * action1 = [UIAlertAction actionWithTitle:@"拍攝照片" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        // 先檢查裝置是否配備相機
-        if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]){
-            UIImagePickerController *imagePicker = [[UIImagePickerController alloc]init];
-            // 設定相片來源為裝置上的相機
-            imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-            // 設定imagePicker的delegate為ViewController
-            imagePicker.delegate = self;
-            //開起相機拍照界面
-            [self presentViewController:imagePicker animated:YES completion:nil];
-        }
-    }];
-    
-    UIAlertAction * action2 = [UIAlertAction actionWithTitle:@"選擇照片" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-
-        UIPopoverPresentationController *popover;
-        UIImagePickerController *imagePicker = [UIImagePickerController new];
-        
-        // 設定相片的來源為行動裝置內的相本
-        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        imagePicker.delegate = self;
-        
-        // 設定顯示模式為popover
-        imagePicker.modalPresentationStyle = UIModalPresentationPopover;
-        popover = imagePicker.popoverPresentationController;
-        // 設定popover視窗與哪一個view元件有關連
-        popover.sourceView = sender;
-        // 以下兩行處理popover的箭頭位置
-        // popover.sourceRect = sender.bounds;
-        popover.permittedArrowDirections = UIPopoverArrowDirectionAny;
-        
-        [self presentViewController:imagePicker animated:YES completion:nil];
-        
-    }];
-    
-
-    UIAlertAction * cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-        //NSLog(@"cancel");
-    }];
-    
-    [alertController addAction:action1];
-    [alertController addAction:action2];
-    [alertController addAction:cancel];
-    
-    [self presentViewController:alertController animated:YES completion:nil];
-}
 
 
 

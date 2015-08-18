@@ -69,9 +69,9 @@
     
     //手勢控制鍵盤縮放
     UITapGestureRecognizer *clickGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(clickMethof:)];
-    
     [self.view addGestureRecognizer:clickGesture];
-    
+    //鍵盤出現時發出通知
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardHeightDidChange:) name:UIKeyboardWillShowNotification object:nil];
     
     
     hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -100,8 +100,6 @@
     _detailTableView.backgroundColor = [UIColor homeCellbgColor];
     _detailTableView.opaque = NO;
     
-    //鍵盤出現時View向上移動
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardHeightChange:) name:UIKeyboardWillShowNotification object:nil];
     
     //留言尚未登入時鎖定
     if(!user){
@@ -483,7 +481,7 @@
     
 }
 
-- (void)keyboardHeightChange:(NSNotification*)notification{
+- (void)keyboardHeightDidChange:(NSNotification*)notification{
     NSDictionary *userInfo = [notification userInfo];
     CGSize keyboardSize = [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
     

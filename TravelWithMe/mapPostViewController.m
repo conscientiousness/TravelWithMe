@@ -78,7 +78,7 @@
             
             //照片 UIImage imageNamed:@"pic900X640.jpg"
             
-            NSData *imageData = [PAPUtility resizeImage:pickImage];
+            NSData *imageData;// = [PAPUtility resizeImage:pickImage];
             
             PFFile *imageFile = [PFFile fileWithName:[NSString stringWithFormat:@"testPhoto.jpg"] data:imageData];
             travelMatePost[@"photo"] = imageFile;

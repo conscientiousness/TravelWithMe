@@ -86,8 +86,9 @@
     
     //sleep(2);
     
-    return [[FBSDKApplicationDelegate sharedInstance] application:application
-                                           didFinishLaunchingWithOptions:launchOptions];
+    //[[FBSDKApplicationDelegate sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
+    
+    return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

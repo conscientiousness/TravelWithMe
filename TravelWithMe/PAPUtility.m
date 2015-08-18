@@ -14,12 +14,13 @@
 
 #pragma mark - PAPUtility
 
-+ (NSData*)resizeImage:(UIImage *)anImage {
-    UIImage *resizedImage = [anImage resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(1080.0, 1080.0f) interpolationQuality:kCGInterpolationHigh];
++ (NSData*)resizeImage:(UIImage *)anImage width:(float)width height:(float)height{
+    
+    UIImage *resizedImage = [anImage resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(width, height) interpolationQuality:kCGInterpolationHigh];
     //UIImage *thumbnailImage = [anImage thumbnailImage:86.0f transparentBorder:0.0f cornerRadius:10.0f interpolationQuality:kCGInterpolationDefault];
     
     // JPEG to decrease file size and enable faster uploads & downloads
-    NSData *imageData = UIImageJPEGRepresentation(resizedImage, 0.8f);
+    NSData *imageData = UIImageJPEGRepresentation(resizedImage, 0.7f);
     //NSData *thumbnailImageData = UIImagePNGRepresentation(thumbnailImage);
     
     return imageData;
