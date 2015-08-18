@@ -14,36 +14,32 @@
                         <viewControllerLayoutGuide type="bottom" id="FKl-LY-JtV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="37"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kcz-vX-9Ha">
-                                <rect key="frame" x="16" y="3.5" width="93" height="30"/>
-                                <state key="normal" title="TravelWithMe">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ou6-87-dWj">
+                                <rect key="frame" x="16" y="35" width="102" height="30"/>
+                                <state key="normal" title="Travel With Me">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="TravelWithMeBtnPressed:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="cHT-BB-8Di"/>
-                                </connections>
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="Kcz-vX-9Ha" secondAttribute="centerY" id="H2T-N9-8ex"/>
-                            <constraint firstItem="Kcz-vX-9Ha" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" id="zGK-VR-z70"/>
+                            <constraint firstItem="ou6-87-dWj" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" id="Pet-Y9-zGD"/>
+                            <constraint firstAttribute="centerY" secondItem="ou6-87-dWj" secondAttribute="centerY" id="s3s-Sc-oyC"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <value key="contentSizeForViewInPopover" type="size" width="320" height="37"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="37"/>
+                    <size key="freeformSize" width="320" height="100"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="446" y="242.5"/>
+            <point key="canvasLocation" x="329" y="275"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
