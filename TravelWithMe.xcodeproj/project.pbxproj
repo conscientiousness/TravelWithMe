@@ -25,6 +25,11 @@
 		B51A23341B7A5C9900CFD674 /* favoriteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51A232F1B7A5C9900CFD674 /* favoriteTableViewController.m */; };
 		B51A23351B7A5C9900CFD674 /* followTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51A23311B7A5C9900CFD674 /* followTableViewController.m */; };
 		B5453E271B7A670E008964CE /* mapPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5453E261B7A670E008964CE /* mapPostViewController.m */; };
+		F420E1521B8432B100D3627F /* TWMDefine.m in Sources */ = {isa = PBXBuildFile; fileRef = F420E1511B8432B100D3627F /* TWMDefine.m */; };
+		F420E1551B846B5D00D3627F /* comment-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F420E1531B846B5D00D3627F /* comment-icon.png */; };
+		F420E1561B846B5D00D3627F /* join-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F420E1541B846B5D00D3627F /* join-icon.png */; };
+		F420E15A1B846FA500D3627F /* no-interested-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F420E1581B846FA500D3627F /* no-interested-icon.png */; };
+		F420E15C1B84719800D3627F /* intrested-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F420E15B1B84719800D3627F /* intrested-icon.png */; };
 		F4267BCF1B6A632E00F42330 /* pic900X640.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F4267BCE1B6A632E00F42330 /* pic900X640.jpg */; };
 		F42EBD661B6877BF00606D9B /* (null) in Resources */ = {isa = PBXBuildFile; };
 		F42EBD6A1B68790500606D9B /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -163,6 +168,12 @@
 		B51A23311B7A5C9900CFD674 /* followTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = followTableViewController.m; sourceTree = "<group>"; };
 		B5453E251B7A670E008964CE /* mapPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mapPostViewController.h; sourceTree = "<group>"; };
 		B5453E261B7A670E008964CE /* mapPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mapPostViewController.m; sourceTree = "<group>"; };
+		F420E1501B8432B100D3627F /* TWMDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWMDefine.h; sourceTree = "<group>"; };
+		F420E1511B8432B100D3627F /* TWMDefine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWMDefine.m; sourceTree = "<group>"; };
+		F420E1531B846B5D00D3627F /* comment-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "comment-icon.png"; sourceTree = "<group>"; };
+		F420E1541B846B5D00D3627F /* join-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "join-icon.png"; sourceTree = "<group>"; };
+		F420E1581B846FA500D3627F /* no-interested-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no-interested-icon.png"; sourceTree = "<group>"; };
+		F420E15B1B84719800D3627F /* intrested-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "intrested-icon.png"; sourceTree = "<group>"; };
 		F4267BCE1B6A632E00F42330 /* pic900X640.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pic900X640.jpg; sourceTree = "<group>"; };
 		F43B3B7D1B75C03F0034B20F /* JL3MessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JL3MessageTableViewCell.xib; sourceTree = "<group>"; };
 		F43C83191B71B13200D2A389 /* tmp900X640.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tmp900X640.png; sourceTree = "<group>"; };
@@ -459,14 +470,14 @@
 			name = ParallaxTableViewHeader;
 			sourceTree = "<group>";
 		};
-		F4457C241B7783F400A4952B /* OpenSource */ = {
+		F4457C241B7783F400A4952B /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
 				F44F3E3A1B821194007CE9C1 /* TPKeyboard */,
 				F4457C1D1B7755A200A4952B /* ParallaxTableViewHeader */,
 				F4457C1C1B77557500A4952B /* ParseSampleCode */,
 			);
-			name = OpenSource;
+			name = ThirdParty;
 			sourceTree = "<group>";
 		};
 		F445E3681B6E09D700818A18 /* LoginView */ = {
@@ -523,9 +534,9 @@
 				F486EF431B4C327F008CB97B /* FavoriteView */,
 				F486EF441B4C328E008CB97B /* SettingView */,
 				F443FB411B60FB9A00F30847 /* MapView */,
-				F4DA4C5D1B4E9D0C00421F2F /* Comm */,
 				F445E3681B6E09D700818A18 /* LoginView */,
-				F4457C241B7783F400A4952B /* OpenSource */,
+				F4DA4C5D1B4E9D0C00421F2F /* Comm */,
+				F4457C241B7783F400A4952B /* ThirdParty */,
 				F47556AB1B4BACF2008CEE3A /* Images.xcassets */,
 				F47556AD1B4BACF2008CEE3A /* LaunchScreen.xib */,
 				F475569E1B4BACF2008CEE3A /* Supporting Files */,
@@ -567,6 +578,10 @@
 				F443FB461B611CD500F30847 /* DetailView */,
 				F443FB491B6121DE00F30847 /* DynamicWall */,
 				F46573621B5545F700DA3D7B /* kyoto.jpg */,
+				F420E1531B846B5D00D3627F /* comment-icon.png */,
+				F420E1541B846B5D00D3627F /* join-icon.png */,
+				F420E15B1B84719800D3627F /* intrested-icon.png */,
+				F420E1581B846FA500D3627F /* no-interested-icon.png */,
 				F4C9EE451B62B738007C37B4 /* kyoto_sample_photo.jpg */,
 				F4441C2B1B6341AB00272BF3 /* iphone_h_photo.jpg */,
 				F44307DE1B78A01600DE5625 /* FriendsBackground.png */,
@@ -628,6 +643,8 @@
 				F47556A31B4BACF2008CEE3A /* AppDelegate.m */,
 				F4DA4C5A1B4E9D0500421F2F /* UIColors.h */,
 				F4DA4C5B1B4E9D0500421F2F /* UIColors.m */,
+				F420E1501B8432B100D3627F /* TWMDefine.h */,
+				F420E1511B8432B100D3627F /* TWMDefine.m */,
 			);
 			name = Comm;
 			sourceTree = "<group>";
@@ -753,6 +770,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F420E1561B846B5D00D3627F /* join-icon.png in Resources */,
 				F4BC50D51B7E3419008C3EC4 /* login-background-video.mp4 in Resources */,
 				F445E3671B6E09CD00818A18 /* Login.storyboard in Resources */,
 				F443FB431B60FBF300F30847 /* Map.storyboard in Resources */,
@@ -765,8 +783,10 @@
 				F47556AA1B4BACF2008CEE3A /* Main.storyboard in Resources */,
 				F4CEF12F1B81D251006D2B71 /* share_photo.png in Resources */,
 				F47556AF1B4BACF2008CEE3A /* LaunchScreen.xib in Resources */,
+				F420E1551B846B5D00D3627F /* comment-icon.png in Resources */,
 				F42EBDAC1B68CED800606D9B /* (null) in Resources */,
 				F42EBD661B6877BF00606D9B /* (null) in Resources */,
+				F420E15A1B846FA500D3627F /* no-interested-icon.png in Resources */,
 				A56DC6261B80EC3E009C621F /* 22.png in Resources */,
 				F42EBD6B1B68790500606D9B /* (null) in Resources */,
 				F465736F1B5552D800DA3D7B /* JLTableViewCell.xib in Resources */,
@@ -782,6 +802,7 @@
 				F43B3B7F1B75C03F0034B20F /* JL3MessageTableViewCell.xib in Resources */,
 				F43C831A1B71B13200D2A389 /* tmp900X640.png in Resources */,
 				F42EBDB01B68D1EE00606D9B /* (null) in Resources */,
+				F420E15C1B84719800D3627F /* intrested-icon.png in Resources */,
 				F42EBD6A1B68790500606D9B /* (null) in Resources */,
 				F42EBDAE1B68D0C100606D9B /* (null) in Resources */,
 			);
@@ -874,6 +895,7 @@
 				F448299D1B6FBA8B00ED0EA1 /* PAPConstants.m in Sources */,
 				F44F3E361B8210F1007CE9C1 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				F445E36B1B6E0A1100818A18 /* LoginViewController.m in Sources */,
+				F420E1521B8432B100D3627F /* TWMDefine.m in Sources */,
 				F443FB4F1B612F9300F30847 /* WallTableViewCell.m in Sources */,
 				F47556A41B4BACF2008CEE3A /* AppDelegate.m in Sources */,
 				F44F3E331B8210CD007CE9C1 /* TPKeyboardAvoidingTableView.m in Sources */,
@@ -1008,7 +1030,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1046,7 +1068,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

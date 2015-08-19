@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *travelDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *countryCityLabel;
+@property (weak, nonatomic) IBOutlet UILabel *daysLabel;
 
 
 @end

@@ -13,23 +13,6 @@
 #import "MemoTableViewCell.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 
-#define TRAVELMATEPOST_TABLENAME @"TravelMatePost"
-#define TRAVELMATEPOST_COUNTRYCITY_KEY @"countryCity"
-#define TRAVELMATEPOST_STARTDATE_KEY @"startDate"
-#define TRAVELMATEPOST_DAYS_KEY @"days"
-#define TRAVELMATEPOST_MEMO_KEY @"memo"
-#define TRAVELMATEPOST_PHOTO_KEY @"photo"
-#define TRAVELMATEPOST_POINTER_CREATEUSER_KEY @"createUser"
-#define USER_RELATION_TRAVELMATEPOSTS_KEY @"travelMatePosts"
-
-#define NUMBER_OF_SECTIONS 1
-#define NUMBER_OF_ROWS 4
-
-#define TEXTFIELD_COUNTRYCITY_TAG 1000
-#define TEXTFIELD_STARTDATE_TAG 2000
-#define TEXTFIELD_DAYS_TAG 2001
-#define IMAGEVIEW_SHAREPHOTO_TAG 3000
-#define TEXTVIEW_MEMO_TAG 4000
 
 @interface PostViewController ()<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate>
 {
@@ -74,12 +57,16 @@
     //_postTableView.frame.size.height = self.tabBarController.tabBar.frame.size.height;
 }
 
-- (void) viewDidLayoutSubviews {
-    [super viewDidLayoutSubviews];
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     
     CGRect tableViewNewFrame = _postTableView.frame;
     tableViewNewFrame.size.height += self.tabBarController.tabBar.frame.size.height;
     [_postTableView setFrame:tableViewNewFrame];
+}
+
+- (void) viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
 }
 
 - (void)initUI {
@@ -90,6 +77,8 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
+    //關閉分隔線
+    [_postTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
 
 
@@ -186,6 +175,7 @@
     if (indexPath.row == 0) {
         CountryCityTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
         [cell.CountryCityTextField setTag:TEXTFIELD_COUNTRYCITY_TAG];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
         return cell;
         
@@ -199,6 +189,8 @@
         [self prepareDataPicker];
         [cell.startDateTextField setInputView:datepicker];
         [cell.startDateTextField setInputAccessoryView:toolBar];
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
         return cell;
         
@@ -210,6 +202,8 @@
         tapped.numberOfTapsRequired = 1;
         [cell.sharePhotoImageView addGestureRecognizer:tapped];
         cell.sharePhotoImageView.userInteractionEnabled = YES;
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         return cell;
         
@@ -224,6 +218,8 @@
         [cell.memoTextField.layer setBorderWidth: 2.0];
         [cell.memoTextField.layer setCornerRadius:5.0f];
         [cell.memoTextField.layer setMasksToBounds:YES];
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         return cell;
     }

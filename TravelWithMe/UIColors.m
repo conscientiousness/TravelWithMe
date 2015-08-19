@@ -24,14 +24,14 @@
 
 + (UIColor *) homeCellbgColor {
     
-    return [UIColor colorWithRed:0.9865 green:0.8915 blue:0.7905 alpha:1.0];
+    return [UIColor colorWithRed:1.000 green:0.946 blue:0.891 alpha:1.000];
 }
 
 //Navigation Bar
 
 + (UIColor *) navigationBarColor {
     
-    return [UIColor colorWithRed:0.8779 green:0.4125 blue:0.2668 alpha:1.0];
+    return [UIColor colorWithWhite:1.000 alpha:0.040];
 }
 
 //Tab Bar

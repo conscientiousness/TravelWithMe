@@ -70,8 +70,8 @@
                                                                         </mask>
                                                                     </variation>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="104-03-02" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ql-KD-OA8">
-                                                                    <rect key="frame" x="88" y="407.5" width="124" height="17"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="104-03-02" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ql-KD-OA8">
+                                                                    <rect key="frame" x="88" y="408" width="124" height="17"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="124" id="2N2-A1-Xtw"/>
                                                                         <constraint firstAttribute="width" constant="167" id="aZA-T0-39H"/>
@@ -103,8 +103,8 @@
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sl8-7Z-K1Y">
-                                                                    <rect key="frame" x="20" y="78" width="321" height="321.5"/>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sl8-7Z-K1Y">
+                                                                    <rect key="frame" x="20" y="78" width="321" height="322"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" secondItem="sl8-7Z-K1Y" secondAttribute="height" multiplier="253:102" id="7VU-EU-w1a"/>
                                                                         <constraint firstAttribute="width" secondItem="sl8-7Z-K1Y" secondAttribute="height" multiplier="1:1" id="z1g-lI-dsX"/>
@@ -115,8 +115,8 @@
                                                                         </mask>
                                                                     </variation>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="出發時間" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5vV-QZ-mrm">
-                                                                    <rect key="frame" x="14" y="407.5" width="56" height="17"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="出發時間" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5vV-QZ-mrm">
+                                                                    <rect key="frame" x="14" y="408" width="56" height="17"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
@@ -149,7 +149,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="說明說明說明說明說明說明說明說明說明說明說明說明說明說明說明說明說明說明說明說明說明說明說明說明說明說明說明說明說明說明說明說明說明說明說明說明說明說明說明說明說明說明說明說明說明說明" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VVp-xr-5O5">
-                                                                    <rect key="frame" x="88" y="432" width="261" height="31.5"/>
+                                                                    <rect key="frame" x="88" y="432" width="261" height="32"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
@@ -271,6 +271,7 @@
                                         <connections>
                                             <outlet property="cellImageView" destination="sl8-7Z-K1Y" id="i0X-Wd-ntT"/>
                                             <outlet property="countryCityLabel" destination="kqv-E9-kBZ" id="ZDx-se-FIh"/>
+                                            <outlet property="daysLabel" destination="NXa-UY-Lmr" id="MXo-lg-Car"/>
                                             <outlet property="memoLabel" destination="VVp-xr-5O5" id="RXV-xL-np2"/>
                                             <outlet property="travelDateLabel" destination="2ql-KD-OA8" id="Gvm-Bq-bJD"/>
                                             <outlet property="userNameLabel" destination="E0N-tA-xXP" id="qEt-4G-DKH"/>
@@ -619,7 +620,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1lV-UE-si8">
-                                                    <rect key="frame" x="8" y="32" width="584" height="159.5"/>
+                                                    <rect key="frame" x="8" y="32" width="584" height="160"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

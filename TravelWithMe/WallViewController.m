@@ -24,7 +24,6 @@
     PFUser *user;
     CGRect originNavFrame;
     NSMutableArray *arrayDatas;
-    NSDictionary *dictData;
     NSDateFormatter *cellDateFormatter;
 }
 
@@ -92,7 +91,7 @@
         
     //Add post Button
     UIBarButtonItem *postButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(postBtnPressed:)];
-        
+    
     self.navigationItem.rightBarButtonItem = postButton;
         
     //navigation bar color
@@ -164,7 +163,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
+#pragma mark - Table view Delegate Method
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
@@ -176,6 +175,11 @@
     
     // Return the number of rows in the section.
     return arrayDatas.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return 530.0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -197,23 +201,27 @@
     //NSLog(@"objectId= %@",((PFObject *)arrayDatas[indexPath.row][@"createUser"]).objectId);
     
     //名字
-    cell.userNameLabel.text = arrayDatas[indexPath.row][@"createUser"][@"displayName"];
+    cell.userNameLabel.text = arrayDatas[indexPath.row][TRAVELMATEPOST_POINTER_CREATEUSER_KEY][USER_DISPLAYNAME_KEY];
     
     //大頭照
     //PFFile *proFilePicture = [[[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"createUser"] objectForKey:@"profilePictureMedium"];
     
     //[user objectForKey:kPAPUserProfilePicSmallKey];
-    [cell.wallHeadPhoto sd_setImageWithURL:(NSURL*)((PFFile*)arrayDatas[indexPath.row][@"createUser"][@"profilePictureMedium"]).url placeholderImage:[UIImage imageNamed:@"pic1.jpg"]];
+    [cell.wallHeadPhoto sd_setImageWithURL:(NSURL*)((PFFile*)arrayDatas[indexPath.row][TRAVELMATEPOST_POINTER_CREATEUSER_KEY][USER_PROFILEPICTUREMEDIUM_KEY]).url placeholderImage:[UIImage imageNamed:@"pic1.jpg"]];
         
     //國家城市
-    cell.countryCityLabel.text = [[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"countryCity"];
+    cell.countryCityLabel.text = [[arrayDatas objectAtIndex:indexPath.row] objectForKey:TRAVELMATEPOST_COUNTRYCITY_KEY];
     
     //出發日期
     //NSString *strDate = [cellDateFormatter stringFromDate:[[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"startDate"]];
-    cell.travelDateLabel.text = [[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"startDate"];
+    cell.travelDateLabel.text = [[arrayDatas objectAtIndex:indexPath.row] objectForKey:TRAVELMATEPOST_STARTDATE_KEY];
+    
+    //旅遊天數
+    NSNumber *days = [[arrayDatas objectAtIndex:indexPath.row] objectForKey:TRAVELMATEPOST_DAYS_KEY];
+    cell.daysLabel.text = [days stringValue];
     
     //備註
-    cell.memoLabel.text = [[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"memo"];
+    cell.memoLabel.text = [[arrayDatas objectAtIndex:indexPath.row] objectForKey:TRAVELMATEPOST_MEMO_KEY];
     
     //照片
     PFFile *photo = (PFFile *)[[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"photo"];
@@ -281,16 +289,38 @@
     HomePostViewController *detailVC = [self.storyboard instantiateViewControllerWithIdentifier:identifier];
     [self.navigationController pushViewController:detailVC animated:YES];
     
+    
     //傳值
-    dictData = [NSDictionary new];
-    dictData = @{@"displayName":arrayDatas[indexPath.row][@"createUser"][@"displayName"],
-                 @"profilePictureMedium":arrayDatas[indexPath.row][@"createUser"][@"profilePictureMedium"],
-                 @"countryCity":arrayDatas[indexPath.row][@"countryCity"],
-                 @"photo":arrayDatas[indexPath.row][@"photo"],
-                 @"memo":arrayDatas[indexPath.row][@"memo"],
-                 @"startDate":[cellDateFormatter stringFromDate:arrayDatas[indexPath.row][@"startDate"]],
-                 @"tableViewWidth":@(_wallTableView.frame.size.width),
+    NSDictionary *dictData = [NSDictionary new];
+    dictData = @{
+                 //貼文者姓名displayName
+                 USER_DISPLAYNAME_KEY:arrayDatas[indexPath.row][TRAVELMATEPOST_POINTER_CREATEUSER_KEY][USER_DISPLAYNAME_KEY],
+                 
+                 //大頭照profilePictureMedium
+                 USER_PROFILEPICTUREMEDIUM_KEY:arrayDatas[indexPath.row][TRAVELMATEPOST_POINTER_CREATEUSER_KEY][USER_PROFILEPICTUREMEDIUM_KEY],
+                 
+                 //城市地區countryCity
+                 TRAVELMATEPOST_COUNTRYCITY_KEY:arrayDatas[indexPath.row][TRAVELMATEPOST_COUNTRYCITY_KEY],
+
+                 //照片photo
+                 TRAVELMATEPOST_PHOTO_KEY:arrayDatas[indexPath.row][TRAVELMATEPOST_PHOTO_KEY],
+
+                 //詳細說明memo
+                 TRAVELMATEPOST_MEMO_KEY:arrayDatas[indexPath.row][TRAVELMATEPOST_MEMO_KEY],
+
+                 //出發日期startDate
+                 TRAVELMATEPOST_STARTDATE_KEY:arrayDatas[indexPath.row][TRAVELMATEPOST_STARTDATE_KEY],
+
+                 //旅遊天數days
+                 TRAVELMATEPOST_DAYS_KEY:arrayDatas[indexPath.row][TRAVELMATEPOST_DAYS_KEY],
+                 
+                 //view寬度
+                 @"tableViewWidth":@(self.view.frame.size.width),
+                 
+                 //此篇貼文objectId
                  @"objectId":((PFObject *)arrayDatas[indexPath.row]).objectId,
+                 
+                 //貼文者USER的objectId
                  @"userObjectId":((PFObject *)arrayDatas[indexPath.row][@"createUser"]).objectId
                  };
     
@@ -327,13 +357,7 @@
             //NSLog(@"objects = %@", objects);
             // Do something with the found objects
             arrayDatas = [[NSMutableArray alloc] initWithArray:objects];
-            
-            //arrayDatas = [NSMutableArray new];
-            //dictData = [NSMutableDictionary new];
-            
-//            for (PFObject *object in objects) {
-//                [arrayDatas addObject:dictData[@{@"key":object}]];
-//            }
+
             dispatch_async(dispatch_get_main_queue(), ^{
                 [_wallTableView reloadData];
                 [MBProgressHUD hideHUDForView:self.view animated:YES];
@@ -347,10 +371,7 @@
 }
 
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    return 530.0;
-}
 
 /*
 #pragma mark - UIScrollViewDelegate Method

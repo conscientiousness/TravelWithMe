@@ -15,8 +15,9 @@
 #import "UIImage+ImageEffects.h"
 #import "SSBouncyButton.h"
 
-#define HEIGHT_FOR_INFO_SECTION 310.0
+#define HEIGHT_FOR_INFO_SECTION 330.0
 #define HEIGHT_FOR_MESSAGE_SECTION 64.0
+#define WIDTH_FOR_MEMO 227.0
 
 @interface DetailMessageViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *detailTableView;
@@ -323,6 +324,9 @@
     cell.displayName.text = _cellDictData[@"displayName"];
     //出發日期
     cell.travelDate.text = _cellDictData[@"startDate"];
+    //旅遊天數
+    
+    
     
     //更多說明
     cell.memo.numberOfLines = 0;  //需定義為0才會換行
@@ -391,7 +395,12 @@
     
     
     //大頭照
-    [cell.messageUserPhoto setImage:[UIImage imageNamed:@"pic1.jpg"]];
+    //[cell.messageUserPhoto setImage:commentAry[indexPath.row][USER_PROFILEPICTURESMALL_KEY]];
+    
+    //名字
+    //cell.messageUserName.text = commentAry[indexPath.row][USER_DISPLAYNAME_KEY];
+    
+    [cell.messageUserPhoto setImage:[UIImage imageNamed:@"tmp-head-icon"]];
     PFFile *PFPhoto = (PFFile*)commentAry[indexPath.row][@"createUser"][@"profilePictureSmall"];
     [PFPhoto getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
         if (!error) {
@@ -408,7 +417,7 @@
     //cell.memo.textColor = [UIColor whiteColor];
     cell.messageLabel.textAlignment = NSTextAlignmentLeft;  //內文對齊方式
     //[cell.memo setBackgroundColor:[UIColor redColor]];
-    cell.messageLabel.text = commentAry[indexPath.row][@"message"];
+    cell.messageLabel.text = commentAry[indexPath.row][COMMENT_MESSAGE_KEY];
     //NSLog(@"commentAry[indexPath.row]= %@",commentAry[indexPath.row][@"createUser"][@"displayName"]);
 
 }
@@ -422,11 +431,11 @@
         result = HEIGHT_FOR_INFO_SECTION;
         
         tmpStr = _cellDictData[@"memo"];
-        NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:12]};
+        NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:13]};
         NSAttributedString * attrString = [[NSAttributedString alloc] initWithString:tmpStr attributes:attributes];
         
         //寬度固定計算行高(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
-        CGRect rect = [attrString boundingRectWithSize:CGSizeMake(296.0, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin context:nil];
+        CGRect rect = [attrString boundingRectWithSize:CGSizeMake(WIDTH_FOR_MEMO, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin context:nil];
         //NSLog(@"rect:%@",NSStringFromCGRect(rect));
         //NSLog(@"rect height = %f",rect.size.height);
         result += rect.size.height;
@@ -438,7 +447,7 @@
     }else if(indexPath.section == 2){
         result = HEIGHT_FOR_MESSAGE_SECTION;
         
-        tmpStr = commentAry[indexPath.row][@"message"];
+        tmpStr = commentAry[indexPath.row][COMMENT_MESSAGE_KEY];
         NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:12]};
         NSAttributedString * attrString = [[NSAttributedString alloc] initWithString:tmpStr attributes:attributes];
         
@@ -507,10 +516,41 @@
 
 - (void) getCommentData {
     //留言
-    PFObject *travelMatePost = [PFObject objectWithoutDataWithClassName:@"TravelMatePost" objectId:_cellDictData[@"objectId"]];
-    PFRelation *relation = [travelMatePost relationForKey:@"comments"];
-    PFQuery *query = [relation query];
-    [query orderByAscending:@"createdAt"];
+    //PFObject *comment = [PFObject objectWithoutDataWithClassName:COMMENT_TABLENAME objectId:_cellDictData[@"objectId"]];
+    
+    PFQuery *query = [PFQuery queryWithClassName:COMMENT_TABLENAME];
+    [query whereKey:@"postObjectId" equalTo:_cellDictData[@"objectId"]];
+    [query orderByDescending:@"createdAt"];
+    [query includeKey:@"createUser.User"];
+    
+//    commentAry = [NSMutableArray new];
+//    for(id object in [query findObjects]){
+//        NSMutableDictionary *dictComment = [NSMutableDictionary new];
+//        
+//        UIImage *picture = [UIImage new];
+//        //大頭照
+//        if(object[@"createUser"][@"profilePictureSmall"]!=nil) {
+//            PFFile *PFPhoto = (PFFile*)object[@"createUser"][@"profilePictureSmall"];
+//            NSData *photoData = [PFPhoto getData];
+//            picture = [UIImage imageWithData:photoData];
+//        
+//        } else {
+//            picture = [UIImage imageNamed:@"tmp-head-icon"];
+//        }
+//        
+//        [dictComment setObject:picture forKey:USER_PROFILEPICTURESMALL_KEY];
+//        
+//        //名字
+//        [dictComment setObject:object[TRAVELMATEPOST_POINTER_CREATEUSER_KEY][USER_DISPLAYNAME_KEY] forKey:USER_DISPLAYNAME_KEY];
+//        
+//        //訊息
+//        [dictComment setObject:object[COMMENT_MESSAGE_KEY] forKey:COMMENT_MESSAGE_KEY];
+//        
+//        //留言時間
+//        
+//        [commentAry addObject:dictComment];
+//    }
+    
     commentAry = [[NSMutableArray alloc] initWithArray:[query findObjects]];
 }
 
