@@ -13,11 +13,14 @@
 #import "MemoTableViewCell.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 
+#define TRAVELMATEPOST_TABLENAME @"TravelMatePost"
 #define TRAVELMATEPOST_COUNTRYCITY_KEY @"countryCity"
 #define TRAVELMATEPOST_STARTDATE_KEY @"srartDate"
 #define TRAVELMATEPOST_DAYS_KEY @"days"
 #define TRAVELMATEPOST_MEMO_KEY @"memo"
 #define TRAVELMATEPOST_PHOTO_KEY @"photo"
+#define TRAVELMATEPOST_POINTER_CREATEUSER_KEY @"createUser"
+#define USER_RELATION_TRAVELMATEPOSTS_KEY @"travelMatePosts"
 
 #define NUMBER_OF_SECTIONS 1
 #define NUMBER_OF_ROWS 4
@@ -31,12 +34,12 @@
 @interface PostViewController ()<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate>
 {
     UIImage *pickImage;
-    PFUser *user;
     NSMutableDictionary *datas;
     UIImagePickerController *imagePicker;
     UIImageView *selectedImageView;
     UIDatePicker *datepicker;
     UIToolbar *toolBar;
+    PFUser *user;
 }
 @property (weak, nonatomic) IBOutlet UITableView *postTableView;
 @end
@@ -47,6 +50,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    if (!user) {
+        user = [PFUser currentUser];
+    }
+    
     [self initUI];
 }
 
@@ -89,29 +96,48 @@
 - (void)publishBtnPressed:(id *)sender {
     [self.view endEditing:YES];
     
-    NSLog(@"%@",datas);
-//    NSIndexPath *indexPath;
-//    UITableViewCell *cell;
-//    
-//    for(int i=0;i<NUMBER_OF_ROWS;i++) {
-//        
-//        indexPath = [NSIndexPath indexPathForRow:i inSection:0];
-//        cell = [_postTableView cellForRowAtIndexPath:indexPath];
-//        
-//        for (UIView *subView in cell.contentView.subviews)
-//        {
-//            if ([subView isKindOfClass:[UITextField class]])
-//            {
-//                UITextField *txtField = (UITextField *)subView;
-//                NSLog(@"%@",txtField.text);
-//            }
-//        }
-//        
-//    }
+    //NSLog(@"%@",datas);
     
-    //[cell viewWithTag:];
-    
-    //NSLog(@"text1 = %@ ,text2 = %@ ,text3 = %@",((UITextField*)datas[POSTVIEWCONTROLLER_COUNTRYCITY_KEY]).text,((UITextField*)datas[POSTVIEWCONTROLLER_STARTDATE_KEY]).text,((UITextField*)datas[POSTVIEWCONTROLLER_DAYS_KEY]).text);
+    if(user) {
+        
+        MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.labelText = @"發送中...";
+        
+        dispatch_queue_t publishQueue = dispatch_queue_create("publish", nil);
+        
+        dispatch_async(publishQueue, ^{
+            
+            PFObject *travelMatePost = [PFObject objectWithClassName:TRAVELMATEPOST_TABLENAME];
+            travelMatePost[TRAVELMATEPOST_COUNTRYCITY_KEY] = [datas objectForKey:[NSNumber numberWithInteger: TEXTFIELD_COUNTRYCITY_TAG]];
+            travelMatePost[TRAVELMATEPOST_MEMO_KEY] = [datas objectForKey:[NSNumber numberWithInteger: TEXTVIEW_MEMO_TAG]];
+            
+            //出發日期
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+            NSDate *startDate = [dateFormatter dateFromString:[datas objectForKey:[NSNumber numberWithInteger: TEXTFIELD_STARTDATE_TAG]]];
+            travelMatePost[TRAVELMATEPOST_STARTDATE_KEY] = startDate;
+            
+            //照片 UIImage imageNamed:@"pic900X640.jpg"
+            NSData *imageData = [PAPUtility resizeImage:[UIImage imageWithData:[datas objectForKey:[NSNumber numberWithInteger: IMAGEVIEW_SHAREPHOTO_TAG]]] width:700.0 height:700.0];
+            
+            PFFile *imageFile = [PFFile fileWithName:[NSString stringWithFormat:@"photo.jpg"] data:imageData];
+            travelMatePost[TRAVELMATEPOST_PHOTO_KEY] = imageFile;
+            
+            travelMatePost[TRAVELMATEPOST_DAYS_KEY] = [NSNumber numberWithInteger:[[datas objectForKey:[NSNumber numberWithInteger: TEXTFIELD_DAYS_TAG]] integerValue]];
+            
+            travelMatePost[TRAVELMATEPOST_POINTER_CREATEUSER_KEY] = user;
+            
+            [travelMatePost save];
+            
+            PFRelation *relation = [user relationForKey:USER_RELATION_TRAVELMATEPOSTS_KEY];
+            [relation addObject:travelMatePost];
+            [user save];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+            });
+        });
+    }
 }
 
 /*
@@ -336,7 +362,9 @@
         //_theImageView.image=editedImage;
         
         NSData *imageData = [PAPUtility resizeImage:editedImage width:500.0 height:500.0];
-        NSLog(@"Size of Image(bytes):%ld",[imageData length]);
+        
+        [datas setObject:imageData forKey:[NSNumber numberWithInteger:IMAGEVIEW_SHAREPHOTO_TAG]];
+        //NSLog(@"Size of Image(bytes):%ld",[imageData length]);
         [selectedImageView setImage:[UIImage imageWithData:imageData]];
     }
     [picker dismissViewControllerAnimated:true completion:nil];
@@ -382,7 +410,7 @@
     
     UITextField *targetTextField = (UITextField*)[_postTableView viewWithTag:TEXTFIELD_STARTDATE_TAG];
     
-    NSLog(@"%@",[_postTableView viewWithTag:TEXTFIELD_STARTDATE_TAG]);
+    //NSLog(@"%@",[_postTableView viewWithTag:TEXTFIELD_STARTDATE_TAG]);
     
     targetTextField.text = strDate;
     [targetTextField resignFirstResponder];

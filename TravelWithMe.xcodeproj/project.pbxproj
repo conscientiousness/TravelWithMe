@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		585397B91799ED43F93A41C9 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927D24742B4F2C6030CB033A /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		A50ED43B1B784F9C00651C3E /* AnimationTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = A50ED43A1B784F9C00651C3E /* AnimationTableView.m */; };
 		A50ED43F1B7852AD00651C3E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A50ED43E1B7852AD00651C3E /* UIKit.framework */; };
 		A50ED4411B7852D200651C3E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A50ED4401B7852D200651C3E /* Foundation.framework */; };
 		A52E4EB91B63817400285C83 /* VIPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A52E4EB81B63817400285C83 /* VIPViewController.m */; };
@@ -88,6 +87,7 @@
 		F48B16E01B5F40D200E96B0D /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48B16DF1B5F40D200E96B0D /* Accounts.framework */; };
 		F48B16E21B5F40D900E96B0D /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48B16E11B5F40D900E96B0D /* Social.framework */; };
 		F4B387441B831250007740D5 /* SharePhotoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B387431B831250007740D5 /* SharePhotoTableViewCell.m */; };
+		F4B3874A1B83465C007740D5 /* MemoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B387491B83465C007740D5 /* MemoTableViewCell.m */; };
 		F4BC50D51B7E3419008C3EC4 /* login-background-video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F4BC50D41B7E3419008C3EC4 /* login-background-video.mp4 */; };
 		F4BC50E21B7E54ED008C3EC4 /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BC50DF1B7E54ED008C3EC4 /* HomePageViewController.m */; };
 		F4BC50E31B7E54ED008C3EC4 /* ParallaxTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BC50E11B7E54ED008C3EC4 /* ParallaxTableViewCell.m */; };
@@ -242,6 +242,8 @@
 		F48B16E11B5F40D900E96B0D /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		F4B387421B831250007740D5 /* SharePhotoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharePhotoTableViewCell.h; sourceTree = "<group>"; };
 		F4B387431B831250007740D5 /* SharePhotoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharePhotoTableViewCell.m; sourceTree = "<group>"; };
+		F4B387481B83465C007740D5 /* MemoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemoTableViewCell.h; sourceTree = "<group>"; };
+		F4B387491B83465C007740D5 /* MemoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemoTableViewCell.m; sourceTree = "<group>"; };
 		F4BC50D41B7E3419008C3EC4 /* login-background-video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "login-background-video.mp4"; sourceTree = "<group>"; };
 		F4BC50DE1B7E54ED008C3EC4 /* HomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageViewController.h; sourceTree = "<group>"; };
 		F4BC50DF1B7E54ED008C3EC4 /* HomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
@@ -321,8 +323,6 @@
 				F48B16D01B5F407800E96B0D /* CoreLocation.framework */,
 				F48B16CD1B5F406300E96B0D /* CFNetwork.framework */,
 				F48B16CB1B5F405600E96B0D /* AudioToolbox.framework */,
-				DD38E21F3C22A68B1A59632E /* Pods.framework */,
-				DD38E21F3C22A68B1A59632E /* Pods.framework */,
 				A52B782F1B81BE1E00F8DEF2 /* NotificationCenter.framework */,
 				927D24742B4F2C6030CB033A /* Pods.framework */,
 			);
@@ -411,6 +411,8 @@
 				F44F3E2F1B8207F9007CE9C1 /* StartDateDaysTableViewCell.m */,
 				F4B387421B831250007740D5 /* SharePhotoTableViewCell.h */,
 				F4B387431B831250007740D5 /* SharePhotoTableViewCell.m */,
+				F4B387481B83465C007740D5 /* MemoTableViewCell.h */,
+				F4B387491B83465C007740D5 /* MemoTableViewCell.m */,
 			);
 			name = PostView;
 			sourceTree = "<group>";
@@ -659,8 +661,6 @@
 				F47556981B4BACF2008CEE3A /* Frameworks */,
 				F47556991B4BACF2008CEE3A /* Resources */,
 				9AC75E90ACAFD2D8CE5C8A16 /* Copy Pods Resources */,
-				C9D133E5ADC5A9A033573354 /* Embed Pods Frameworks */,
-				C9D133E5ADC5A9A033573354 /* Embed Pods Frameworks */,
 				A52B783F1B81BE1E00F8DEF2 /* Embed App Extensions */,
 				8EA905329E861224FDD12D0E /* Embed Pods Frameworks */,
 			);
@@ -867,6 +867,7 @@
 				F4DA4C5C1B4E9D0500421F2F /* UIColors.m in Sources */,
 				F4CEF12D1B81B87C006D2B71 /* PostViewController.m in Sources */,
 				F4DA4C601B4EC96F00421F2F /* HomePostViewController.m in Sources */,
+				F4B3874A1B83465C007740D5 /* MemoTableViewCell.m in Sources */,
 				F4CEF1571B81F4CE006D2B71 /* CountryCityTableViewCell.m in Sources */,
 				F44F3E391B821102007CE9C1 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				F44829961B6FB9D800ED0EA1 /* UIImage+RoundedCornerAdditions.m in Sources */,

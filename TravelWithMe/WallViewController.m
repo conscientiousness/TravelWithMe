@@ -31,11 +31,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if (!user) {
-        user = [PFUser currentUser];
-    }
-    
-
     //originNavFrame = self.navigationController.navigationBar.frame;
     
     MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -70,6 +65,9 @@
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
+    if (!user) {
+        user = [PFUser currentUser];
+    }
     // nav tabbar 滾動縮放
     //self.scrollCoordinator.scrollView = _wallTableView;
     //self.scrollCoordinator.topView = self.navigationController.navigationBar;
@@ -115,19 +113,21 @@
 
 }
 
+
+
 - (void)refreshView:(UIRefreshControl*)refresh
 {
     refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"更新中..."];
     
-    sleep(2);
-    
     NSDateFormatter *formatter = [NSDateFormatter new];
-    
     [formatter setDateFormat:@"MM/dd,a h:mm "];
-    
     NSString *lastUpdated = [NSString stringWithFormat:@"最後更新時間: %@",[formatter stringFromDate:[NSDate date]]];
-    
     refresh.attributedTitle = [[NSAttributedString alloc] initWithString:lastUpdated];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        [self getdata];
+    });
+    
     [refresh endRefreshing];
 }
 
@@ -138,7 +138,9 @@
     UIViewController *targetViewController;
     UIStoryboard *storyboard;
     
-    if([FBSDKAccessToken currentAccessToken]) {
+    //[FBSDKAccessToken currentAccessToken]
+    
+    if(user) {
         // postTableViewController
         targetViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"postViewController"];
         
@@ -372,6 +374,7 @@
     PFQuery *query = [PFQuery queryWithClassName:@"TravelMatePost"];
     [query includeKey:@"createUser.User"];
     [query orderByDescending:@"createdAt"];
+    
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             // The find succeeded.
