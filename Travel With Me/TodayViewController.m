@@ -1,8 +1,8 @@
 //
 //  TodayViewController.m
-//  TravelWithMeWidget
+//  Travel With Me
 //
-//  Created by Hank on 2015/8/17.
+//  Created by Hank on 2015/8/18.
 //  Copyright (c) 2015年 Jesse. All rights reserved.
 //
 
@@ -18,6 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.preferredContentSize = CGSizeMake(0, 100);
 }
 
 - (void)didReceiveMemoryWarning {
