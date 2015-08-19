@@ -87,25 +87,31 @@
 
 - (IBAction)FBLoginBtnPressed:(id)sender {
     
-    [PFFacebookUtils logInInBackgroundWithReadPermissions:@[@"public_profile", @"email"] block:^(PFUser *user, NSError *error) {
-        if (!user) {
-            NSLog(@"Uh oh. The user cancelled the Facebook login.");
-            
-            //} else if (user.isNew) {
-            //NSLog(@"User signed up and logged in through Facebook!");
-        } else {
-            NSLog(@"User logged in through Facebook! ,%@",user.objectId);
-            
-            [self saveFacebookProfileData:user completion:^void(NSError *error) {
+    MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"登入中...";
+    dispatch_queue_t loginFacebookQueue = dispatch_queue_create("loginFacebookQueue", nil);
+    dispatch_async(loginFacebookQueue, ^{
+
+        [PFFacebookUtils logInInBackgroundWithReadPermissions:@[@"public_profile", @"email"] block:^(PFUser *user, NSError *error) {
+            if (!user) {
+                NSLog(@"Uh oh. The user cancelled the Facebook login.");
                 
-                if (!error) {
-                    [self dismissViewControllerAnimated:true completion:nil];
-                } else {
-                    NSLog(@"Can't Save Data to Parse %@",error);
-                }
-            }];
-        }
-    }];
+                //} else if (user.isNew) {
+                //NSLog(@"User signed up and logged in through Facebook!");
+            } else {
+                NSLog(@"User logged in through Facebook! ,%@",user.objectId);
+                
+                [self saveFacebookProfileData:user completion:^void(NSError *error) {
+                    
+                    if (!error) {
+                        [self dismissViewControllerAnimated:true completion:nil];
+                    } else {
+                        NSLog(@"Can't Save Data to Parse %@",error);
+                    }
+                }];
+            }
+        }];
+    });
 }
 
 - (void) saveFacebookProfileData:(PFUser*)user completion:(void (^)(NSError *error))handler

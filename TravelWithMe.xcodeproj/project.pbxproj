@@ -406,6 +406,7 @@
 				F4CEF12B1B81B87C006D2B71 /* PostViewController.h */,
 				F4CEF12C1B81B87C006D2B71 /* PostViewController.m */,
 				F4CEF1551B81F4CE006D2B71 /* CountryCityTableViewCell.h */,
+				F4BC50E01B7E54ED008C3EC4 /* ParallaxTableViewCell.h */,
 				F4CEF1561B81F4CE006D2B71 /* CountryCityTableViewCell.m */,
 				F44F3E2E1B8207F9007CE9C1 /* StartDateDaysTableViewCell.h */,
 				F44F3E2F1B8207F9007CE9C1 /* StartDateDaysTableViewCell.m */,
@@ -615,7 +616,6 @@
 			children = (
 				F4BC50DE1B7E54ED008C3EC4 /* HomePageViewController.h */,
 				F4BC50DF1B7E54ED008C3EC4 /* HomePageViewController.m */,
-				F4BC50E01B7E54ED008C3EC4 /* ParallaxTableViewCell.h */,
 				F4BC50E11B7E54ED008C3EC4 /* ParallaxTableViewCell.m */,
 			);
 			name = HomePage;
@@ -1205,6 +1205,7 @@
 				A558332A1B83686E00000D85 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F47556961B4BACF2008CEE3A /* Build configuration list for PBXProject "TravelWithMe" */ = {
 			isa = XCConfigurationList;

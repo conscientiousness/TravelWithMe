@@ -15,7 +15,7 @@
 
 #define TRAVELMATEPOST_TABLENAME @"TravelMatePost"
 #define TRAVELMATEPOST_COUNTRYCITY_KEY @"countryCity"
-#define TRAVELMATEPOST_STARTDATE_KEY @"srartDate"
+#define TRAVELMATEPOST_STARTDATE_KEY @"startDate"
 #define TRAVELMATEPOST_DAYS_KEY @"days"
 #define TRAVELMATEPOST_MEMO_KEY @"memo"
 #define TRAVELMATEPOST_PHOTO_KEY @"photo"
@@ -112,9 +112,12 @@
             travelMatePost[TRAVELMATEPOST_MEMO_KEY] = [datas objectForKey:[NSNumber numberWithInteger: TEXTVIEW_MEMO_TAG]];
             
             //出發日期
-            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-            [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-            NSDate *startDate = [dateFormatter dateFromString:[datas objectForKey:[NSNumber numberWithInteger: TEXTFIELD_STARTDATE_TAG]]];
+            //NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            //[dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+            //NSDate *startDate = [dateFormatter dateFromString:[NSString stringWithFormat:@"%@ 00:00:00",[datas objectForKey:[NSNumber numberWithInteger: TEXTFIELD_STARTDATE_TAG]]]];
+            //NSLog(@"%@ => %@",[NSString stringWithFormat:@"%@ 00:00:00",[datas objectForKey:[NSNumber numberWithInteger: TEXTFIELD_STARTDATE_TAG]]],startDate);
+            NSString *startDate = [datas objectForKey:[NSNumber numberWithInteger: TEXTFIELD_STARTDATE_TAG]];
+            //NSLog(@"%@",startDate);
             travelMatePost[TRAVELMATEPOST_STARTDATE_KEY] = startDate;
             
             //照片 UIImage imageNamed:@"pic900X640.jpg"
@@ -407,6 +410,8 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     NSString *strDate = [dateFormatter stringFromDate:datepicker.date];
+    
+    [datas setObject:strDate forKey:[NSNumber numberWithInteger:TEXTFIELD_STARTDATE_TAG]];
     
     UITextField *targetTextField = (UITextField*)[_postTableView viewWithTag:TEXTFIELD_STARTDATE_TAG];
     

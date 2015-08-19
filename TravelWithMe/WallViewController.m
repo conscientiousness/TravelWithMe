@@ -209,11 +209,8 @@
     cell.countryCityLabel.text = [[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"countryCity"];
     
     //出發日期
-    NSString *strDate = [cellDateFormatter stringFromDate:[[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"startDate"]];
-    cell.travelDateLabel.text = strDate;
-    
-    //地點標籤
-    cell.locationTagLabel.text = [[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"locationTag"];
+    //NSString *strDate = [cellDateFormatter stringFromDate:[[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"startDate"]];
+    cell.travelDateLabel.text = [[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"startDate"];
     
     //備註
     cell.memoLabel.text = [[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"memo"];
@@ -254,58 +251,7 @@
         cell.wallHeadPhoto.layer.borderWidth = 3.0f;
         cell.wallHeadPhoto.layer.borderColor = [UIColor boyPhotoBorderColor].CGColor;
         cell.wallHeadPhoto.clipsToBounds = YES;
-        
-        
-        //字體粗細大小
-        cell.locationTagLabel.font = [UIFont systemFontOfSize:11];
-        //文字顏色
-        cell.locationTagLabel.textColor = [UIColor colorWithRed:0.373 green:0.710 blue:0.647 alpha:1.000];
-        //背景色
-        cell.locationTagLabel.backgroundColor = [UIColor clearColor];
-        /*/Lable邊框
-         cell.testAreaLabel.layer.borderColor = [UIColor colorWithRed:0.373 green:0.710 blue:0.647 alpha:1.000].CGColor;
-         cell.testAreaLabel.layer.borderWidth = 0.5;
-         cell.testAreaLabel.layer.cornerRadius = 3;
-         //文字在Label置中
-         cell.testAreaLabel.textAlignment = NSTextAlignmentCenter;
-         //文字自動適應Lable大小
-         cell.testAreaLabel.adjustsFontSizeToFitWidth = NO;
-         */
-        
-       
-    
-    //UIImage *cellImage = [UIImage imageNamed: @"monkey1080X1080.jpg"];
-    //[cell.cellImageView setImage:cellImage];
 
-    
-    /*/====Add Image View====
-    CGFloat viewInCellWidth = cell.viewInTableViewCell.frame.width;
-    CGFloat viewInCellHeight = cell.contentView.frame.size.height;
-    
-    NSLog(@"viewInCellWidth= %f, viewInCellHeight= %f , index = %ld",viewInCellWidth,viewInCellHeight,(long)indexPath.row);
-    
-    
-    // 初始化
-    UIImageView *dyImageView = [[UIImageView alloc] initWithFrame: CGRectMake(0,cell.viewBlock2.frame.origin.y + cell.viewBlock2.frame.size.height ,320,240)];
-    //320  橫：240  直：426.666666
-    
-    // 圖片檔案引入UIImage物件(需要先將圖片加入專案中)
-    // initWithNamed:@"cropped-Logo"]];
-    UIImage *dyImage = [UIImage imageNamed:@"iphone_h_photo.jpg"];
-    dyImageView.contentMode = UIViewContentModeTop;
-    dyImageView.contentMode = UIViewContentModeScaleAspectFit;
-    
-    
-    // 圖片影像物件指定至UIImageView之影象
-    dyImageView.image = dyImage;
-    dyImageView.backgroundColor =[UIColor redColor];
-    
-    
-    // UIImageView加入主要View中
-    //[cell.viewInTableViewCell addSubview:dyImageView];
-    
-    //NSLog(@"%@",cell.viewInTableViewCell.subviews);
-    */
     
     return cell;
     
@@ -341,7 +287,6 @@
                  @"profilePictureMedium":arrayDatas[indexPath.row][@"createUser"][@"profilePictureMedium"],
                  @"countryCity":arrayDatas[indexPath.row][@"countryCity"],
                  @"photo":arrayDatas[indexPath.row][@"photo"],
-                 @"locationTag":arrayDatas[indexPath.row][@"locationTag"],
                  @"memo":arrayDatas[indexPath.row][@"memo"],
                  @"startDate":[cellDateFormatter stringFromDate:arrayDatas[indexPath.row][@"startDate"]],
                  @"tableViewWidth":@(_wallTableView.frame.size.width),
