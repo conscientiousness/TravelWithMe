@@ -264,10 +264,10 @@
     NSDictionary *dictData = [NSDictionary new];
     dictData = @{
                  //貼文者姓名displayName
-                 USER_DISPLAYNAME_KEY:arrayDatas[indexPath.row][TRAVELMATEPOST_POINTER_CREATEUSER_KEY][USER_DISPLAYNAME_KEY],
+                 USER_DISPLAYNAME_KEY:arrayDatas[indexPath.row][COMMON_POINTER_CREATEUSER_KEY][USER_DISPLAYNAME_KEY],
                  
                  //大頭照profilePictureMedium
-                 USER_PROFILEPICTUREMEDIUM_KEY:arrayDatas[indexPath.row][TRAVELMATEPOST_POINTER_CREATEUSER_KEY][USER_PROFILEPICTUREMEDIUM_KEY],
+                 USER_PROFILEPICTUREMEDIUM_KEY:arrayDatas[indexPath.row][COMMON_POINTER_CREATEUSER_KEY][USER_PROFILEPICTUREMEDIUM_KEY],
                  
                  //城市地區countryCity
                  TRAVELMATEPOST_COUNTRYCITY_KEY:arrayDatas[indexPath.row][TRAVELMATEPOST_COUNTRYCITY_KEY],
@@ -317,13 +317,13 @@
     //NSLog(@"objectId= %@",((PFObject *)arrayDatas[indexPath.row][@"createUser"]).objectId);
     
     //名字
-    cell.userNameLabel.text = arrayDatas[indexPath.row][TRAVELMATEPOST_POINTER_CREATEUSER_KEY][USER_DISPLAYNAME_KEY];
+    cell.userNameLabel.text = arrayDatas[indexPath.row][COMMON_POINTER_CREATEUSER_KEY][USER_DISPLAYNAME_KEY];
     
     //大頭照
     //PFFile *proFilePicture = [[[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"createUser"] objectForKey:@"profilePictureMedium"];
     
     //[user objectForKey:kPAPUserProfilePicSmallKey];
-    [cell.wallHeadPhoto sd_setImageWithURL:(NSURL*)((PFFile*)arrayDatas[indexPath.row][TRAVELMATEPOST_POINTER_CREATEUSER_KEY][USER_PROFILEPICTUREMEDIUM_KEY]).url placeholderImage:[UIImage imageNamed:@"pic1.jpg"]];
+    [cell.wallHeadPhoto sd_setImageWithURL:(NSURL*)((PFFile*)arrayDatas[indexPath.row][COMMON_POINTER_CREATEUSER_KEY][USER_PROFILEPICTUREMEDIUM_KEY]).url placeholderImage:[UIImage imageNamed:@"pic1.jpg"]];
         
     //國家城市
     cell.countryCityLabel.text = [[arrayDatas objectAtIndex:indexPath.row] objectForKey:TRAVELMATEPOST_COUNTRYCITY_KEY];

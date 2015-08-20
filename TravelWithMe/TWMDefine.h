@@ -31,7 +31,6 @@
 #define TRAVELMATEPOST_DAYS_KEY @"days"
 #define TRAVELMATEPOST_MEMO_KEY @"memo"
 #define TRAVELMATEPOST_PHOTO_KEY @"photo"
-#define TRAVELMATEPOST_POINTER_CREATEUSER_KEY @"createUser"
 #define TRAVELMATEPOST_RELATION_COMMENTS_KEY @"comments"
 #define TRAVELMATEPOST_RELATION_JOINUSERS_KEY @"joinUsers"
 #define TRAVELMATEPOST_RELATION_INTERSTEDUSERS_KEY @"interestedUsers"
@@ -50,12 +49,12 @@
 
 #define COMMENT_TABLENAME @"Comment"
 #define COMMENT_MESSAGE_KEY @"message"
-#define COMMENT_POINTER_CREATEUSER_KEY @"createUser"
 
-//*//
+//*共通欄位名稱//
 #pragma mark - Parse Common Table Col
 
 #define COMMON_OBJECTID_KEY @"objectId"
 #define COMMON_CREATEDAT_KEY @"createdAt"
+#define COMMON_POINTER_CREATEUSER_KEY @"createUser"
 
 @end

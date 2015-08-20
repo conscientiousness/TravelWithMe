@@ -10,7 +10,7 @@
 
 @interface ParallaxTableViewCell : UITableViewCell
 
-@property (nonatomic,strong) IBOutlet UILabel*parallaxLabel;
+@property (nonatomic,strong) IBOutlet UILabel *titleLabel;
 @property (nonatomic,strong) IBOutlet UIImageView *parallaxImage;
 @property (weak, nonatomic) IBOutlet UILabel *subtitleLabel;
 

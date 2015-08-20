@@ -70,8 +70,8 @@
                                                                         </mask>
                                                                     </variation>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="104-03-02" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ql-KD-OA8">
-                                                                    <rect key="frame" x="88" y="408" width="124" height="17"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="104-03-02" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ql-KD-OA8">
+                                                                    <rect key="frame" x="88" y="407" width="124" height="17"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="124" id="2N2-A1-Xtw"/>
                                                                         <constraint firstAttribute="width" constant="167" id="aZA-T0-39H"/>
@@ -103,8 +103,8 @@
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sl8-7Z-K1Y">
-                                                                    <rect key="frame" x="20" y="78" width="321" height="322"/>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sl8-7Z-K1Y">
+                                                                    <rect key="frame" x="20" y="78" width="321" height="321"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" secondItem="sl8-7Z-K1Y" secondAttribute="height" multiplier="253:102" id="7VU-EU-w1a"/>
                                                                         <constraint firstAttribute="width" secondItem="sl8-7Z-K1Y" secondAttribute="height" multiplier="1:1" id="z1g-lI-dsX"/>
@@ -115,8 +115,8 @@
                                                                         </mask>
                                                                     </variation>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="出發時間" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5vV-QZ-mrm">
-                                                                    <rect key="frame" x="14" y="408" width="56" height="17"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="出發時間" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5vV-QZ-mrm">
+                                                                    <rect key="frame" x="14" y="407" width="56" height="17"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
@@ -736,7 +736,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="mycell" rowHeight="210" id="3gK-9j-9Dg" customClass="ParallaxTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="loactionCell" rowHeight="210" id="3gK-9j-9Dg" customClass="ParallaxTableViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3gK-9j-9Dg" id="gAD-FI-nKv">
@@ -748,15 +748,19 @@
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9rj-0S-8dP">
                                                             <rect key="frame" x="0.0" y="-45" width="600" height="296"/>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="開始尋找旅行夥伴吧" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vzj-mA-Vi8">
-                                                            <rect key="frame" x="8" y="90" width="584" height="24"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <view alpha="0.19999999999999968" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3YF-ws-kUr">
+                                                            <rect key="frame" x="0.0" y="0.0" width="600" height="296"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </view>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="查看全部" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xQA-g8-4uS">
+                                                            <rect key="frame" x="8" y="122" width="584" height="17"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="查看全部" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xQA-g8-4uS">
-                                                            <rect key="frame" x="8" y="122" width="584" height="17"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="開始尋找旅行夥伴吧" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vzj-mA-Vi8">
+                                                            <rect key="frame" x="8" y="90" width="584" height="24"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -764,6 +768,7 @@
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstItem="9rj-0S-8dP" firstAttribute="top" secondItem="s5H-3g-fxS" secondAttribute="top" constant="-45" id="2Ra-5Z-lDL"/>
+                                                        <constraint firstItem="3YF-ws-kUr" firstAttribute="top" secondItem="s5H-3g-fxS" secondAttribute="top" id="824-Mu-CCL"/>
                                                         <constraint firstItem="vzj-mA-Vi8" firstAttribute="leading" secondItem="9rj-0S-8dP" secondAttribute="trailing" constant="-592" id="8tm-p4-Mbq"/>
                                                         <constraint firstItem="vzj-mA-Vi8" firstAttribute="leading" secondItem="s5H-3g-fxS" secondAttribute="leading" constant="8" id="BEN-CS-i7g"/>
                                                         <constraint firstAttribute="trailing" secondItem="9rj-0S-8dP" secondAttribute="trailing" id="H9Y-f1-vub"/>
@@ -773,8 +778,11 @@
                                                         <constraint firstItem="vzj-mA-Vi8" firstAttribute="width" secondItem="xQA-g8-4uS" secondAttribute="width" id="Tqg-RY-JlG"/>
                                                         <constraint firstAttribute="bottom" secondItem="vzj-mA-Vi8" secondAttribute="bottom" constant="0.5" id="Xf6-4C-gGe"/>
                                                         <constraint firstItem="9rj-0S-8dP" firstAttribute="top" secondItem="vzj-mA-Vi8" secondAttribute="bottom" constant="-156" id="cBl-tm-y6D"/>
+                                                        <constraint firstItem="3YF-ws-kUr" firstAttribute="leading" secondItem="9rj-0S-8dP" secondAttribute="leading" id="gVH-rY-ACy"/>
                                                         <constraint firstItem="xQA-g8-4uS" firstAttribute="top" secondItem="vzj-mA-Vi8" secondAttribute="bottom" constant="8" id="jOj-z7-BbR"/>
                                                         <constraint firstAttribute="trailing" secondItem="vzj-mA-Vi8" secondAttribute="trailing" constant="8" id="kBO-nA-w3c"/>
+                                                        <constraint firstItem="9rj-0S-8dP" firstAttribute="height" secondItem="3YF-ws-kUr" secondAttribute="height" id="naL-07-Eub"/>
+                                                        <constraint firstItem="9rj-0S-8dP" firstAttribute="width" secondItem="3YF-ws-kUr" secondAttribute="width" id="oob-eZ-gAw"/>
                                                         <constraint firstItem="vzj-mA-Vi8" firstAttribute="leading" secondItem="s5H-3g-fxS" secondAttribute="leading" constant="8" id="vfa-JN-MNa"/>
                                                         <constraint firstAttribute="trailing" secondItem="vzj-mA-Vi8" secondAttribute="trailing" constant="8" id="zCs-Bg-6ve"/>
                                                         <constraint firstItem="9rj-0S-8dP" firstAttribute="leading" secondItem="s5H-3g-fxS" secondAttribute="leading" id="zY1-9w-21z"/>
@@ -800,8 +808,8 @@
                                         <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="parallaxImage" destination="9rj-0S-8dP" id="vaJ-CR-fGK"/>
-                                            <outlet property="parallaxLabel" destination="vzj-mA-Vi8" id="PlR-ia-Yuw"/>
                                             <outlet property="subtitleLabel" destination="xQA-g8-4uS" id="T3k-2F-9dq"/>
+                                            <outlet property="titleLabel" destination="vzj-mA-Vi8" id="CSQ-tJ-QJo"/>
                                             <segue destination="hJP-CE-F9N" kind="show" id="uQ5-Xq-zs8"/>
                                         </connections>
                                     </tableViewCell>

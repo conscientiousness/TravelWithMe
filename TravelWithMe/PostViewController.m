@@ -117,7 +117,7 @@
             
             travelMatePost[TRAVELMATEPOST_DAYS_KEY] = [NSNumber numberWithInteger:[[datas objectForKey:[NSNumber numberWithInteger: TEXTFIELD_DAYS_TAG]] integerValue]];
             
-            travelMatePost[TRAVELMATEPOST_POINTER_CREATEUSER_KEY] = user;
+            travelMatePost[COMMON_POINTER_CREATEUSER_KEY] = user;
             
             [travelMatePost save];
             
