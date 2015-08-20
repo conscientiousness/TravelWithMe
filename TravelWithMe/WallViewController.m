@@ -81,6 +81,8 @@
 //初始化UI畫面
 - (void)initUI {
     
+    self.navigationController.navigationBar.hidden = NO;
+    
     self.view.backgroundColor = [UIColor homeCellbgColor];
     //關閉分隔線
     [_wallTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];

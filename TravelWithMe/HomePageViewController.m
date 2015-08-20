@@ -21,6 +21,8 @@
     [super viewDidLoad];
     self.tableView.delegate=self;
     self.tableView.dataSource=self;
+    self.navigationController.navigationBar.hidden = YES;
+    
     
     
 //    self.tableItems = @[[UIImage imageNamed:@"bg-blur-image.png"],
@@ -51,6 +53,12 @@
                         [UIImage imageNamed:@"demo_13.jpg"],
                         [UIImage imageNamed:@"demo_14.jpg"]];
    
+}
+
+-(void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    self.navigationController.navigationBar.hidden = YES;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
