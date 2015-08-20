@@ -10,6 +10,7 @@
 #import "WallTableViewCell.h"
 #import "HomePostViewController.h"
 #import "HomeDetailViewController.h"
+#import "MJRefresh.h"
 //#import "JDFPeekabooCoordinator.h"
 
 
@@ -25,6 +26,10 @@
     CGRect originNavFrame;
     NSMutableArray *arrayDatas;
     NSDateFormatter *cellDateFormatter;
+    NSNumber *dataCount;
+    NSNumber *currentCount;
+    NSDateFormatter *formatter;
+    NSString *lastUpdated;
 }
 
 - (void)viewDidLoad {
@@ -34,9 +39,14 @@
     
     MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"讀取中...";
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        // Do something...
+    
+    dispatch_queue_t loadingQueue = dispatch_queue_create("loading", nil);
+    dispatch_async(loadingQueue, ^{
         [self getdata];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_wallTableView reloadData];
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        });
     });
     
     
@@ -49,12 +59,25 @@
     _wallTableView.dataSource = self;
     
     //self.scrollCoordinator = [[JDFPeekabooCoordinator alloc] init];
-      
+    
+    //下拉刷最新
     UIRefreshControl *refresh = [UIRefreshControl new];
     refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"準備更新資料"];
     [refresh addTarget:self action:@selector(refreshView:) forControlEvents:UIControlEventValueChanged];
     [refresh setBackgroundColor:[UIColor homeCellbgColor]];
     [self.wallTableView addSubview:refresh];
+    
+    //上拉刷更多資料
+    MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+    
+    //設置顯示文字
+    [footer setTitle:@"" forState:MJRefreshStateIdle];
+    [footer setTitle:@"Loading..." forState:MJRefreshStateRefreshing];
+    [footer setTitle:@"以下沒資料了唷" forState:MJRefreshStateNoMoreData];
+
+    footer.stateLabel.font = [UIFont systemFontOfSize:16];
+    footer.stateLabel.textColor = [UIColor grayColor];
+    _wallTableView.footer = footer;
     
     //格式化日期
     cellDateFormatter = [[NSDateFormatter alloc]init];
@@ -78,7 +101,12 @@
     //[self.navigationController.navigationBar setFrame:originNavFrame];
 }
 
-//初始化UI畫面
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
 - (void)initUI {
     
     self.navigationController.navigationBar.hidden = NO;
@@ -114,25 +142,55 @@
 
 }
 
-
+#pragma mark - Pull Refresh Method
 
 - (void)refreshView:(UIRefreshControl*)refresh
 {
     refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"更新中..."];
     
-    NSDateFormatter *formatter = [NSDateFormatter new];
+    formatter = [NSDateFormatter new];
     [formatter setDateFormat:@"MM/dd,a h:mm "];
-    NSString *lastUpdated = [NSString stringWithFormat:@"最後更新時間: %@",[formatter stringFromDate:[NSDate date]]];
+    lastUpdated = [NSString stringWithFormat:@"最後更新時間: %@",[formatter stringFromDate:[NSDate date]]];
     refresh.attributedTitle = [[NSAttributedString alloc] initWithString:lastUpdated];
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        [self getdata];
+    dispatch_queue_t loadNewDataQueue = dispatch_queue_create("loadNewData", nil);
+    dispatch_async(loadNewDataQueue, ^{
+        [self getNewData];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_wallTableView reloadData];
+            [refresh endRefreshing];
+        });
     });
     
-    [refresh endRefreshing];
+    
 }
 
+- (void)loadMoreData
+{
+    
+    if(currentCount==nil){
+        currentCount = [[NSNumber alloc] initWithInteger:arrayDatas.count];
+    } else {
+        currentCount = [NSNumber numberWithInteger:arrayDatas.count];
+    }
+    
+    dispatch_queue_t loadMoreDataQueue = dispatch_queue_create("loadMoreData", nil);
+    dispatch_async(loadMoreDataQueue, ^{
+        [self getdata];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_wallTableView reloadData];
+            
+            if([currentCount integerValue] == arrayDatas.count){//筆數相等表示沒資料
+                [_wallTableView.footer noticeNoMoreData];
+            } else {
+                [_wallTableView.footer endRefreshing];
+            }
+            
+        });
+    });
+}
 
+#pragma mark - Navigation Bar Item Method
 - (void)postBtnPressed:(id *)sender {
     
     //NSLog(@"current= %@",currentUser);
@@ -160,12 +218,9 @@
     //[self performSegueWithIdentifier:@"goPostView" sender:nil];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
-#pragma mark - Table view Delegate Method
+
+#pragma mark - Table View Delegate Method
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
@@ -195,6 +250,65 @@
     return cell;
 }
 
+//當選擇某一列Cell要做的的動作
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    //跳轉到HomePostViewController
+    NSString *identifier = @"detailMessageViewController";
+    
+    HomePostViewController *detailVC = [self.storyboard instantiateViewControllerWithIdentifier:identifier];
+    [self.navigationController pushViewController:detailVC animated:YES];
+    
+    
+    //傳值
+    NSDictionary *dictData = [NSDictionary new];
+    dictData = @{
+                 //貼文者姓名displayName
+                 USER_DISPLAYNAME_KEY:arrayDatas[indexPath.row][TRAVELMATEPOST_POINTER_CREATEUSER_KEY][USER_DISPLAYNAME_KEY],
+                 
+                 //大頭照profilePictureMedium
+                 USER_PROFILEPICTUREMEDIUM_KEY:arrayDatas[indexPath.row][TRAVELMATEPOST_POINTER_CREATEUSER_KEY][USER_PROFILEPICTUREMEDIUM_KEY],
+                 
+                 //城市地區countryCity
+                 TRAVELMATEPOST_COUNTRYCITY_KEY:arrayDatas[indexPath.row][TRAVELMATEPOST_COUNTRYCITY_KEY],
+                 
+                 //照片photo
+                 TRAVELMATEPOST_PHOTO_KEY:arrayDatas[indexPath.row][TRAVELMATEPOST_PHOTO_KEY],
+                 
+                 //詳細說明memo
+                 TRAVELMATEPOST_MEMO_KEY:arrayDatas[indexPath.row][TRAVELMATEPOST_MEMO_KEY],
+                 
+                 //出發日期startDate
+                 TRAVELMATEPOST_STARTDATE_KEY:arrayDatas[indexPath.row][TRAVELMATEPOST_STARTDATE_KEY],
+                 
+                 //旅遊天數days
+                 TRAVELMATEPOST_DAYS_KEY:arrayDatas[indexPath.row][TRAVELMATEPOST_DAYS_KEY],
+                 
+                 //view寬度
+                 @"tableViewWidth":@(self.view.frame.size.width),
+                 
+                 //此篇貼文objectId
+                 @"objectId":((PFObject *)arrayDatas[indexPath.row]).objectId,
+                 
+                 //貼文者USER的objectId
+                 @"userObjectId":((PFObject *)arrayDatas[indexPath.row][@"createUser"]).objectId
+                 };
+    
+    [detailVC setValue:dictData forKey:@"cellDictData"];
+}
+
+/*
+ - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+ 
+ 
+ CGFloat result;
+ result = 492.0;
+ 
+ 
+ return result;
+ }*/
+
+#pragma mark - 給予 Cell 資料
 
 - (void) setCellData:(WallTableViewCell *)cell cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -233,6 +347,8 @@
     //NSLog(@"%ld => %@",indexPath.row,[[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"createUser"]);
 }
 
+#pragma mark - 設定 Cell UI
+
 - (UITableViewCell *)prepareTableViewCell:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath cellIdentifier:(NSString *)identifier{
     
         WallTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
@@ -268,81 +384,7 @@
 }
 
 
-/*
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    
-    CGFloat result;
-    result = 492.0;
- 
-    
-    return result;
-}*/
-
-
-
-
-//當選擇某一列Cell要做的的動作
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    //跳轉到HomePostViewController
-    NSString *identifier = @"detailMessageViewController";
-    
-    HomePostViewController *detailVC = [self.storyboard instantiateViewControllerWithIdentifier:identifier];
-    [self.navigationController pushViewController:detailVC animated:YES];
-    
-    
-    //傳值
-    NSDictionary *dictData = [NSDictionary new];
-    dictData = @{
-                 //貼文者姓名displayName
-                 USER_DISPLAYNAME_KEY:arrayDatas[indexPath.row][TRAVELMATEPOST_POINTER_CREATEUSER_KEY][USER_DISPLAYNAME_KEY],
-                 
-                 //大頭照profilePictureMedium
-                 USER_PROFILEPICTUREMEDIUM_KEY:arrayDatas[indexPath.row][TRAVELMATEPOST_POINTER_CREATEUSER_KEY][USER_PROFILEPICTUREMEDIUM_KEY],
-                 
-                 //城市地區countryCity
-                 TRAVELMATEPOST_COUNTRYCITY_KEY:arrayDatas[indexPath.row][TRAVELMATEPOST_COUNTRYCITY_KEY],
-
-                 //照片photo
-                 TRAVELMATEPOST_PHOTO_KEY:arrayDatas[indexPath.row][TRAVELMATEPOST_PHOTO_KEY],
-
-                 //詳細說明memo
-                 TRAVELMATEPOST_MEMO_KEY:arrayDatas[indexPath.row][TRAVELMATEPOST_MEMO_KEY],
-
-                 //出發日期startDate
-                 TRAVELMATEPOST_STARTDATE_KEY:arrayDatas[indexPath.row][TRAVELMATEPOST_STARTDATE_KEY],
-
-                 //旅遊天數days
-                 TRAVELMATEPOST_DAYS_KEY:arrayDatas[indexPath.row][TRAVELMATEPOST_DAYS_KEY],
-                 
-                 //view寬度
-                 @"tableViewWidth":@(self.view.frame.size.width),
-                 
-                 //此篇貼文objectId
-                 @"objectId":((PFObject *)arrayDatas[indexPath.row]).objectId,
-                 
-                 //貼文者USER的objectId
-                 @"userObjectId":((PFObject *)arrayDatas[indexPath.row][@"createUser"]).objectId
-                 };
-    
-    [detailVC setValue:dictData forKey:@"cellDictData"];
-}
-
-
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    
-//    CGRect frame = self.navigationController.navigationBar.frame;
-//    frame.origin.y = 20.0;
-//    [self.navigationController.navigationBar setFrame:frame];
-//}
-
-
-
-#pragma mark - Get Data
+#pragma mark - Load Parse Data
 
 - (void) getdata
 {
@@ -351,27 +393,56 @@
     PFQuery *query = [PFQuery queryWithClassName:@"TravelMatePost"];
     [query includeKey:@"createUser.User"];
     [query orderByDescending:@"createdAt"];
+    query.limit = 3;
     
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            // The find succeeded.
-            //NSLog(@"Successfully = %ld", objects.count);
-            //NSLog(@"objects = %@", objects);
-            // Do something with the found objects
-            arrayDatas = [[NSMutableArray alloc] initWithArray:objects];
-
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [_wallTableView reloadData];
-                [MBProgressHUD hideHUDForView:self.view animated:YES];
-            });
-            
-        } else {
-            // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];
+    if(dataCount==nil) {
+        dataCount = [[NSNumber alloc] initWithInt:0];
+    } else {
+        query.skip = [dataCount integerValue];
+    }
+    
+    if(arrayDatas==nil){
+        arrayDatas = [[NSMutableArray alloc] initWithArray:[query findObjects]];
+    } else {
+        [arrayDatas addObjectsFromArray:[query findObjects]];
+    }
+    
+    //每次上拉查詢增加筆數
+    dataCount = [NSNumber numberWithInt:[dataCount intValue] + 3];
+    
+//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        if (!error) {
+//            
+//            if(arrayDatas==nil){
+//                arrayDatas = [[NSMutableArray alloc] initWithArray:objects];
+//            } else {
+//                [arrayDatas addObjectsFromArray:objects];
+//            }
+//            
+//        } else {
+//            // Log details of the failure
+//            NSLog(@"Error: %@ %@", error, [error userInfo]);
+//        }
+//    }];
+    
 }
 
+- (void) getNewData {
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"TravelMatePost"];
+    [query includeKey:@"createUser.User"];
+    [query orderByDescending:@"createdAt"];
+    query.limit = 3;
+    
+    if(dataCount==nil) {
+        dataCount = [[NSNumber alloc] initWithInt:3];
+    } else {
+        dataCount = [NSNumber numberWithInt:3];
+    }
+    
+    arrayDatas = nil;
+    arrayDatas = [[NSMutableArray alloc] initWithArray:[query findObjects]];
+}
 
 
 

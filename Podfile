@@ -10,6 +10,7 @@ pod "MBProgressHUD", '~> 0.9.1'
 pod "ParseFacebookUtilsV4"
 pod "JDFPeekaboo"
 pod "SSBouncyButton", '~> 1.0'
+pod "MJRefresh"
 
 use_frameworks!
 pod "TextFieldEffects"
