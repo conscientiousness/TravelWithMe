@@ -234,10 +234,10 @@
     return arrayDatas.count;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    return 530.0;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    
+//    return 530.0;
+//}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -297,16 +297,16 @@
     [detailVC setValue:dictData forKey:@"cellDictData"];
 }
 
-/*
- - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
- 
- 
- CGFloat result;
- result = 492.0;
- 
- 
- return result;
- }*/
+
+// - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+// 
+// 
+// CGFloat result;
+// result = 500.0;
+// 
+// 
+// return result;
+// }
 
 #pragma mark - 給予 Cell 資料
 

@@ -30,7 +30,6 @@
 		F420E1561B846B5D00D3627F /* join-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F420E1541B846B5D00D3627F /* join-icon.png */; };
 		F420E15A1B846FA500D3627F /* no-interested-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F420E1581B846FA500D3627F /* no-interested-icon.png */; };
 		F420E15C1B84719800D3627F /* intrested-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F420E15B1B84719800D3627F /* intrested-icon.png */; };
-		F4267BCF1B6A632E00F42330 /* pic900X640.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F4267BCE1B6A632E00F42330 /* pic900X640.jpg */; };
 		F42EBD661B6877BF00606D9B /* (null) in Resources */ = {isa = PBXBuildFile; };
 		F42EBD6A1B68790500606D9B /* (null) in Resources */ = {isa = PBXBuildFile; };
 		F42EBD6B1B68790500606D9B /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -42,18 +41,13 @@
 		F43B3B7F1B75C03F0034B20F /* JL3MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F43B3B7D1B75C03F0034B20F /* JL3MessageTableViewCell.xib */; };
 		F43C831A1B71B13200D2A389 /* tmp900X640.png in Resources */ = {isa = PBXBuildFile; fileRef = F43C83191B71B13200D2A389 /* tmp900X640.png */; };
 		F442CE151B64B8FC001CD62B /* (null) in Resources */ = {isa = PBXBuildFile; };
-		F44307DD1B78488300DE5625 /* bg-blur-image.png in Resources */ = {isa = PBXBuildFile; fileRef = F44307DC1B78488300DE5625 /* bg-blur-image.png */; };
-		F44307DF1B78A01600DE5625 /* FriendsBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = F44307DE1B78A01600DE5625 /* FriendsBackground.png */; };
 		F44307E21B78A1C900DE5625 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = F44307E11B78A1C900DE5625 /* UIImage+ImageEffects.m */; };
 		F443FB431B60FBF300F30847 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F443FB421B60FBF300F30847 /* Map.storyboard */; };
 		F443FB451B610E8300F30847 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F443FB441B610E8300F30847 /* MapKit.framework */; };
 		F443FB4C1B6124D600F30847 /* WallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F443FB4B1B6124D600F30847 /* WallViewController.m */; };
 		F443FB4F1B612F9300F30847 /* WallTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F443FB4E1B612F9300F30847 /* WallTableViewCell.m */; };
-		F4441C2D1B6341AB00272BF3 /* iphone_h_photo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F4441C2B1B6341AB00272BF3 /* iphone_h_photo.jpg */; };
-		F4441C2E1B6341AB00272BF3 /* iphone_v_photo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F4441C2C1B6341AB00272BF3 /* iphone_v_photo.jpg */; };
 		F4457C201B7755D000A4952B /* ParallaxHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4457C1F1B7755D000A4952B /* ParallaxHeaderView.m */; };
 		F4457C231B7756B900A4952B /* DetailMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4457C221B7756B900A4952B /* DetailMessageViewController.m */; };
-		F4457C281B77B71400A4952B /* background-blur-image.png in Resources */ = {isa = PBXBuildFile; fileRef = F4457C271B77B71400A4952B /* background-blur-image.png */; };
 		F445E3671B6E09CD00818A18 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F445E3661B6E09CD00818A18 /* Login.storyboard */; };
 		F445E36B1B6E0A1100818A18 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F445E36A1B6E0A1100818A18 /* LoginViewController.m */; };
 		F4461ECC1B7622CE00052C94 /* JL3MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4461ECB1B7622CE00052C94 /* JL3MessageTableViewCell.m */; };
@@ -67,7 +61,6 @@
 		F44F3E331B8210CD007CE9C1 /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F44F3E321B8210CD007CE9C1 /* TPKeyboardAvoidingTableView.m */; };
 		F44F3E361B8210F1007CE9C1 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F44F3E351B8210F1007CE9C1 /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
 		F44F3E391B821102007CE9C1 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = F44F3E381B821102007CE9C1 /* TPKeyboardAvoidingScrollView.m */; };
-		F46573641B5545F700DA3D7B /* kyoto.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F46573621B5545F700DA3D7B /* kyoto.jpg */; };
 		F465736C1B5552D800DA3D7B /* JLTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F46573671B5552D800DA3D7B /* JLTableViewCell.m */; };
 		F465736D1B5552D800DA3D7B /* JL2TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F46573691B5552D800DA3D7B /* JL2TableViewCell.m */; };
 		F465736E1B5552D800DA3D7B /* JL2TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F465736A1B5552D800DA3D7B /* JL2TableViewCell.xib */; };
@@ -96,7 +89,6 @@
 		F4BC50D51B7E3419008C3EC4 /* login-background-video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F4BC50D41B7E3419008C3EC4 /* login-background-video.mp4 */; };
 		F4BC50E21B7E54ED008C3EC4 /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BC50DF1B7E54ED008C3EC4 /* HomePageViewController.m */; };
 		F4BC50E31B7E54ED008C3EC4 /* ParallaxTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BC50E11B7E54ED008C3EC4 /* ParallaxTableViewCell.m */; };
-		F4C9EE471B62B738007C37B4 /* kyoto_sample_photo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F4C9EE451B62B738007C37B4 /* kyoto_sample_photo.jpg */; };
 		F4CEF12D1B81B87C006D2B71 /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CEF12C1B81B87C006D2B71 /* PostViewController.m */; };
 		F4CEF12F1B81D251006D2B71 /* share_photo.png in Resources */ = {isa = PBXBuildFile; fileRef = F4CEF12E1B81D251006D2B71 /* share_photo.png */; };
 		F4CEF1571B81F4CE006D2B71 /* CountryCityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CEF1561B81F4CE006D2B71 /* CountryCityTableViewCell.m */; };
@@ -174,11 +166,8 @@
 		F420E1541B846B5D00D3627F /* join-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "join-icon.png"; sourceTree = "<group>"; };
 		F420E1581B846FA500D3627F /* no-interested-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no-interested-icon.png"; sourceTree = "<group>"; };
 		F420E15B1B84719800D3627F /* intrested-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "intrested-icon.png"; sourceTree = "<group>"; };
-		F4267BCE1B6A632E00F42330 /* pic900X640.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pic900X640.jpg; sourceTree = "<group>"; };
 		F43B3B7D1B75C03F0034B20F /* JL3MessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JL3MessageTableViewCell.xib; sourceTree = "<group>"; };
 		F43C83191B71B13200D2A389 /* tmp900X640.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tmp900X640.png; sourceTree = "<group>"; };
-		F44307DC1B78488300DE5625 /* bg-blur-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-blur-image.png"; sourceTree = "<group>"; };
-		F44307DE1B78A01600DE5625 /* FriendsBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FriendsBackground.png; sourceTree = "<group>"; };
 		F44307E01B78A1C900DE5625 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		F44307E11B78A1C900DE5625 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		F443FB421B60FBF300F30847 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
@@ -187,13 +176,10 @@
 		F443FB4B1B6124D600F30847 /* WallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WallViewController.m; sourceTree = "<group>"; };
 		F443FB4D1B612F9300F30847 /* WallTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallTableViewCell.h; sourceTree = "<group>"; };
 		F443FB4E1B612F9300F30847 /* WallTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WallTableViewCell.m; sourceTree = "<group>"; };
-		F4441C2B1B6341AB00272BF3 /* iphone_h_photo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iphone_h_photo.jpg; sourceTree = "<group>"; };
-		F4441C2C1B6341AB00272BF3 /* iphone_v_photo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iphone_v_photo.jpg; sourceTree = "<group>"; };
 		F4457C1E1B7755D000A4952B /* ParallaxHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParallaxHeaderView.h; sourceTree = "<group>"; };
 		F4457C1F1B7755D000A4952B /* ParallaxHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParallaxHeaderView.m; sourceTree = "<group>"; };
 		F4457C211B7756B900A4952B /* DetailMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailMessageViewController.h; sourceTree = "<group>"; };
 		F4457C221B7756B900A4952B /* DetailMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailMessageViewController.m; sourceTree = "<group>"; };
-		F4457C271B77B71400A4952B /* background-blur-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-blur-image.png"; sourceTree = "<group>"; };
 		F445E3661B6E09CD00818A18 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		F445E3691B6E0A1100818A18 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		F445E36A1B6E0A1100818A18 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -220,7 +206,6 @@
 		F44F3E351B8210F1007CE9C1 /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
 		F44F3E371B821102007CE9C1 /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
 		F44F3E381B821102007CE9C1 /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
-		F46573621B5545F700DA3D7B /* kyoto.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kyoto.jpg; sourceTree = "<group>"; };
 		F46573661B5552D800DA3D7B /* JLTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLTableViewCell.h; sourceTree = "<group>"; };
 		F46573671B5552D800DA3D7B /* JLTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLTableViewCell.m; sourceTree = "<group>"; };
 		F46573681B5552D800DA3D7B /* JL2TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JL2TableViewCell.h; sourceTree = "<group>"; };
@@ -260,7 +245,6 @@
 		F4BC50DF1B7E54ED008C3EC4 /* HomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
 		F4BC50E01B7E54ED008C3EC4 /* ParallaxTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParallaxTableViewCell.h; sourceTree = "<group>"; };
 		F4BC50E11B7E54ED008C3EC4 /* ParallaxTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParallaxTableViewCell.m; sourceTree = "<group>"; };
-		F4C9EE451B62B738007C37B4 /* kyoto_sample_photo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kyoto_sample_photo.jpg; sourceTree = "<group>"; };
 		F4CEF12B1B81B87C006D2B71 /* PostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostViewController.h; sourceTree = "<group>"; };
 		F4CEF12C1B81B87C006D2B71 /* PostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostViewController.m; sourceTree = "<group>"; };
 		F4CEF12E1B81D251006D2B71 /* share_photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share_photo.png; sourceTree = "<group>"; };
@@ -576,19 +560,11 @@
 				F443FB471B61209500F30847 /* PostView */,
 				F443FB461B611CD500F30847 /* DetailView */,
 				F443FB491B6121DE00F30847 /* DynamicWall */,
-				F46573621B5545F700DA3D7B /* kyoto.jpg */,
 				F420E1531B846B5D00D3627F /* comment-icon.png */,
 				F420E1541B846B5D00D3627F /* join-icon.png */,
 				F420E15B1B84719800D3627F /* intrested-icon.png */,
 				F420E1581B846FA500D3627F /* no-interested-icon.png */,
-				F4C9EE451B62B738007C37B4 /* kyoto_sample_photo.jpg */,
-				F4441C2B1B6341AB00272BF3 /* iphone_h_photo.jpg */,
-				F44307DE1B78A01600DE5625 /* FriendsBackground.png */,
-				F4441C2C1B6341AB00272BF3 /* iphone_v_photo.jpg */,
-				F4267BCE1B6A632E00F42330 /* pic900X640.jpg */,
 				F43C83191B71B13200D2A389 /* tmp900X640.png */,
-				F4457C271B77B71400A4952B /* background-blur-image.png */,
-				F44307DC1B78488300DE5625 /* bg-blur-image.png */,
 				F4CEF12E1B81D251006D2B71 /* share_photo.png */,
 				F47556A81B4BACF2008CEE3A /* Main.storyboard */,
 			);
@@ -774,12 +750,9 @@
 				F4BC50D51B7E3419008C3EC4 /* login-background-video.mp4 in Resources */,
 				F445E3671B6E09CD00818A18 /* Login.storyboard in Resources */,
 				F443FB431B60FBF300F30847 /* Map.storyboard in Resources */,
-				F4441C2E1B6341AB00272BF3 /* iphone_v_photo.jpg in Resources */,
 				F465736E1B5552D800DA3D7B /* JL2TableViewCell.xib in Resources */,
-				F4457C281B77B71400A4952B /* background-blur-image.png in Resources */,
 				F442CE151B64B8FC001CD62B /* (null) in Resources */,
 				F42EBDA41B68C8D400606D9B /* (null) in Resources */,
-				F46573641B5545F700DA3D7B /* kyoto.jpg in Resources */,
 				F47556AA1B4BACF2008CEE3A /* Main.storyboard in Resources */,
 				F4CEF12F1B81D251006D2B71 /* share_photo.png in Resources */,
 				F47556AF1B4BACF2008CEE3A /* LaunchScreen.xib in Resources */,
@@ -792,12 +765,7 @@
 				F465736F1B5552D800DA3D7B /* JLTableViewCell.xib in Resources */,
 				F486EF461B4C34D2008CB97B /* Setting.storyboard in Resources */,
 				F47556C51B4BD40F008CEE3A /* Favorite.storyboard in Resources */,
-				F44307DD1B78488300DE5625 /* bg-blur-image.png in Resources */,
-				F4C9EE471B62B738007C37B4 /* kyoto_sample_photo.jpg in Resources */,
-				F4441C2D1B6341AB00272BF3 /* iphone_h_photo.jpg in Resources */,
-				F44307DF1B78A01600DE5625 /* FriendsBackground.png in Resources */,
 				F42EBDB21B68FF1400606D9B /* (null) in Resources */,
-				F4267BCF1B6A632E00F42330 /* pic900X640.jpg in Resources */,
 				F47556AC1B4BACF2008CEE3A /* Images.xcassets in Resources */,
 				F43B3B7F1B75C03F0034B20F /* JL3MessageTableViewCell.xib in Resources */,
 				F43C831A1B71B13200D2A389 /* tmp900X640.png in Resources */,

@@ -21,8 +21,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.tableView.delegate=self;
-    self.tableView.dataSource=self;
+    _tableView.delegate=self;
+    _tableView.dataSource=self;
+    
+    //關閉分隔線
+    [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
     MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"讀取中...";
