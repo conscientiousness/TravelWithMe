@@ -12,6 +12,7 @@
 		A50ED4411B7852D200651C3E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A50ED4401B7852D200651C3E /* Foundation.framework */; };
 		A52E4EB91B63817400285C83 /* VIPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A52E4EB81B63817400285C83 /* VIPViewController.m */; };
 		A53CBBB71B67FA630039369A /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A53CBBB61B67FA630039369A /* MapViewController.m */; };
+		A55171831B86151A002841AB /* PolicyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55171821B86151A002841AB /* PolicyViewController.m */; };
 		A55669951B80EAE300F588E3 /* CExpandHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = A55669941B80EAE300F588E3 /* CExpandHeader.m */; };
 		A558331C1B83686E00000D85 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A52B782F1B81BE1E00F8DEF2 /* NotificationCenter.framework */; };
 		A55833221B83686E00000D85 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55833211B83686E00000D85 /* TodayViewController.m */; };
@@ -139,6 +140,8 @@
 		A52E4EB81B63817400285C83 /* VIPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VIPViewController.m; sourceTree = "<group>"; };
 		A53CBBB51B67FA630039369A /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		A53CBBB61B67FA630039369A /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		A55171811B86151A002841AB /* PolicyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PolicyViewController.h; sourceTree = "<group>"; };
+		A55171821B86151A002841AB /* PolicyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PolicyViewController.m; sourceTree = "<group>"; };
 		A55669931B80EAE300F588E3 /* CExpandHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CExpandHeader.h; sourceTree = "<group>"; };
 		A55669941B80EAE300F588E3 /* CExpandHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CExpandHeader.m; sourceTree = "<group>"; };
 		A558331B1B83686E00000D85 /* Travel With Me.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Travel With Me.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -597,6 +600,8 @@
 				A5E1670C1B6903B70036ABE4 /* SettingTableViewControlle.m */,
 				A52E4EB71B63817400285C83 /* VIPViewController.h */,
 				A52E4EB81B63817400285C83 /* VIPViewController.m */,
+				A55171811B86151A002841AB /* PolicyViewController.h */,
+				A55171821B86151A002841AB /* PolicyViewController.m */,
 			);
 			name = SettingView;
 			sourceTree = "<group>";
@@ -868,6 +873,7 @@
 				F47556A41B4BACF2008CEE3A /* AppDelegate.m in Sources */,
 				F44F3E331B8210CD007CE9C1 /* TPKeyboardAvoidingTableView.m in Sources */,
 				A5E1670D1B6903B70036ABE4 /* SettingTableViewControlle.m in Sources */,
+				A55171831B86151A002841AB /* PolicyViewController.m in Sources */,
 				B51A23341B7A5C9900CFD674 /* favoriteTableViewController.m in Sources */,
 				F465736C1B5552D800DA3D7B /* JLTableViewCell.m in Sources */,
 				F44F3E301B8207F9007CE9C1 /* StartDateDaysTableViewCell.m in Sources */,
