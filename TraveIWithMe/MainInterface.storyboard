@@ -17,20 +17,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ou6-87-dWj">
-                                <rect key="frame" x="16" y="35" width="102" height="30"/>
-                                <state key="normal" title="Travel With Me">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fx9-7f-nLL">
+                                <rect key="frame" x="16" y="35" width="93" height="30"/>
+                                <state key="normal" title="TravelWithMe">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="TravelWithMeBtnPressed:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="yVt-By-gv1"/>
+                                    <action selector="TravelWithMeBtnPressed:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="UXX-1g-TpY"/>
                                 </connections>
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="ou6-87-dWj" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" id="Pet-Y9-zGD"/>
-                            <constraint firstAttribute="centerY" secondItem="ou6-87-dWj" secondAttribute="centerY" id="s3s-Sc-oyC"/>
+                            <constraint firstItem="fx9-7f-nLL" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" id="gOq-BJ-6BN"/>
+                            <constraint firstAttribute="centerY" secondItem="fx9-7f-nLL" secondAttribute="centerY" id="uc5-Iy-X9p"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
@@ -42,7 +42,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="329" y="275"/>
+            <point key="canvasLocation" x="516" y="285"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -28,7 +28,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="9w4-vo-p8U">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.98431372549999996" green="0.86666666670000003" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.99215686270000003" green="0.92156862750000001" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection headerTitle="個人資訊" id="Sb4-4K-OIe">
                                 <cells>
@@ -206,6 +206,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vpq-tJ-2rp">
+                                <rect key="frame" x="16" y="20" width="568" height="526"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vMq-mL-8Uq">
                                 <rect key="frame" x="0.0" y="551" width="600" height="49"/>
                                 <constraints>
@@ -213,33 +219,31 @@
                                 </constraints>
                                 <items/>
                             </tabBar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="moY-i7-Qif">
-                                <rect key="frame" x="285" y="561" width="30" height="30"/>
-                                <state key="normal" title="❌">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0C9-2a-k5G">
+                                <rect key="frame" x="280" y="556" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="F8U-Wb-MTd"/>
+                                    <constraint firstAttribute="height" constant="40" id="r8Y-1x-ROm"/>
+                                </constraints>
+                                <state key="normal" image="Delete Sign-100.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="ydX-hP-tnN" kind="unwind" unwindAction="backToWhite:" id="PEo-IP-c46"/>
+                                    <segue destination="ydX-hP-tnN" kind="unwind" unwindAction="backToWhite:" id="nr4-JU-N8s"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vpq-tJ-2rp">
-                                <rect key="frame" x="16" y="20" width="568" height="526"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.99215686270000003" green="0.92156862750000001" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="moY-i7-Qif" secondAttribute="centerX" id="4dz-oi-trP"/>
                             <constraint firstItem="8oZ-Cn-zQP" firstAttribute="top" secondItem="vMq-mL-8Uq" secondAttribute="bottom" id="6iZ-zZ-koI"/>
                             <constraint firstItem="vMq-mL-8Uq" firstAttribute="leading" secondItem="UXU-aA-CmO" secondAttribute="leadingMargin" constant="-16" id="CRn-NP-W0N"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vMq-mL-8Uq" secondAttribute="trailing" constant="-16" id="I4I-my-QaO"/>
+                            <constraint firstItem="8oZ-Cn-zQP" firstAttribute="top" secondItem="0C9-2a-k5G" secondAttribute="bottom" constant="4" id="Rz9-rl-7MB"/>
                             <constraint firstItem="vpq-tJ-2rp" firstAttribute="leading" secondItem="UXU-aA-CmO" secondAttribute="leadingMargin" id="UCv-8R-Ihj"/>
+                            <constraint firstAttribute="centerX" secondItem="0C9-2a-k5G" secondAttribute="centerX" id="UOM-qs-dKm"/>
                             <constraint firstItem="vMq-mL-8Uq" firstAttribute="top" secondItem="vpq-tJ-2rp" secondAttribute="bottom" constant="5" id="cZn-R1-Nm8"/>
                             <constraint firstItem="vpq-tJ-2rp" firstAttribute="top" secondItem="Fwd-wY-6Rr" secondAttribute="bottom" id="lsm-Do-jdl"/>
                             <constraint firstItem="vpq-tJ-2rp" firstAttribute="trailing" secondItem="UXU-aA-CmO" secondAttribute="trailingMargin" id="vCE-0d-xQn"/>
-                            <constraint firstItem="8oZ-Cn-zQP" firstAttribute="top" secondItem="moY-i7-Qif" secondAttribute="bottom" constant="9" id="xd9-Bi-9Qu"/>
                         </constraints>
                     </view>
                     <connections>
@@ -359,6 +363,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Delete Sign-100.png" width="100" height="100"/>
         <image name="travel with me" width="320" height="568"/>
     </resources>
 </document>
