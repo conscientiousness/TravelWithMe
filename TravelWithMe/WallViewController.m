@@ -82,6 +82,8 @@
     //格式化日期
     cellDateFormatter = [[NSDateFormatter alloc]init];
     [cellDateFormatter setDateFormat:@"yyyy-MM-dd"];
+    
+    //NSLog(@"%f",self.view.frame.size.width);
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -234,10 +236,19 @@
     return arrayDatas.count;
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    
-//    return 530.0;
-//}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    //NSLog(@"height=>%f",self.view.frame.size.width);
+    
+    float result = 500.0;
+    
+    if(self.view.frame.size.width<=320.0) {//5s
+        result -= 50.0;
+    } else if (self.view.frame.size.width<=375.0) { //6
+        result -= 5.0;
+    }
+    
+    return result;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -297,16 +308,6 @@
     [detailVC setValue:dictData forKey:@"cellDictData"];
 }
 
-
-// - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-// 
-// 
-// CGFloat result;
-// result = 500.0;
-// 
-// 
-// return result;
-// }
 
 #pragma mark - 給予 Cell 資料
 
