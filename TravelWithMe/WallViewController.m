@@ -35,7 +35,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //originNavFrame = self.navigationController.navigationBar.frame;
     
     MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"讀取中...";
@@ -50,40 +49,22 @@
     });
     
     
-   
-    //NSLog(@"get2 = %ld", arrayDatas.count);
-    
-    [self initUI];
     _wallTableView.scrollEnabled = YES;
     _wallTableView.delegate = self;
     _wallTableView.dataSource = self;
     
     //self.scrollCoordinator = [[JDFPeekabooCoordinator alloc] init];
     
-    //下拉刷最新
-    UIRefreshControl *refresh = [UIRefreshControl new];
-    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"準備更新資料"];
-    [refresh addTarget:self action:@selector(refreshView:) forControlEvents:UIControlEventValueChanged];
-    [refresh setBackgroundColor:[UIColor homeCellbgColor]];
-    [self.wallTableView addSubview:refresh];
-    
-    //上拉刷更多資料
-    MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
-    
-    //設置顯示文字
-    [footer setTitle:@"" forState:MJRefreshStateIdle];
-    [footer setTitle:@"Loading..." forState:MJRefreshStateRefreshing];
-    [footer setTitle:@"以下沒資料了唷" forState:MJRefreshStateNoMoreData];
-
-    footer.stateLabel.font = [UIFont systemFontOfSize:16];
-    footer.stateLabel.textColor = [UIColor grayColor];
-    _wallTableView.footer = footer;
     
     //格式化日期
     cellDateFormatter = [[NSDateFormatter alloc]init];
     [cellDateFormatter setDateFormat:@"yyyy-MM-dd"];
-    
-    //NSLog(@"%f",self.view.frame.size.width);
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self initUI];
+    [self preparePullRefresh];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -92,6 +73,7 @@
     if (!user) {
         user = [PFUser currentUser];
     }
+    
     // nav tabbar 滾動縮放
     //self.scrollCoordinator.scrollView = _wallTableView;
     //self.scrollCoordinator.topView = self.navigationController.navigationBar;
@@ -122,9 +104,30 @@
     _wallTableView.opaque = NO;
         
     //Add post Button
-    UIBarButtonItem *postButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(postBtnPressed:)];
+    //UIBarButtonItem *postButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(postBtnPressed:)];
     
-    self.navigationItem.rightBarButtonItem = postButton;
+    //create the image for your button, and set the frame for its size
+    UIImage *image = [UIImage imageNamed:@"edit-icon"];
+    CGRect frame = CGRectMake(0, 0, 32, 32);
+    
+    //init a normal UIButton using that image
+    UIButton *button = [[UIButton alloc] initWithFrame:frame];
+    [button setBackgroundImage:image forState:UIControlStateNormal];
+    [button setShowsTouchWhenHighlighted:YES];
+    
+    //設定觸發事件
+    [button addTarget:self action:@selector(postBtnPressed:) forControlEvents:UIControlEventTouchDown];
+    
+    //finally, create UIBarButtonItem using that button
+    UIBarButtonItem *postBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    self.navigationItem.rightBarButtonItem = postBarButtonItem;
+    
+    
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:self.navigationItem.backBarButtonItem.style target:self action:nil];
+    
+    //設定返回按鈕
+    self.navigationItem.backBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationController.navigationBar.tintColor = [UIColor customGreenColor];
         
     //navigation bar color
     //[self.navigationController.navigationBar setBackgroundColor:[UIColor navigationBarColor]];
@@ -141,6 +144,29 @@
     self.tabBarController.tabBar.layer.borderWidth = 0.5;
     self.tabBarController.tabBar.layer.borderColor = self.tabBarController.tabBar.barTintColor.CGColor;
     self.tabBarController.tabBar.clipsToBounds = YES;
+
+}
+
+- (void) preparePullRefresh {
+    
+    //下拉刷最新
+    UIRefreshControl *refresh = [UIRefreshControl new];
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"準備更新資料"];
+    [refresh addTarget:self action:@selector(refreshView:) forControlEvents:UIControlEventValueChanged];
+    [refresh setBackgroundColor:[UIColor homeCellbgColor]];
+    [self.wallTableView addSubview:refresh];
+    
+    //上拉刷更多資料
+    MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+    
+    //設置顯示文字
+    [footer setTitle:@"" forState:MJRefreshStateIdle];
+    [footer setTitle:@"Loading..." forState:MJRefreshStateRefreshing];
+    [footer setTitle:@"以下沒資料了唷" forState:MJRefreshStateNoMoreData];
+    
+    footer.stateLabel.font = [UIFont systemFontOfSize:16];
+    footer.stateLabel.textColor = [UIColor grayColor];
+    _wallTableView.footer = footer;
 
 }
 
@@ -207,7 +233,7 @@
         
         [self.navigationController pushViewController:targetViewController animated:YES];
         
-    } else {
+    } else { //抓不到user權限，導向LOGIN畫面
         
         storyboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
         
@@ -343,11 +369,18 @@
     PFFile *photo = (PFFile *)[[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"photo"];
     [cell.cellImageView sd_setImageWithURL:(NSURL*)photo.url placeholderImage:[UIImage imageNamed:@"tmp900X640.png"]];
     
+    //興趣數
     cell.interestedCountLabel.text = [[[arrayDatas objectAtIndex:indexPath.row] objectForKey:TRAVELMATEPOST_INTERESTEDCOUNT_KEY] stringValue];
     
+    //留言數
     cell.commentCountLabel.text = [[[arrayDatas objectAtIndex:indexPath.row] objectForKey:TRAVELMATEPOST_COMMENTCOUNT_KEY] stringValue];
     
+    //參加人數
     cell.joinCountLabel.text = [[[arrayDatas objectAtIndex:indexPath.row] objectForKey:TRAVELMATEPOST_JOINCOUNT_KEY] stringValue];
+    
+    //觀看次數
+    cell.watchCountLabel.text = [[[arrayDatas objectAtIndex:indexPath.row] objectForKey:TRAVELMATEPOST_WATCHCOUNT_KEY] stringValue];
+
  
     //NSLog(@"%ld => %@",indexPath.row,[[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"createUser"]);
 }
