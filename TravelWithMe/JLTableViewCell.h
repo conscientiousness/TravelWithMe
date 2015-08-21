@@ -18,6 +18,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *memo;
 @property (weak, nonatomic) IBOutlet UIButton *joinBtn;
 @property (weak, nonatomic) IBOutlet UILabel *colorLabel;
+@property (weak, nonatomic) IBOutlet UIButton *interestedBtn;
+@property (weak, nonatomic) IBOutlet UIButton *whoJoinBtn;
+@property (weak, nonatomic) IBOutlet UILabel *interestedLabel;
+@property (weak, nonatomic) IBOutlet UILabel *commentLabel;
+@property (weak, nonatomic) IBOutlet UILabel *joinLabel;
+@property (weak, nonatomic) IBOutlet UILabel *days;
 
 
 

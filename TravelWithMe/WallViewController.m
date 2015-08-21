@@ -170,11 +170,11 @@
 - (void)loadMoreData
 {
     
-    if(currentCount==nil){
-        currentCount = [[NSNumber alloc] initWithInteger:arrayDatas.count];
-    } else {
-        currentCount = [NSNumber numberWithInteger:arrayDatas.count];
-    }
+    if(currentCount==nil)
+        currentCount = [NSNumber new];
+    
+    currentCount = [NSNumber numberWithInteger:arrayDatas.count];
+    
     
     dispatch_queue_t loadMoreDataQueue = dispatch_queue_create("loadMoreData", nil);
     dispatch_async(loadMoreDataQueue, ^{
@@ -182,11 +182,11 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [_wallTableView reloadData];
             
-            if([currentCount integerValue] == arrayDatas.count){//筆數相等表示沒資料
-                [_wallTableView.footer noticeNoMoreData];
-            } else {
+//            if([currentCount integerValue] == arrayDatas.count){//筆數相等表示沒資料
                 [_wallTableView.footer endRefreshing];
-            }
+//            } else {
+//                [_wallTableView.footer noticeNoMoreData];
+//            }
             
         });
     });
@@ -257,7 +257,6 @@
     UITableViewCell *cell = [self prepareTableViewCell:tableView cellForRowAtIndexPath:indexPath cellIdentifier:identifier];
     [self setCellData:(WallTableViewCell *)cell cellForRowAtIndexPath:indexPath];
     
-
     return cell;
 }
 
@@ -344,6 +343,11 @@
     PFFile *photo = (PFFile *)[[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"photo"];
     [cell.cellImageView sd_setImageWithURL:(NSURL*)photo.url placeholderImage:[UIImage imageNamed:@"tmp900X640.png"]];
     
+    cell.interestedCountLabel.text = [[[arrayDatas objectAtIndex:indexPath.row] objectForKey:TRAVELMATEPOST_INTERESTEDCOUNT_KEY] stringValue];
+    
+    cell.commentCountLabel.text = [[[arrayDatas objectAtIndex:indexPath.row] objectForKey:TRAVELMATEPOST_COMMENTCOUNT_KEY] stringValue];
+    
+    cell.joinCountLabel.text = [[[arrayDatas objectAtIndex:indexPath.row] objectForKey:TRAVELMATEPOST_JOINCOUNT_KEY] stringValue];
  
     //NSLog(@"%ld => %@",indexPath.row,[[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"createUser"]);
 }
@@ -402,11 +406,11 @@
         query.skip = [dataCount integerValue];
     }
     
-    if(arrayDatas==nil){
-        arrayDatas = [[NSMutableArray alloc] initWithArray:[query findObjects]];
-    } else {
-        [arrayDatas addObjectsFromArray:[query findObjects]];
-    }
+    if(arrayDatas==nil)
+        arrayDatas = [NSMutableArray new];
+   
+    [arrayDatas addObjectsFromArray:[query findObjects]];
+    
     
     //每次上拉查詢增加筆數
     dataCount = [NSNumber numberWithInt:[dataCount intValue] + 3];
@@ -443,6 +447,9 @@
     
     arrayDatas = nil;
     arrayDatas = [[NSMutableArray alloc] initWithArray:[query findObjects]];
+    
+    //回復下拉繼續有資料的狀態
+    //[_wallTableView.footer ];
 }
 
 

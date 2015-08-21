@@ -24,8 +24,7 @@
     _tableView.delegate=self;
     _tableView.dataSource=self;
     
-    //關閉分隔線
-    [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    
     
     MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"讀取中...";
@@ -60,6 +59,8 @@
     [super viewWillAppear:animated];
     
     self.navigationController.navigationBar.hidden = YES;
+    //關閉分隔線
+    [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
 
 - (void)didReceiveMemoryWarning {

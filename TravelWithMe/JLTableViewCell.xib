@@ -275,11 +275,17 @@
                 </variation>
             </tableViewCellContentView>
             <connections>
+                <outlet property="commentLabel" destination="lMm-uv-7gJ" id="ih3-AF-a45"/>
+                <outlet property="days" destination="H2a-TT-0J7" id="ymx-c6-Sk1"/>
                 <outlet property="displayName" destination="ztV-Rc-y0O" id="RfW-cI-iVn"/>
                 <outlet property="headPhoto" destination="rd1-a9-TkV" id="iLv-0H-xl0"/>
+                <outlet property="interestedBtn" destination="h6w-Y2-8uf" id="ddQ-SH-PC6"/>
+                <outlet property="interestedLabel" destination="jWB-YC-eFI" id="N5k-9l-2Rw"/>
                 <outlet property="joinBtn" destination="hgq-pS-586" id="ino-kr-Hfv"/>
+                <outlet property="joinLabel" destination="ZNW-ty-4g0" id="Scc-th-6Oj"/>
                 <outlet property="memo" destination="wwM-zU-Rlq" id="WwV-Qx-DrF"/>
                 <outlet property="travelDate" destination="GSV-95-4XQ" id="VJN-XN-1Ey"/>
+                <outlet property="whoJoinBtn" destination="cdk-w1-BML" id="0pu-uL-gJP"/>
             </connections>
             <point key="canvasLocation" x="393" y="293.5"/>
         </tableViewCell>

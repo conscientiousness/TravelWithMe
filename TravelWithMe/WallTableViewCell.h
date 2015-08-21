@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *travelDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *countryCityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *daysLabel;
-
-
+@property (weak, nonatomic) IBOutlet UILabel *interestedCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *commentCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *joinCountLabel;
 @end

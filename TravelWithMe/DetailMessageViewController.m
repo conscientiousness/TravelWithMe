@@ -36,8 +36,10 @@
     SSBouncyButton *customJoinButton;
     PFUser *user;
     NSNumber *isJoin;
+    NSNumber *isInterested;
     MBProgressHUD *hud;
     NSMutableArray *commentAry;
+    NSMutableDictionary *dictCountData;
 }
 
 - (void)viewDidLoad {
@@ -82,8 +84,11 @@
     dispatch_async(downloadDatasQueue, ^{
         
         //Get Data from Parse
-        [self getData];
+        [self getPhotoFile];
+        [self getRelationData];
         [self getCommentData];
+        [self getCountData];
+        [self incrementWatchCount];
         
         //Back main Thread update UI
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -136,6 +141,67 @@
     [super viewDidAppear:animated];
     
 }
+
+#pragma mark - 點選參加
+- (void)joinButtonDidPress:(UIButton *)button
+{
+    button.selected = !button.selected;
+    
+    //NSLog(@"%d",button.selected);
+    
+    UIViewController *targetViewController;
+    UIStoryboard *storyboard;
+    
+    if(user) {
+        
+        hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.labelText = @"Loading...";
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+            
+            PFObject *travelMatePost = [PFObject objectWithoutDataWithClassName:@"TravelMatePost" objectId:_cellDictData[@"objectId"]];
+            PFRelation *userRelation = [user relationForKey:@"joinPosts"];
+            PFRelation *postRelation = [travelMatePost relationForKey:@"joinUsers"];
+            
+            if(button.selected) { //儲存"參加"關聯
+                
+                [userRelation addObject:travelMatePost];
+                [user save];
+                
+                [travelMatePost incrementKey:@"joinCount"];
+                
+                [postRelation addObject:user];
+                [travelMatePost save];
+                
+            } else { //解除"參加"關聯
+                
+                [userRelation removeObject:travelMatePost];
+                [user save];
+                
+                [travelMatePost incrementKey:@"joinCount" byAmount:@-1];
+                
+                [postRelation removeObject:user];
+                [travelMatePost save];
+            }
+            
+            [self getRelationData];
+            [self getCountData];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [_detailTableView reloadData];
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+            });
+        });
+    } else {
+        storyboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+        
+        targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"loginViewController"];
+        
+        [self presentViewController:targetViewController animated:YES completion:nil];
+        
+    }
+}
+
 
 
 #pragma mark - Table View
@@ -244,7 +310,7 @@
             customJoinButton.titleLabel.font = [UIFont systemFontOfSize:20.0];
             [customJoinButton setTitle:@"參加" forState:UIControlStateNormal];
             [customJoinButton setTitle:@"退出" forState:UIControlStateSelected];
-            [customJoinButton addTarget:self action:@selector(buttonDidPress:) forControlEvents:UIControlEventTouchUpInside];
+            [customJoinButton addTarget:self action:@selector(joinButtonDidPress:) forControlEvents:UIControlEventTouchUpInside];
             [cell addSubview:customJoinButton];
         }
     }
@@ -254,59 +320,6 @@
     else
         customJoinButton.selected = NO;
     //NSLog(@"what??? = %ld",[isJoin integerValue]);
-}
-
-- (void)buttonDidPress:(UIButton *)button
-{
-    button.selected = !button.selected;
-    
-    //NSLog(@"%d",button.selected);
-    
-    UIViewController *targetViewController;
-    UIStoryboard *storyboard;
-    
-    if(user) {
-        
-        hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.labelText = @"發送中...";
-        
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            
-            PFObject *travelMatePost = [PFObject objectWithoutDataWithClassName:@"TravelMatePost" objectId:_cellDictData[@"objectId"]];
-            PFRelation *userRelation = [user relationForKey:@"joinPosts"];
-            PFRelation *postRelation = [travelMatePost relationForKey:@"joinUsers"];
-            
-            if(button.selected) { //儲存"參加"關聯
-                
-                
-                [userRelation addObject:travelMatePost];
-                [user save];
-                
-                [postRelation addObject:user];
-                [travelMatePost save];
-            
-            } else { //解除"參加"關聯
-                
-                [userRelation removeObject:travelMatePost];
-                [user save];
-                
-                [postRelation removeObject:user];
-                [travelMatePost save];
-            }
-            
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [MBProgressHUD hideHUDForView:self.view animated:YES];
-            });
-        });
-    } else {
-        storyboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
-        
-        targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"loginViewController"];
-        
-        [self presentViewController:targetViewController animated:YES completion:nil];
-
-    }
 }
 
 - (void) setJLCellData:(JLTableViewCell *)cell cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -325,8 +338,7 @@
     //出發日期
     cell.travelDate.text = _cellDictData[@"startDate"];
     //旅遊天數
-    
-    
+    cell.days.text = [(NSNumber*)_cellDictData[@"days"] stringValue];
     
     //更多說明
     cell.memo.numberOfLines = 0;  //需定義為0才會換行
@@ -335,6 +347,14 @@
     //[cell.memo setBackgroundColor:[UIColor redColor]];
     cell.memo.text = _cellDictData[@"memo"];
     //NSLog(@"label height= %f, width= %f",cell.memo.frame.size.height,cell.memo.frame.size.width);
+    
+    //有興趣數
+    cell.interestedLabel.text = [NSString stringWithFormat:@"%@ 個有興趣",dictCountData[@"interestedCount"]];
+    //留言數
+    cell.commentLabel.text = [NSString stringWithFormat:@"%@ 則留言",dictCountData[@"commentCount"]];
+    //參加數
+    cell.joinLabel.text = [NSString stringWithFormat:@"%@ 人參加",dictCountData[@"joinCount"]];
+
 }
 
 - (void) prepareJL2Cellstyle:(JL2TableViewCell *)cell cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -364,35 +384,7 @@
     //cell.joinBtn.layer.cornerRadius = 15.0;
 }
 
-- (void) prepareJL3MessageCellstyle:(JL3MessageTableViewCell *)cell cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    //點選時的顏色
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    //設定邊框粗細
-    //[[cell.firstSectionView layer] setBorderWidth:1.5];
-    
-    //邊框顏色
-    //[[cell.firstSectionView layer] setBorderColor:[UIColor colorWithRed:0.806 green:0.806 blue:0.806 alpha:1.0].CGColor];
-    
-    //設定背景顏色
-    [[cell.thirdSectionView layer] setBackgroundColor:[UIColor whiteColor].CGColor];
-    cell.backgroundColor = [UIColor homeCellbgColor];
-    
-    //設定圓角程度
-    [[cell.thirdSectionView layer] setCornerRadius:5.0];
-    
-    //照片圓形遮罩
-    //cell.headPhoto.layer.cornerRadius = cell.headPhoto.frame.size.width / 2;
-    //cell.headPhoto.layer.borderWidth = 3.0f;
-    //cell.headPhoto.layer.borderColor = [UIColor boyPhotoBorderColor].CGColor;
-    //cell.headPhoto.clipsToBounds = YES;
-    
-    //按鈕
-    //cell.joinBtn.layer.cornerRadius = 15.0;
-}
-
 - (void) setJL3MessageCellData:(JL3MessageTableViewCell *)cell cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     
     //大頭照
     //[cell.messageUserPhoto setImage:commentAry[indexPath.row][USER_PROFILEPICTURESMALL_KEY]];
@@ -410,17 +402,47 @@
     
     //名字
     cell.messageUserName.text = commentAry[indexPath.row][@"createUser"][@"displayName"];
-
     
     //訊息
+    cell.messageLabel.text = commentAry[indexPath.row][COMMENT_MESSAGE_KEY];
+    //NSLog(@"commentAry[indexPath.row]= %@",commentAry[indexPath.row][@"createUser"][@"displayName"]);
+    
+}
+
+- (void) prepareJL3MessageCellstyle:(JL3MessageTableViewCell *)cell cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    //點選時的顏色
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    //設定邊框粗細
+    //[[cell.firstSectionView layer] setBorderWidth:1.5];
+    
+    //邊框顏色
+    //[[cell.firstSectionView layer] setBorderColor:[UIColor colorWithRed:0.806 green:0.806 blue:0.806 alpha:1.0].CGColor];
+    
+    //設定背景顏色
+    [[cell.thirdSectionView layer] setBackgroundColor:[UIColor whiteColor].CGColor];
+    cell.backgroundColor = [UIColor homeCellbgColor];
+    
+    //設定圓角程度
+    [[cell.thirdSectionView layer] setCornerRadius:5.0];
+    
+    //留言
     cell.messageLabel.numberOfLines = 0;  //需定義為0才會換行
     //cell.memo.textColor = [UIColor whiteColor];
     cell.messageLabel.textAlignment = NSTextAlignmentLeft;  //內文對齊方式
     //[cell.memo setBackgroundColor:[UIColor redColor]];
-    cell.messageLabel.text = commentAry[indexPath.row][COMMENT_MESSAGE_KEY];
-    //NSLog(@"commentAry[indexPath.row]= %@",commentAry[indexPath.row][@"createUser"][@"displayName"]);
-
+    
+    //照片圓形遮罩
+    //cell.headPhoto.layer.cornerRadius = cell.headPhoto.frame.size.width / 2;
+    //cell.headPhoto.layer.borderWidth = 3.0f;
+    //cell.headPhoto.layer.borderColor = [UIColor boyPhotoBorderColor].CGColor;
+    //cell.headPhoto.clipsToBounds = YES;
+    
+    //按鈕
+    //cell.joinBtn.layer.cornerRadius = 15.0;
 }
+
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -500,7 +522,13 @@
 }
 
 #pragma mark - Loading Parse Data
-- (void)getData {
+-(void)getPhotoFile{
+    //取得Header照片
+    PFFile *PFPhoto = (PFFile*)_cellDictData[@"photo"];
+    headerPhoto = [UIImage imageWithData:[PFPhoto getData]];
+}
+
+- (void)getRelationData {
         
     //取得目前使用者是否有參加該活動
     //PFObject *post = [PFObject objectWithoutDataWithClassName:@"TravelMatePost" objectId:_cellDictData[@"objectId"]];
@@ -509,9 +537,12 @@
     query = [query whereKey:@"objectId" equalTo:_cellDictData[@"objectId"]];
     isJoin = @(query.countObjects);
     
-    //取得Header照片
-    PFFile *PFPhoto = (PFFile*)_cellDictData[@"photo"];
-    headerPhoto = [UIImage imageWithData:[PFPhoto getData]];
+    //是否對活動有興趣
+    relation = [user relationForKey:@"interestedPosts"];
+    query = [relation query];
+    query = [query whereKey:@"objectId" equalTo:_cellDictData[@"objectId"]];
+    isInterested = @(query.countObjects);
+    
 }
 
 - (void) getCommentData {
@@ -520,8 +551,9 @@
     
     PFQuery *query = [PFQuery queryWithClassName:COMMENT_TABLENAME];
     [query whereKey:@"postObjectId" equalTo:_cellDictData[@"objectId"]];
-    [query orderByDescending:@"createdAt"];
+    [query orderByAscending:@"createdAt"];
     [query includeKey:@"createUser.User"];
+    commentAry = [[NSMutableArray alloc] initWithArray:[query findObjects]];
     
 //    commentAry = [NSMutableArray new];
 //    for(id object in [query findObjects]){
@@ -551,9 +583,33 @@
 //        [commentAry addObject:dictComment];
 //    }
     
-    commentAry = [[NSMutableArray alloc] initWithArray:[query findObjects]];
 }
 
+- (void) getCountData {
+    PFQuery *query = [PFQuery queryWithClassName:TRAVELMATEPOST_TABLENAME];
+    [query whereKey:@"objectId" equalTo:_cellDictData[@"objectId"]];
+    
+    if(dictCountData == nil)
+        dictCountData = [NSMutableDictionary new];
+    
+    for(id object in [query findObjects]) {
+        [dictCountData setObject:(object[@"interestedCount"]==nil)?0:object[@"interestedCount"] forKey:@"interestedCount"];
+        
+        [dictCountData setObject:(object[@"commentCount"]==nil)?0:object[@"commentCount"] forKey:@"commentCount"];
+        
+        [dictCountData setObject:(object[@"joinCount"]==nil)?0:object[@"joinCount"] forKey:@"joinCount"];
+    }
+    
+}
+
+- (void) incrementWatchCount {
+    
+    PFObject *travelMatePost = [PFObject objectWithoutDataWithClassName:@"TravelMatePost" objectId:_cellDictData[@"objectId"]];
+    [travelMatePost incrementKey:@"watchCount"];
+    [travelMatePost save];
+}
+
+//更新置頂照片 和 解除霧化
 - (void) didGotDatasUpdateUI {
     
         CGFloat tableViewWidth = [_cellDictData[@"tableViewWidth"] floatValue];
@@ -574,8 +630,9 @@
 }
 
 
-#pragma mark - Add message to Parse
+#pragma mark - 送出留言
 - (IBAction)sendMessageBtnPressed:(id)sender {
+    [self clickMethof:nil];
    
     hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"發送中...";
@@ -591,10 +648,12 @@
         PFObject *travelMatePost = [PFObject objectWithoutDataWithClassName:@"TravelMatePost" objectId:_cellDictData[@"objectId"]];
         PFRelation *relation = [travelMatePost relationForKey:@"comments"];
         [relation addObject:comment];
+        [travelMatePost incrementKey:@"commentCount"];
         [travelMatePost save];
         
         //取得新資料
         [self getCommentData];
+        [self getCountData];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             _messageTextField.text = @"";

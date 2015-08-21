@@ -178,13 +178,13 @@
                                                                         <constraint firstAttribute="width" constant="18" id="Zhl-ce-PyC"/>
                                                                     </constraints>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1234" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fgM-ku-FPf">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1231" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fgM-ku-FPf">
                                                                     <rect key="frame" x="34" y="468" width="28" height="14.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1234" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5fa-BA-cY9">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1232" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5fa-BA-cY9">
                                                                     <rect key="frame" x="91" y="468" width="28" height="14.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -197,7 +197,7 @@
                                                                         <constraint firstAttribute="width" constant="18" id="jFK-JA-3EI"/>
                                                                     </constraints>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1234" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59g-bJ-kp5">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1233" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59g-bJ-kp5">
                                                                     <rect key="frame" x="148" y="468" width="28" height="14.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -286,11 +286,11 @@
                                                                     <exclude reference="aED-IN-2bl"/>
                                                                     <exclude reference="aR2-xF-fNq"/>
                                                                     <exclude reference="nxA-vS-yN2"/>
+                                                                    <exclude reference="OOr-nE-KR7"/>
                                                                     <exclude reference="3aW-M1-hIb"/>
                                                                     <exclude reference="7Vk-BS-NJj"/>
                                                                     <exclude reference="PFc-1Q-Swb"/>
                                                                     <exclude reference="xYG-gP-Q5D"/>
-                                                                    <exclude reference="OOr-nE-KR7"/>
                                                                     <exclude reference="Xl2-zz-59G"/>
                                                                 </mask>
                                                             </variation>
@@ -338,8 +338,11 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="cellImageView" destination="sl8-7Z-K1Y" id="i0X-Wd-ntT"/>
+                                            <outlet property="commentCountLabel" destination="5fa-BA-cY9" id="59L-Og-RAG"/>
                                             <outlet property="countryCityLabel" destination="kqv-E9-kBZ" id="ZDx-se-FIh"/>
                                             <outlet property="daysLabel" destination="NXa-UY-Lmr" id="MXo-lg-Car"/>
+                                            <outlet property="interestedCountLabel" destination="fgM-ku-FPf" id="gv2-YU-x7J"/>
+                                            <outlet property="joinCountLabel" destination="59g-bJ-kp5" id="xcd-VV-qUg"/>
                                             <outlet property="memoLabel" destination="VVp-xr-5O5" id="RXV-xL-np2"/>
                                             <outlet property="travelDateLabel" destination="2ql-KD-OA8" id="Gvm-Bq-bJD"/>
                                             <outlet property="userNameLabel" destination="E0N-tA-xXP" id="qEt-4G-DKH"/>

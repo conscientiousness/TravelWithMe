@@ -119,6 +119,11 @@
             
             travelMatePost[COMMON_POINTER_CREATEUSER_KEY] = user;
             
+            travelMatePost[TRAVELMATEPOST_COMMENTCOUNT_KEY] = @0;
+            travelMatePost[TRAVELMATEPOST_JOINCOUNT_KEY] = @0;
+            travelMatePost[TRAVELMATEPOST_INTERESTEDCOUNT_KEY] = @0;
+            travelMatePost[TRAVELMATEPOST_WATCHCOUNT_KEY] = @0;
+            
             [travelMatePost save];
             
             PFRelation *relation = [user relationForKey:USER_RELATION_TRAVELMATEPOSTS_KEY];
@@ -127,6 +132,7 @@
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                [self.navigationController popViewControllerAnimated:YES];
             });
         });
     }
@@ -301,7 +307,7 @@
         
     }];
     
-    UIAlertAction * cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+    UIAlertAction * cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
         //NSLog(@"cancel");
     }];
     
