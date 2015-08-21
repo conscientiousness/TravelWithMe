@@ -10,13 +10,16 @@
 		585397B91799ED43F93A41C9 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927D24742B4F2C6030CB033A /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		A50ED43F1B7852AD00651C3E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A50ED43E1B7852AD00651C3E /* UIKit.framework */; };
 		A50ED4411B7852D200651C3E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A50ED4401B7852D200651C3E /* Foundation.framework */; };
+		A521DE041B864E5400A0173D /* Delete Sign-100.png in Resources */ = {isa = PBXBuildFile; fileRef = A521DE031B864E5400A0173D /* Delete Sign-100.png */; };
+		A521DE0A1B864F5200A0173D /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A52B782F1B81BE1E00F8DEF2 /* NotificationCenter.framework */; };
+		A521DE101B864F5200A0173D /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A521DE0F1B864F5200A0173D /* TodayViewController.m */; };
+		A521DE121B864F5200A0173D /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A521DE111B864F5200A0173D /* MainInterface.storyboard */; };
+		A521DE151B864F5200A0173D /* TraveIWithMe.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A521DE091B864F5200A0173D /* TraveIWithMe.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A524E7FA1B86C54F0094A684 /* LegalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A524E7F91B86C54F0094A684 /* LegalViewController.m */; };
 		A52E4EB91B63817400285C83 /* VIPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A52E4EB81B63817400285C83 /* VIPViewController.m */; };
 		A53CBBB71B67FA630039369A /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A53CBBB61B67FA630039369A /* MapViewController.m */; };
+		A55171831B86151A002841AB /* PolicyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55171821B86151A002841AB /* PolicyViewController.m */; };
 		A55669951B80EAE300F588E3 /* CExpandHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = A55669941B80EAE300F588E3 /* CExpandHeader.m */; };
-		A558331C1B83686E00000D85 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A52B782F1B81BE1E00F8DEF2 /* NotificationCenter.framework */; };
-		A55833221B83686E00000D85 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55833211B83686E00000D85 /* TodayViewController.m */; };
-		A55833241B83686E00000D85 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A55833231B83686E00000D85 /* MainInterface.storyboard */; };
-		A55833271B83686E00000D85 /* Travel With Me.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A558331B1B83686E00000D85 /* Travel With Me.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A56DC6261B80EC3E009C621F /* 22.png in Resources */ = {isa = PBXBuildFile; fileRef = A56DC6251B80EC3E009C621F /* 22.png */; };
 		A5D374921B646BEC00A57791 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5D374911B646BEC00A57791 /* MessageUI.framework */; };
 		A5E1670D1B6903B70036ABE4 /* SettingTableViewControlle.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E1670C1B6903B70036ABE4 /* SettingTableViewControlle.m */; };
@@ -98,12 +101,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		A55833251B83686E00000D85 /* PBXContainerItemProxy */ = {
+		A521DE131B864F5200A0173D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F47556931B4BACF2008CEE3A /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = A558331A1B83686E00000D85;
-			remoteInfo = "Travel With Me";
+			remoteGlobalIDString = A521DE081B864F5200A0173D;
+			remoteInfo = TraveIWithMe;
 		};
 		F47556B51B4BACF2008CEE3A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -121,7 +124,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				A55833271B83686E00000D85 /* Travel With Me.appex in Embed App Extensions */,
+				A521DE151B864F5200A0173D /* TraveIWithMe.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -134,18 +137,23 @@
 		A2A1A052438CEB9B22CC0114 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A50ED43E1B7852AD00651C3E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A50ED4401B7852D200651C3E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A521DE031B864E5400A0173D /* Delete Sign-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Delete Sign-100.png"; sourceTree = "<group>"; };
+		A521DE091B864F5200A0173D /* TraveIWithMe.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TraveIWithMe.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		A521DE0D1B864F5200A0173D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A521DE0E1B864F5200A0173D /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
+		A521DE0F1B864F5200A0173D /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
+		A521DE111B864F5200A0173D /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		A524E7F81B86C54F0094A684 /* LegalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LegalViewController.h; sourceTree = "<group>"; };
+		A524E7F91B86C54F0094A684 /* LegalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LegalViewController.m; sourceTree = "<group>"; };
 		A52B782F1B81BE1E00F8DEF2 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		A52E4EB71B63817400285C83 /* VIPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VIPViewController.h; sourceTree = "<group>"; };
 		A52E4EB81B63817400285C83 /* VIPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VIPViewController.m; sourceTree = "<group>"; };
 		A53CBBB51B67FA630039369A /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		A53CBBB61B67FA630039369A /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		A55171811B86151A002841AB /* PolicyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PolicyViewController.h; sourceTree = "<group>"; };
+		A55171821B86151A002841AB /* PolicyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PolicyViewController.m; sourceTree = "<group>"; };
 		A55669931B80EAE300F588E3 /* CExpandHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CExpandHeader.h; sourceTree = "<group>"; };
 		A55669941B80EAE300F588E3 /* CExpandHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CExpandHeader.m; sourceTree = "<group>"; };
-		A558331B1B83686E00000D85 /* Travel With Me.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Travel With Me.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A558331F1B83686E00000D85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A55833201B83686E00000D85 /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
-		A55833211B83686E00000D85 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
-		A55833231B83686E00000D85 /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 		A56DC6251B80EC3E009C621F /* 22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 22.png; sourceTree = "<group>"; };
 		A5D374911B646BEC00A57791 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		A5E1670B1B6903B70036ABE4 /* SettingTableViewControlle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingTableViewControlle.h; sourceTree = "<group>"; };
@@ -259,11 +267,11 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		A55833181B83686E00000D85 /* Frameworks */ = {
+		A521DE061B864F5200A0173D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A558331C1B83686E00000D85 /* NotificationCenter.framework in Frameworks */,
+				A521DE0A1B864F5200A0173D /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +332,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A521DE0B1B864F5200A0173D /* TraveIWithMe */ = {
+			isa = PBXGroup;
+			children = (
+				A521DE0E1B864F5200A0173D /* TodayViewController.h */,
+				A521DE0F1B864F5200A0173D /* TodayViewController.m */,
+				A521DE111B864F5200A0173D /* MainInterface.storyboard */,
+				A521DE0C1B864F5200A0173D /* Supporting Files */,
+			);
+			path = TraveIWithMe;
+			sourceTree = "<group>";
+		};
+		A521DE0C1B864F5200A0173D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A521DE0D1B864F5200A0173D /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		A55669961B80EAEF00F588E3 /* CExpandHeader */ = {
 			isa = PBXGroup;
 			children = (
@@ -331,25 +358,6 @@
 				A55669941B80EAE300F588E3 /* CExpandHeader.m */,
 			);
 			name = CExpandHeader;
-			sourceTree = "<group>";
-		};
-		A558331D1B83686E00000D85 /* Travel With Me */ = {
-			isa = PBXGroup;
-			children = (
-				A55833201B83686E00000D85 /* TodayViewController.h */,
-				A55833211B83686E00000D85 /* TodayViewController.m */,
-				A55833231B83686E00000D85 /* MainInterface.storyboard */,
-				A558331E1B83686E00000D85 /* Supporting Files */,
-			);
-			path = "Travel With Me";
-			sourceTree = "<group>";
-		};
-		A558331E1B83686E00000D85 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				A558331F1B83686E00000D85 /* Info.plist */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		F2BC6DDE6C40B624B4CA3196 /* Pods */ = {
@@ -493,7 +501,7 @@
 				F475569D1B4BACF2008CEE3A /* TravelWithMe */,
 				F47556B71B4BACF2008CEE3A /* TravelWithMeTests */,
 				F445E36D1B6E0C4E00818A18 /* PrefixHeader.pch */,
-				A558331D1B83686E00000D85 /* Travel With Me */,
+				A521DE0B1B864F5200A0173D /* TraveIWithMe */,
 				F475569C1B4BACF2008CEE3A /* Products */,
 				F2BC6DDE6C40B624B4CA3196 /* Pods */,
 				789577451EB4254F88441C4F /* Frameworks */,
@@ -505,7 +513,7 @@
 			children = (
 				F475569B1B4BACF2008CEE3A /* TravelWithMe.app */,
 				F47556B41B4BACF2008CEE3A /* TravelWithMeTests.xctest */,
-				A558331B1B83686E00000D85 /* Travel With Me.appex */,
+				A521DE091B864F5200A0173D /* TraveIWithMe.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -592,11 +600,16 @@
 			children = (
 				A55669961B80EAEF00F588E3 /* CExpandHeader */,
 				F486EF451B4C34D2008CB97B /* Setting.storyboard */,
+				A521DE031B864E5400A0173D /* Delete Sign-100.png */,
 				A56DC6251B80EC3E009C621F /* 22.png */,
 				A5E1670B1B6903B70036ABE4 /* SettingTableViewControlle.h */,
 				A5E1670C1B6903B70036ABE4 /* SettingTableViewControlle.m */,
 				A52E4EB71B63817400285C83 /* VIPViewController.h */,
 				A52E4EB81B63817400285C83 /* VIPViewController.m */,
+				A55171811B86151A002841AB /* PolicyViewController.h */,
+				A55171821B86151A002841AB /* PolicyViewController.m */,
+				A524E7F81B86C54F0094A684 /* LegalViewController.h */,
+				A524E7F91B86C54F0094A684 /* LegalViewController.m */,
 			);
 			name = SettingView;
 			sourceTree = "<group>";
@@ -628,21 +641,21 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A558331A1B83686E00000D85 /* Travel With Me */ = {
+		A521DE081B864F5200A0173D /* TraveIWithMe */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A55833281B83686E00000D85 /* Build configuration list for PBXNativeTarget "Travel With Me" */;
+			buildConfigurationList = A521DE161B864F5200A0173D /* Build configuration list for PBXNativeTarget "TraveIWithMe" */;
 			buildPhases = (
-				A55833171B83686E00000D85 /* Sources */,
-				A55833181B83686E00000D85 /* Frameworks */,
-				A55833191B83686E00000D85 /* Resources */,
+				A521DE051B864F5200A0173D /* Sources */,
+				A521DE061B864F5200A0173D /* Frameworks */,
+				A521DE071B864F5200A0173D /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Travel With Me";
-			productName = "Travel With Me";
-			productReference = A558331B1B83686E00000D85 /* Travel With Me.appex */;
+			name = TraveIWithMe;
+			productName = TraveIWithMe;
+			productReference = A521DE091B864F5200A0173D /* TraveIWithMe.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 		F475569A1B4BACF2008CEE3A /* TravelWithMe */ = {
@@ -660,7 +673,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				A55833261B83686E00000D85 /* PBXTargetDependency */,
+				A521DE141B864F5200A0173D /* PBXTargetDependency */,
 			);
 			name = TravelWithMe;
 			productName = TravelWithMe;
@@ -694,7 +707,7 @@
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = Jesse;
 				TargetAttributes = {
-					A558331A1B83686E00000D85 = {
+					A521DE081B864F5200A0173D = {
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = X69W8ZBR5M;
 					};
@@ -728,17 +741,17 @@
 			targets = (
 				F475569A1B4BACF2008CEE3A /* TravelWithMe */,
 				F47556B31B4BACF2008CEE3A /* TravelWithMeTests */,
-				A558331A1B83686E00000D85 /* Travel With Me */,
+				A521DE081B864F5200A0173D /* TraveIWithMe */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		A55833191B83686E00000D85 /* Resources */ = {
+		A521DE071B864F5200A0173D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A55833241B83686E00000D85 /* MainInterface.storyboard in Resources */,
+				A521DE121B864F5200A0173D /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -766,6 +779,7 @@
 				F486EF461B4C34D2008CB97B /* Setting.storyboard in Resources */,
 				F47556C51B4BD40F008CEE3A /* Favorite.storyboard in Resources */,
 				F42EBDB21B68FF1400606D9B /* (null) in Resources */,
+				A521DE041B864E5400A0173D /* Delete Sign-100.png in Resources */,
 				F47556AC1B4BACF2008CEE3A /* Images.xcassets in Resources */,
 				F43B3B7F1B75C03F0034B20F /* JL3MessageTableViewCell.xib in Resources */,
 				F43C831A1B71B13200D2A389 /* tmp900X640.png in Resources */,
@@ -834,11 +848,11 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		A55833171B83686E00000D85 /* Sources */ = {
+		A521DE051B864F5200A0173D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A55833221B83686E00000D85 /* TodayViewController.m in Sources */,
+				A521DE101B864F5200A0173D /* TodayViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -852,6 +866,7 @@
 				F4BC50E31B7E54ED008C3EC4 /* ParallaxTableViewCell.m in Sources */,
 				F4BC50E21B7E54ED008C3EC4 /* HomePageViewController.m in Sources */,
 				F465736D1B5552D800DA3D7B /* JL2TableViewCell.m in Sources */,
+				A524E7FA1B86C54F0094A684 /* LegalViewController.m in Sources */,
 				B51A23351B7A5C9900CFD674 /* followTableViewController.m in Sources */,
 				F4DA4C5C1B4E9D0500421F2F /* UIColors.m in Sources */,
 				F4CEF12D1B81B87C006D2B71 /* PostViewController.m in Sources */,
@@ -868,6 +883,7 @@
 				F47556A41B4BACF2008CEE3A /* AppDelegate.m in Sources */,
 				F44F3E331B8210CD007CE9C1 /* TPKeyboardAvoidingTableView.m in Sources */,
 				A5E1670D1B6903B70036ABE4 /* SettingTableViewControlle.m in Sources */,
+				A55171831B86151A002841AB /* PolicyViewController.m in Sources */,
 				B51A23341B7A5C9900CFD674 /* favoriteTableViewController.m in Sources */,
 				F465736C1B5552D800DA3D7B /* JLTableViewCell.m in Sources */,
 				F44F3E301B8207F9007CE9C1 /* StartDateDaysTableViewCell.m in Sources */,
@@ -900,10 +916,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		A55833261B83686E00000D85 /* PBXTargetDependency */ = {
+		A521DE141B864F5200A0173D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A558331A1B83686E00000D85 /* Travel With Me */;
-			targetProxy = A55833251B83686E00000D85 /* PBXContainerItemProxy */;
+			target = A521DE081B864F5200A0173D /* TraveIWithMe */;
+			targetProxy = A521DE131B864F5200A0173D /* PBXContainerItemProxy */;
 		};
 		F47556B61B4BACF2008CEE3A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -932,7 +948,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		A55833291B83686E00000D85 /* Debug */ = {
+		A521DE171B864F5200A0173D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -941,21 +957,19 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "Travel With Me/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				INFOPLIST_FILE = TraveIWithMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
-		A558332A1B83686E00000D85 /* Release */ = {
+		A521DE181B864F5200A0173D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = "Travel With Me/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				INFOPLIST_FILE = TraveIWithMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1188,11 +1202,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A55833281B83686E00000D85 /* Build configuration list for PBXNativeTarget "Travel With Me" */ = {
+		A521DE161B864F5200A0173D /* Build configuration list for PBXNativeTarget "TraveIWithMe" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A55833291B83686E00000D85 /* Debug */,
-				A558332A1B83686E00000D85 /* Release */,
+				A521DE171B864F5200A0173D /* Debug */,
+				A521DE181B864F5200A0173D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

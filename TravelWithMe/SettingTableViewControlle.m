@@ -39,35 +39,35 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-//    if(indexPath.section == 0){
-//    if(indexPath.row == 0){
-//            UIViewController *targetViewController;
-//            UIStoryboard *storyboard;
-//        //[FBSDKAccessToken currentAccessToken]
-//            if(user) {
-//                targetViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"VIPViewController"];
-//                
-//            [self.navigationController pushViewController:targetViewController animated:YES];
-//            }
-//            else {
-//            storyboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
-//                
-//                targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"loginViewController"];
-//                
-//                [self presentViewController:targetViewController animated:YES completion:nil];
-//            }
-//            
-//            
-//        }
-//    }
-//
-    //  打印
+    //    if(indexPath.section == 0){
+    //    if(indexPath.row == 0){
+    //            UIViewController *targetViewController;
+    //            UIStoryboard *storyboard;
+    //        //[FBSDKAccessToken currentAccessToken]
+    //            if(user) {
+    //                targetViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"VIPViewController"];
+    //
+    //            [self.navigationController pushViewController:targetViewController animated:YES];
+    //            }
+    //            else {
+    //            storyboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+    //
+    //                targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"loginViewController"];
+    //
+    //                [self presentViewController:targetViewController animated:YES completion:nil];
+    //            }
+    //
+    //
+    //        }
+    //    }
+    //
     //  NSLog(@"indexPath :%@",indexPath);
-    if(indexPath.section == 2){
-        if(indexPath.row == 1){
-            [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"http://itunes.apple.com/tw/app/angry-birds/id343200656?mt=8"]];
-        }
-    }
+    //  待上架後開啟
+    /*if(indexPath.section == 2){
+     if(indexPath.row == 3){
+     [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"網址"]];
+     }
+     }*/
     
     
     if(indexPath.section == 2){
@@ -75,10 +75,10 @@
             // mail
             MFMailComposeViewController * mailViewController = [[MFMailComposeViewController alloc] init];
             mailViewController.mailComposeDelegate = self;
-             [mailViewController setSubject:@"TravelWithMe_Questione"];
-             [mailViewController setToRecipients:@[@"TravelWithMe@gmail.com"]];
-             [self presentViewController:mailViewController animated:YES completion:^{
-             }];
+            [mailViewController setSubject:@"Travelwithme_Questione"];
+            [mailViewController setToRecipients:@[@"travelwithme.tw@gmail.com"]];
+            [self presentViewController:mailViewController animated:YES completion:^{
+            }];
         }
     }
     
@@ -92,10 +92,16 @@
     
     
 }
-// 設定方法返回
+// 設定mail方法返回
 -(void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
 {
     [controller dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)backBtnPressed:(id)sender {
+    [self dismissViewControllerAnimated:true completion:^{
+        NSLog(@"backBtnPressed");
+    }];
 }
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
