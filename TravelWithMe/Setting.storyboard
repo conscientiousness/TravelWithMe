@@ -122,6 +122,26 @@
                                             <segue destination="hdX-EQ-9Pk" kind="showDetail" id="neD-HE-9Z6"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="rMc-VA-3IV" style="IBUITableViewCellStyleDefault" id="p1p-ft-Ivg">
+                                        <rect key="frame" x="0.0" y="417.5" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="p1p-ft-Ivg" id="r4r-np-VrX">
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="法律聲明" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rMc-VA-3IV">
+                                                    <rect key="frame" x="15" y="0.0" width="550" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="San-kt-0cw" kind="showDetail" id="zhW-k4-VNE"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="350-ft-iaA" style="IBUITableViewCellStyleDefault" id="Qkd-L7-lfT">
                                         <rect key="frame" x="0.0" y="373.5" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
@@ -254,6 +274,69 @@
                 <exit id="ydX-hP-tnN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="227" y="-31"/>
+        </scene>
+        <!--Legal View Controller-->
+        <scene sceneID="fLb-BD-He1">
+            <objects>
+                <viewController id="San-kt-0cw" customClass="LegalViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Dhr-yL-qpd"/>
+                        <viewControllerLayoutGuide type="bottom" id="de6-ok-trN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="B1A-EG-soG">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ps9-NS-KeG">
+                                <rect key="frame" x="16" y="20" width="568" height="526"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FZM-uI-bkA">
+                                <rect key="frame" x="0.0" y="551" width="600" height="49"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="6NF-9I-vCW"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="49" id="EXM-q3-THH"/>
+                                </constraints>
+                                <items/>
+                            </tabBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vqr-GB-FQG">
+                                <rect key="frame" x="280" y="556" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Wpu-Po-kDZ"/>
+                                    <constraint firstAttribute="width" constant="40" id="i0o-Tn-Njw"/>
+                                </constraints>
+                                <state key="normal" image="Delete Sign-100.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="b4r-Yx-Lga" kind="unwind" unwindAction="backToWhite:" id="BZu-eZ-iAg"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.99215686270000003" green="0.92156862750000001" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="FZM-uI-bkA" firstAttribute="top" secondItem="Ps9-NS-KeG" secondAttribute="bottom" constant="5" id="1fr-Ma-yiV"/>
+                            <constraint firstItem="de6-ok-trN" firstAttribute="top" secondItem="vqr-GB-FQG" secondAttribute="bottom" constant="4" id="ARC-SV-A13"/>
+                            <constraint firstItem="de6-ok-trN" firstAttribute="top" secondItem="FZM-uI-bkA" secondAttribute="bottom" id="IAi-1f-6kq"/>
+                            <constraint firstItem="Ps9-NS-KeG" firstAttribute="trailing" secondItem="B1A-EG-soG" secondAttribute="trailingMargin" id="Jaz-Bf-E8z"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="FZM-uI-bkA" secondAttribute="trailing" constant="-16" id="RiU-Oz-DAV"/>
+                            <constraint firstAttribute="centerX" secondItem="vqr-GB-FQG" secondAttribute="centerX" id="YbF-lo-2nV"/>
+                            <constraint firstItem="Ps9-NS-KeG" firstAttribute="leading" secondItem="B1A-EG-soG" secondAttribute="leadingMargin" id="lk1-o8-3kG"/>
+                            <constraint firstItem="FZM-uI-bkA" firstAttribute="leading" secondItem="B1A-EG-soG" secondAttribute="leadingMargin" constant="-16" id="oZH-mV-TLy"/>
+                            <constraint firstItem="FZM-uI-bkA" firstAttribute="top" secondItem="Ps9-NS-KeG" secondAttribute="bottom" constant="5" id="tQQ-v1-4f0"/>
+                            <constraint firstItem="Ps9-NS-KeG" firstAttribute="top" secondItem="Dhr-yL-qpd" secondAttribute="bottom" id="tw2-px-C8Y"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="legalTextview" destination="Ps9-NS-KeG" id="IgI-nN-Evt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K2s-PL-J3L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="b4r-Yx-Lga" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="891" y="-36"/>
         </scene>
         <!--關於-->
         <scene sceneID="0al-7v-snE">

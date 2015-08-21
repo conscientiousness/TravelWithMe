@@ -15,6 +15,7 @@
 		A521DE101B864F5200A0173D /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A521DE0F1B864F5200A0173D /* TodayViewController.m */; };
 		A521DE121B864F5200A0173D /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A521DE111B864F5200A0173D /* MainInterface.storyboard */; };
 		A521DE151B864F5200A0173D /* TraveIWithMe.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A521DE091B864F5200A0173D /* TraveIWithMe.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A524E7FA1B86C54F0094A684 /* LegalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A524E7F91B86C54F0094A684 /* LegalViewController.m */; };
 		A52E4EB91B63817400285C83 /* VIPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A52E4EB81B63817400285C83 /* VIPViewController.m */; };
 		A53CBBB71B67FA630039369A /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A53CBBB61B67FA630039369A /* MapViewController.m */; };
 		A55171831B86151A002841AB /* PolicyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55171821B86151A002841AB /* PolicyViewController.m */; };
@@ -142,6 +143,8 @@
 		A521DE0E1B864F5200A0173D /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
 		A521DE0F1B864F5200A0173D /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
 		A521DE111B864F5200A0173D /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		A524E7F81B86C54F0094A684 /* LegalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LegalViewController.h; sourceTree = "<group>"; };
+		A524E7F91B86C54F0094A684 /* LegalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LegalViewController.m; sourceTree = "<group>"; };
 		A52B782F1B81BE1E00F8DEF2 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		A52E4EB71B63817400285C83 /* VIPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VIPViewController.h; sourceTree = "<group>"; };
 		A52E4EB81B63817400285C83 /* VIPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VIPViewController.m; sourceTree = "<group>"; };
@@ -605,6 +608,8 @@
 				A52E4EB81B63817400285C83 /* VIPViewController.m */,
 				A55171811B86151A002841AB /* PolicyViewController.h */,
 				A55171821B86151A002841AB /* PolicyViewController.m */,
+				A524E7F81B86C54F0094A684 /* LegalViewController.h */,
+				A524E7F91B86C54F0094A684 /* LegalViewController.m */,
 			);
 			name = SettingView;
 			sourceTree = "<group>";
@@ -861,6 +866,7 @@
 				F4BC50E31B7E54ED008C3EC4 /* ParallaxTableViewCell.m in Sources */,
 				F4BC50E21B7E54ED008C3EC4 /* HomePageViewController.m in Sources */,
 				F465736D1B5552D800DA3D7B /* JL2TableViewCell.m in Sources */,
+				A524E7FA1B86C54F0094A684 /* LegalViewController.m in Sources */,
 				B51A23351B7A5C9900CFD674 /* followTableViewController.m in Sources */,
 				F4DA4C5C1B4E9D0500421F2F /* UIColors.m in Sources */,
 				F4CEF12D1B81B87C006D2B71 /* PostViewController.m in Sources */,
@@ -1203,6 +1209,7 @@
 				A521DE181B864F5200A0173D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F47556961B4BACF2008CEE3A /* Build configuration list for PBXProject "TravelWithMe" */ = {
 			isa = XCConfigurationList;

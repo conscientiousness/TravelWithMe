@@ -64,7 +64,7 @@
     //  NSLog(@"indexPath :%@",indexPath);
     //  待上架後開啟
     /*if(indexPath.section == 2){
-     if(indexPath.row == 2){
+     if(indexPath.row == 3){
      [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"網址"]];
      }
      }*/
