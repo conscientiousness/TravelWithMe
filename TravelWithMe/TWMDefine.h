@@ -11,6 +11,11 @@
 @interface TWMDefine : NSObject
 
 //*//
+#pragma mark - NSNotification
+
+#define PUBLISH_DONE_NOTIFICATION
+
+//*//
 #pragma mark - PostViewController
 
 #define NUMBER_OF_SECTIONS 1

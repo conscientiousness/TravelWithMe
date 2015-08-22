@@ -140,6 +140,9 @@
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                
+                 [[NSNotificationCenter defaultCenter] postNotificationName:@"isDataSave" object:self];
+                
                 [self.navigationController popViewControllerAnimated:YES];
             });
         });

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+typedef void(^SendDataBack)(BOOL needReload);
 
 @interface PostViewController : UIViewController
-
+@property (nonatomic,strong) SendDataBack SendDataBackBlock;
 @end

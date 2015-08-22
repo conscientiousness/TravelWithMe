@@ -8,7 +8,7 @@
 
 #import "WallViewController.h"
 #import "WallTableViewCell.h"
-#import "HomePostViewController.h"
+#import "PostViewController.h"
 #import "HomeDetailViewController.h"
 #import "MJRefresh.h"
 //#import "JDFPeekabooCoordinator.h"
@@ -24,17 +24,16 @@
 {
     PFUser *user;
     CGRect originNavFrame;
-    NSMutableArray *arrayDatas;
-    NSDateFormatter *cellDateFormatter;
+    //NSDateFormatter *cellDateFormatter;
     NSNumber *dataCount;
     NSNumber *currentCount;
     NSDateFormatter *formatter;
     NSString *lastUpdated;
+    NSMutableArray *arrayDatas;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     
     MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"讀取中...";
@@ -57,14 +56,20 @@
     
     
     //格式化日期
-    cellDateFormatter = [[NSDateFormatter alloc]init];
-    [cellDateFormatter setDateFormat:@"yyyy-MM-dd"];
+    //cellDateFormatter = [[NSDateFormatter alloc]init];
+    //[cellDateFormatter setDateFormat:@"yyyy-MM-dd"];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self
+                                            selector:@selector(reloadTableView)
+                                                name:@"isDataSave"
+                                              object:nil];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self initUI];
     [self preparePullRefresh];
+
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -90,6 +95,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) reloadTableView {
+    dispatch_queue_t loadNewDataQueue = dispatch_queue_create("publishBackReloadData", nil);
+    dispatch_async(loadNewDataQueue, ^{
+        [self getNewData];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_wallTableView reloadData];
+        });
+    });
+}
 
 - (void)initUI {
     
@@ -291,7 +305,7 @@
     //跳轉到HomePostViewController
     NSString *identifier = @"detailMessageViewController";
     
-    HomePostViewController *detailVC = [self.storyboard instantiateViewControllerWithIdentifier:identifier];
+    UIViewController *detailVC = [self.storyboard instantiateViewControllerWithIdentifier:identifier];
     [self.navigationController pushViewController:detailVC animated:YES];
     
     
