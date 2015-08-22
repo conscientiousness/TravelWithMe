@@ -11,6 +11,7 @@ pod "ParseFacebookUtilsV4"
 pod "JDFPeekaboo"
 pod "SSBouncyButton", '~> 1.0'
 pod "MJRefresh"
+pod "PureLayout"
 
 use_frameworks!
 pod "TextFieldEffects"

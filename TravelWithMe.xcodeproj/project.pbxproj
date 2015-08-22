@@ -64,6 +64,8 @@
 		F448299A1B6FBA5800ED0EA1 /* PAPUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = F44829991B6FBA5800ED0EA1 /* PAPUtility.m */; };
 		F448299D1B6FBA8B00ED0EA1 /* PAPConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = F448299C1B6FBA8B00ED0EA1 /* PAPConstants.m */; };
 		F44829A01B6FBAFF00ED0EA1 /* PAPCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F448299F1B6FBAFF00ED0EA1 /* PAPCache.m */; };
+		F44899EE1B88AC20009ABF4C /* VIPMyActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F44899EC1B88AC20009ABF4C /* VIPMyActivityTableViewCell.m */; };
+		F44899EF1B88AC20009ABF4C /* VIPMyActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F44899ED1B88AC20009ABF4C /* VIPMyActivityTableViewCell.xib */; };
 		F44F3E301B8207F9007CE9C1 /* StartDateDaysTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F44F3E2F1B8207F9007CE9C1 /* StartDateDaysTableViewCell.m */; };
 		F44F3E331B8210CD007CE9C1 /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F44F3E321B8210CD007CE9C1 /* TPKeyboardAvoidingTableView.m */; };
 		F44F3E361B8210F1007CE9C1 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F44F3E351B8210F1007CE9C1 /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
@@ -214,6 +216,9 @@
 		F448299C1B6FBA8B00ED0EA1 /* PAPConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAPConstants.m; sourceTree = "<group>"; };
 		F448299E1B6FBAFF00ED0EA1 /* PAPCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAPCache.h; sourceTree = "<group>"; };
 		F448299F1B6FBAFF00ED0EA1 /* PAPCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAPCache.m; sourceTree = "<group>"; };
+		F44899EB1B88AC20009ABF4C /* VIPMyActivityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VIPMyActivityTableViewCell.h; sourceTree = "<group>"; };
+		F44899EC1B88AC20009ABF4C /* VIPMyActivityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VIPMyActivityTableViewCell.m; sourceTree = "<group>"; };
+		F44899ED1B88AC20009ABF4C /* VIPMyActivityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VIPMyActivityTableViewCell.xib; sourceTree = "<group>"; };
 		F44F3E2E1B8207F9007CE9C1 /* StartDateDaysTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartDateDaysTableViewCell.h; sourceTree = "<group>"; };
 		F44F3E2F1B8207F9007CE9C1 /* StartDateDaysTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartDateDaysTableViewCell.m; sourceTree = "<group>"; };
 		F44F3E311B8210CD007CE9C1 /* TPKeyboardAvoidingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingTableView.h; sourceTree = "<group>"; };
@@ -400,10 +405,10 @@
 				F46573671B5552D800DA3D7B /* JLTableViewCell.m */,
 				F46573681B5552D800DA3D7B /* JL2TableViewCell.h */,
 				F46573691B5552D800DA3D7B /* JL2TableViewCell.m */,
-				F465736A1B5552D800DA3D7B /* JL2TableViewCell.xib */,
-				F465736B1B5552D800DA3D7B /* JLTableViewCell.xib */,
 				F4461ECA1B7622CE00052C94 /* JL3MessageTableViewCell.h */,
 				F4461ECB1B7622CE00052C94 /* JL3MessageTableViewCell.m */,
+				F465736B1B5552D800DA3D7B /* JLTableViewCell.xib */,
+				F465736A1B5552D800DA3D7B /* JL2TableViewCell.xib */,
 				F43B3B7D1B75C03F0034B20F /* JL3MessageTableViewCell.xib */,
 			);
 			name = DetailView;
@@ -618,6 +623,9 @@
 				A5E1670C1B6903B70036ABE4 /* SettingTableViewControlle.m */,
 				A52E4EB71B63817400285C83 /* VIPViewController.h */,
 				A52E4EB81B63817400285C83 /* VIPViewController.m */,
+				F44899EB1B88AC20009ABF4C /* VIPMyActivityTableViewCell.h */,
+				F44899EC1B88AC20009ABF4C /* VIPMyActivityTableViewCell.m */,
+				F44899ED1B88AC20009ABF4C /* VIPMyActivityTableViewCell.xib */,
 				A55171811B86151A002841AB /* PolicyViewController.h */,
 				A55171821B86151A002841AB /* PolicyViewController.m */,
 				A524E7F81B86C54F0094A684 /* LegalViewController.h */,
@@ -776,6 +784,7 @@
 				F445E3671B6E09CD00818A18 /* Login.storyboard in Resources */,
 				F44283001B875A9700D1F776 /* watch-icon.png in Resources */,
 				F443FB431B60FBF300F30847 /* Map.storyboard in Resources */,
+				F44899EF1B88AC20009ABF4C /* VIPMyActivityTableViewCell.xib in Resources */,
 				F465736E1B5552D800DA3D7B /* JL2TableViewCell.xib in Resources */,
 				F442CE151B64B8FC001CD62B /* (null) in Resources */,
 				F44283021B875C2200D1F776 /* back-icon.png in Resources */,
@@ -889,6 +898,7 @@
 				F4DA4C601B4EC96F00421F2F /* HomePostViewController.m in Sources */,
 				F4B3874A1B83465C007740D5 /* MemoTableViewCell.m in Sources */,
 				F4CEF1571B81F4CE006D2B71 /* CountryCityTableViewCell.m in Sources */,
+				F44899EE1B88AC20009ABF4C /* VIPMyActivityTableViewCell.m in Sources */,
 				F44F3E391B821102007CE9C1 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				F44829961B6FB9D800ED0EA1 /* UIImage+RoundedCornerAdditions.m in Sources */,
 				F448299D1B6FBA8B00ED0EA1 /* PAPConstants.m in Sources */,
