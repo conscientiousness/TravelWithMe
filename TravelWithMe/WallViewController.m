@@ -126,7 +126,6 @@
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:self.navigationItem.backBarButtonItem.style target:self action:nil];
     
     //設定返回按鈕
-    self.navigationItem.backBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationController.navigationBar.tintColor = [UIColor customGreenColor];
         
     //navigation bar color
@@ -305,6 +304,10 @@
                  //大頭照profilePictureMedium
                  USER_PROFILEPICTUREMEDIUM_KEY:arrayDatas[indexPath.row][COMMON_POINTER_CREATEUSER_KEY][USER_PROFILEPICTUREMEDIUM_KEY],
                  
+                 //性別gender
+                 USER_GENDER_KEY:arrayDatas[indexPath.row][COMMON_POINTER_CREATEUSER_KEY][USER_GENDER_KEY],
+
+                 
                  //城市地區countryCity
                  TRAVELMATEPOST_COUNTRYCITY_KEY:arrayDatas[indexPath.row][TRAVELMATEPOST_COUNTRYCITY_KEY],
                  
@@ -380,6 +383,8 @@
     
     //觀看次數
     cell.watchCountLabel.text = [[[arrayDatas objectAtIndex:indexPath.row] objectForKey:TRAVELMATEPOST_WATCHCOUNT_KEY] stringValue];
+    
+    //依性別設定Label顏色
 
  
     //NSLog(@"%ld => %@",indexPath.row,[[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"createUser"]);
@@ -413,7 +418,18 @@
         //大頭照圓形遮罩
         cell.wallHeadPhoto.layer.cornerRadius = cell.wallHeadPhoto.frame.size.width / 2;
         cell.wallHeadPhoto.layer.borderWidth = 3.0f;
-        cell.wallHeadPhoto.layer.borderColor = [UIColor boyPhotoBorderColor].CGColor;
+        NSString *gender = arrayDatas[indexPath.row][COMMON_POINTER_CREATEUSER_KEY][USER_GENDER_KEY];
+        UIColor *genderColor;
+    
+        if([gender isEqualToString:@"male"]) {
+            genderColor = [UIColor boyPhotoBorderColor];
+        } else if([gender isEqualToString:@"female"]) {
+            genderColor = [UIColor girlPhotoBorderColor];
+        } else {
+            genderColor = [UIColor customGreenColor];
+        }
+    
+        cell.wallHeadPhoto.layer.borderColor = genderColor.CGColor;
         cell.wallHeadPhoto.clipsToBounds = YES;
 
     

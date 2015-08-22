@@ -14,13 +14,13 @@
 
 #pragma mark - PAPUtility
 
-+ (NSData*)resizeImage:(UIImage *)anImage width:(float)width height:(float)height{
++ (NSData*)resizeImage:(UIImage *)anImage width:(float)width height:(float)height contentMode:(UIViewContentMode)contentMode{
     
-    UIImage *resizedImage = [anImage resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(width, height) interpolationQuality:kCGInterpolationHigh];
+    UIImage *resizedImage = [anImage resizedImageWithContentMode:contentMode bounds:CGSizeMake(width, height) interpolationQuality:kCGInterpolationHigh];
     //UIImage *thumbnailImage = [anImage thumbnailImage:86.0f transparentBorder:0.0f cornerRadius:10.0f interpolationQuality:kCGInterpolationDefault];
     
     // JPEG to decrease file size and enable faster uploads & downloads
-    NSData *imageData = UIImageJPEGRepresentation(resizedImage, 0.7f);
+    NSData *imageData = UIImageJPEGRepresentation(resizedImage, 0.8f);
     //NSData *thumbnailImageData = UIImagePNGRepresentation(thumbnailImage);
     
     return imageData;
@@ -151,7 +151,7 @@
 #pragma mark Facebook
 
 + (void)processFacebookProfilePictureData:(NSData *)newProfilePictureData {
-    NSLog(@"Processing profile picture of size: %@", @(newProfilePictureData.length));
+    //NSLog(@"Processing profile picture of size: %@", @(newProfilePictureData.length));
     if (newProfilePictureData.length == 0) {
         return;
     }

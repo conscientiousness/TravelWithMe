@@ -109,16 +109,24 @@
             //NSLog(@"%@",startDate);
             travelMatePost[TRAVELMATEPOST_STARTDATE_KEY] = startDate;
             
-            //照片 UIImage imageNamed:@"pic900X640.jpg"
-            NSData *imageData = [PAPUtility resizeImage:[UIImage imageWithData:[datas objectForKey:[NSNumber numberWithInteger: IMAGEVIEW_SHAREPHOTO_TAG]]] width:700.0 height:700.0];
+            //顯示用方形照片
+            PFFile *imageFile = [PFFile fileWithName:[NSString stringWithFormat:@"photo.jpg"] data:[datas objectForKey:[NSNumber numberWithInteger: IMAGEVIEW_SHAREPHOTO_TAG]]];
+            //小方形照片
+            PFFile *smallImageFile = [PFFile fileWithName:[NSString stringWithFormat:@"smallPhoto.jpg"] data:[datas objectForKey:TRAVELMATEPOST_SMALLPHOTO_KEY]];
+            //原始大小縮圖照片
+            PFFile *originalImageFile = [PFFile fileWithName:[NSString stringWithFormat:@"originalPhoto.jpg"] data:[datas objectForKey:TRAVELMATEPOST_ORIGINALPHOTO_KEY]];
             
-            PFFile *imageFile = [PFFile fileWithName:[NSString stringWithFormat:@"photo.jpg"] data:imageData];
             travelMatePost[TRAVELMATEPOST_PHOTO_KEY] = imageFile;
+            travelMatePost[TRAVELMATEPOST_SMALLPHOTO_KEY] = smallImageFile;
+            travelMatePost[TRAVELMATEPOST_ORIGINALPHOTO_KEY] = originalImageFile;
             
+            
+            //出發天數
             travelMatePost[TRAVELMATEPOST_DAYS_KEY] = [NSNumber numberWithInteger:[[datas objectForKey:[NSNumber numberWithInteger: TEXTFIELD_DAYS_TAG]] integerValue]];
             
             travelMatePost[COMMON_POINTER_CREATEUSER_KEY] = user;
             
+            //計數
             travelMatePost[TRAVELMATEPOST_COMMENTCOUNT_KEY] = @0;
             travelMatePost[TRAVELMATEPOST_JOINCOUNT_KEY] = @0;
             travelMatePost[TRAVELMATEPOST_INTERESTEDCOUNT_KEY] = @0;
@@ -353,23 +361,31 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-// 顯示照片
+// 選取完後取得照片
 -(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
     
     NSString *type = info[UIImagePickerControllerMediaType];
     
     if ([type isEqualToString:(NSString *)kUTTypeImage])
     {
-        //      UIImage *originaImage = info
-        //      [UIImagePickerControllerOriginalImage];
-        UIImage *editedImage = info
-        [UIImagePickerControllerEditedImage];
-        //_theImageView.image=editedImage;
+        //原始大小
+        UIImage *originaImage = info[UIImagePickerControllerOriginalImage];
+        //原始大小圖縮圖和壓縮
+        NSData *originaImageData = [PAPUtility resizeImage:originaImage width:1080.0 height:1080.0 contentMode:UIViewContentModeScaleAspectFill];
         
-        NSData *imageData = [PAPUtility resizeImage:editedImage width:500.0 height:500.0];
+        //方形圖
+        UIImage *editedImage = info[UIImagePickerControllerEditedImage];
+        //方形圖縮圖和壓縮
+        NSData *imageData = [PAPUtility resizeImage:editedImage width:500.0 height:500.0 contentMode:UIViewContentModeScaleAspectFill];
+        //方形圖縮小圖和壓縮
+        NSData *smallImageData = [PAPUtility resizeImage:editedImage width:100.0 height:100.0 contentMode:UIViewContentModeScaleAspectFill];
         
         [datas setObject:imageData forKey:[NSNumber numberWithInteger:IMAGEVIEW_SHAREPHOTO_TAG]];
-        //NSLog(@"Size of Image(bytes):%ld",[imageData length]);
+        [datas setObject:smallImageData forKey:TRAVELMATEPOST_SMALLPHOTO_KEY];
+        [datas setObject:originaImageData forKey:TRAVELMATEPOST_ORIGINALPHOTO_KEY];
+        
+
         [selectedImageView setImage:[UIImage imageWithData:imageData]];
     }
     [picker dismissViewControllerAnimated:true completion:nil];

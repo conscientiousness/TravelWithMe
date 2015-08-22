@@ -8,7 +8,7 @@
 
 @interface PAPUtility : NSObject
 
-+ (NSData*)resizeImage:(UIImage *)anImage width:(float)width height:(float)height;
++ (NSData*)resizeImage:(UIImage *)anImage width:(float)width height:(float)height contentMode:(UIViewContentMode)contentMode;
 
 + (void)likePhotoInBackground:(id)photo block:(void (^)(BOOL succeeded, NSError *error))completionBlock;
 + (void)unlikePhotoInBackground:(id)photo block:(void (^)(BOOL succeeded, NSError *error))completionBlock;

@@ -355,6 +355,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="cellImageView" destination="sl8-7Z-K1Y" id="i0X-Wd-ntT"/>
+                                            <outlet property="cellLeftLineLabel" destination="rmM-jm-Nd1" id="XTI-XA-JqR"/>
                                             <outlet property="commentCountLabel" destination="5fa-BA-cY9" id="59L-Og-RAG"/>
                                             <outlet property="countryCityLabel" destination="kqv-E9-kBZ" id="ZDx-se-FIh"/>
                                             <outlet property="daysLabel" destination="NXa-UY-Lmr" id="MXo-lg-Car"/>

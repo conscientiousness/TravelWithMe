@@ -21,4 +21,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *commentCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *joinCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *watchCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *cellLeftLineLabel;
 @end

@@ -282,10 +282,20 @@
     //設定圓角程度
     [[cell.firstSectionView layer] setCornerRadius:5.0];
     
+    NSString *gender = _cellDictData[@"gender"];
+    UIColor *genderColor;
     //照片圓形遮罩
+    if([gender isEqualToString:@"male"]) {
+        genderColor = [UIColor boyPhotoBorderColor];
+    } else if([gender isEqualToString:@"female"]) {
+        genderColor = [UIColor girlPhotoBorderColor];
+    } else {
+        genderColor = [UIColor customGreenColor];
+    }
+    
     cell.headPhoto.layer.cornerRadius = cell.headPhoto.frame.size.width / 2;
     cell.headPhoto.layer.borderWidth = 3.0f;
-    cell.headPhoto.layer.borderColor = [UIColor boyPhotoBorderColor].CGColor;
+    cell.headPhoto.layer.borderColor = genderColor.CGColor;
     cell.headPhoto.clipsToBounds = YES;
     
     //參加按鈕

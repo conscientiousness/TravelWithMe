@@ -31,6 +31,8 @@
 #define TRAVELMATEPOST_DAYS_KEY @"days"
 #define TRAVELMATEPOST_MEMO_KEY @"memo"
 #define TRAVELMATEPOST_PHOTO_KEY @"photo"
+#define TRAVELMATEPOST_SMALLPHOTO_KEY @"smallPhoto"
+#define TRAVELMATEPOST_ORIGINALPHOTO_KEY @"originalPhoto"
 #define TRAVELMATEPOST_RELATION_COMMENTS_KEY @"comments"
 #define TRAVELMATEPOST_RELATION_JOINUSERS_KEY @"joinUsers"
 #define TRAVELMATEPOST_RELATION_INTERSTEDUSERS_KEY @"interestedUsers"
@@ -43,6 +45,7 @@
 #pragma mark - Parse Table:USER
 
 #define USER_DISPLAYNAME_KEY @"displayName"
+#define USER_GENDER_KEY @"gender"
 #define USER_PROFILEPICTUREMEDIUM_KEY @"profilePictureMedium"
 #define USER_PROFILEPICTURESMALL_KEY @"profilePictureSmall"
 #define USER_RELATION_TRAVELMATEPOSTS_KEY @"travelMatePosts"
