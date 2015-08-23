@@ -9,6 +9,7 @@
 #import "VIPViewController.h"
 #import "CExpandHeader.h" //import 第三方 CExpandHeader
 #import <PureLayout/PureLayout.h>
+#import "VIPMyActivityTableViewCell.h"
 
 #define CExpandContentOffset @"contentOffset"
 #define AFTER(s) dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(s * NSEC_PER_SEC)),    dispatch_get_main_queue(), ^
@@ -25,6 +26,7 @@
     __weak UIImageView *_expandView;
 
     CExpandHeader *_headerPhoto;
+    UIImageView *imageView;
 
     UIView* _headBg;
     UIView* _headView;
@@ -39,6 +41,9 @@
     
     UILabel *displayNameLabel;
     UIImageView *headPhotoImageView;
+    
+    NSMutableArray *myActivityArrayDatas;
+    NSMutableArray *myFootprintArrayDatas;
 }
 
 
@@ -53,22 +58,39 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //self.navigationController.navigationBarHidden=YES;
     
+    
+    
+    [self prepareTableViewUI];
+    
+    MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"讀取中...";
+    
+    dispatch_queue_t loadingQueue = dispatch_queue_create("loading", nil);
+    dispatch_async(loadingQueue, ^{
+        [self getTravelMatePostDatas];
+        [self getFootprintDatas];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            _tableView1.frame=CGRectMake(0, 0, self.view.frame.size.width, VIPMYACTIVITYCELL_HEIGHT*myActivityArrayDatas.count);
+            _tableView2.frame=CGRectMake(0, 0, self.view.frame.size.width, VIPMYACTIVITYCELL_HEIGHT*myFootprintArrayDatas.count);
+            [myViptableView reloadData];
+            [_tableView1 reloadData];
+            [_tableView2 reloadData];
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        });
+    });
+    //self.navigationController.navigationBarHidden=YES;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    [self.tabBarController.tabBar setHidden:YES];
+- (void) prepareTableViewUI {
     
     
     //  build image 位置
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200 + self.navigationController.navigationBar.bounds.size.height)];
-    
+    imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200 + self.navigationController.navigationBar.bounds.size.height)];
     //  image Name
     [imageView setImage:[UIImage imageNamed:@"22.png"]];
-    
+
     
     // build section view 位置和顏色
     _sectionView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
@@ -139,11 +161,12 @@
     [_sectionView addSubview:lineView];
     
     // set table height
-    _tableView1.frame=CGRectMake(0, 0, self.view.frame.size.width, VIPMYACTIVITYCELL_HEIGHT*20);
-    _tableView2.frame=CGRectMake(0, 0, self.view.frame.size.width, VIPMYACTIVITYCELL_HEIGHT*20);
+    //NSLog(@"%ld",arrayDatas.count);
+    _tableView1.frame=CGRectMake(0, 0, self.view.frame.size.width, VIPMYACTIVITYCELL_HEIGHT*myActivityArrayDatas.count);
+    _tableView2.frame=CGRectMake(0, 0, self.view.frame.size.width, VIPMYACTIVITYCELL_HEIGHT*myFootprintArrayDatas.count);
     _tableView1.scrollEnabled=NO;
     _tableView2.scrollEnabled=NO;
-    myViptableView.contentSize=CGSizeMake(320, _tableView1.frame.size.height+40); // todo
+    myViptableView.contentSize=CGSizeMake(self.view.frame.size.width, _tableView1.frame.size.height+40); // todo
     
     //關閉分隔線
     [_tableView1 setSeparatorStyle:UITableViewCellSeparatorStyleNone];
@@ -156,9 +179,16 @@
     self.view.backgroundColor = [UIColor whiteColor];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.tabBarController.tabBar setHidden:YES];
+    
+}
+
 -(void) changeToTable1
 {
-    NSLog(@"changeToTable1");
+    //NSLog(@"changeToTable1");
     if(index==0)
         return;
     
@@ -169,19 +199,22 @@
     lineView.frame=CGRectMake(0, _sectionView.frame.size.height-2, _sectionView.frame.size.width/2, 2);
     [UIView commitAnimations];
     
-    AFTER(0.2)
-    {
+    //AFTER(0.2)
+    //{
         index=0;
         [myViptableView reloadData];
         
         if(KNeedSaveOffset)
             myViptableView.contentOffset=tableOffset1;
-    });
+    //});
 }
 
 -(void) changeToTable2
 {
-    NSLog(@"changeToTable2");
+    //NSLog(@"changeToTable2");
+    
+    
+    
     if(index==2)
         return;
     
@@ -192,14 +225,31 @@
     lineView.frame=CGRectMake(_sectionView.frame.size.width/2, _sectionView.frame.size.height-2, _sectionView.frame.size.width/2, 2);
     [UIView commitAnimations];
     
-    AFTER(0.2)
-    {
+    //AFTER(0.2)
+    //{
         index=2;
-        [myViptableView reloadData];
-        
+            [myViptableView reloadData];
+    [_tableView2 reloadData];
+    
+    
+//        MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//        hud.labelText = @"讀取中...";
+//        
+//        dispatch_queue_t loadingQueue = dispatch_queue_create("loading", nil);
+//        dispatch_async(loadingQueue, ^{
+//            [self getFootprintDatas];
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                //NSLog(@"%ld",myFootprintArrayDatas.count);
+//                _tableView2.frame=CGRectMake(0, 0, self.view.frame.size.width, VIPMYACTIVITYCELL_HEIGHT*myFootprintArrayDatas.count);
+//                [myViptableView reloadData];
+//                [_tableView2 reloadData];
+//                [MBProgressHUD hideHUDForView:self.view animated:YES];
+//            });
+//        });
+    
         if(KNeedSaveOffset)
             myViptableView.contentOffset=tableOffset2;
-    });
+    //});
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -210,11 +260,15 @@
         
         return 1; // return table1 or table2
     }
-    else if(tableView==_tableView1 || tableView==_tableView2)
+    else if(tableView==_tableView1)
     {
-        return 20
-        ;
+        return myActivityArrayDatas.count;
     }
+    else if(tableView==_tableView2)
+    {
+        return myFootprintArrayDatas.count;
+    }
+        
     
     return 0;
 }
@@ -225,6 +279,7 @@
     NSString *identifier;
     NSString *nibName;
     UINib *nib;
+    //NSLog(@"%ld",indexPath.row);
     
     if(tableView==_tableView1)
     {
@@ -232,11 +287,22 @@
         nibName = @"VIPMyActivityTableViewCell";
         nib = [UINib nibWithNibName:nibName bundle:nil];
         [tableView registerNib:nib forCellReuseIdentifier:identifier];
-
-        cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
-        if (!cell)
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         
+       VIPMyActivityTableViewCell *myActivityCell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+        
+        myActivityCell.myActivityCountryCityLabel.text = myActivityArrayDatas[indexPath.row][TRAVELMATEPOST_COUNTRYCITY_KEY];
+        
+        myActivityCell.myActivityStartDate.text = myActivityArrayDatas[indexPath.row][TRAVELMATEPOST_STARTDATE_KEY];
+
+        myActivityCell.myActivityMemo.text = myActivityArrayDatas[indexPath.row][TRAVELMATEPOST_MEMO_KEY];
+        
+        PFFile *photo = (PFFile *)myActivityArrayDatas[indexPath.row][TRAVELMATEPOST_SMALLPHOTO_KEY];
+        [myActivityCell.myActivityShareSmallPhoto sd_setImageWithURL:(NSURL*)photo.url placeholderImage:[UIImage imageNamed:@"intrested-icon"]];
+
+        return myActivityCell;
+        
+        //if (!cell)
+            //cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     
     else if(tableView==_tableView2)
@@ -246,12 +312,21 @@
         nib = [UINib nibWithNibName:nibName bundle:nil];
         [tableView registerNib:nib forCellReuseIdentifier:identifier];
         
-        cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
-        if (!cell)
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        
+        VIPMyActivityTableViewCell *myActivityCell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+        
+        myActivityCell.myActivityCountryCityLabel.text = myFootprintArrayDatas[indexPath.row][TRAVELMATEPOST_COUNTRYCITY_KEY];
+        
+        myActivityCell.myActivityStartDate.text = myFootprintArrayDatas[indexPath.row][TRAVELMATEPOST_STARTDATE_KEY];
+        
+        myActivityCell.myActivityMemo.text = myFootprintArrayDatas[indexPath.row][TRAVELMATEPOST_MEMO_KEY];
+        
+        PFFile *photo = (PFFile *)myFootprintArrayDatas[indexPath.row][TRAVELMATEPOST_SMALLPHOTO_KEY];
+        [myActivityCell.myActivityShareSmallPhoto sd_setImageWithURL:(NSURL*)photo.url placeholderImage:[UIImage imageNamed:@"intrested-icon"]];
+        
+        return myActivityCell;
     }
     
-    //創建出兩個tableView
     else if(tableView==myViptableView)
     {
         identifier = @"cell";
@@ -261,7 +336,12 @@
             [cell.contentView addSubview:_tableView1];
         }
         else
+        {
+            _tableView2.frame=CGRectMake(0, 0, self.view.frame.size.width, VIPMYACTIVITYCELL_HEIGHT*4);
+            myViptableView.contentSize=CGSizeMake(self.view.frame.size.width, _tableView2.frame.size.height+40);
             [cell.contentView addSubview:_tableView2];
+        }
+        
     }
     
     return cell;
@@ -347,5 +427,46 @@ return cell;
     
     return nil;
 }
+
+#pragma mark - 取得USER徵求旅伴所有貼文
+
+- (void) getTravelMatePostDatas
+{
+    userObjectId = @"fWcSONXdmc";
+    PFUser *pfUser = [PFUser objectWithoutDataWithObjectId:userObjectId];
+    PFRelation *relation = [pfUser relationForKey:@"travelMatePosts"];
+    PFQuery *query = [relation query];
+    [query orderByDescending:@"createdAt"];
+    //query.limit = 3;
+    
+    //if(arrayDatas==nil)
+        //arrayDatas = [NSMutableArray new];
+    
+    myActivityArrayDatas = [[NSMutableArray alloc] initWithArray:[query findObjects]];
+    
+    //每次上拉查詢增加筆數
+    //dataCount = [NSNumber numberWithInt:[dataCount intValue] + 3];
+}
+
+#pragma mark - 取得USER地圖足跡所有貼文
+- (void) getFootprintDatas
+{
+    
+    userObjectId = @"iSoRfCRWKu";
+    PFUser *pfUser = [PFUser objectWithoutDataWithObjectId:userObjectId];
+    PFRelation *relation = [pfUser relationForKey:@"travelMatePosts"];
+    PFQuery *query = [relation query];
+    [query orderByDescending:@"createdAt"];
+    //query.limit = 3;
+    
+    //if(arrayDatas==nil)
+    //arrayDatas = [NSMutableArray new];
+    
+    myFootprintArrayDatas = [[NSMutableArray alloc] initWithArray:[query findObjects]];
+    
+    //每次上拉查詢增加筆數
+    //dataCount = [NSNumber numberWithInt:[dataCount intValue] + 3];
+}
+
 
 @end

@@ -118,6 +118,12 @@
                     </mask>
                 </variation>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="myActivityCountryCityLabel" destination="XBw-QF-JRy" id="J3x-a2-1HE"/>
+                <outlet property="myActivityMemo" destination="qYC-tm-NJu" id="IWS-1f-plF"/>
+                <outlet property="myActivityShareSmallPhoto" destination="85v-OS-9jn" id="mBe-yx-p3Z"/>
+                <outlet property="myActivityStartDate" destination="N5c-gb-Xii" id="qlU-iX-zXp"/>
+            </connections>
             <point key="canvasLocation" x="377" y="379"/>
         </tableViewCell>
     </objects>
