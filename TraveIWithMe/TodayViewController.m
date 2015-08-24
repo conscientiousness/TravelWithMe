@@ -39,7 +39,7 @@
 
 - (IBAction)TravelWithMeBtnPressed:(id)sender {
     
-    NSURL *url=[NSURL URLWithString:@"TravelWithMe://abc"];
+    NSURL *url=[NSURL URLWithString:@"4ni://abc"];
     [self.extensionContext openURL:url completionHandler:^(BOOL success) {
         //NSLog(@"openURL Done.");
     }];

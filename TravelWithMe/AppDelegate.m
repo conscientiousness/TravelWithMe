@@ -120,4 +120,14 @@
                                                        annotation:annotation];
 }
 
+- (BOOL) application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    
+    NSString *parameter = [url.path stringByReplacingOccurrencesOfString:@"travelwithme102" withString:@""];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:JUMP_TO_WallTableviewCell object:parameter];
+    
+    return true;
+    
+}
+
 @end

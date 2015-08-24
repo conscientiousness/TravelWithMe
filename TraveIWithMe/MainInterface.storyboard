@@ -17,20 +17,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fx9-7f-nLL">
-                                <rect key="frame" x="16" y="35" width="93" height="30"/>
-                                <state key="normal" title="TravelWithMe">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="demo_7.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="hFb-V4-1mx">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="usJ-OW-OOD">
+                                <rect key="frame" x="236" y="8" width="68" height="26"/>
+                                <fontDescription key="fontDescription" name="STHeitiTC-Medium" family="Heiti TC" pointSize="14"/>
+                                <state key="normal" title="更多主題 ❯">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="TravelWithMeBtnPressed:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="UXX-1g-TpY"/>
+                                    <action selector="TravelWithMeBtnPressed:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="gDa-XT-b8K"/>
                                 </connections>
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="fx9-7f-nLL" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" id="gOq-BJ-6BN"/>
-                            <constraint firstAttribute="centerY" secondItem="fx9-7f-nLL" secondAttribute="centerY" id="uc5-Iy-X9p"/>
+                            <constraint firstItem="hFb-V4-1mx" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" id="5Mx-UI-jHh"/>
+                            <constraint firstItem="hFb-V4-1mx" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" id="9aM-c1-VEc"/>
+                            <constraint firstAttribute="trailing" secondItem="hFb-V4-1mx" secondAttribute="trailing" id="D6j-mb-Sya"/>
+                            <constraint firstItem="hFb-V4-1mx" firstAttribute="bottom" secondItem="FKl-LY-JtV" secondAttribute="top" id="HWl-A4-nKt"/>
+                            <constraint firstItem="usJ-OW-OOD" firstAttribute="trailing" secondItem="S3S-Oj-5AN" secondAttribute="trailingMargin" id="Mm9-ze-eNb"/>
+                            <constraint firstItem="usJ-OW-OOD" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="8" id="NWt-sS-NFN"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
@@ -45,6 +53,9 @@
             <point key="canvasLocation" x="516" y="285"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="demo_7.jpg" width="890" height="538"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

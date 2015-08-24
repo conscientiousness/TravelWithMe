@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#define JUMP_TO_WallTableviewCell @"JUMP_TO_WallTableviewCell"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
