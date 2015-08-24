@@ -11,8 +11,11 @@
 #import "PostViewController.h"
 #import "HomeDetailViewController.h"
 #import "MJRefresh.h"
+#import "VIPViewController.h"
 //#import "JDFPeekabooCoordinator.h"
 
+#define CELL_OBJECTID_LABEL_TAG 1000
+#define CELL_USEROBJECTID_LABEL_TAG 1001
 
 @interface WallViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *wallTableView;
@@ -350,6 +353,28 @@
     [detailVC setValue:dictData forKey:@"cellDictData"];
 }
 
+#pragma mark - Gesture Method
+
+//Method controlling what happens when cell's UIImage is tapped
+-(void)headPhotoTapped:(UIGestureRecognizer*)gesture
+{
+    
+    UIView *selectedheadPhoto = (UIView*)[gesture view];
+    UIView *superView = [selectedheadPhoto superview];
+    
+    //NSString *objectId = ((UILabel*)[superView viewWithTag:CELL_OBJECTID_LABEL_TAG]).text;
+    
+    NSString *userObjectId = ((UILabel*)[superView viewWithTag:CELL_USEROBJECTID_LABEL_TAG]).text;
+    
+    //NSLog(@"%@ ,%@",objectId,userObjectId);
+    UIStoryboard *targetStoryboard = [UIStoryboard storyboardWithName:@"Setting" bundle:nil];
+    
+    VIPViewController *targetViewController = [targetStoryboard instantiateViewControllerWithIdentifier:@"VIPViewController"];
+    
+    targetViewController.userObjectId = userObjectId;
+    
+    [self.navigationController pushViewController:targetViewController animated:YES];
+}
 
 #pragma mark - 給予 Cell 資料
 
@@ -399,54 +424,66 @@
     cell.watchCountLabel.text = [[[arrayDatas objectAtIndex:indexPath.row] objectForKey:TRAVELMATEPOST_WATCHCOUNT_KEY] stringValue];
     
     //依性別設定Label顏色
-
- 
-    //NSLog(@"%ld => %@",indexPath.row,[[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"createUser"]);
+    
+    //設定參數與TAG
+    cell.cellObjectId.tag = CELL_OBJECTID_LABEL_TAG;
+    cell.cellObjectId.text = ((PFObject*)arrayDatas[indexPath.row]).objectId;
+    
+    cell.cellUserObjectId.tag = CELL_USEROBJECTID_LABEL_TAG;
+    cell.cellUserObjectId.text = ((PFObject*)arrayDatas[indexPath.row][COMMON_POINTER_CREATEUSER_KEY]).objectId;
+    
+    
+    //NSLog(@"%ld => %@ - %@",indexPath.row,((PFObject*)arrayDatas[indexPath.row][COMMON_POINTER_CREATEUSER_KEY]).objectId ,((PFObject*)arrayDatas[indexPath.row]).objectId);
 }
 
 #pragma mark - 設定 Cell UI
 
 - (UITableViewCell *)prepareTableViewCell:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath cellIdentifier:(NSString *)identifier{
     
-        WallTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+    WallTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     
-        //====Set Cell Style====
-        cell.contentView.backgroundColor =[UIColor homeCellbgColor];
-        
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        //設定邊框粗細
-        [[cell.viewInTableViewCell layer] setBorderWidth:0];
-        
-        //邊框顏色
-        //[[wallTableViewCell.viewInTableViewCell layer] setBorderColor:[UIColor colorWithRed:0.806 green:0.806 blue:0.806 alpha:1.0].CGColor];
-        
-        //將超出邊框的部份做遮罩
-        //[[vocDataCell.vocDataCell layer] setMasksToBounds:YES];
-        
-        //設定背景顏色
-        [[cell.viewInTableViewCell layer] setBackgroundColor:[UIColor whiteColor].CGColor];
-        
-        //設定圓角程度
-        [[cell.viewInTableViewCell layer] setCornerRadius:0];
-        
-        //大頭照圓形遮罩
-        cell.wallHeadPhoto.layer.cornerRadius = cell.wallHeadPhoto.frame.size.width / 2;
-        cell.wallHeadPhoto.layer.borderWidth = 3.0f;
-        NSString *gender = arrayDatas[indexPath.row][COMMON_POINTER_CREATEUSER_KEY][USER_GENDER_KEY];
-        UIColor *genderColor;
+    //====Set Cell Style====
+    cell.contentView.backgroundColor =[UIColor homeCellbgColor];
     
-        if([gender isEqualToString:@"male"]) {
-            genderColor = [UIColor boyPhotoBorderColor];
-        } else if([gender isEqualToString:@"female"]) {
-            genderColor = [UIColor girlPhotoBorderColor];
-        } else {
-            genderColor = [UIColor customGreenColor];
-        }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    //設定邊框粗細
+    [[cell.viewInTableViewCell layer] setBorderWidth:0];
     
-        cell.wallHeadPhoto.layer.borderColor = genderColor.CGColor;
-        cell.wallHeadPhoto.clipsToBounds = YES;
+    //邊框顏色
+    //[[wallTableViewCell.viewInTableViewCell layer] setBorderColor:[UIColor colorWithRed:0.806 green:0.806 blue:0.806 alpha:1.0].CGColor];
+    
+    //將超出邊框的部份做遮罩
+    //[[vocDataCell.vocDataCell layer] setMasksToBounds:YES];
+    
+    //設定背景顏色
+    [[cell.viewInTableViewCell layer] setBackgroundColor:[UIColor whiteColor].CGColor];
+    
+    //設定圓角程度
+    [[cell.viewInTableViewCell layer] setCornerRadius:0];
+    
+    //大頭照圓形遮罩
+    cell.wallHeadPhoto.layer.cornerRadius = cell.wallHeadPhoto.frame.size.width / 2;
+    cell.wallHeadPhoto.layer.borderWidth = 3.0f;
+    NSString *gender = arrayDatas[indexPath.row][COMMON_POINTER_CREATEUSER_KEY][USER_GENDER_KEY];
+    UIColor *genderColor;
+    
+    if([gender isEqualToString:@"male"]) {
+        genderColor = [UIColor boyPhotoBorderColor];
+    } else if([gender isEqualToString:@"female"]) {
+        genderColor = [UIColor girlPhotoBorderColor];
+    } else {
+        genderColor = [UIColor customGreenColor];
+    }
+    
+    cell.wallHeadPhoto.layer.borderColor = genderColor.CGColor;
+    cell.wallHeadPhoto.clipsToBounds = YES;
+    
+    //給予imageView手勢行為：點一次觸發
+    UITapGestureRecognizer *tapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(headPhotoTapped:)];
+    tapped.numberOfTapsRequired = 1;
+    [cell.wallHeadPhoto addGestureRecognizer:tapped];
+    cell.wallHeadPhoto.userInteractionEnabled = YES;
 
-    
     return cell;
     
 }

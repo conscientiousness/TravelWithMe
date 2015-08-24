@@ -12,7 +12,5 @@
 
 
 @interface VIPViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
-{
-    NSString *userObjectId;
-}
+@property (nonatomic,strong) NSString* userObjectId;
 @end

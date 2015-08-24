@@ -44,6 +44,8 @@
     
     NSMutableArray *myActivityArrayDatas;
     NSMutableArray *myFootprintArrayDatas;
+    
+    PFUser *user;
 }
 
 
@@ -59,7 +61,11 @@
 {
     [super viewDidLoad];
     
-    
+    //判斷從設定頁或是其他地方跳轉過來
+    if(_userObjectId==nil || [_userObjectId isEqualToString:@""])
+        user = [PFUser currentUser];
+    else
+        user = [PFUser objectWithoutDataWithObjectId:_userObjectId];
     
     [self prepareTableViewUI];
     
@@ -110,7 +116,7 @@
     displayNameFrame.origin.y += 50;
     
     displayNameLabel=[[UILabel alloc] initWithFrame:displayNameFrame];
-    displayNameLabel.text = @"我的名字";
+    displayNameLabel.text = user[USER_DISPLAYNAME_KEY];
     displayNameLabel.textColor = [UIColor whiteColor];
     displayNameLabel.textAlignment=NSTextAlignmentCenter;
     displayNameLabel.backgroundColor=[UIColor clearColor];
@@ -120,7 +126,24 @@
     CGRect headPhotoFrame = CGRectMake(_headView.bounds.size.width/2 - 32, _headView.bounds.size.height/2 -32, 64, 64);
     headPhotoImageView = [[UIImageView alloc] initWithFrame:headPhotoFrame];
     [headPhotoImageView setContentMode:UIViewContentModeScaleAspectFill];
-    [headPhotoImageView setImage:[UIImage imageNamed:@"intrested-icon"]];
+    
+    //圓角處理
+    headPhotoImageView.layer.cornerRadius = headPhotoImageView.frame.size.width / 2;
+    headPhotoImageView.layer.borderWidth = 3.0f;
+    UIColor *genderColor;
+    if([user[USER_GENDER_KEY] isEqualToString:@"male"]) {
+        genderColor = [UIColor boyPhotoBorderColor];
+    } else if([user[USER_GENDER_KEY] isEqualToString:@"female"]) {
+        genderColor = [UIColor girlPhotoBorderColor];
+    } else {
+        genderColor = [UIColor customGreenColor];
+    }
+    headPhotoImageView.layer.borderColor = genderColor.CGColor;
+    headPhotoImageView.clipsToBounds = YES;
+    
+    PFFile *photo = (PFFile *)user[USER_PROFILEPICTUREMEDIUM_KEY];
+    [headPhotoImageView sd_setImageWithURL:(NSURL*)photo.url placeholderImage:[UIImage imageNamed:@"intrested-icon"]];
+    //[headPhotoImageView setImage:[UIImage imageNamed:@"intrested-icon"]];
     [_headView addSubview:headPhotoImageView];
     
     
@@ -298,6 +321,8 @@
         
         PFFile *photo = (PFFile *)myActivityArrayDatas[indexPath.row][TRAVELMATEPOST_SMALLPHOTO_KEY];
         [myActivityCell.myActivityShareSmallPhoto sd_setImageWithURL:(NSURL*)photo.url placeholderImage:[UIImage imageNamed:@"intrested-icon"]];
+        
+        myActivityCell.selectionStyle = UITableViewCellSelectionStyleNone;
 
         return myActivityCell;
         
@@ -313,18 +338,20 @@
         [tableView registerNib:nib forCellReuseIdentifier:identifier];
         
         
-        VIPMyActivityTableViewCell *myActivityCell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+        VIPMyActivityTableViewCell *myFootprintCell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
         
-        myActivityCell.myActivityCountryCityLabel.text = myFootprintArrayDatas[indexPath.row][TRAVELMATEPOST_COUNTRYCITY_KEY];
+        myFootprintCell.myActivityCountryCityLabel.text = myFootprintArrayDatas[indexPath.row][TRAVELMATEPOST_COUNTRYCITY_KEY];
         
-        myActivityCell.myActivityStartDate.text = myFootprintArrayDatas[indexPath.row][TRAVELMATEPOST_STARTDATE_KEY];
+        myFootprintCell.myActivityStartDate.text = myFootprintArrayDatas[indexPath.row][TRAVELMATEPOST_STARTDATE_KEY];
         
-        myActivityCell.myActivityMemo.text = myFootprintArrayDatas[indexPath.row][TRAVELMATEPOST_MEMO_KEY];
+        myFootprintCell.myActivityMemo.text = myFootprintArrayDatas[indexPath.row][TRAVELMATEPOST_MEMO_KEY];
         
         PFFile *photo = (PFFile *)myFootprintArrayDatas[indexPath.row][TRAVELMATEPOST_SMALLPHOTO_KEY];
-        [myActivityCell.myActivityShareSmallPhoto sd_setImageWithURL:(NSURL*)photo.url placeholderImage:[UIImage imageNamed:@"intrested-icon"]];
+        [myFootprintCell.myActivityShareSmallPhoto sd_setImageWithURL:(NSURL*)photo.url placeholderImage:[UIImage imageNamed:@"intrested-icon"]];
         
-        return myActivityCell;
+        myFootprintCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        return myFootprintCell;
     }
     
     else if(tableView==myViptableView)
@@ -337,7 +364,7 @@
         }
         else
         {
-            _tableView2.frame=CGRectMake(0, 0, self.view.frame.size.width, VIPMYACTIVITYCELL_HEIGHT*4);
+            _tableView2.frame=CGRectMake(0, 0, self.view.frame.size.width, VIPMYACTIVITYCELL_HEIGHT*myFootprintArrayDatas.count);
             myViptableView.contentSize=CGSizeMake(self.view.frame.size.width, _tableView2.frame.size.height+40);
             [cell.contentView addSubview:_tableView2];
         }
@@ -432,9 +459,9 @@ return cell;
 
 - (void) getTravelMatePostDatas
 {
-    userObjectId = @"fWcSONXdmc";
-    PFUser *pfUser = [PFUser objectWithoutDataWithObjectId:userObjectId];
-    PFRelation *relation = [pfUser relationForKey:@"travelMatePosts"];
+    //userObjectId = @"fWcSONXdmc";
+                          
+    PFRelation *relation = [user relationForKey:@"travelMatePosts"];
     PFQuery *query = [relation query];
     [query orderByDescending:@"createdAt"];
     //query.limit = 3;
@@ -452,9 +479,9 @@ return cell;
 - (void) getFootprintDatas
 {
     
-    userObjectId = @"iSoRfCRWKu";
-    PFUser *pfUser = [PFUser objectWithoutDataWithObjectId:userObjectId];
-    PFRelation *relation = [pfUser relationForKey:@"travelMatePosts"];
+    //userObjectId = @"iSoRfCRWKu";
+
+    PFRelation *relation = [user relationForKey:@"travelMatePosts"];
     PFQuery *query = [relation query];
     [query orderByDescending:@"createdAt"];
     //query.limit = 3;

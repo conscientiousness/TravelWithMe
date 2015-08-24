@@ -22,4 +22,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *joinCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *watchCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *cellLeftLineLabel;
+@property (weak, nonatomic) IBOutlet UILabel *cellObjectId;
+@property (weak, nonatomic) IBOutlet UILabel *cellUserObjectId;
+
 @end

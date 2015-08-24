@@ -215,6 +215,7 @@
         
         SharePhotoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
         
+        //給予imageView手勢行為：點一次觸發
         UITapGestureRecognizer *tapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageTapped:)];
         tapped.numberOfTapsRequired = 1;
         [cell.sharePhotoImageView addGestureRecognizer:tapped];
