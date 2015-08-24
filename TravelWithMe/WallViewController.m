@@ -12,7 +12,7 @@
 #import "HomeDetailViewController.h"
 #import "MJRefresh.h"
 #import "VIPViewController.h"
-#import "AppDelegate.h"
+
 //#import "JDFPeekabooCoordinator.h"
 
 #define CELL_OBJECTID_LABEL_TAG 1000
@@ -67,19 +67,8 @@
                                             selector:@selector(reloadTableView)
                                                 name:@"isDataSave"
                                               object:nil];
-  
-    
-[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector
- (jumpToWallTableviewCell:) name:JUMP_TO_WallTableviewCell object:nil];
-    
-    
-    
 
-}
 
-- (void) jumpToWallTableviewCell:(NSNotification*) notify {
-    
-    [self performSegueWithIdentifier:@"4ni2" sender:nil];
 }
 
 
