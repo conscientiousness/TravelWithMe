@@ -11,7 +11,7 @@ pod "ParseFacebookUtilsV4"
 pod "JDFPeekaboo"
 pod "SSBouncyButton", '~> 1.0'
 pod "MJRefresh"
-pod "PureLayout"
+pod "SCLAlertView-Objective-C"
 
 use_frameworks!
 pod "TextFieldEffects"

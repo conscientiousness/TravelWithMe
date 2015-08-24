@@ -44,6 +44,7 @@
 		F42EBDB21B68FF1400606D9B /* (null) in Resources */ = {isa = PBXBuildFile; };
 		F43B3B7F1B75C03F0034B20F /* JL3MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F43B3B7D1B75C03F0034B20F /* JL3MessageTableViewCell.xib */; };
 		F43C831A1B71B13200D2A389 /* tmp900X640.png in Resources */ = {isa = PBXBuildFile; fileRef = F43C83191B71B13200D2A389 /* tmp900X640.png */; };
+		F43F90681B8AF46D00E509F3 /* exclamation-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F43F90671B8AF46D00E509F3 /* exclamation-icon.png */; };
 		F44282FE1B875A9700D1F776 /* edit-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F44282FB1B875A9700D1F776 /* edit-icon.png */; };
 		F44282FF1B875A9700D1F776 /* search-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F44282FC1B875A9700D1F776 /* search-icon.png */; };
 		F44283001B875A9700D1F776 /* watch-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F44282FD1B875A9700D1F776 /* watch-icon.png */; };
@@ -184,6 +185,7 @@
 		F420E15B1B84719800D3627F /* intrested-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "intrested-icon.png"; sourceTree = "<group>"; };
 		F43B3B7D1B75C03F0034B20F /* JL3MessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JL3MessageTableViewCell.xib; sourceTree = "<group>"; };
 		F43C83191B71B13200D2A389 /* tmp900X640.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tmp900X640.png; sourceTree = "<group>"; };
+		F43F90671B8AF46D00E509F3 /* exclamation-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exclamation-icon.png"; sourceTree = "<group>"; };
 		F44282FB1B875A9700D1F776 /* edit-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit-icon.png"; sourceTree = "<group>"; };
 		F44282FC1B875A9700D1F776 /* search-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-icon.png"; sourceTree = "<group>"; };
 		F44282FD1B875A9700D1F776 /* watch-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "watch-icon.png"; sourceTree = "<group>"; };
@@ -591,6 +593,7 @@
 				F420E1541B846B5D00D3627F /* join-icon.png */,
 				F420E15B1B84719800D3627F /* intrested-icon.png */,
 				F420E1581B846FA500D3627F /* no-interested-icon.png */,
+				F43F90671B8AF46D00E509F3 /* exclamation-icon.png */,
 				F43C83191B71B13200D2A389 /* tmp900X640.png */,
 				F4CEF12E1B81D251006D2B71 /* share_photo.png */,
 				F44283011B875C2200D1F776 /* back-icon.png */,
@@ -805,6 +808,7 @@
 				F465736F1B5552D800DA3D7B /* JLTableViewCell.xib in Resources */,
 				F486EF461B4C34D2008CB97B /* Setting.storyboard in Resources */,
 				F47556C51B4BD40F008CEE3A /* Favorite.storyboard in Resources */,
+				F43F90681B8AF46D00E509F3 /* exclamation-icon.png in Resources */,
 				F42EBDB21B68FF1400606D9B /* (null) in Resources */,
 				F44282FF1B875A9700D1F776 /* search-icon.png in Resources */,
 				A521DE041B864E5400A0173D /* Delete Sign-100.png in Resources */,

@@ -87,7 +87,7 @@
     [super viewWillAppear:animated];
     [self initUI];
     [self preparePullRefresh];
-
+    [self.tabBarController.tabBar setHidden:NO];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
