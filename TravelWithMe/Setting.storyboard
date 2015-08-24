@@ -249,7 +249,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="ydX-hP-tnN" kind="unwind" unwindAction="backToWhite:" id="nr4-JU-N8s"/>
+                                    <action selector="backBtnPressed:" destination="hdX-EQ-9Pk" eventType="touchUpInside" id="uj3-Go-C8w"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -271,7 +271,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jF3-hk-vLU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="ydX-hP-tnN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="227" y="-31"/>
         </scene>
@@ -311,7 +310,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="b4r-Yx-Lga" kind="unwind" unwindAction="backToWhite:" id="BZu-eZ-iAg"/>
+                                    <action selector="backBtnPressed:" destination="San-kt-0cw" eventType="touchUpInside" id="PaE-sE-yBh"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -334,7 +333,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K2s-PL-J3L" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="b4r-Yx-Lga" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="891" y="-36"/>
         </scene>
