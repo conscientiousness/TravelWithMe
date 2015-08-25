@@ -53,7 +53,6 @@
 		F43F90741B8C80A300E509F3 /* PostTypeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F43F90731B8C80A300E509F3 /* PostTypeTableViewCell.m */; };
 		F43F90771B8C80C700E509F3 /* PostMapPhotoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F43F90761B8C80C700E509F3 /* PostMapPhotoTableViewCell.m */; };
 		F43F907A1B8C80EB00E509F3 /* PostMapMemoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F43F90791B8C80EB00E509F3 /* PostMapMemoTableViewCell.m */; };
-		F43F907D1B8C827A00E509F3 /* PostMapButtonLocationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F43F907C1B8C827A00E509F3 /* PostMapButtonLocationTableViewCell.m */; };
 		F44282FE1B875A9700D1F776 /* edit-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F44282FB1B875A9700D1F776 /* edit-icon.png */; };
 		F44282FF1B875A9700D1F776 /* search-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F44282FC1B875A9700D1F776 /* search-icon.png */; };
 		F44283001B875A9700D1F776 /* watch-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F44282FD1B875A9700D1F776 /* watch-icon.png */; };
@@ -206,8 +205,6 @@
 		F43F90761B8C80C700E509F3 /* PostMapPhotoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostMapPhotoTableViewCell.m; sourceTree = "<group>"; };
 		F43F90781B8C80EB00E509F3 /* PostMapMemoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostMapMemoTableViewCell.h; sourceTree = "<group>"; };
 		F43F90791B8C80EB00E509F3 /* PostMapMemoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostMapMemoTableViewCell.m; sourceTree = "<group>"; };
-		F43F907B1B8C827A00E509F3 /* PostMapButtonLocationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostMapButtonLocationTableViewCell.h; sourceTree = "<group>"; };
-		F43F907C1B8C827A00E509F3 /* PostMapButtonLocationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostMapButtonLocationTableViewCell.m; sourceTree = "<group>"; };
 		F44282FB1B875A9700D1F776 /* edit-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit-icon.png"; sourceTree = "<group>"; };
 		F44282FC1B875A9700D1F776 /* search-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-icon.png"; sourceTree = "<group>"; };
 		F44282FD1B875A9700D1F776 /* watch-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "watch-icon.png"; sourceTree = "<group>"; };
@@ -422,8 +419,6 @@
 				F43F90761B8C80C700E509F3 /* PostMapPhotoTableViewCell.m */,
 				F43F90781B8C80EB00E509F3 /* PostMapMemoTableViewCell.h */,
 				F43F90791B8C80EB00E509F3 /* PostMapMemoTableViewCell.m */,
-				F43F907B1B8C827A00E509F3 /* PostMapButtonLocationTableViewCell.h */,
-				F43F907C1B8C827A00E509F3 /* PostMapButtonLocationTableViewCell.m */,
 				F43F90691B8B2C0700E509F3 /* SelectTypeViewController.h */,
 				F43F906A1B8B2C0700E509F3 /* SelectTypeViewController.m */,
 				F43F90701B8C7EAC00E509F3 /* map-post-location-icon.png */,
@@ -973,7 +968,6 @@
 				F4457C231B7756B900A4952B /* DetailMessageViewController.m in Sources */,
 				B51A23331B7A5C9900CFD674 /* FavoriteDetailViewController.m in Sources */,
 				F43F90771B8C80C700E509F3 /* PostMapPhotoTableViewCell.m in Sources */,
-				F43F907D1B8C827A00E509F3 /* PostMapButtonLocationTableViewCell.m in Sources */,
 				F443FB4C1B6124D600F30847 /* WallViewController.m in Sources */,
 				F4461ECC1B7622CE00052C94 /* JL3MessageTableViewCell.m in Sources */,
 				F448299A1B6FBA5800ED0EA1 /* PAPUtility.m in Sources */,

@@ -10,7 +10,6 @@
 #import "PostTypeTableViewCell.h"
 #import "PostMapPhotoTableViewCell.h"
 #import "PostMapMemoTableViewCell.h"
-#import "PostMapButtonLocationTableViewCell.h"
 #import "VBFPopFlatButton.h"
 #import "SCLAlertView.h"
 #import <MobileCoreServices/MobileCoreServices.h>
@@ -25,8 +24,10 @@
     UIToolbar *toolBar;
     PFUser *user;
 }
+@property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UITableView *mapPostTableView;
-
+@property (nonatomic, strong) VBFPopFlatButton *flatSendBtn;
+@property (nonatomic, strong) VBFPopFlatButton *flatCancelBtn;
 @end
 
 @implementation MapPostViewController
@@ -45,6 +46,22 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    _flatSendBtn = [[VBFPopFlatButton alloc]initWithFrame:CGRectMake(_topView.frame.size.width-10, _topView.frame.size.height-10, 30, 30)
+                                               buttonType:buttonOkType
+                                              buttonStyle:buttonRoundedStyle
+                                    animateToInitialState:YES];
+    _flatSendBtn.roundBackgroundColor = [UIColor redColor];
+    _flatSendBtn.lineThickness = 3;
+    _flatSendBtn.tintColor = [UIColor whiteColor];
+    [_flatSendBtn addTarget:self
+                     action:@selector(sendBtnPressed:)
+           forControlEvents:UIControlEventTouchUpInside];
+    [_topView addSubview:_flatSendBtn];
 }
 
 
@@ -200,12 +217,12 @@
 #pragma mark - Table View Delegate Method
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return NUMBER_OF_SECTIONS;
+    return MAPPOST_NUMBER_OF_SECTIONS;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return NUMBER_OF_ROWS;
+    return MAPPOST_NUMBER_OF_ROWS;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -222,8 +239,6 @@
         identifier = @"cell2";
     } else if (indexPath.row == 2){
         identifier = @"cell3";
-    } else if (indexPath.row == 3){
-        identifier = @"cell4";
     }
     
     if (indexPath.row == 0) {
@@ -265,15 +280,6 @@
         
         return cell;
         
-    } else if (indexPath.row == 3) {
-        
-        PostMapButtonLocationTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
-        
-        
-        
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
-        return cell;
     }
     
     
@@ -291,7 +297,7 @@
         result = 350.0;
         
         if(self.view.frame.size.width<=320.0) {//5s
-            result -= 50.0;
+            result -= 30.0;
         } else if (self.view.frame.size.width<=375.0) { //6
             result -= 5.0;
         }else {
@@ -299,7 +305,7 @@
         }
         
     }else if(indexPath.row == 2) {
-        result = 180.0;
+        result = 200.0;
     }
     else{
         result = 80.0;
@@ -432,7 +438,11 @@
     //    // 存檔
     //    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
     // 關閉拍照程式
-    [self dismissViewControllerAnimated:YES completion:nil];
+    //[self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void) sendBtnPressed:(UIButton*)button{
+    
 }
 
 @end

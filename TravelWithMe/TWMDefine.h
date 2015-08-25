@@ -35,7 +35,6 @@
 /*
  * MapViewControllert - 地圖畫面 常數定義
 */
-
 #pragma mark - MapViewControllert
 
 //地圖ADD按鈕位置//
@@ -53,10 +52,13 @@
 //地圖Po文TAG
 #define IMAGEVIEW_MAPSHAREPHOTO_TAG 2000
 #define TEXTVIEW_MAPMEMO_TAG 3000
+//ROW & SECTION 數
+#define MAPPOST_NUMBER_OF_SECTIONS 1
+#define MAPPOST_NUMBER_OF_ROWS 3
+
 /*
  * PARSE 欄位定義
 */
-
 #pragma mark - Parse Table:TRAVELMATEPOST
 
 #define TRAVELMATEPOST_TABLENAME @"TravelMatePost"

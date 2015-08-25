@@ -462,7 +462,7 @@
 //    // 存檔
 //    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
     // 關閉拍照程式
-    [self dismissViewControllerAnimated:YES completion:nil];
+    //[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - datePicker Method

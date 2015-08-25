@@ -136,7 +136,7 @@
 }
 
 -(void)dealloc{
-    NSLog(@"YES");
+    NSLog(@"dealloc is YES");
 }
 
 /*
