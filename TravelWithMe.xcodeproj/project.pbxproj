@@ -413,14 +413,14 @@
 				A53CBBB61B67FA630039369A /* MapViewController.m */,
 				B5453E251B7A670E008964CE /* MapPostViewController.h */,
 				B5453E261B7A670E008964CE /* MapPostViewController.m */,
+				F43F90691B8B2C0700E509F3 /* SelectTypeViewController.h */,
+				F43F906A1B8B2C0700E509F3 /* SelectTypeViewController.m */,
 				F43F90721B8C80A300E509F3 /* PostTypeTableViewCell.h */,
 				F43F90731B8C80A300E509F3 /* PostTypeTableViewCell.m */,
 				F43F90751B8C80C700E509F3 /* PostMapPhotoTableViewCell.h */,
 				F43F90761B8C80C700E509F3 /* PostMapPhotoTableViewCell.m */,
 				F43F90781B8C80EB00E509F3 /* PostMapMemoTableViewCell.h */,
 				F43F90791B8C80EB00E509F3 /* PostMapMemoTableViewCell.m */,
-				F43F90691B8B2C0700E509F3 /* SelectTypeViewController.h */,
-				F43F906A1B8B2C0700E509F3 /* SelectTypeViewController.m */,
 				F43F90701B8C7EAC00E509F3 /* map-post-location-icon.png */,
 			);
 			name = MapView;

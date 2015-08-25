@@ -462,11 +462,17 @@
 }
 
 - (void) sendBtnPressed:(UIButton*)button{
+ 
     
+    [self dismissViewControllerAnimated:NO completion:^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"TopChildDismissed" object:self];
+    }];
 }
 
 - (void) cancelBtnPressed:(UIButton*)button{
     
+    
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 @end

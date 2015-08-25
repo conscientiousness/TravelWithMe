@@ -36,6 +36,10 @@
     [self initAnimator];
     [self initTypeBtn];
     
+    [[NSNotificationCenter defaultCenter]addObserver:self
+                                            selector:@selector(topChildDismissed)
+                                                name:@"TopChildDismissed"
+                                              object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -118,10 +122,6 @@
 -(void) foodBtnPressed:(UIButton *)button {
     MapPostViewController *targetViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"mapPostViewController"];
     
-    targetViewController.block = ^void(BOOL isSave){
-        if(isSave)
-           [self dismissViewControllerAnimated:NO completion:nil];
-    };
     //targetViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
     
     [self presentViewController:targetViewController animated:NO completion:nil];
@@ -135,8 +135,15 @@
     
 }
 
+-(void)topChildDismissed {
+    [self dismissViewControllerAnimated:NO completion:^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"isDismiss" object:self];
+        [self dismissViewControllerAnimated:NO completion:nil];
+    }];
+}
+
 -(void)dealloc{
-    NSLog(@"dealloc is YES");
+    //NSLog(@"dealloc is YES");
 }
 
 /*
