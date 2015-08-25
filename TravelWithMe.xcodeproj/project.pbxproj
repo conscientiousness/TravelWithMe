@@ -24,6 +24,8 @@
 		A55669951B80EAE300F588E3 /* CExpandHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = A55669941B80EAE300F588E3 /* CExpandHeader.m */; };
 		A55AD25F1B8AF803009AC07B /* demo_7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A55AD25E1B8AF803009AC07B /* demo_7.jpg */; };
 		A56DC6261B80EC3E009C621F /* 22.png in Resources */ = {isa = PBXBuildFile; fileRef = A56DC6251B80EC3E009C621F /* 22.png */; };
+		A57D5BD31B8CD451000D3239 /* Define Location Filled-100.png in Resources */ = {isa = PBXBuildFile; fileRef = A57D5BD21B8CD451000D3239 /* Define Location Filled-100.png */; };
+		A57D5BD51B8CD45C000D3239 /* Compass Filled-100.png in Resources */ = {isa = PBXBuildFile; fileRef = A57D5BD41B8CD45C000D3239 /* Compass Filled-100.png */; };
 		A5D374921B646BEC00A57791 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5D374911B646BEC00A57791 /* MessageUI.framework */; };
 		A5E1670D1B6903B70036ABE4 /* SettingTableViewControlle.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E1670C1B6903B70036ABE4 /* SettingTableViewControlle.m */; };
 		B51A23321B7A5C9900CFD674 /* favoriteMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51A232B1B7A5C9900CFD674 /* favoriteMainViewController.m */; };
@@ -173,6 +175,8 @@
 		A55669941B80EAE300F588E3 /* CExpandHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CExpandHeader.m; sourceTree = "<group>"; };
 		A55AD25E1B8AF803009AC07B /* demo_7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = demo_7.jpg; sourceTree = "<group>"; };
 		A56DC6251B80EC3E009C621F /* 22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 22.png; sourceTree = "<group>"; };
+		A57D5BD21B8CD451000D3239 /* Define Location Filled-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Define Location Filled-100.png"; sourceTree = "<group>"; };
+		A57D5BD41B8CD45C000D3239 /* Compass Filled-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Compass Filled-100.png"; sourceTree = "<group>"; };
 		A5D374911B646BEC00A57791 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		A5E1670B1B6903B70036ABE4 /* SettingTableViewControlle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingTableViewControlle.h; sourceTree = "<group>"; };
 		A5E1670C1B6903B70036ABE4 /* SettingTableViewControlle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewControlle.m; sourceTree = "<group>"; };
@@ -408,6 +412,8 @@
 		F443FB411B60FB9A00F30847 /* MapView */ = {
 			isa = PBXGroup;
 			children = (
+				A57D5BD41B8CD45C000D3239 /* Compass Filled-100.png */,
+				A57D5BD21B8CD451000D3239 /* Define Location Filled-100.png */,
 				F443FB421B60FBF300F30847 /* Map.storyboard */,
 				A53CBBB51B67FA630039369A /* MapViewController.h */,
 				A53CBBB61B67FA630039369A /* MapViewController.m */,
@@ -834,6 +840,7 @@
 				F42EBDAC1B68CED800606D9B /* (null) in Resources */,
 				F42EBD661B6877BF00606D9B /* (null) in Resources */,
 				F420E15A1B846FA500D3627F /* no-interested-icon.png in Resources */,
+				A57D5BD31B8CD451000D3239 /* Define Location Filled-100.png in Resources */,
 				A56DC6261B80EC3E009C621F /* 22.png in Resources */,
 				F42EBD6B1B68790500606D9B /* (null) in Resources */,
 				F465736F1B5552D800DA3D7B /* JLTableViewCell.xib in Resources */,
@@ -851,6 +858,7 @@
 				F44282FE1B875A9700D1F776 /* edit-icon.png in Resources */,
 				A519F60A1B8C0FFF001D0A78 /* login-background-video.mp4 in Resources */,
 				F42EBD6A1B68790500606D9B /* (null) in Resources */,
+				A57D5BD51B8CD45C000D3239 /* Compass Filled-100.png in Resources */,
 				F42EBDAE1B68D0C100606D9B /* (null) in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,6 +14,7 @@
 
 
 @interface MapViewController ()<MKMapViewDelegate,CLLocationManagerDelegate>
+@property (weak, nonatomic) IBOutlet UIView *AnimationsView;
 @property (weak, nonatomic) IBOutlet MKMapView *theMapView;
 @property (nonatomic, strong) VBFPopFlatButton *mapFlatRoundedButton;
 @end
@@ -34,18 +35,19 @@
     
     locationManager = [CLLocationManager new];
     
-    //Ask user's permission
+    //Ask user's permission 詢問使用者
+    
     if([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)])
     {
         [locationManager requestWhenInUseAuthorization];
-        //requestWhenInUseAuthorization NSLocationWhenInUseUsageDescription
     }
     
     // Prepare locationManager
     
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    locationManager.activityType=CLActivityTypeAutomotiveNavigation;
-    
+    // 定位需求 10公尺 Wifi
+    locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+    // 定位等級 行走
+    locationManager.activityType=CLActivityTypeFitness;
     locationManager.delegate=self;
     [locationManager startUpdatingLocation];
     
@@ -61,10 +63,13 @@
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    if (!user) {
+    // FB登入
+    if(!user){
         user = [PFUser currentUser];
     }
-    
+    if([PFUser currentUser]==nil) {
+        user = nil;
+    }
     [self initFlatRoundedButton];
 }
 
@@ -128,7 +133,7 @@
 }
 
 
-// Segmented切換
+// Segmented 地圖顯示方式切換
 - (IBAction)mapTypeChanged:(id)sender {
     NSInteger targetIndex = [sender selectedSegmentIndex];
     
@@ -146,47 +151,82 @@
     }
 }
 
-- (IBAction)backToWhite:(UIStoryboardSegue*)segue
-{
-
-}
-
-- (IBAction)mapPostClick:(id)sender {
+// Segmented 無＆追蹤＆方向切換
+- (IBAction)userTrackingModeChanged:(UISegmentedControl*)sender {
     
-    //NSLog(@"current= %@",currentUser);
-    UIViewController *targetViewController;
-    UIStoryboard *storyboard;
+    NSInteger targetIndex = [sender selectedSegmentIndex];
     
-    if(user) {
-        
-        targetViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"selectTypeViewController"];
-        
-        //[self presentViewController:targetViewController animated:NO completion:nil];
-        
-        //targetViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-        //[self presentViewController:targetViewController animated:NO completion:nil];
-
-        targetViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-        //setModalTransitionStyle:UIModalTransitionStyleCrossDissolve
-        //UIModalTransitionStyleCoverVertical
-        //targetViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-        [self presentViewController:targetViewController animated:YES completion:nil];
-        
-    } else {
-        
-        storyboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
-        
-        targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"loginViewController"];
-        
-        [self presentViewController:targetViewController animated:YES completion:nil];
+    switch (targetIndex) {
+        case 0:
+            _theMapView.userTrackingMode =MKUserTrackingModeNone;
+            break;
+        case 1:
+            _theMapView.userTrackingMode =MKUserTrackingModeFollow;
+            break;
+        case 2:
+            _theMapView.userTrackingMode =MKUserTrackingModeFollowWithHeading;
+            break;
     }
-    
-    //[self presentViewController:postVC animated:YES completion:nil];
-    //[self performSegueWithIdentifier:@"goPostView" sender:nil];
-    
 }
 
 
+- (IBAction)SmartCompassBtnPressed:(id)sender {
+    // CATransition
+    CATransition *transition = [CATransition animation];
+    transition.duration=0.5; //動畫時間
+    transition.timingFunction = [CAMediaTimingFunction
+                                 functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = kCATransitionPush; //動畫效果
+    
+    if(_AnimationsView.isHidden)
+    {
+        _AnimationsView.hidden = NO;
+        transition.subtype = kCATransitionFromBottom; //動畫出現方向
+    }
+    else
+    {
+        _AnimationsView.hidden = YES;
+        transition.subtype =kCATransitionFromTop; //動畫退出方向
+    }
+    [_AnimationsView.layer addAnimation:transition forKey:nil];
+}
+
+//- (IBAction)mapPostClick:(id)sender {
+//    
+//    //NSLog(@"current= %@",currentUser);
+//    UIViewController *targetViewController;
+//    UIStoryboard *storyboard;
+//    
+//    if(user) {
+//        
+//        targetViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"selectTypeViewController"];
+//        
+//        //[self presentViewController:targetViewController animated:NO completion:nil];
+//        
+//        //targetViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+//        //[self presentViewController:targetViewController animated:NO completion:nil];
+//
+//        targetViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+//        //setModalTransitionStyle:UIModalTransitionStyleCrossDissolve
+//        //UIModalTransitionStyleCoverVertical
+//        //targetViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+//        [self presentViewController:targetViewController animated:YES completion:nil];
+//        
+//    } else {
+//        
+//        storyboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+//        
+//        targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"loginViewController"];
+//        
+//        [self presentViewController:targetViewController animated:YES completion:nil];
+//    }
+//    
+//    //[self presentViewController:postVC animated:YES completion:nil];
+//    //[self performSegueWithIdentifier:@"goPostView" sender:nil];
+//    
+//}
+//
+//
 
 #pragma mark - CLLocationManager Delegate Methoods
 
