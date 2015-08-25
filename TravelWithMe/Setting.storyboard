@@ -217,7 +217,7 @@
         <!--Policy View Controller-->
         <scene sceneID="Ph6-ys-IJM">
             <objects>
-                <viewController id="hdX-EQ-9Pk" customClass="PolicyViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="policy" id="hdX-EQ-9Pk" customClass="PolicyViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Fwd-wY-6Rr"/>
                         <viewControllerLayoutGuide type="bottom" id="8oZ-Cn-zQP"/>
