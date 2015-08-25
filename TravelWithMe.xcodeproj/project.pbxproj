@@ -10,6 +10,8 @@
 		585397B91799ED43F93A41C9 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927D24742B4F2C6030CB033A /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		A50ED43F1B7852AD00651C3E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A50ED43E1B7852AD00651C3E /* UIKit.framework */; };
 		A50ED4411B7852D200651C3E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A50ED4401B7852D200651C3E /* Foundation.framework */; };
+		A519F60A1B8C0FFF001D0A78 /* login-background-video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = A519F6091B8C0FFF001D0A78 /* login-background-video.mp4 */; };
+		A519F60C1B8C1012001D0A78 /* Delete Sign Filled-100.png in Resources */ = {isa = PBXBuildFile; fileRef = A519F60B1B8C1012001D0A78 /* Delete Sign Filled-100.png */; };
 		A521DE041B864E5400A0173D /* Delete Sign-100.png in Resources */ = {isa = PBXBuildFile; fileRef = A521DE031B864E5400A0173D /* Delete Sign-100.png */; };
 		A521DE0A1B864F5200A0173D /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A52B782F1B81BE1E00F8DEF2 /* NotificationCenter.framework */; };
 		A521DE101B864F5200A0173D /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A521DE0F1B864F5200A0173D /* TodayViewController.m */; };
@@ -20,6 +22,7 @@
 		A53CBBB71B67FA630039369A /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A53CBBB61B67FA630039369A /* MapViewController.m */; };
 		A55171831B86151A002841AB /* PolicyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55171821B86151A002841AB /* PolicyViewController.m */; };
 		A55669951B80EAE300F588E3 /* CExpandHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = A55669941B80EAE300F588E3 /* CExpandHeader.m */; };
+		A55AD25F1B8AF803009AC07B /* demo_7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A55AD25E1B8AF803009AC07B /* demo_7.jpg */; };
 		A56DC6261B80EC3E009C621F /* 22.png in Resources */ = {isa = PBXBuildFile; fileRef = A56DC6251B80EC3E009C621F /* 22.png */; };
 		A5D374921B646BEC00A57791 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5D374911B646BEC00A57791 /* MessageUI.framework */; };
 		A5E1670D1B6903B70036ABE4 /* SettingTableViewControlle.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E1670C1B6903B70036ABE4 /* SettingTableViewControlle.m */; };
@@ -98,7 +101,6 @@
 		F48B16E21B5F40D900E96B0D /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48B16E11B5F40D900E96B0D /* Social.framework */; };
 		F4B387441B831250007740D5 /* SharePhotoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B387431B831250007740D5 /* SharePhotoTableViewCell.m */; };
 		F4B3874A1B83465C007740D5 /* MemoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B387491B83465C007740D5 /* MemoTableViewCell.m */; };
-		F4BC50D51B7E3419008C3EC4 /* login-background-video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F4BC50D41B7E3419008C3EC4 /* login-background-video.mp4 */; };
 		F4BC50E21B7E54ED008C3EC4 /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BC50DF1B7E54ED008C3EC4 /* HomePageViewController.m */; };
 		F4BC50E31B7E54ED008C3EC4 /* ParallaxTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BC50E11B7E54ED008C3EC4 /* ParallaxTableViewCell.m */; };
 		F4CEF12D1B81B87C006D2B71 /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CEF12C1B81B87C006D2B71 /* PostViewController.m */; };
@@ -146,6 +148,8 @@
 		A2A1A052438CEB9B22CC0114 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A50ED43E1B7852AD00651C3E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A50ED4401B7852D200651C3E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A519F6091B8C0FFF001D0A78 /* login-background-video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "login-background-video.mp4"; sourceTree = "<group>"; };
+		A519F60B1B8C1012001D0A78 /* Delete Sign Filled-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Delete Sign Filled-100.png"; sourceTree = "<group>"; };
 		A521DE031B864E5400A0173D /* Delete Sign-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Delete Sign-100.png"; sourceTree = "<group>"; };
 		A521DE091B864F5200A0173D /* TraveIWithMe.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TraveIWithMe.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		A521DE0D1B864F5200A0173D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -163,6 +167,7 @@
 		A55171821B86151A002841AB /* PolicyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PolicyViewController.m; sourceTree = "<group>"; };
 		A55669931B80EAE300F588E3 /* CExpandHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CExpandHeader.h; sourceTree = "<group>"; };
 		A55669941B80EAE300F588E3 /* CExpandHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CExpandHeader.m; sourceTree = "<group>"; };
+		A55AD25E1B8AF803009AC07B /* demo_7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = demo_7.jpg; sourceTree = "<group>"; };
 		A56DC6251B80EC3E009C621F /* 22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 22.png; sourceTree = "<group>"; };
 		A5D374911B646BEC00A57791 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		A5E1670B1B6903B70036ABE4 /* SettingTableViewControlle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingTableViewControlle.h; sourceTree = "<group>"; };
@@ -268,7 +273,6 @@
 		F4B387431B831250007740D5 /* SharePhotoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharePhotoTableViewCell.m; sourceTree = "<group>"; };
 		F4B387481B83465C007740D5 /* MemoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemoTableViewCell.h; sourceTree = "<group>"; };
 		F4B387491B83465C007740D5 /* MemoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemoTableViewCell.m; sourceTree = "<group>"; };
-		F4BC50D41B7E3419008C3EC4 /* login-background-video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "login-background-video.mp4"; sourceTree = "<group>"; };
 		F4BC50DE1B7E54ED008C3EC4 /* HomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageViewController.h; sourceTree = "<group>"; };
 		F4BC50DF1B7E54ED008C3EC4 /* HomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
 		F4BC50E01B7E54ED008C3EC4 /* ParallaxTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParallaxTableViewCell.h; sourceTree = "<group>"; };
@@ -355,6 +359,7 @@
 		A521DE0B1B864F5200A0173D /* TraveIWithMe */ = {
 			isa = PBXGroup;
 			children = (
+				A55AD25E1B8AF803009AC07B /* demo_7.jpg */,
 				A521DE0E1B864F5200A0173D /* TodayViewController.h */,
 				A521DE0F1B864F5200A0173D /* TodayViewController.m */,
 				A521DE111B864F5200A0173D /* MainInterface.storyboard */,
@@ -497,10 +502,11 @@
 		F445E3681B6E09D700818A18 /* LoginView */ = {
 			isa = PBXGroup;
 			children = (
+				A519F60B1B8C1012001D0A78 /* Delete Sign Filled-100.png */,
+				A519F6091B8C0FFF001D0A78 /* login-background-video.mp4 */,
 				F445E3661B6E09CD00818A18 /* Login.storyboard */,
 				F445E3691B6E0A1100818A18 /* LoginViewController.h */,
 				F445E36A1B6E0A1100818A18 /* LoginViewController.m */,
-				F4BC50D41B7E3419008C3EC4 /* login-background-video.mp4 */,
 			);
 			name = LoginView;
 			sourceTree = "<group>";
@@ -782,6 +788,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A55AD25F1B8AF803009AC07B /* demo_7.jpg in Resources */,
 				A521DE121B864F5200A0173D /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -791,7 +798,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F420E1561B846B5D00D3627F /* join-icon.png in Resources */,
-				F4BC50D51B7E3419008C3EC4 /* login-background-video.mp4 in Resources */,
+				A519F60C1B8C1012001D0A78 /* Delete Sign Filled-100.png in Resources */,
 				F445E3671B6E09CD00818A18 /* Login.storyboard in Resources */,
 				F44283001B875A9700D1F776 /* watch-icon.png in Resources */,
 				F443FB431B60FBF300F30847 /* Map.storyboard in Resources */,
@@ -823,6 +830,7 @@
 				F42EBDB01B68D1EE00606D9B /* (null) in Resources */,
 				F420E15C1B84719800D3627F /* intrested-icon.png in Resources */,
 				F44282FE1B875A9700D1F776 /* edit-icon.png in Resources */,
+				A519F60A1B8C0FFF001D0A78 /* login-background-video.mp4 in Resources */,
 				F42EBD6A1B68790500606D9B /* (null) in Resources */,
 				F42EBDAE1B68D0C100606D9B /* (null) in Resources */,
 			);

@@ -12,6 +12,7 @@
 #import "HomeDetailViewController.h"
 #import "MJRefresh.h"
 #import "VIPViewController.h"
+
 //#import "JDFPeekabooCoordinator.h"
 
 #define CELL_OBJECTID_LABEL_TAG 1000
@@ -66,7 +67,10 @@
                                             selector:@selector(reloadTableView)
                                                 name:@"isDataSave"
                                               object:nil];
+
+
 }
+
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];

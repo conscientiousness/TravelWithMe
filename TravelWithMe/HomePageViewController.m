@@ -9,6 +9,7 @@
 #import "HomePageViewController.h"
 #import "ParallaxTableViewCell.h"
 #import "MJRefresh.h"
+#import "AppDelegate.h"
 
 @interface HomePageViewController ()
 {
@@ -38,6 +39,10 @@
             [MBProgressHUD hideHUDForView:self.view animated:YES];
         });
     });
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector
+    (jumpToWallTableviewCell:) name:JUMP_TO_WallTableviewCell object:nil];
 
 //    self.tableItems = @[[UIImage imageNamed:@"demo_1.jpg"],
 //                        [UIImage imageNamed:@"demo_2.jpg"],
@@ -54,6 +59,10 @@
 //                        [UIImage imageNamed:@"demo_13.jpg"],
 //                        [UIImage imageNamed:@"demo_14.jpg"]];
 //   
+}
+
+- (void) jumpToWallTableviewCell:(NSNotification*) notify {
+    [self performSegueWithIdentifier:@"4ni2" sender:nil];
 }
 
 -(void) viewWillAppear:(BOOL)animated{
@@ -114,6 +123,10 @@
     //query.limit = 3;
     
     arrayDatas = [[NSMutableArray alloc] initWithArray:[query findObjects]];
+}
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self forKeyPath:JUMP_TO_WallTableviewCell];
 }
 
 @end

@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import "PolicyViewController.h"
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *FBLoginBtn;
@@ -144,5 +145,18 @@
     }
     
 }
+- (IBAction)policyBtnPressed:(id)sender {
+    
+    UIStoryboard *targetStoryboard = [UIStoryboard storyboardWithName:@"Setting" bundle:nil];
+    
+    PolicyViewController *targetViewController = [targetStoryboard instantiateViewControllerWithIdentifier:@"policy"];
+    
+    [self presentViewController:targetViewController animated:YES completion:^{
+        
+    }];
+    
+}
+
+
 
 @end
