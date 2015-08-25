@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -53,7 +53,7 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="intrested-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="85v-OS-9jn">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="interested-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="85v-OS-9jn">
                                 <rect key="frame" x="8" y="7" width="58" height="58"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="58" id="NjQ-Fv-l6E"/>
@@ -128,6 +128,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="intrested-icon.png" width="64" height="64"/>
+        <image name="interested-icon.png" width="64" height="64"/>
     </resources>
 </document>

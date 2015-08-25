@@ -250,8 +250,8 @@
     //AFTER(0.2)
     //{
         index=2;
-            [myViptableView reloadData];
-    [_tableView2 reloadData];
+    //[myViptableView reloadData];
+    //[_tableView2 reloadData];
     
     
 //        MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -364,7 +364,7 @@
         else
         {
             _tableView2.frame=CGRectMake(0, 0, self.view.frame.size.width, VIPMYACTIVITYCELL_HEIGHT*myFootprintArrayDatas.count);
-            myViptableView.contentSize=CGSizeMake(self.view.frame.size.width, _tableView2.frame.size.height+40);
+            //myViptableView.contentSize=CGSizeMake(self.view.frame.size.width, _tableView2.frame.size.height+40);
             [cell.contentView addSubview:_tableView2];
         }
         

@@ -49,6 +49,10 @@
 #define LANSCAPE_BTN_SNAP_BEHAVIOR_CGPOINT self.view.frame.size.width/2 - 110, self.view.frame.size.height/2 - 25
 #define PEOPLE_BTN_SNAP_BEHAVIOR_CGPOINT self.view.frame.size.width/2 + 110, self.view.frame.size.height/2 - 25
 
+#pragma mark - MapPostViewControllert
+//地圖Po文TAG
+#define IMAGEVIEW_MAPSHAREPHOTO_TAG 2000
+#define TEXTVIEW_MAPMEMO_TAG 3000
 /*
  * PARSE 欄位定義
 */

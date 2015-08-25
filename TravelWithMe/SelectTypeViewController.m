@@ -8,6 +8,7 @@
 
 #import "SelectTypeViewController.h"
 #import "VBFPopFlatButton.h"
+#import "MapPostViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
 #define VIEW_HEIGHT self.view.frame.size.height
@@ -37,6 +38,11 @@
     
 }
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
@@ -55,32 +61,34 @@
     [self setBtnDynamicAnimator];
 }
 
+#pragma mark - 初始化動態行為
 - (void) initAnimator {
     animator = [[UIDynamicAnimator alloc]initWithReferenceView:self.view];
     animator2 = [[UIDynamicAnimator alloc]initWithReferenceView:self.view];
     animator3 = [[UIDynamicAnimator alloc]initWithReferenceView:self.view];
 }
 
+#pragma mark - 初始化類別按鈕
 - (void) initTypeBtn {
-
     
     _foodBtn = [[UIButton alloc] initWithFrame:CGRectMake(FOOT_BTN_CGRECTMAKE)];
-    [_foodBtn setTitle:@"Btn2" forState:UIControlStateNormal];
-    [_foodBtn setBackgroundColor:[UIColor blueColor]];
-    [_foodBtn setImage:[UIImage imageNamed:@"22.png"] forState:UIControlStateNormal];
+    [_foodBtn setBackgroundColor:[UIColor clearColor]];
+    [_foodBtn setImage:[UIImage imageNamed:@"interested-icon"] forState:UIControlStateNormal];
+    [_foodBtn addTarget:self action:@selector(foodBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_foodBtn];
     
     _landscapeBtn = [[UIButton alloc] initWithFrame:CGRectMake(LANSCAPE_BTN_CGRECTMAKE)];
-    [_landscapeBtn setTitle:@"Btn1" forState:UIControlStateNormal];
-    [_landscapeBtn setBackgroundColor:[UIColor blueColor]];
+    [_landscapeBtn setImage:[UIImage imageNamed:@"comment-icon"] forState:UIControlStateNormal];
+    [_landscapeBtn addTarget:self action:@selector(landscapePressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_landscapeBtn];
     
     _peopleBtn = [[UIButton alloc] initWithFrame:CGRectMake(PEOPLE_BTN_CGRECTMAKE)];
-    [_peopleBtn setTitle:@"Btn3" forState:UIControlStateNormal];
-    [_peopleBtn setBackgroundColor:[UIColor blueColor]];
+    [_peopleBtn setImage:[UIImage imageNamed:@"join-icon"] forState:UIControlStateNormal];
+    [_peopleBtn addTarget:self action:@selector(peoplePressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_peopleBtn];
 }
 
+#pragma mark - 設定類別按鈕動態行為
 - (void) setBtnDynamicAnimator {
     
     //給予按鈕撲向動態
@@ -97,14 +105,38 @@
     [animator3 addBehavior:peopleBtnSnapBehavior];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
+#pragma mark - 點選取消按鈕
 -(void) flatRoundedButtonPressed {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"isDismiss" object:self];
     [self dismissViewControllerAnimated:NO completion:nil];
+}
+
+
+#pragma mark - 點選類別按鈕
+
+-(void) foodBtnPressed:(UIButton *)button {
+    MapPostViewController *targetViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"mapPostViewController"];
+    
+    targetViewController.block = ^void(BOOL isSave){
+        if(isSave)
+           [self dismissViewControllerAnimated:NO completion:nil];
+    };
+    //targetViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    
+    [self presentViewController:targetViewController animated:NO completion:nil];
+}
+
+-(void) landscapePressed:(UIButton *)button {
+    
+}
+
+-(void) peoplePressed:(UIButton *)button {
+    
+}
+
+-(void)dealloc{
+    NSLog(@"YES");
 }
 
 /*

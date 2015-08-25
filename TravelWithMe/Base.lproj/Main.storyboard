@@ -164,7 +164,7 @@
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="intrested-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="15E-Hl-Cjh">
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="interested-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="15E-Hl-Cjh">
                                                                     <rect key="frame" x="13" y="467" width="18" height="18"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="18" id="6K6-dA-xi3"/>
@@ -949,7 +949,7 @@
     </scenes>
     <resources>
         <image name="comment-icon.png" width="64" height="64"/>
-        <image name="intrested-icon.png" width="64" height="64"/>
+        <image name="interested-icon.png" width="64" height="64"/>
         <image name="join-icon.png" width="64" height="64"/>
         <image name="message-icon" width="64" height="64"/>
         <image name="share_photo.png" width="718" height="728"/>
