@@ -10,7 +10,7 @@
 
 @interface PolicyViewController ()
 {
-    NSArray *policytextviewAry;
+    NSArray *policytextviewAry; // 宣告 NSArray
 }
 @property (weak, nonatomic) IBOutlet UITextView *policyTextview;
 
@@ -23,6 +23,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    // loading 寫法
     MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"讀取中...";
     
@@ -38,12 +39,11 @@
     
     // Textview 遮罩
     _policyTextview.layer.cornerRadius =_policyTextview.frame.size.width/90;
+    // 邊框粗細
     _policyTextview.layer.borderWidth = 1.0f;
+    // 邊框顏色
     _policyTextview.layer.borderColor = [UIColor colorWithRed:0.255 green:0.698 blue:0.592 alpha:1.000].CGColor;
 
-    
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,11 +53,13 @@
 
 #pragma mark - Load Parse Data
 
+// 讀Parse資料
+
 - (void) getdata{
+    //@"Policy" Parse 資料庫Name
     PFQuery *policytext = [PFQuery queryWithClassName:@"Policy"];
     
     policytextviewAry = [[NSArray alloc] initWithArray:[policytext findObjects]];
-    
 }
 
 
@@ -70,6 +72,8 @@
  // Pass the selected object to the new view controller.
  }
  */
+
+// 建立一個返回方法
 - (IBAction)backBtnPressed:(id)sender {
     [self dismissViewControllerAnimated:true completion:nil];
 }

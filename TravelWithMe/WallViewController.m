@@ -86,6 +86,10 @@
         user = [PFUser currentUser];
     }
     
+    if([PFUser currentUser]==nil) {
+        user = nil;
+    }
+    
     // nav tabbar 滾動縮放
     //self.scrollCoordinator.scrollView = _wallTableView;
     //self.scrollCoordinator.topView = self.navigationController.navigationBar;

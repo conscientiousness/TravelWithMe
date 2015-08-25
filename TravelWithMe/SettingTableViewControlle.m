@@ -8,6 +8,7 @@
 
 #import "SettingTableViewControlle.h"
 #import <MessageUI/MessageUI.h>
+
 @interface SettingTableViewControlle ()<MFMailComposeViewControllerDelegate>
 {
     PFUser *user;
@@ -27,15 +28,21 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    if(!user){
-        user = [PFUser currentUser];
-    }
 }
+
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    // FB 判斷
     self.tabBarController.tabBar.hidden = NO;
+    if(!user){
+        user = [PFUser currentUser];
+    }
+    
+    if([PFUser currentUser]==nil) {
+        user = nil;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -47,40 +54,39 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    //    if(indexPath.section == 0){
-    //    if(indexPath.row == 0){
-    //            UIViewController *targetViewController;
-    //            UIStoryboard *storyboard;
-    //        //[FBSDKAccessToken currentAccessToken]
-    //            if(user) {
-    //                targetViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"VIPViewController"];
-    //
-    //            [self.navigationController pushViewController:targetViewController animated:YES];
-    //            }
-    //            else {
-    //            storyboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
-    //
-    //                targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"loginViewController"];
-    //
-    //                [self presentViewController:targetViewController animated:YES completion:nil];
-    //            }
-    //
-    //
-    //        }
-    //    }
-    //
-    //  NSLog(@"indexPath :%@",indexPath);
-    //  待上架後開啟
+    // 我的頁面
+    if(indexPath.section == 0){
+    if(indexPath.row == 0){
+        UIViewController *targetViewController;
+        UIStoryboard *storyboard;
+    //[FBSDKAccessToken currentAccessToken]
+    // 判斷是否已經登入若無跳轉登入若有顯示我的頁面
+    if(user) {
+        targetViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"VIPViewController"];
+    
+        [self.navigationController pushViewController:targetViewController animated:YES];
+    }
+    else {
+        storyboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+        targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"loginViewController"];
+    
+        [self presentViewController:targetViewController animated:YES completion:nil];
+      }
+    }
+}
+    
+    // NSLog(@"indexPath :%@",indexPath);
+    // 待上架後開啟
     /*if(indexPath.section == 2){
      if(indexPath.row == 3){
      [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"網址"]];
      }
      }*/
     
-    
+    // 意見回饋及問題回報
     if(indexPath.section == 2){
         if(indexPath.row == 0){
-            // mail
+     
             MFMailComposeViewController * mailViewController = [[MFMailComposeViewController alloc] init];
             mailViewController.mailComposeDelegate = self;
             [mailViewController setSubject:@"Travelwithme_Questione"];
@@ -90,16 +96,18 @@
         }
     }
     
+    // 登出
     if(indexPath.section == 3){
         if(indexPath.row == 0){
-            //NSLog(@"%@",user);
+            // NSLog(@"%@",user);
             [PFUser logOut];
-            //NSLog(@"%@",user);
+            user=nil;
+            // NSLog(@"%@",user);
         }
     }
-    
-    
 }
+
+
 // 設定mail方法返回
 -(void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
 {
