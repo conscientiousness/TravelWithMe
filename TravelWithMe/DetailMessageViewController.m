@@ -45,10 +45,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if (!user) {
-        user = [PFUser currentUser];
-    }
-    
     _detailTableView.scrollEnabled = YES;
     _detailTableView.delegate = self;
     _detailTableView.dataSource = self;
@@ -77,6 +73,41 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardHeightDidChange:) name:UIKeyboardWillShowNotification object:nil];
     
     
+    //設定Navigation bar為透明
+    self.navigationController.navigationBar.translucent = YES;
+    //關閉分隔線
+    [_detailTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    self.view.backgroundColor = [UIColor homeCellbgColor];
+    self.view.opaque = NO;
+    _detailTableView.backgroundColor = [UIColor homeCellbgColor];
+    _detailTableView.opaque = NO;
+    
+    
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.tabBarController.tabBar setHidden:NO];
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.tabBarController.tabBar setHidden:YES];
+    
+    if (!user) {
+        user = [PFUser currentUser];
+    }
+    
+    if([PFUser currentUser]==nil) {
+        user = nil;
+    }
+    
     hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"讀取中...";
     dispatch_queue_t downloadDatasQueue = dispatch_queue_create("Download", nil);
@@ -95,51 +126,16 @@
             [self didGotDatasUpdateUI];
         });
     });
-  
-    
-    //設定Navigation bar為透明
-    self.navigationController.navigationBar.translucent = YES;
-    //關閉分隔線
-    [_detailTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    self.view.backgroundColor = [UIColor homeCellbgColor];
-    self.view.opaque = NO;
-    _detailTableView.backgroundColor = [UIColor homeCellbgColor];
-    _detailTableView.opaque = NO;
-    
     
     //留言尚未登入時鎖定
     if(!user){
         _messageTextField.userInteractionEnabled = NO;
         _messageTextField.placeholder = @"要先登入才能留言哦";
-        _messageBtn.userInteractionEnabled = NO;
+        //_messageBtn.userInteractionEnabled = NO;
+    } else {
+        _messageTextField.userInteractionEnabled = YES;
+        _messageTextField.placeholder = @"";
     }
-    
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [self.tabBarController.tabBar setHidden:NO];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.tabBarController.tabBar setHidden:YES];
-    
-}
-
-- (void) viewWillLayoutSubviews {
-    [super viewWillLayoutSubviews];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
 }
 
 #pragma mark - 點選參加
@@ -702,35 +698,47 @@
 
 #pragma mark - 送出留言
 - (IBAction)sendMessageBtnPressed:(id)sender {
-    [self clickMethof:nil];
-   
-    hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"發送中...";
-    dispatch_queue_t sendQueue = dispatch_queue_create("Send", nil);
-    dispatch_async(sendQueue, ^{
+    
+    UIViewController *targetViewController;
+    UIStoryboard *storyboard;
+    
+    if(user) {
+        [self clickMethof:nil];
         
-        PFObject *comment = [PFObject objectWithClassName:@"Comment"];
-        comment[@"message"] = _messageTextField.text;
-        comment[@"createUser"] = user;
-        comment[@"postObjectId"] = _cellDictData[@"objectId"];
-        [comment save];
-        
-        PFObject *travelMatePost = [PFObject objectWithoutDataWithClassName:@"TravelMatePost" objectId:_cellDictData[@"objectId"]];
-        PFRelation *relation = [travelMatePost relationForKey:@"comments"];
-        [relation addObject:comment];
-        [travelMatePost incrementKey:@"commentCount"];
-        [travelMatePost save];
-        
-        //取得新資料
-        [self getCommentData];
-        [self getCountData];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            _messageTextField.text = @"";
-            [_detailTableView reloadData];
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.labelText = @"發送中...";
+        dispatch_queue_t sendQueue = dispatch_queue_create("Send", nil);
+        dispatch_async(sendQueue, ^{
+            
+            PFObject *comment = [PFObject objectWithClassName:@"Comment"];
+            comment[@"message"] = _messageTextField.text;
+            comment[@"createUser"] = user;
+            comment[@"postObjectId"] = _cellDictData[@"objectId"];
+            [comment save];
+            
+            PFObject *travelMatePost = [PFObject objectWithoutDataWithClassName:@"TravelMatePost" objectId:_cellDictData[@"objectId"]];
+            PFRelation *relation = [travelMatePost relationForKey:@"comments"];
+            [relation addObject:comment];
+            [travelMatePost incrementKey:@"commentCount"];
+            [travelMatePost save];
+            
+            //取得新資料
+            [self getCommentData];
+            [self getCountData];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                _messageTextField.text = @"";
+                [_detailTableView reloadData];
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+            });
         });
-    });
+    } else {
+        storyboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+        
+        targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"loginViewController"];
+        
+        [self presentViewController:targetViewController animated:YES completion:nil];
+    }
 }
 
 @end

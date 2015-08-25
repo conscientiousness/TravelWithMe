@@ -38,13 +38,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="留言..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nC1-X4-DaS">
-                                <rect key="frame" x="8" y="41" width="320" height="15"/>
+                                <rect key="frame" x="8" y="39.5" width="320" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.34509803919999998" green="0.72156862749999995" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="三天前" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bH4-x7-ztQ">
-                                <rect key="frame" x="63" y="22" width="265" height="15"/>
+                                <rect key="frame" x="63" y="22" width="265" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.55686274509803924" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -59,10 +59,12 @@
                             <constraint firstAttribute="trailing" secondItem="8mJ-QI-MEk" secondAttribute="trailing" id="GNY-tu-mqs"/>
                             <constraint firstItem="8mJ-QI-MEk" firstAttribute="leading" secondItem="N25-aI-LqI" secondAttribute="trailing" constant="8" id="ONz-UY-T6w"/>
                             <constraint firstItem="nC1-X4-DaS" firstAttribute="leading" secondItem="owU-O7-fxO" secondAttribute="leading" constant="8" id="T6T-a5-aSO"/>
-                            <constraint firstAttribute="bottom" secondItem="nC1-X4-DaS" secondAttribute="bottom" constant="1.5" id="UKh-XT-FnQ"/>
+                            <constraint firstAttribute="bottom" secondItem="nC1-X4-DaS" secondAttribute="bottom" constant="3" id="UKh-XT-FnQ"/>
                             <constraint firstAttribute="bottom" secondItem="bH4-x7-ztQ" secondAttribute="bottom" constant="0.5" id="YaE-H4-jbx"/>
                             <constraint firstAttribute="trailing" secondItem="8mJ-QI-MEk" secondAttribute="trailing" id="ZkV-Yj-24F"/>
+                            <constraint firstItem="zkd-dQ-BN2" firstAttribute="top" secondItem="8mJ-QI-MEk" secondAttribute="bottom" constant="2" id="alk-X4-5Oo"/>
                             <constraint firstItem="bH4-x7-ztQ" firstAttribute="top" secondItem="owU-O7-fxO" secondAttribute="top" constant="22" id="bFS-GT-IO1"/>
+                            <constraint firstItem="nC1-X4-DaS" firstAttribute="top" secondItem="bH4-x7-ztQ" secondAttribute="bottom" constant="3" id="ctj-tw-rgP"/>
                             <constraint firstAttribute="trailing" secondItem="nC1-X4-DaS" secondAttribute="trailing" id="h6B-IA-dCc"/>
                             <constraint firstItem="8mJ-QI-MEk" firstAttribute="top" secondItem="owU-O7-fxO" secondAttribute="top" id="leh-Y4-qFb"/>
                             <constraint firstItem="zkd-dQ-BN2" firstAttribute="top" secondItem="8mJ-QI-MEk" secondAttribute="bottom" constant="2" id="mKf-2l-htP"/>
@@ -76,6 +78,8 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="DJ1-Jq-72z"/>
+                                <exclude reference="UKh-XT-FnQ"/>
                                 <exclude reference="s76-Xg-Kq5"/>
                                 <exclude reference="Aeu-85-3w9"/>
                                 <exclude reference="GNY-tu-mqs"/>
