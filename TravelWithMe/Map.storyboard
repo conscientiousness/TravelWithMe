@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -24,63 +24,138 @@
                                     <outlet property="delegate" destination="ovO-1k-fH0" id="1O8-U6-3do"/>
                                 </connections>
                             </mapView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4Eb-RZ-zv6">
-                                <rect key="frame" x="239" y="20" width="122" height="29"/>
-                                <segments>
-                                    <segment title="標準"/>
-                                    <segment title="混合"/>
-                                    <segment title="衛星"/>
-                                </segments>
-                                <connections>
-                                    <action selector="mapTypeChanged:" destination="ovO-1k-fH0" eventType="valueChanged" id="OQ0-Fb-nef"/>
-                                </connections>
-                            </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="niv-I0-PPS">
-                                <rect key="frame" x="16" y="20" width="35" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Rz-Zy-phL">
+                                <rect key="frame" x="549" y="501" width="35" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="IfL-uH-y0W"/>
-                                    <constraint firstAttribute="width" constant="35" id="Kxk-kI-xvL"/>
-                                    <constraint firstAttribute="width" constant="35" id="Thd-3X-fMb"/>
-                                    <constraint firstAttribute="height" constant="35" id="gv9-gw-pgB"/>
+                                    <constraint firstAttribute="width" constant="35" id="6Ze-Dg-x0l"/>
+                                    <constraint firstAttribute="width" constant="35" id="qKF-f3-Ddc"/>
+                                    <constraint firstAttribute="height" constant="35" id="ri6-G7-Xwn"/>
+                                    <constraint firstAttribute="height" constant="35" id="tMj-rq-fHx"/>
                                 </constraints>
-                                <state key="normal" image="icon-bgwhite">
+                                <state key="normal" image="Define Location Filled-100.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="Thd-3X-fMb"/>
-                                        <exclude reference="gv9-gw-pgB"/>
+                                        <exclude reference="6Ze-Dg-x0l"/>
+                                        <exclude reference="tMj-rq-fHx"/>
                                     </mask>
                                 </variation>
-                                <connections>
-                                    <action selector="backClick:" destination="ovO-1k-fH0" eventType="touchUpInside" id="dLP-78-T8v"/>
-                                </connections>
                             </button>
+                            <view hidden="YES" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1fz-AC-X05">
+                                <rect key="frame" x="0.0" y="64" width="600" height="128"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="rPW-zg-avY">
+                                        <rect key="frame" x="239" y="68" width="122" height="29"/>
+                                        <segments>
+                                            <segment title="無"/>
+                                            <segment title="追蹤"/>
+                                            <segment title="方向"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="userTrackingModeChanged:" destination="ovO-1k-fH0" eventType="valueChanged" id="3H1-QC-GHa"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="67R-Zx-AG7">
+                                        <rect key="frame" x="239" y="20" width="122" height="29"/>
+                                        <segments>
+                                            <segment title="標準"/>
+                                            <segment title="混合"/>
+                                            <segment title="衛星"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="mapTypeChanged:" destination="ovO-1k-fH0" eventType="valueChanged" id="roU-Gj-GFF"/>
+                                        </connections>
+                                    </segmentedControl>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="120" id="D8U-K5-RCQ"/>
+                                    <constraint firstAttribute="height" constant="107" id="E2k-hC-vH3"/>
+                                    <constraint firstAttribute="height" constant="128" id="HT3-9Z-JX3"/>
+                                    <constraint firstAttribute="centerX" secondItem="67R-Zx-AG7" secondAttribute="centerX" id="LkP-3V-0Xg"/>
+                                    <constraint firstItem="rPW-zg-avY" firstAttribute="top" secondItem="67R-Zx-AG7" secondAttribute="bottom" constant="20" id="Mzh-gl-rJY"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="120" id="R68-S9-rlQ"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="116" id="SJa-lk-0XJ"/>
+                                    <constraint firstAttribute="centerX" secondItem="rPW-zg-avY" secondAttribute="centerX" id="ZYd-H4-7NI"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="116" id="Zuc-WO-TCM"/>
+                                    <constraint firstAttribute="centerX" secondItem="rPW-zg-avY" secondAttribute="centerX" id="bsP-52-lrM"/>
+                                    <constraint firstAttribute="width" constant="600" id="jEe-Rz-FG5"/>
+                                    <constraint firstItem="67R-Zx-AG7" firstAttribute="top" secondItem="1fz-AC-X05" secondAttribute="top" constant="20" id="tZm-yY-VX0"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="D8U-K5-RCQ"/>
+                                        <exclude reference="E2k-hC-vH3"/>
+                                        <exclude reference="R68-S9-rlQ"/>
+                                        <exclude reference="SJa-lk-0XJ"/>
+                                        <exclude reference="Zuc-WO-TCM"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pYD-3Q-OiU">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="分享我的足跡" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YYq-gb-ABI">
+                                        <rect key="frame" x="255" y="27" width="90" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <color key="shadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <size key="shadowOffset" width="0.0" height="0.0"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QUM-pf-INY">
+                                        <rect key="frame" x="567" y="27" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="25" id="6uF-TL-88r"/>
+                                            <constraint firstAttribute="height" constant="25" id="axO-aV-GcX"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="Compass Filled-100.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="SmartCompassBtnPressed:" destination="ovO-1k-fH0" eventType="touchUpInside" id="KCP-jK-til"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.24313725489999999" green="0.66666666669999997" blue="0.56862745100000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="QUM-pf-INY" firstAttribute="top" secondItem="pYD-3Q-OiU" secondAttribute="top" constant="27" id="BJ9-PH-uKc"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="64" id="Q0y-ff-67b"/>
+                                    <constraint firstAttribute="centerX" secondItem="YYq-gb-ABI" secondAttribute="centerX" id="ldJ-1b-KUi"/>
+                                    <constraint firstAttribute="height" constant="64" id="nrf-5U-fv2"/>
+                                    <constraint firstAttribute="trailing" secondItem="QUM-pf-INY" secondAttribute="trailing" constant="8" id="pO2-Md-5nx"/>
+                                    <constraint firstItem="YYq-gb-ABI" firstAttribute="top" secondItem="pYD-3Q-OiU" secondAttribute="top" constant="27" id="q1p-MH-yCB"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="8Rz-Zy-phL" firstAttribute="trailing" secondItem="zCh-kT-xNV" secondAttribute="trailingMargin" id="0zx-cX-qqW"/>
+                            <constraint firstItem="1fz-AC-X05" firstAttribute="leading" secondItem="zCh-kT-xNV" secondAttribute="leadingMargin" constant="-16" id="2xr-pn-zrp"/>
                             <constraint firstItem="AQP-RU-ECw" firstAttribute="leading" secondItem="zCh-kT-xNV" secondAttribute="leading" id="5Oe-ho-ajX"/>
-                            <constraint firstItem="niv-I0-PPS" firstAttribute="top" secondItem="Gtj-mt-omA" secondAttribute="bottom" id="6AJ-09-0gf"/>
                             <constraint firstItem="ckQ-S5-xH7" firstAttribute="top" secondItem="AQP-RU-ECw" secondAttribute="bottom" id="7j6-lS-PUr"/>
                             <constraint firstItem="AQP-RU-ECw" firstAttribute="bottom" secondItem="ckQ-S5-xH7" secondAttribute="top" id="DR4-IO-8Ac"/>
                             <constraint firstAttribute="trailing" secondItem="AQP-RU-ECw" secondAttribute="trailing" id="GWa-I3-ryF"/>
+                            <constraint firstItem="1fz-AC-X05" firstAttribute="leading" secondItem="zCh-kT-xNV" secondAttribute="leadingMargin" constant="-16" id="Jrv-Dy-0wM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="pYD-3Q-OiU" secondAttribute="trailing" constant="-16" id="KRL-be-4Du"/>
+                            <constraint firstItem="pYD-3Q-OiU" firstAttribute="leading" secondItem="zCh-kT-xNV" secondAttribute="leadingMargin" constant="-16" id="RvE-Qj-QIX"/>
                             <constraint firstItem="AQP-RU-ECw" firstAttribute="top" secondItem="zCh-kT-xNV" secondAttribute="top" id="W1U-bl-439"/>
-                            <constraint firstItem="4Eb-RZ-zv6" firstAttribute="top" secondItem="Gtj-mt-omA" secondAttribute="bottom" id="fhK-LO-ybF"/>
-                            <constraint firstAttribute="centerX" secondItem="4Eb-RZ-zv6" secondAttribute="centerX" id="gqU-ip-YbH"/>
-                            <constraint firstItem="niv-I0-PPS" firstAttribute="trailing" secondItem="zCh-kT-xNV" secondAttribute="trailingMargin" id="l7H-uS-D0u"/>
-                            <constraint firstItem="niv-I0-PPS" firstAttribute="leading" secondItem="zCh-kT-xNV" secondAttribute="leadingMargin" id="llO-tX-UgZ"/>
-                            <constraint firstItem="ckQ-S5-xH7" firstAttribute="top" secondItem="niv-I0-PPS" secondAttribute="bottom" constant="20" id="v4Y-tb-XKN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1fz-AC-X05" secondAttribute="trailing" constant="-16" id="WSx-rO-ihr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1fz-AC-X05" secondAttribute="trailing" constant="-16" id="aka-01-bfT"/>
+                            <constraint firstItem="pYD-3Q-OiU" firstAttribute="top" secondItem="zCh-kT-xNV" secondAttribute="topMargin" id="fWQ-iP-Ioe"/>
+                            <constraint firstItem="1fz-AC-X05" firstAttribute="top" secondItem="pYD-3Q-OiU" secondAttribute="bottom" id="k9I-VX-Vd5"/>
+                            <constraint firstItem="ckQ-S5-xH7" firstAttribute="top" secondItem="8Rz-Zy-phL" secondAttribute="bottom" constant="15" id="ntm-sB-PDN"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="DR4-IO-8Ac"/>
-                                <exclude reference="l7H-uS-D0u"/>
-                                <exclude reference="v4Y-tb-XKN"/>
                             </mask>
                         </variation>
                     </view>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="AnimationsView" destination="1fz-AC-X05" id="84V-tS-DP5"/>
                         <outlet property="theMapView" destination="AQP-RU-ECw" id="iGr-EG-60T"/>
                     </connections>
                 </viewController>
@@ -375,7 +450,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon-bgwhite" width="246" height="246"/>
+        <image name="Compass Filled-100.png" width="100" height="100"/>
+        <image name="Define Location Filled-100.png" width="100" height="100"/>
         <image name="join-icon.png" width="64" height="64"/>
         <image name="map-post-location-icon.png" width="32" height="32"/>
         <image name="share_photo.png" width="718" height="728"/>
