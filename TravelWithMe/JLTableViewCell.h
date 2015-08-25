@@ -25,6 +25,4 @@
 @property (weak, nonatomic) IBOutlet UILabel *joinLabel;
 @property (weak, nonatomic) IBOutlet UILabel *days;
 
-
-
 @end

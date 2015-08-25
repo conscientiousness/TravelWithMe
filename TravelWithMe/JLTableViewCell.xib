@@ -93,7 +93,7 @@
                             <constraint firstAttribute="height" constant="44" id="tRP-NR-Xz1"/>
                             <constraint firstAttribute="width" constant="44" id="xW4-na-Rht"/>
                         </constraints>
-                        <state key="normal" image="intrested-icon.png">
+                        <state key="normal" image="no-interested-add-icon.png">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <variation key="default">
@@ -292,8 +292,8 @@
     </objects>
     <resources>
         <image name="comment-icon.png" width="64" height="64"/>
-        <image name="intrested-icon.png" width="64" height="64"/>
         <image name="join-icon.png" width="64" height="64"/>
+        <image name="no-interested-add-icon.png" width="53" height="53"/>
         <image name="tmp-head-icon" width="68" height="70"/>
     </resources>
 </document>

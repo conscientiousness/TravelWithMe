@@ -35,7 +35,7 @@
 		F420E1551B846B5D00D3627F /* comment-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F420E1531B846B5D00D3627F /* comment-icon.png */; };
 		F420E1561B846B5D00D3627F /* join-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F420E1541B846B5D00D3627F /* join-icon.png */; };
 		F420E15A1B846FA500D3627F /* no-interested-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F420E1581B846FA500D3627F /* no-interested-icon.png */; };
-		F420E15C1B84719800D3627F /* intrested-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F420E15B1B84719800D3627F /* intrested-icon.png */; };
+		F420E15C1B84719800D3627F /* interested-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F420E15B1B84719800D3627F /* interested-icon.png */; };
 		F42EBD661B6877BF00606D9B /* (null) in Resources */ = {isa = PBXBuildFile; };
 		F42EBD6A1B68790500606D9B /* (null) in Resources */ = {isa = PBXBuildFile; };
 		F42EBD6B1B68790500606D9B /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -49,6 +49,7 @@
 		F43F90681B8AF46D00E509F3 /* exclamation-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F43F90671B8AF46D00E509F3 /* exclamation-icon.png */; };
 		F43F906B1B8B2C0700E509F3 /* SelectTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43F906A1B8B2C0700E509F3 /* SelectTypeViewController.m */; };
 		F43F906D1B8C06D800E509F3 /* black.png in Resources */ = {isa = PBXBuildFile; fileRef = F43F906C1B8C06D800E509F3 /* black.png */; };
+		F43F906F1B8C415000E509F3 /* no-interested-add-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F43F906E1B8C415000E509F3 /* no-interested-add-icon.png */; };
 		F44282FE1B875A9700D1F776 /* edit-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F44282FB1B875A9700D1F776 /* edit-icon.png */; };
 		F44282FF1B875A9700D1F776 /* search-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F44282FC1B875A9700D1F776 /* search-icon.png */; };
 		F44283001B875A9700D1F776 /* watch-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F44282FD1B875A9700D1F776 /* watch-icon.png */; };
@@ -187,13 +188,14 @@
 		F420E1531B846B5D00D3627F /* comment-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "comment-icon.png"; sourceTree = "<group>"; };
 		F420E1541B846B5D00D3627F /* join-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "join-icon.png"; sourceTree = "<group>"; };
 		F420E1581B846FA500D3627F /* no-interested-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no-interested-icon.png"; sourceTree = "<group>"; };
-		F420E15B1B84719800D3627F /* intrested-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "intrested-icon.png"; sourceTree = "<group>"; };
+		F420E15B1B84719800D3627F /* interested-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "interested-icon.png"; sourceTree = "<group>"; };
 		F43B3B7D1B75C03F0034B20F /* JL3MessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JL3MessageTableViewCell.xib; sourceTree = "<group>"; };
 		F43C83191B71B13200D2A389 /* tmp900X640.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tmp900X640.png; sourceTree = "<group>"; };
 		F43F90671B8AF46D00E509F3 /* exclamation-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exclamation-icon.png"; sourceTree = "<group>"; };
 		F43F90691B8B2C0700E509F3 /* SelectTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectTypeViewController.h; sourceTree = "<group>"; };
 		F43F906A1B8B2C0700E509F3 /* SelectTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectTypeViewController.m; sourceTree = "<group>"; };
 		F43F906C1B8C06D800E509F3 /* black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = black.png; sourceTree = "<group>"; };
+		F43F906E1B8C415000E509F3 /* no-interested-add-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no-interested-add-icon.png"; sourceTree = "<group>"; };
 		F44282FB1B875A9700D1F776 /* edit-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit-icon.png"; sourceTree = "<group>"; };
 		F44282FC1B875A9700D1F776 /* search-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-icon.png"; sourceTree = "<group>"; };
 		F44282FD1B875A9700D1F776 /* watch-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "watch-icon.png"; sourceTree = "<group>"; };
@@ -602,7 +604,8 @@
 				F44282FC1B875A9700D1F776 /* search-icon.png */,
 				F44282FD1B875A9700D1F776 /* watch-icon.png */,
 				F420E1541B846B5D00D3627F /* join-icon.png */,
-				F420E15B1B84719800D3627F /* intrested-icon.png */,
+				F420E15B1B84719800D3627F /* interested-icon.png */,
+				F43F906E1B8C415000E509F3 /* no-interested-add-icon.png */,
 				F420E1581B846FA500D3627F /* no-interested-icon.png */,
 				F43F90671B8AF46D00E509F3 /* exclamation-icon.png */,
 				F43C83191B71B13200D2A389 /* tmp900X640.png */,
@@ -810,6 +813,7 @@
 				F47556AA1B4BACF2008CEE3A /* Main.storyboard in Resources */,
 				F4CEF12F1B81D251006D2B71 /* share_photo.png in Resources */,
 				F47556AF1B4BACF2008CEE3A /* LaunchScreen.xib in Resources */,
+				F43F906F1B8C415000E509F3 /* no-interested-add-icon.png in Resources */,
 				F420E1551B846B5D00D3627F /* comment-icon.png in Resources */,
 				F42EBDAC1B68CED800606D9B /* (null) in Resources */,
 				F42EBD661B6877BF00606D9B /* (null) in Resources */,
@@ -828,7 +832,7 @@
 				F43C831A1B71B13200D2A389 /* tmp900X640.png in Resources */,
 				F43F906D1B8C06D800E509F3 /* black.png in Resources */,
 				F42EBDB01B68D1EE00606D9B /* (null) in Resources */,
-				F420E15C1B84719800D3627F /* intrested-icon.png in Resources */,
+				F420E15C1B84719800D3627F /* interested-icon.png in Resources */,
 				F44282FE1B875A9700D1F776 /* edit-icon.png in Resources */,
 				A519F60A1B8C0FFF001D0A78 /* login-background-video.mp4 in Resources */,
 				F42EBD6A1B68790500606D9B /* (null) in Resources */,

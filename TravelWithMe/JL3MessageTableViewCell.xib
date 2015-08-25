@@ -24,20 +24,20 @@
                                     <constraint firstAttribute="width" constant="30" id="ROe-Cv-LK5"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="路人甲" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8mJ-QI-MEk">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="路人甲" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8mJ-QI-MEk">
                                 <rect key="frame" x="46" y="3" width="282" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="post-time-icon" translatesAutoresizingMaskIntoConstraints="NO" id="zkd-dQ-BN2">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="post-time-icon" translatesAutoresizingMaskIntoConstraints="NO" id="zkd-dQ-BN2">
                                 <rect key="frame" x="46" y="22" width="14" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="14" id="DGV-x2-acg"/>
                                     <constraint firstAttribute="width" constant="14" id="hsk-u6-2Cl"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="留言..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nC1-X4-DaS">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="留言..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nC1-X4-DaS">
                                 <rect key="frame" x="8" y="41" width="320" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.34509803919999998" green="0.72156862749999995" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -50,7 +50,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="bH4-x7-ztQ" firstAttribute="leading" secondItem="zkd-dQ-BN2" secondAttribute="trailing" constant="3" id="3eR-8M-7zg"/>
                             <constraint firstAttribute="bottom" secondItem="zkd-dQ-BN2" secondAttribute="bottom" constant="3.5" id="7BQ-Dw-fKR"/>
@@ -61,12 +61,15 @@
                             <constraint firstItem="nC1-X4-DaS" firstAttribute="leading" secondItem="owU-O7-fxO" secondAttribute="leading" constant="8" id="T6T-a5-aSO"/>
                             <constraint firstAttribute="bottom" secondItem="nC1-X4-DaS" secondAttribute="bottom" constant="1.5" id="UKh-XT-FnQ"/>
                             <constraint firstAttribute="bottom" secondItem="bH4-x7-ztQ" secondAttribute="bottom" constant="0.5" id="YaE-H4-jbx"/>
+                            <constraint firstAttribute="trailing" secondItem="8mJ-QI-MEk" secondAttribute="trailing" id="ZkV-Yj-24F"/>
                             <constraint firstItem="bH4-x7-ztQ" firstAttribute="top" secondItem="owU-O7-fxO" secondAttribute="top" constant="22" id="bFS-GT-IO1"/>
                             <constraint firstAttribute="trailing" secondItem="nC1-X4-DaS" secondAttribute="trailing" id="h6B-IA-dCc"/>
                             <constraint firstItem="8mJ-QI-MEk" firstAttribute="top" secondItem="owU-O7-fxO" secondAttribute="top" id="leh-Y4-qFb"/>
                             <constraint firstItem="zkd-dQ-BN2" firstAttribute="top" secondItem="8mJ-QI-MEk" secondAttribute="bottom" constant="2" id="mKf-2l-htP"/>
                             <constraint firstAttribute="trailing" secondItem="bH4-x7-ztQ" secondAttribute="trailing" id="npG-d4-Tjl"/>
+                            <constraint firstItem="8mJ-QI-MEk" firstAttribute="top" secondItem="owU-O7-fxO" secondAttribute="top" constant="3" id="pkD-bk-Kys"/>
                             <constraint firstItem="N25-aI-LqI" firstAttribute="top" secondItem="owU-O7-fxO" secondAttribute="top" constant="3" id="ptY-wC-f6z"/>
+                            <constraint firstItem="8mJ-QI-MEk" firstAttribute="leading" secondItem="N25-aI-LqI" secondAttribute="trailing" constant="8" id="qPA-bZ-v0D"/>
                             <constraint firstItem="zkd-dQ-BN2" firstAttribute="leading" secondItem="N25-aI-LqI" secondAttribute="trailing" constant="8" id="rrn-fq-k6B"/>
                             <constraint firstItem="nC1-X4-DaS" firstAttribute="top" secondItem="bH4-x7-ztQ" secondAttribute="bottom" constant="2" id="s76-Xg-Kq5"/>
                             <constraint firstItem="N25-aI-LqI" firstAttribute="leading" secondItem="owU-O7-fxO" secondAttribute="leading" constant="8" id="uey-sb-XVk"/>
@@ -74,8 +77,12 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="s76-Xg-Kq5"/>
+                                <exclude reference="Aeu-85-3w9"/>
+                                <exclude reference="GNY-tu-mqs"/>
+                                <exclude reference="ONz-UY-T6w"/>
                                 <exclude reference="leh-Y4-qFb"/>
                                 <exclude reference="7BQ-Dw-fKR"/>
+                                <exclude reference="mKf-2l-htP"/>
                                 <exclude reference="YaE-H4-jbx"/>
                             </mask>
                         </variation>

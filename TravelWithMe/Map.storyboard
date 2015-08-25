@@ -99,12 +99,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="留下足跡" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5C1-Qt-peh">
-                                <rect key="frame" x="260" y="75" width="80" height="24"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view alpha="0.39999999999999963" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aer-mL-5cH">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -112,12 +106,9 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="aer-mL-5cH" firstAttribute="top" secondItem="5C1-Qt-peh" secondAttribute="bottom" constant="51" id="1dN-tu-t4Z"/>
-                            <constraint firstAttribute="centerX" secondItem="5C1-Qt-peh" secondAttribute="centerX" id="667-o5-FDM"/>
                             <constraint firstItem="cKU-jv-ka0" firstAttribute="top" secondItem="aer-mL-5cH" secondAttribute="bottom" constant="150" id="Xfu-xj-jjC"/>
                             <constraint firstItem="aer-mL-5cH" firstAttribute="leading" secondItem="uVQ-b0-szV" secondAttribute="leadingMargin" constant="102" id="ZO4-Bg-hC2"/>
                             <constraint firstItem="aer-mL-5cH" firstAttribute="leading" secondItem="uVQ-b0-szV" secondAttribute="leadingMargin" constant="-16" id="bK6-wh-lks"/>
-                            <constraint firstItem="5C1-Qt-peh" firstAttribute="top" secondItem="GQx-Jk-1L0" secondAttribute="bottom" constant="55" id="dZ7-So-LQB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aer-mL-5cH" secondAttribute="trailing" constant="-16" id="e12-Ab-ao4"/>
                             <constraint firstItem="aer-mL-5cH" firstAttribute="top" secondItem="uVQ-b0-szV" secondAttribute="topMargin" id="ifr-oa-uPp"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aer-mL-5cH" secondAttribute="trailing" constant="166" id="pEh-jX-Eq1"/>
@@ -125,7 +116,6 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="1dN-tu-t4Z"/>
                                 <exclude reference="ZO4-Bg-hC2"/>
                                 <exclude reference="pEh-jX-Eq1"/>
                                 <exclude reference="Xfu-xj-jjC"/>

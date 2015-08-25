@@ -155,7 +155,7 @@
     if(user) {
         
         hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.labelText = @"Loading...";
+        //hud.labelText = @"Loading...";
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
             
@@ -202,7 +202,68 @@
     }
 }
 
-
+#pragma mark - 點選有興趣
+- (void)interestedBtnPressed:(UIButton *)button
+{
+    UIViewController *targetViewController;
+    UIStoryboard *storyboard;
+    
+    if(user) {
+        
+        hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        //hud.labelText = @"Loading...";
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+            
+            PFObject *travelMatePost = [PFObject objectWithoutDataWithClassName:@"TravelMatePost" objectId:_cellDictData[@"objectId"]];
+            PFRelation *userRelation = [user relationForKey:@"interestedPosts"];
+            PFRelation *postRelation = [travelMatePost relationForKey:@"interestedUsers"];
+            
+            if([isInterested integerValue]==0)//目前User沒興趣,儲存"有興趣"關聯
+            {
+                [userRelation addObject:travelMatePost];
+                [user save];
+                
+                [travelMatePost incrementKey:@"interestedCount"];
+                
+                [postRelation addObject:user];
+                [travelMatePost save];
+                
+            } else { //解除"參加"關聯
+                
+                [userRelation removeObject:travelMatePost];
+                [user save];
+                
+                [travelMatePost incrementKey:@"interestedCount" byAmount:@-1];
+                
+                [postRelation removeObject:user];
+                [travelMatePost save];
+            }
+            
+            [self getRelationData];
+            [self getCountData];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                if([isInterested integerValue]==0){
+                    [button setImage:[UIImage imageNamed:@"interested-icon"] forState:UIControlStateNormal];
+                } else {
+                    [button setImage:[UIImage imageNamed:@"no-interested-add-icon"] forState:UIControlStateNormal];
+                }
+                
+                [_detailTableView reloadData];
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+            });
+        });
+    } else {
+        storyboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+        
+        targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"loginViewController"];
+        
+        [self presentViewController:targetViewController animated:YES completion:nil];
+        
+    }
+}
 
 #pragma mark - Table View
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -329,7 +390,14 @@
         customJoinButton.selected = YES;
     else
         customJoinButton.selected = NO;
-    //NSLog(@"what??? = %ld",[isJoin integerValue]);
+    
+    
+    if([isInterested integerValue]>0)//目前User有興趣
+        [cell.interestedBtn setImage:[UIImage imageNamed:@"interested-icon"] forState:UIControlStateNormal];
+    else
+        [cell.interestedBtn setImage:[UIImage imageNamed:@"no-interested-add-icon"] forState:UIControlStateNormal];
+    
+    [cell.interestedBtn addTarget:self action:@selector(interestedBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void) setJLCellData:(JLTableViewCell *)cell cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -502,14 +570,6 @@
         [(ParallaxHeaderView *)_detailTableView.tableHeaderView layoutHeaderViewForScrollViewOffset:scrollView.contentOffset];
     }
 }
-
-#pragma mark - TextField Delegate
-//- (BOOL)textFieldShouldBeginEditing:(UITextView *)textView {
-//    
-//    //[_detailTableView setContentOffset:CGPointMake(0, CGFLOAT_MAX)];
-//    return YES;
-//}
-
 
 #pragma mark - keyboard move view method
 - (void)clickMethof:(UITapGestureRecognizer*)recognizer{
