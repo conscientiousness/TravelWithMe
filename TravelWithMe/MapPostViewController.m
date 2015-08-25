@@ -51,17 +51,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    _flatSendBtn = [[VBFPopFlatButton alloc]initWithFrame:CGRectMake(_topView.frame.size.width-10, _topView.frame.size.height-10, 30, 30)
-                                               buttonType:buttonOkType
-                                              buttonStyle:buttonRoundedStyle
-                                    animateToInitialState:YES];
-    _flatSendBtn.roundBackgroundColor = [UIColor redColor];
-    _flatSendBtn.lineThickness = 3;
-    _flatSendBtn.tintColor = [UIColor whiteColor];
-    [_flatSendBtn addTarget:self
-                     action:@selector(sendBtnPressed:)
-           forControlEvents:UIControlEventTouchUpInside];
-    [_topView addSubview:_flatSendBtn];
+    [self initFlatBtn];
 }
 
 
@@ -72,6 +62,36 @@
     
     //關閉分隔線
     [_mapPostTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+}
+
+#pragma mark - 初始化送出與取消按鈕
+
+- (void)initFlatBtn {
+    //送出
+    _flatSendBtn = [[VBFPopFlatButton alloc]initWithFrame:CGRectMake(_topView.frame.size.width-30, _topView.center.y, 20, 20)
+                                               buttonType:buttonOkType
+                                              buttonStyle:buttonRoundedStyle
+                                    animateToInitialState:YES];
+    _flatSendBtn.roundBackgroundColor = [UIColor customGreenColor];
+    _flatSendBtn.lineThickness = 2;
+    _flatSendBtn.tintColor = [UIColor whiteColor];
+    [_flatSendBtn addTarget:self
+                     action:@selector(sendBtnPressed:)
+           forControlEvents:UIControlEventTouchUpInside];
+    [_topView addSubview:_flatSendBtn];
+    
+    //取消
+    _flatCancelBtn = [[VBFPopFlatButton alloc]initWithFrame:CGRectMake(12, _topView.center.y, 20, 20)
+                                               buttonType:buttonCloseType
+                                              buttonStyle:buttonRoundedStyle
+                                    animateToInitialState:YES];
+    _flatCancelBtn.roundBackgroundColor = [UIColor redColor];
+    _flatCancelBtn.lineThickness = 2;
+    _flatCancelBtn.tintColor = [UIColor whiteColor];
+    [_flatCancelBtn addTarget:self
+                     action:@selector(cancelBtnPressed:)
+           forControlEvents:UIControlEventTouchUpInside];
+    [_topView addSubview:_flatCancelBtn];
 }
 
 
@@ -442,6 +462,10 @@
 }
 
 - (void) sendBtnPressed:(UIButton*)button{
+    
+}
+
+- (void) cancelBtnPressed:(UIButton*)button{
     
 }
 

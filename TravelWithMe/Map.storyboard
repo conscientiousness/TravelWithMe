@@ -349,14 +349,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="69"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map-post-location-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="R63-3p-Os4">
-                                        <rect key="frame" x="271" y="35.5" width="18" height="18"/>
+                                        <rect key="frame" x="276" y="35.5" width="18" height="18"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="18" id="p8G-Zl-QBG"/>
                                             <constraint firstAttribute="height" constant="18" id="xPL-IN-LjW"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="台中" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbs-Xv-3B3">
-                                        <rect key="frame" x="292" y="36.5" width="232" height="14.5"/>
+                                        <rect key="frame" x="297" y="36.5" width="232" height="14.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="232" id="lEk-fI-qee"/>
                                         </constraints>
@@ -365,7 +365,6 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.84033782759999998" green="0.8741712908" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="jbs-Xv-3B3" secondAttribute="trailing" constant="60" id="3Gd-Az-yaO"/>
                                     <constraint firstAttribute="centerY" secondItem="R63-3p-Os4" secondAttribute="centerY" id="5Vv-YP-ReF"/>
@@ -374,7 +373,7 @@
                                     <constraint firstAttribute="height" constant="69" id="mpR-r7-WRT"/>
                                     <constraint firstAttribute="centerY" secondItem="R63-3p-Os4" secondAttribute="centerY" constant="-10" id="nEc-wk-uYi"/>
                                     <constraint firstItem="jbs-Xv-3B3" firstAttribute="leading" secondItem="R63-3p-Os4" secondAttribute="trailing" constant="3" id="pwU-qs-CUg"/>
-                                    <constraint firstAttribute="centerX" secondItem="R63-3p-Os4" secondAttribute="centerX" constant="20" id="ukZ-uX-nUH"/>
+                                    <constraint firstAttribute="centerX" secondItem="R63-3p-Os4" secondAttribute="centerX" constant="15" id="ukZ-uX-nUH"/>
                                     <constraint firstAttribute="centerX" secondItem="R63-3p-Os4" secondAttribute="centerX" constant="20" id="vP4-E2-T6Z"/>
                                 </constraints>
                                 <variation key="default">
