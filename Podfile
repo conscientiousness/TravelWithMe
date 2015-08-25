@@ -12,6 +12,7 @@ pod "JDFPeekaboo"
 pod "SSBouncyButton", '~> 1.0'
 pod "MJRefresh"
 pod "SCLAlertView-Objective-C"
+pod "VBFPopFlatButton"
 
 use_frameworks!
 pod "TextFieldEffects"

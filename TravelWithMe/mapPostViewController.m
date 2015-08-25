@@ -7,6 +7,8 @@
 //
 
 #import "mapPostViewController.h"
+#import "VBFPopFlatButton.h"
+
 
 @interface mapPostViewController ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *regionTagText;
@@ -31,13 +33,12 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:NO];
-    [self.tabBarController.tabBar setHidden:NO];
+    //[self.tabBarController.tabBar setHidden:NO];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:NO];
-    [self setExtendedLayoutIncludesOpaqueBars:YES];
-    [self.tabBarController.tabBar setHidden:YES];
+    //[self.tabBarController.tabBar setHidden:YES];
     
 }
 
@@ -45,13 +46,14 @@
     [super viewDidAppear:NO];
     if (!user) {
         user = [PFUser currentUser];
-        [[PFUser currentUser] fetchIfNeeded];
     }
 }
 
 - (void)initUI {
     
-    self.view.backgroundColor = [UIColor homeCellbgColor];
+    self.view.backgroundColor =[UIColor colorWithWhite:0.0 alpha:0.0];
+    self.view.opaque = NO;
+
 }
 
 - (IBAction)backBtnPressed:(id)sender {

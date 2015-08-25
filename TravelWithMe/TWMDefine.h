@@ -10,12 +10,16 @@
 
 @interface TWMDefine : NSObject
 
-//*//
+/*
+ * NSNotification 定義
+ */
 #pragma mark - NSNotification
 
 #define PUBLISH_DONE_NOTIFICATION
 
-//*//
+/*
+ * PostViewControllert - 發文畫面 常數定義
+ */
 #pragma mark - PostViewController
 
 #define NUMBER_OF_SECTIONS 1
@@ -27,7 +31,28 @@
 #define IMAGEVIEW_SHAREPHOTO_TAG 3000
 #define TEXTVIEW_MEMO_TAG 4000
 
-//*//
+
+/*
+ * MapViewControllert - 地圖畫面 常數定義
+*/
+
+#pragma mark - MapViewControllert
+
+//地圖ADD按鈕位置//
+#define MAP_FLAT_BTN_CGRECTMAKE self.view.frame.size.width/2 - 15, self.view.frame.size.height - 100, 30, 30
+//類別按鈕初始位置
+#define FOOT_BTN_CGRECTMAKE self.view.frame.size.width/2 - 40, self.view.frame.size.height - 150, 80, 80
+#define LANSCAPE_BTN_CGRECTMAKE self.view.frame.size.width/2 - 40, self.view.frame.size.height - 150, 80, 80
+#define PEOPLE_BTN_CGRECTMAKE self.view.frame.size.width/2 - 40, self.view.frame.size.height - 150, 80, 80
+//類別按鈕動態移動結束位置
+#define FOOD_BTN_SNAP_BEHAVIOR_CGPOINT self.view.frame.size.width/2, self.view.frame.size.height/2 - 50
+#define LANSCAPE_BTN_SNAP_BEHAVIOR_CGPOINT self.view.frame.size.width/2 - 110, self.view.frame.size.height/2 - 25
+#define PEOPLE_BTN_SNAP_BEHAVIOR_CGPOINT self.view.frame.size.width/2 + 110, self.view.frame.size.height/2 - 25
+
+/*
+ * PARSE 欄位定義
+*/
+
 #pragma mark - Parse Table:TRAVELMATEPOST
 
 #define TRAVELMATEPOST_TABLENAME @"TravelMatePost"
@@ -46,7 +71,7 @@
 #define TRAVELMATEPOST_JOINCOUNT_KEY @"joinCount"
 #define TRAVELMATEPOST_WATCHCOUNT_KEY @"watchCount"
 
-//*//
+//使用者//
 #pragma mark - Parse Table:USER
 
 #define USER_DISPLAYNAME_KEY @"displayName"
@@ -56,13 +81,13 @@
 #define USER_RELATION_TRAVELMATEPOSTS_KEY @"travelMatePosts"
 
 
-//*//
+//留言//
 #pragma mark - Parse Table:COMMENT
 
 #define COMMENT_TABLENAME @"Comment"
 #define COMMENT_MESSAGE_KEY @"message"
 
-//*共通欄位名稱//
+//共通欄位名稱//
 #pragma mark - Parse Common Table Col
 
 #define COMMON_OBJECTID_KEY @"objectId"

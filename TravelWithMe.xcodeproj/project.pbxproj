@@ -44,6 +44,8 @@
 		F43B3B7F1B75C03F0034B20F /* JL3MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F43B3B7D1B75C03F0034B20F /* JL3MessageTableViewCell.xib */; };
 		F43C831A1B71B13200D2A389 /* tmp900X640.png in Resources */ = {isa = PBXBuildFile; fileRef = F43C83191B71B13200D2A389 /* tmp900X640.png */; };
 		F43F90681B8AF46D00E509F3 /* exclamation-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F43F90671B8AF46D00E509F3 /* exclamation-icon.png */; };
+		F43F906B1B8B2C0700E509F3 /* SelectTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43F906A1B8B2C0700E509F3 /* SelectTypeViewController.m */; };
+		F43F906D1B8C06D800E509F3 /* black.png in Resources */ = {isa = PBXBuildFile; fileRef = F43F906C1B8C06D800E509F3 /* black.png */; };
 		F44282FE1B875A9700D1F776 /* edit-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F44282FB1B875A9700D1F776 /* edit-icon.png */; };
 		F44282FF1B875A9700D1F776 /* search-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F44282FC1B875A9700D1F776 /* search-icon.png */; };
 		F44283001B875A9700D1F776 /* watch-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F44282FD1B875A9700D1F776 /* watch-icon.png */; };
@@ -184,6 +186,9 @@
 		F43B3B7D1B75C03F0034B20F /* JL3MessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JL3MessageTableViewCell.xib; sourceTree = "<group>"; };
 		F43C83191B71B13200D2A389 /* tmp900X640.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tmp900X640.png; sourceTree = "<group>"; };
 		F43F90671B8AF46D00E509F3 /* exclamation-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exclamation-icon.png"; sourceTree = "<group>"; };
+		F43F90691B8B2C0700E509F3 /* SelectTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectTypeViewController.h; sourceTree = "<group>"; };
+		F43F906A1B8B2C0700E509F3 /* SelectTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectTypeViewController.m; sourceTree = "<group>"; };
+		F43F906C1B8C06D800E509F3 /* black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = black.png; sourceTree = "<group>"; };
 		F44282FB1B875A9700D1F776 /* edit-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit-icon.png"; sourceTree = "<group>"; };
 		F44282FC1B875A9700D1F776 /* search-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-icon.png"; sourceTree = "<group>"; };
 		F44282FD1B875A9700D1F776 /* watch-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "watch-icon.png"; sourceTree = "<group>"; };
@@ -392,6 +397,9 @@
 				A53CBBB61B67FA630039369A /* MapViewController.m */,
 				B5453E251B7A670E008964CE /* mapPostViewController.h */,
 				B5453E261B7A670E008964CE /* mapPostViewController.m */,
+				F43F90691B8B2C0700E509F3 /* SelectTypeViewController.h */,
+				F43F906A1B8B2C0700E509F3 /* SelectTypeViewController.m */,
+				F43F906C1B8C06D800E509F3 /* black.png */,
 			);
 			name = MapView;
 			sourceTree = "<group>";
@@ -811,6 +819,7 @@
 				F47556AC1B4BACF2008CEE3A /* Images.xcassets in Resources */,
 				F43B3B7F1B75C03F0034B20F /* JL3MessageTableViewCell.xib in Resources */,
 				F43C831A1B71B13200D2A389 /* tmp900X640.png in Resources */,
+				F43F906D1B8C06D800E509F3 /* black.png in Resources */,
 				F42EBDB01B68D1EE00606D9B /* (null) in Resources */,
 				F420E15C1B84719800D3627F /* intrested-icon.png in Resources */,
 				F44282FE1B875A9700D1F776 /* edit-icon.png in Resources */,
@@ -923,6 +932,7 @@
 				F44829A01B6FBAFF00ED0EA1 /* PAPCache.m in Sources */,
 				F4DA4C661B4FF09200421F2F /* HomeDetailViewController.m in Sources */,
 				A55669951B80EAE300F588E3 /* CExpandHeader.m in Sources */,
+				F43F906B1B8B2C0700E509F3 /* SelectTypeViewController.m in Sources */,
 				B5453E271B7A670E008964CE /* mapPostViewController.m in Sources */,
 				A53CBBB71B67FA630039369A /* MapViewController.m in Sources */,
 				F4457C201B7755D000A4952B /* ParallaxHeaderView.m in Sources */,

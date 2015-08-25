@@ -8,7 +8,6 @@
 
 #import "VIPViewController.h"
 #import "CExpandHeader.h" //import 第三方 CExpandHeader
-#import <PureLayout/PureLayout.h>
 #import "VIPMyActivityTableViewCell.h"
 
 #define CExpandContentOffset @"contentOffset"

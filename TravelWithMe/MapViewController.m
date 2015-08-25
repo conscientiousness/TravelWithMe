@@ -9,22 +9,28 @@
 #import "MapViewController.h"
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "VBFPopFlatButton.h"
+
+
 
 @interface MapViewController ()<MKMapViewDelegate,CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *theMapView;
-
+@property (nonatomic, strong) VBFPopFlatButton *mapFlatRoundedButton;
 @end
 
 @implementation MapViewController
 {
    CLLocationManager*locationManager;
     BOOL isFirstLocationReceived;
+    PFUser *user;
 }
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    
     
     locationManager = [CLLocationManager new];
     
@@ -43,13 +49,78 @@
     locationManager.delegate=self;
     [locationManager startUpdatingLocation];
     
+    
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self
+                                            selector:@selector(initFlatRoundedButton)
+                                                name:@"isDismiss"
+                                              object:nil];
+
 }
+
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if (!user) {
+        user = [PFUser currentUser];
+    }
+    
+    [self initFlatRoundedButton];
+}
+
+
+#pragma mark - 初始化新增按鈕
+- (void) initFlatRoundedButton {
+    
+    
+    self.mapFlatRoundedButton = [[VBFPopFlatButton alloc]initWithFrame:CGRectMake(MAP_FLAT_BTN_CGRECTMAKE)
+                                                            buttonType:buttonAddType
+                                                           buttonStyle:buttonRoundedStyle
+                                                 animateToInitialState:YES];
+    self.mapFlatRoundedButton.roundBackgroundColor = [UIColor customGreenColor];
+    self.mapFlatRoundedButton.lineThickness = 3;
+    self.mapFlatRoundedButton.tintColor = [UIColor whiteColor];
+    [self.mapFlatRoundedButton addTarget:self
+                                  action:@selector(didSelectedType)
+                        forControlEvents:UIControlEventTouchUpInside];
+    [_theMapView addSubview:self.mapFlatRoundedButton];
+}
+
 
 - (IBAction)backClick:(UIButton *)sender {
     [self.theMapView setCenterCoordinate:self.theMapView.userLocation.coordinate animated:YES];
 }
 
-
+- (void) didSelectedType {
+    
+    [_mapFlatRoundedButton removeFromSuperview];
+    
+    UIViewController *targetViewController;
+    UIStoryboard *storyboard;
+    
+    if(user) {
+        
+        targetViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"selectTypeViewController"];
+        
+        //[self presentViewController:targetViewController animated:NO completion:nil];
+        
+        //targetViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+        //[self presentViewController:targetViewController animated:NO completion:nil];
+        
+        targetViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+        self.navigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        [self presentViewController:targetViewController animated:NO completion:nil];
+        
+    } else {
+        
+        storyboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+        
+        targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"loginViewController"];
+        
+        [self presentViewController:targetViewController animated:YES completion:nil];
+    }
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -75,9 +146,9 @@
     }
 }
 
-- (IBAction)backToWhite:(UIStoryboardSegue*)
-segue{
-    //;
+- (IBAction)backToWhite:(UIStoryboardSegue*)segue
+{
+
 }
 
 - (IBAction)mapPostClick:(id)sender {
@@ -86,11 +157,20 @@ segue{
     UIViewController *targetViewController;
     UIStoryboard *storyboard;
     
-    if([FBSDKAccessToken currentAccessToken]) {
+    if(user) {
         
-        targetViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"mapPostViewController"];
+        targetViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"selectTypeViewController"];
         
-        [self.navigationController pushViewController:targetViewController animated:YES];
+        //[self presentViewController:targetViewController animated:NO completion:nil];
+        
+        //targetViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+        //[self presentViewController:targetViewController animated:NO completion:nil];
+
+        targetViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+        //setModalTransitionStyle:UIModalTransitionStyleCrossDissolve
+        //UIModalTransitionStyleCoverVertical
+        //targetViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        [self presentViewController:targetViewController animated:YES completion:nil];
         
     } else {
         
