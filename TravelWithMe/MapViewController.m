@@ -13,16 +13,6 @@
 #import "MapPostViewController.h"
 #import "SelectTypeViewController.h"
 
-//類別
-#define MAPVIEW_SELECTEDTYPE_DICT_KEY @"selectedType"
-//緯度
-#define MAPVIEW_LATITUDE_DICT_KEY @"latitude"
-//經度
-#define MAPVIEW_LONGITUDE_DICT_KEY @"longitude"
-//國家
-#define MAPVIEW_COUNTRY_DICT_KEY @"country"
-//城市
-#define MAPVIEW_CITY_DICT_KEY @"city"
 
 @interface MapViewController ()<MKMapViewDelegate,CLLocationManagerDelegate>
 {
@@ -31,6 +21,7 @@
     PFUser *user;
     NSMutableDictionary *passDataDict;
     CLLocation *currentLocation;
+    CLGeocoder *gecorder;
 }
 @property (weak, nonatomic) IBOutlet UIView *AnimationsView;
 @property (weak, nonatomic) IBOutlet MKMapView *theMapView;
@@ -54,7 +45,6 @@
     }
     
     // Prepare locationManager
-    
     // 定位需求 10公尺 Wifi
     locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
     // 定位等級 行走
@@ -91,12 +81,14 @@
     
     if(passDataDict==nil)
         passDataDict = [NSMutableDictionary new];
+    
+    if(gecorder==nil)
+        gecorder=[CLGeocoder new];
 }
 
 
 #pragma mark - 子畫面Dismiss
 - (void) didTopChildDismiss {
-    passDataDict = nil;
     [self initFlatRoundedButton];
 }
 
@@ -123,16 +115,13 @@
     [passDataDict setValue:[NSNumber numberWithDouble:currentLocation.coordinate.latitude] forKey:MAPVIEW_LATITUDE_DICT_KEY];
     [passDataDict setValue:[NSNumber numberWithDouble:currentLocation.coordinate.longitude] forKey:MAPVIEW_LONGITUDE_DICT_KEY];
     [passDataDict setValue:[notification userInfo][@"selectedType"] forKey:MAPVIEW_SELECTEDTYPE_DICT_KEY];
-    //由緯經度反查地點
-    [self getGeoCoderPlacemarks];
-    
-    NSLog(@"%@",passDataDict.description);
-    
+
+    //丟字典給PO文畫面
+    //self.block(passDataDict);
     
     MapPostViewController *targetViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"mapPostViewController"];
     
-    //所選類別在丟到MapPostViewController
-    targetViewController.selectedtypeString = [notification userInfo][@"selectedType"];
+    targetViewController.dictDatas = passDataDict;
     
     //以覆蓋方式在原本VC上面(注意:dismiss時,不會觸發viewWillAppear等)
     targetViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
@@ -141,9 +130,7 @@
 
 #pragma mark - 按下新增按鈕，present到類別按鈕畫面
 - (void) didSelectedType {
-    
-    [self getGeoCoderPlacemarks];
-    
+
     //移除按鈕，當返回時在init才有按鈕特效
     [_mapFlatRoundedButton removeFromSuperview];
     
@@ -303,25 +290,30 @@
     }
 }
 
-#pragma mark - 反查地點
--(void)getGeoCoderPlacemarks{
-    
-    CLGeocoder *gecorder=[CLGeocoder new];
-    NSMutableArray *placeAry = [NSMutableArray new];
-    
-    [gecorder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks,NSError *error){
-        
-        //NSLog(@"Result:%@",placemarks.description);
-        CLPlacemark *placemark = placemarks[0];
-        
-        //NSLog(@"1:%@,2:%@,3:%@,4:%@,5:%@",placemark.country,placemark.location,placemark.administrativeArea,placemark.thoroughfare,placemark.subThoroughfare);
-        
-        [placeAry addObjectsFromArray:placemarks];
-        
-        [passDataDict setValue:placemark.country forKey:MAPVIEW_COUNTRY_DICT_KEY];
-        [passDataDict setValue:placemark.administrativeArea forKey:MAPVIEW_CITY_DICT_KEY];
-    }];
-
-}
+//#pragma mark - 反查地點
+//-(void)getGeoCoderPlacemarks{
+//    
+//    //NSMutableArray *placeAry = [NSMutableArray new];
+//    
+//    //CLLocation *location =[[CLLocation alloc] initWithLatitude:currentLocation.coordinate.latitude longitude:currentLocation.coordinate.longitude];
+//    
+//    [gecorder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks,NSError *error){
+//        
+//        //NSLog(@"Result:%@",placemarks.description);
+//        CLPlacemark *placemark = placemarks[0];
+//        
+//        //
+//        //NSLog(@"1:%@,2:%@,3:%@,4:%@,5:%@",placemark.country,placemark.location,placemark.administrativeArea,placemark.thoroughfare,placemark.subThoroughfare);
+//        
+//        //[placeAry addObjectsFromArray:placemarks];
+//        
+//        //country  administrativeArea  locality 國家 縣市 鄉鎮區市
+//        
+//        [passDataDict setValue:placemark.country forKey:MAPVIEW_COUNTRY_DICT_KEY];
+//        [passDataDict setValue:placemark.administrativeArea forKey:MAPVIEW_CITY_DICT_KEY];
+//        [passDataDict setValue:placemark.locality forKey:MAPVIEW_LOCALITY_DICT_KEY];
+//    }];
+//
+//}
 
 @end

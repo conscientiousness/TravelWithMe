@@ -6,6 +6,7 @@
 //  Copyright (c) 2015年 Jesse. All rights reserved.
 //
 
+#import "MapViewController.h"
 #import "MapPostViewController.h"
 #import "SelectTypeViewController.h"
 #import "PostTypeTableViewCell.h"
@@ -26,6 +27,7 @@
     PFUser *user;
 }
 @property (weak, nonatomic) IBOutlet UIView *topView;
+@property (weak, nonatomic) IBOutlet UILabel *loactionLabel;
 @property (weak, nonatomic) IBOutlet UITableView *mapPostTableView;
 @property (nonatomic, strong) VBFPopFlatButton *flatSendBtn;
 @property (nonatomic, strong) VBFPopFlatButton *flatCancelBtn;
@@ -42,9 +44,10 @@
         user = [PFUser currentUser];
     }
     
-    //NSLog(@"%@",_selectedtypeString);
+    //NSLog(@"%@",_dictDatas[MAPVIEW_LATITUDE_DICT_KEY]);
+    [self getGeoCoderPlacemarks];
     
-    [self initUI];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,10 +58,10 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [self initFlatBtn];
+    [self initUI];
+    
+    
 }
-
-
 
 - (void)initUI {
     
@@ -66,10 +69,15 @@
     
     //關閉分隔線
     [_mapPostTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    
+    //設定所在地點
+    _loactionLabel.text = [NSString stringWithFormat:@"%@,%@",datas[MAPVIEW_COUNTRY_DICT_KEY],datas[MAPVIEW_LOCALITY_DICT_KEY]];
+    
+    //初始化送出取消按鈕
+    [self initFlatBtn];
 }
 
 #pragma mark - 初始化送出與取消按鈕
-
 - (void)initFlatBtn {
     //送出
     _flatSendBtn = [[VBFPopFlatButton alloc]initWithFrame:CGRectMake(_topView.frame.size.width-30, _topView.center.y, 20, 20)
@@ -317,6 +325,8 @@
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
+        cell.mapPostMemoTextView.delegate = self;
+        
         return cell;
         
     }
@@ -408,17 +418,11 @@
     }];
 }
 
-#pragma mark - TextField Delegate Method
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
-    
-    [datas setObject:textField.text forKey:[NSNumber numberWithInteger:textField.tag]];
-}
 
 #pragma mark - TextView Delegate Method
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
-    if((textView.tag == TEXTVIEW_MEMO_TAG) && ([textView.text isEqual:@""]||textView.text==nil)) {
+    if((textView.tag == TEXTVIEW_MAPMEMO_TAG) && ([textView.text isEqual:@""]||textView.text==nil)) {
         [textView.layer setBorderColor: [[UIColor colorWithRed:0.533 green:0.544 blue:0.562 alpha:1.000] CGColor]];
     }
     
@@ -428,7 +432,7 @@
 
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
     
-    if(textView.tag == TEXTVIEW_MEMO_TAG) {
+    if(textView.tag == TEXTVIEW_MAPMEMO_TAG) {
         
         [textView.layer setBorderColor: [[UIColor colorWithRed:0.263 green:0.718 blue:0.608 alpha:1.000] CGColor]];
     }
@@ -480,7 +484,32 @@
     //[self dismissViewControllerAnimated:YES completion:nil];
 }
 
+#pragma mark - 反查地點
+-(void)getGeoCoderPlacemarks{
+    
+    CLGeocoder *gecorder = [CLGeocoder new];
 
+    CLLocation *location =[[CLLocation alloc] initWithLatitude:[_dictDatas[MAPVIEW_LATITUDE_DICT_KEY] doubleValue] longitude:[_dictDatas[MAPVIEW_LONGITUDE_DICT_KEY] doubleValue]];
+    
+    [gecorder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks,NSError *error){
+        
+        //NSLog(@"Result:%@",placemarks.description);
+        CLPlacemark *placemark = placemarks[0];
+        
+//        for(CLPlacemark *placemark in placemarks)
+//        {
+//            NSLog(@"address dic %@",placemark.addressDictionary);
+//        }
+        
+        //NSLog(@"1:%@,  2:%@  3:%@",placemark.country,placemark.c,placemark.locality);
+        
+        //country  administrativeArea  locality 國家 縣市(台灣沒有這一級) 鄉鎮區市
+        
+        [datas setObject:placemark.country forKey:MAPVIEW_COUNTRY_DICT_KEY];
+        [datas setObject:placemark.locality forKey:MAPVIEW_LOCALITY_DICT_KEY];
+    }];
+    
+}
 
 
 @end

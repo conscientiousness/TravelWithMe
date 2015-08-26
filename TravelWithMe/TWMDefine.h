@@ -58,6 +58,19 @@
 #define MAPPOST_NUMBER_OF_SECTIONS 1
 #define MAPPOST_NUMBER_OF_ROWS 3
 
+//類別
+#define MAPVIEW_SELECTEDTYPE_DICT_KEY @"selectedType"
+//緯度
+#define MAPVIEW_LATITUDE_DICT_KEY @"latitude"
+//經度
+#define MAPVIEW_LONGITUDE_DICT_KEY @"longitude"
+//國家
+#define MAPVIEW_COUNTRY_DICT_KEY @"country"
+//城市
+#define MAPVIEW_CITY_DICT_KEY @"city"
+//鄉鎮市區
+#define MAPVIEW_LOCALITY_DICT_KEY @"locality"
+
 /*
  * PARSE 欄位定義
 */

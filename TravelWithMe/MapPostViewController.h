@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface MapPostViewController : UIViewController
-@property(nonatomic,strong) NSString *selectedtypeString;
+@property(nonatomic,strong) NSDictionary *dictDatas;
 @end
