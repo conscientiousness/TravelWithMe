@@ -58,26 +58,11 @@
 #define MAPPOST_NUMBER_OF_SECTIONS 1
 #define MAPPOST_NUMBER_OF_ROWS 3
 
-//類別
-#define MAPVIEW_SELECTEDTYPE_DICT_KEY @"selectedType"
-//緯度
-#define MAPVIEW_LATITUDE_DICT_KEY @"latitude"
-//經度
-#define MAPVIEW_LONGITUDE_DICT_KEY @"longitude"
-//國家
-#define MAPVIEW_COUNTRY_DICT_KEY @"country"
-//城市
-#define MAPVIEW_CITY_DICT_KEY @"city"
-//鄉鎮市區
-#define MAPVIEW_LOCALITY_DICT_KEY @"locality"
-
-#define MAPVIEW_MEMO_DICT_KEY @"memo"
-
-#define MAPVIEW_SHAREPHOTO_DICT_KEY @"sharePhoto"
 
 /*
  * PARSE 欄位定義
 */
+
 #pragma mark - Parse Table:TRAVELMATEPOST
 
 #define TRAVELMATEPOST_TABLENAME @"TravelMatePost"
@@ -104,13 +89,29 @@
 #define USER_PROFILEPICTUREMEDIUM_KEY @"profilePictureMedium"
 #define USER_PROFILEPICTURESMALL_KEY @"profilePictureSmall"
 #define USER_RELATION_TRAVELMATEPOSTS_KEY @"travelMatePosts"
-
+#define USER_RELATION_MAPPOSTS_KEY @"mapPosts"
 
 //留言//
 #pragma mark - Parse Table:COMMENT
 
 #define COMMENT_TABLENAME @"Comment"
 #define COMMENT_MESSAGE_KEY @"message"
+
+//地圖PO文
+#pragma mark - Parse Table:MapPost
+
+#define MAPPOST_TABLENAME @"MapPost"
+#define MAPPOST_TYPE_KEY @"type"
+#define MAPPOST_COUNTRY_KEY @"country"
+#define MAPPOST_LOCALITY_KEY @"locality"
+#define MAPPOST_USERLOCATION_KEY @"userLocation"
+#define MAPPOST_LATITUDE_KEY @"latitude"
+#define MAPPOST_LONGITUDE_KEY @"longitude"
+#define MAPPOST_MEMO_KEY @"memo"
+#define MAPPOST_PHOTO_KEY @"photo"
+#define MAPPOST_SMALLPHOTO_KEY @"smallPhoto"
+#define MAPPOST_ORIGINALPHOTO_KEY @"originalPhoto"
+#define MAPPOST_LIKECOUNT_KEY @"likeCount"
 
 //共通欄位名稱//
 #pragma mark - Parse Common Table Col

@@ -112,9 +112,9 @@
 - (void) presentToMapPost:(NSNotification*)notification {
     
     //prepare passing value
-    [passDataDict setValue:[NSNumber numberWithDouble:currentLocation.coordinate.latitude] forKey:MAPVIEW_LATITUDE_DICT_KEY];
-    [passDataDict setValue:[NSNumber numberWithDouble:currentLocation.coordinate.longitude] forKey:MAPVIEW_LONGITUDE_DICT_KEY];
-    [passDataDict setValue:[notification userInfo][@"selectedType"] forKey:MAPVIEW_SELECTEDTYPE_DICT_KEY];
+    [passDataDict setValue:[NSNumber numberWithDouble:currentLocation.coordinate.latitude] forKey:MAPPOST_LATITUDE_KEY];
+    [passDataDict setValue:[NSNumber numberWithDouble:currentLocation.coordinate.longitude] forKey:MAPPOST_LONGITUDE_KEY];
+    [passDataDict setValue:[notification userInfo][MAPPOST_TYPE_KEY] forKey:MAPPOST_TYPE_KEY];
 
     //丟字典給PO文畫面
     //self.block(passDataDict);
