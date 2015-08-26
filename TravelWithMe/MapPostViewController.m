@@ -19,7 +19,6 @@
 @interface MapPostViewController ()<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate>
 {
     UIImage *pickImage;
-    NSMutableDictionary *datas;
     UIImagePickerController *imagePicker;
     UIImageView *selectedImageView;
     UIDatePicker *datepicker;
@@ -71,7 +70,7 @@
     [_mapPostTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
     //設定所在地點
-    _loactionLabel.text = [NSString stringWithFormat:@"%@,%@",datas[MAPVIEW_COUNTRY_DICT_KEY],datas[MAPVIEW_LOCALITY_DICT_KEY]];
+    _loactionLabel.text = [NSString stringWithFormat:@"%@,%@",_dictDatas[MAPVIEW_COUNTRY_DICT_KEY],_dictDatas[MAPVIEW_LOCALITY_DICT_KEY]];
     
     //初始化送出取消按鈕
     [self initFlatBtn];
@@ -106,12 +105,18 @@
     [_topView addSubview:_flatCancelBtn];
 }
 
+#pragma mark - 送出資料
 - (void) sendBtnPressed:(UIButton*)button{
+    //結束編輯
+    [self.view endEditing:YES];
+    
+    if([self isDataNotEmpty]) {
+        [self dismissViewControllerAnimated:YES completion:^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:TOP_CHILD_DISMISSED_NOTIFICATION object:self];
+        }];
+    }
     
     
-    [self dismissViewControllerAnimated:YES completion:^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:TOP_CHILD_DISMISSED_NOTIFICATION object:self];
-    }];
 }
 
 - (void) cancelBtnPressed:(UIButton*)button{
@@ -121,79 +126,80 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:TOP_CHILD_DISMISSED_NOTIFICATION object:self];
     }];
 }
+//
+//- (void)publishBtnPressed:(id *)sender {
+//    [self.view endEditing:YES];
+//    
+//    //NSLog(@"%@",datas);
+//    
+//    if([self isDataNotEmpty]){
+//        if(user) {
+//            
+//            MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//            hud.labelText = @"發送中...";
+//            
+//            dispatch_queue_t publishQueue = dispatch_queue_create("publish", nil);
+//            
+//            dispatch_async(publishQueue, ^{
+//                
+//                PFObject *travelMatePost = [PFObject objectWithClassName:TRAVELMATEPOST_TABLENAME];
+//                travelMatePost[TRAVELMATEPOST_COUNTRYCITY_KEY] = [datas objectForKey:[NSNumber numberWithInteger: TEXTFIELD_COUNTRYCITY_TAG]];
+//                travelMatePost[TRAVELMATEPOST_MEMO_KEY] = [datas objectForKey:[NSNumber numberWithInteger: TEXTVIEW_MEMO_TAG]];
+//                
+//                //出發日期
+//                //NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//                //[dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+//                //NSDate *startDate = [dateFormatter dateFromString:[NSString stringWithFormat:@"%@ 00:00:00",[datas objectForKey:[NSNumber numberWithInteger: TEXTFIELD_STARTDATE_TAG]]]];
+//                //NSLog(@"%@ => %@",[NSString stringWithFormat:@"%@ 00:00:00",[datas objectForKey:[NSNumber numberWithInteger: TEXTFIELD_STARTDATE_TAG]]],startDate);
+//                NSString *startDate = [datas objectForKey:[NSNumber numberWithInteger: TEXTFIELD_STARTDATE_TAG]];
+//                //NSLog(@"%@",startDate);
+//                travelMatePost[TRAVELMATEPOST_STARTDATE_KEY] = startDate;
+//                
+//                //顯示用方形照片
+//                PFFile *imageFile = [PFFile fileWithName:[NSString stringWithFormat:@"photo.jpg"] data:[datas objectForKey:[NSNumber numberWithInteger: IMAGEVIEW_SHAREPHOTO_TAG]]];
+//                //小方形照片
+//                PFFile *smallImageFile = [PFFile fileWithName:[NSString stringWithFormat:@"smallPhoto.jpg"] data:[datas objectForKey:TRAVELMATEPOST_SMALLPHOTO_KEY]];
+//                //原始大小縮圖照片
+//                PFFile *originalImageFile = [PFFile fileWithName:[NSString stringWithFormat:@"originalPhoto.jpg"] data:[datas objectForKey:TRAVELMATEPOST_ORIGINALPHOTO_KEY]];
+//                
+//                travelMatePost[TRAVELMATEPOST_PHOTO_KEY] = imageFile;
+//                travelMatePost[TRAVELMATEPOST_SMALLPHOTO_KEY] = smallImageFile;
+//                travelMatePost[TRAVELMATEPOST_ORIGINALPHOTO_KEY] = originalImageFile;
+//                
+//                
+//                //出發天數
+//                travelMatePost[TRAVELMATEPOST_DAYS_KEY] = [NSNumber numberWithInteger:[[datas objectForKey:[NSNumber numberWithInteger: TEXTFIELD_DAYS_TAG]] integerValue]];
+//                
+//                travelMatePost[COMMON_POINTER_CREATEUSER_KEY] = user;
+//                
+//                //計數
+//                travelMatePost[TRAVELMATEPOST_COMMENTCOUNT_KEY] = @0;
+//                travelMatePost[TRAVELMATEPOST_JOINCOUNT_KEY] = @0;
+//                travelMatePost[TRAVELMATEPOST_INTERESTEDCOUNT_KEY] = @0;
+//                travelMatePost[TRAVELMATEPOST_WATCHCOUNT_KEY] = @0;
+//                
+//                [travelMatePost save];
+//                
+//                PFRelation *relation = [user relationForKey:USER_RELATION_TRAVELMATEPOSTS_KEY];
+//                [relation addObject:travelMatePost];
+//                [user save];
+//                
+//                dispatch_async(dispatch_get_main_queue(), ^{
+//                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+//                    
+//                    [[NSNotificationCenter defaultCenter] postNotificationName:@"isDataSave" object:self];
+//                    
+//                    [self.navigationController popViewControllerAnimated:YES];
+//                });
+//            });
+//        }
+//    } else {
+//        
+//    }
+//    
+//}
 
-- (void)publishBtnPressed:(id *)sender {
-    [self.view endEditing:YES];
-    
-    //NSLog(@"%@",datas);
-    
-    if([self isDataNotEmpty]){
-        if(user) {
-            
-            MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            hud.labelText = @"發送中...";
-            
-            dispatch_queue_t publishQueue = dispatch_queue_create("publish", nil);
-            
-            dispatch_async(publishQueue, ^{
-                
-                PFObject *travelMatePost = [PFObject objectWithClassName:TRAVELMATEPOST_TABLENAME];
-                travelMatePost[TRAVELMATEPOST_COUNTRYCITY_KEY] = [datas objectForKey:[NSNumber numberWithInteger: TEXTFIELD_COUNTRYCITY_TAG]];
-                travelMatePost[TRAVELMATEPOST_MEMO_KEY] = [datas objectForKey:[NSNumber numberWithInteger: TEXTVIEW_MEMO_TAG]];
-                
-                //出發日期
-                //NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-                //[dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-                //NSDate *startDate = [dateFormatter dateFromString:[NSString stringWithFormat:@"%@ 00:00:00",[datas objectForKey:[NSNumber numberWithInteger: TEXTFIELD_STARTDATE_TAG]]]];
-                //NSLog(@"%@ => %@",[NSString stringWithFormat:@"%@ 00:00:00",[datas objectForKey:[NSNumber numberWithInteger: TEXTFIELD_STARTDATE_TAG]]],startDate);
-                NSString *startDate = [datas objectForKey:[NSNumber numberWithInteger: TEXTFIELD_STARTDATE_TAG]];
-                //NSLog(@"%@",startDate);
-                travelMatePost[TRAVELMATEPOST_STARTDATE_KEY] = startDate;
-                
-                //顯示用方形照片
-                PFFile *imageFile = [PFFile fileWithName:[NSString stringWithFormat:@"photo.jpg"] data:[datas objectForKey:[NSNumber numberWithInteger: IMAGEVIEW_SHAREPHOTO_TAG]]];
-                //小方形照片
-                PFFile *smallImageFile = [PFFile fileWithName:[NSString stringWithFormat:@"smallPhoto.jpg"] data:[datas objectForKey:TRAVELMATEPOST_SMALLPHOTO_KEY]];
-                //原始大小縮圖照片
-                PFFile *originalImageFile = [PFFile fileWithName:[NSString stringWithFormat:@"originalPhoto.jpg"] data:[datas objectForKey:TRAVELMATEPOST_ORIGINALPHOTO_KEY]];
-                
-                travelMatePost[TRAVELMATEPOST_PHOTO_KEY] = imageFile;
-                travelMatePost[TRAVELMATEPOST_SMALLPHOTO_KEY] = smallImageFile;
-                travelMatePost[TRAVELMATEPOST_ORIGINALPHOTO_KEY] = originalImageFile;
-                
-                
-                //出發天數
-                travelMatePost[TRAVELMATEPOST_DAYS_KEY] = [NSNumber numberWithInteger:[[datas objectForKey:[NSNumber numberWithInteger: TEXTFIELD_DAYS_TAG]] integerValue]];
-                
-                travelMatePost[COMMON_POINTER_CREATEUSER_KEY] = user;
-                
-                //計數
-                travelMatePost[TRAVELMATEPOST_COMMENTCOUNT_KEY] = @0;
-                travelMatePost[TRAVELMATEPOST_JOINCOUNT_KEY] = @0;
-                travelMatePost[TRAVELMATEPOST_INTERESTEDCOUNT_KEY] = @0;
-                travelMatePost[TRAVELMATEPOST_WATCHCOUNT_KEY] = @0;
-                
-                [travelMatePost save];
-                
-                PFRelation *relation = [user relationForKey:USER_RELATION_TRAVELMATEPOSTS_KEY];
-                [relation addObject:travelMatePost];
-                [user save];
-                
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [MBProgressHUD hideHUDForView:self.view animated:YES];
-                    
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"isDataSave" object:self];
-                    
-                    [self.navigationController popViewControllerAnimated:YES];
-                });
-            });
-        }
-    } else {
-        
-    }
-    
-}
-
+#pragma mark - 判斷是否有欄位為nil
 - (BOOL) isDataNotEmpty {
     
     BOOL result = YES;
@@ -203,44 +209,19 @@
     NSString *title;
     NSString *subTitle;
     
-    NSString *countryCityStr = [datas objectForKey:[NSNumber numberWithInteger: TEXTFIELD_COUNTRYCITY_TAG]];
+    NSString *memoStr = [_dictDatas objectForKey:MAPVIEW_MEMO_DICT_KEY];
+    NSData *sharePhotoData = [_dictDatas objectForKey:MAPVIEW_SHAREPHOTO_DICT_KEY];
     
-    NSString *memoStr = [datas objectForKey:[NSNumber numberWithInteger: TEXTVIEW_MEMO_TAG]];
-    
-    NSString *startDateStr = [datas objectForKey:[NSNumber numberWithInteger: TEXTFIELD_STARTDATE_TAG]];
-    
-    NSString *daysStr = [datas objectForKey:[NSNumber numberWithInteger: TEXTFIELD_DAYS_TAG]];
-    
-    NSData *sharePhotoData = [datas objectForKey:[NSNumber numberWithInteger: IMAGEVIEW_SHAREPHOTO_TAG]];
-    
-    if (countryCityStr==nil || [countryCityStr isEqualToString:@""])
+    if (memoStr==nil || [memoStr isEqualToString:@""])
     {
         title = @"還沒填唷!";
-        subTitle = @"前往國家,城市或地區";
-        result = NO;
-    }
-    else if (startDateStr==nil || [startDateStr isEqualToString:@""])
-    {
-        title = @"還沒填唷!";
-        subTitle = @"出發時間";
-        result = NO;
-    }
-    else if (daysStr==nil || [daysStr isEqualToString:@""])
-    {
-        title = @"還沒填唷!";
-        subTitle = @"旅遊天數";
-        result = NO;
-    }
-    else if (memoStr==nil || [memoStr isEqualToString:@""])
-    {
-        title = @"還沒填唷!";
-        subTitle = @"行程介紹";
+        subTitle = @"在現在做什麼呢?";
         result = NO;
     }
     else if (sharePhotoData==nil)
     {
         title = @"沒照片唷!";
-        subTitle = @"上傳一張自己喜愛的美景吧";
+        subTitle = @"隨手分享張照片吧!";
         result = NO;
     }
     
@@ -274,9 +255,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if(datas == nil) {
-        datas = [NSMutableDictionary new];
-    }
+//    if(datas == nil) {
+//        datas = [NSMutableDictionary new];
+//    }
     
     NSString *identifier;
     
@@ -427,7 +408,7 @@
     }
     
     
-    [datas setObject:textView.text forKey:[NSNumber numberWithInteger:textView.tag]];
+    [_dictDatas setObject:textView.text forKey:MAPVIEW_MEMO_DICT_KEY];
 }
 
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
@@ -465,9 +446,9 @@
         //方形圖縮小圖和壓縮
         NSData *smallImageData = [PAPUtility resizeImage:editedImage width:100.0 height:100.0 contentMode:UIViewContentModeScaleAspectFill];
         
-        [datas setObject:imageData forKey:[NSNumber numberWithInteger:IMAGEVIEW_SHAREPHOTO_TAG]];
-        [datas setObject:smallImageData forKey:TRAVELMATEPOST_SMALLPHOTO_KEY];
-        [datas setObject:originaImageData forKey:TRAVELMATEPOST_ORIGINALPHOTO_KEY];
+        [_dictDatas setObject:imageData forKey:MAPVIEW_SHAREPHOTO_DICT_KEY];
+        [_dictDatas setObject:smallImageData forKey:MAPVIEW_SHAREPHOTO_DICT_KEY];
+        [_dictDatas setObject:originaImageData forKey:MAPVIEW_SHAREPHOTO_DICT_KEY];
         
         
         [selectedImageView setImage:[UIImage imageWithData:imageData]];
@@ -505,8 +486,8 @@
         
         //country  administrativeArea  locality 國家 縣市(台灣沒有這一級) 鄉鎮區市
         
-        [datas setObject:placemark.country forKey:MAPVIEW_COUNTRY_DICT_KEY];
-        [datas setObject:placemark.locality forKey:MAPVIEW_LOCALITY_DICT_KEY];
+        [_dictDatas setObject:placemark.country forKey:MAPVIEW_COUNTRY_DICT_KEY];
+        [_dictDatas setObject:placemark.locality forKey:MAPVIEW_LOCALITY_DICT_KEY];
     }];
     
 }

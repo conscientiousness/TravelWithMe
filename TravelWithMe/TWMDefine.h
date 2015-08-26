@@ -71,6 +71,10 @@
 //鄉鎮市區
 #define MAPVIEW_LOCALITY_DICT_KEY @"locality"
 
+#define MAPVIEW_MEMO_DICT_KEY @"memo"
+
+#define MAPVIEW_SHAREPHOTO_DICT_KEY @"sharePhoto"
+
 /*
  * PARSE 欄位定義
 */
