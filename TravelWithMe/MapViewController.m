@@ -13,12 +13,24 @@
 #import "MapPostViewController.h"
 #import "SelectTypeViewController.h"
 
+//類別
+#define MAPVIEW_SELECTEDTYPE_DICT_KEY @"selectedType"
+//緯度
+#define MAPVIEW_LATITUDE_DICT_KEY @"latitude"
+//經度
+#define MAPVIEW_LONGITUDE_DICT_KEY @"longitude"
+//國家
+#define MAPVIEW_COUNTRY_DICT_KEY @"country"
+//城市
+#define MAPVIEW_CITY_DICT_KEY @"city"
 
 @interface MapViewController ()<MKMapViewDelegate,CLLocationManagerDelegate>
 {
-    CLLocationManager*locationManager;
+    CLLocationManager *locationManager;
     BOOL isFirstLocationReceived;
     PFUser *user;
+    NSMutableDictionary *passDataDict;
+    CLLocation *currentLocation;
 }
 @property (weak, nonatomic) IBOutlet UIView *AnimationsView;
 @property (weak, nonatomic) IBOutlet MKMapView *theMapView;
@@ -31,8 +43,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    
     
     locationManager = [CLLocationManager new];
     
@@ -55,7 +65,7 @@
     
     
     [[NSNotificationCenter defaultCenter]addObserver:self
-                                            selector:@selector(initFlatRoundedButton)
+                                            selector:@selector(didTopChildDismiss)
                                                 name:TOP_CHILD_DISMISSED_NOTIFICATION
                                               object:nil];
     
@@ -64,6 +74,7 @@
                                             selector:@selector(presentToMapPost:)
                                                 name:PRESENT_TO_MAPPOSTVIEW_NOTIFICATION
                                               object:nil];
+    
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -77,13 +88,21 @@
         user = nil;
     }
     [self initFlatRoundedButton];
+    
+    if(passDataDict==nil)
+        passDataDict = [NSMutableDictionary new];
 }
 
 
-#pragma mark - 初始化新增按鈕
+#pragma mark - 子畫面Dismiss
+- (void) didTopChildDismiss {
+    passDataDict = nil;
+    [self initFlatRoundedButton];
+}
+
 - (void) initFlatRoundedButton {
     
-    
+    //重創建動態ADD按鈕
     self.mapFlatRoundedButton = [[VBFPopFlatButton alloc]initWithFrame:CGRectMake(MAP_FLAT_BTN_CGRECTMAKE)
                                                             buttonType:buttonAddType
                                                            buttonStyle:buttonRoundedStyle
@@ -100,7 +119,15 @@
 #pragma mark - 當類別按鈕按下，present到PO文畫面
 - (void) presentToMapPost:(NSNotification*)notification {
     
-    //NSLog(@"%@",[notification userInfo]);
+    //prepare passing value
+    [passDataDict setValue:[NSNumber numberWithDouble:currentLocation.coordinate.latitude] forKey:MAPVIEW_LATITUDE_DICT_KEY];
+    [passDataDict setValue:[NSNumber numberWithDouble:currentLocation.coordinate.longitude] forKey:MAPVIEW_LONGITUDE_DICT_KEY];
+    [passDataDict setValue:[notification userInfo][@"selectedType"] forKey:MAPVIEW_SELECTEDTYPE_DICT_KEY];
+    //由緯經度反查地點
+    [self getGeoCoderPlacemarks];
+    
+    NSLog(@"%@",passDataDict.description);
+    
     
     MapPostViewController *targetViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"mapPostViewController"];
     
@@ -114,7 +141,9 @@
 
 #pragma mark - 按下新增按鈕，present到類別按鈕畫面
 - (void) didSelectedType {
-        
+    
+    [self getGeoCoderPlacemarks];
+    
     //移除按鈕，當返回時在init才有按鈕特效
     [_mapFlatRoundedButton removeFromSuperview];
     
@@ -194,6 +223,7 @@
 
 
 - (IBAction)SmartCompassBtnPressed:(id)sender {
+    
     // CATransition
     CATransition *transition = [CATransition animation];
     transition.duration=0.5; //動畫時間
@@ -252,13 +282,13 @@
 //
 
 #pragma mark - CLLocationManager Delegate Methoods
-
+//取得所在位置
 -(void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
     
-    CLLocation *currentLocation = locations.lastObject;
+    currentLocation = locations.lastObject;
     
-//  顯示小數點
-//  NSLog(@"Current Location:%.6f,%.6f",currentLocation.coordinate.latitude,currentLocation.coordinate.longitude);
+    //顯示小數點
+    //NSLog(@"Current Location:%.8f,%.8f",currentLocation.coordinate.latitude,currentLocation.coordinate.longitude);
     
     if(isFirstLocationReceived == false)
     {
@@ -271,6 +301,27 @@
         
         isFirstLocationReceived =true;
     }
+}
+
+#pragma mark - 反查地點
+-(void)getGeoCoderPlacemarks{
+    
+    CLGeocoder *gecorder=[CLGeocoder new];
+    NSMutableArray *placeAry = [NSMutableArray new];
+    
+    [gecorder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks,NSError *error){
+        
+        //NSLog(@"Result:%@",placemarks.description);
+        CLPlacemark *placemark = placemarks[0];
+        
+        //NSLog(@"1:%@,2:%@,3:%@,4:%@,5:%@",placemark.country,placemark.location,placemark.administrativeArea,placemark.thoroughfare,placemark.subThoroughfare);
+        
+        [placeAry addObjectsFromArray:placemarks];
+        
+        [passDataDict setValue:placemark.country forKey:MAPVIEW_COUNTRY_DICT_KEY];
+        [passDataDict setValue:placemark.administrativeArea forKey:MAPVIEW_CITY_DICT_KEY];
+    }];
+
 }
 
 @end
