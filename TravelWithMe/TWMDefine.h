@@ -16,6 +16,8 @@
 #pragma mark - NSNotification
 
 #define PUBLISH_DONE_NOTIFICATION
+#define TOP_CHILD_DISMISSED_NOTIFICATION @"TopChildDismissed"
+#define PRESENT_TO_MAPPOSTVIEW_NOTIFICATION @"PresentToMapPost"
 
 /*
  * PostViewControllert - 發文畫面 常數定義

@@ -7,8 +7,8 @@
 //
 
 #import "SelectTypeViewController.h"
+#import "MapViewController.h"
 #import "VBFPopFlatButton.h"
-#import "MapPostViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
 #define VIEW_HEIGHT self.view.frame.size.height
@@ -19,6 +19,7 @@
     UIDynamicAnimator *animator;
     UIDynamicAnimator *animator2;
     UIDynamicAnimator *animator3;
+    NSDictionary *userInfoDict;
 }
 @property (nonatomic, strong) VBFPopFlatButton *flatRoundedButton;
 @property (nonatomic, strong) UIButton *foodBtn;
@@ -36,10 +37,6 @@
     [self initAnimator];
     [self initTypeBtn];
     
-    [[NSNotificationCenter defaultCenter]addObserver:self
-                                            selector:@selector(topChildDismissed)
-                                                name:@"TopChildDismissed"
-                                              object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -116,7 +113,7 @@
 
 #pragma mark - 點選取消按鈕
 -(void) flatRoundedButtonPressed {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"TopChildDismissed" object:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:TOP_CHILD_DISMISSED_NOTIFICATION object:self];
     [self dismissViewControllerAnimated:NO completion:nil];
 }
 
@@ -125,30 +122,31 @@
 
 -(void) foodBtnPressed:(UIButton *)button {
     
-    [self willPrestentToMapPost];
+    [self willPrestentToMapPost:@"food"];
 }
 
 -(void) landscapePressed:(UIButton *)button {
     
-    [self willPrestentToMapPost];
+    [self willPrestentToMapPost:@"landscape"];
 }
 
 -(void) peoplePressed:(UIButton *)button {
     
-    [self willPrestentToMapPost];
+    [self willPrestentToMapPost:@"people"];
 }
 
--(void) willPrestentToMapPost {
+// dismiss後在present到po文畫面
+-(void) willPrestentToMapPost:(NSString*)typeString {
+    //傳回所選類別
+    if(userInfoDict==nil)
+        userInfoDict = [NSDictionary new];
+    
+    userInfoDict = @{@"selectedType":typeString};
+    
     [self dismissViewControllerAnimated:NO completion:nil];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"PresentToMapPost" object:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:PRESENT_TO_MAPPOSTVIEW_NOTIFICATION object:self userInfo:userInfoDict];
 }
 
--(void)topChildDismissed {
-    [self dismissViewControllerAnimated:NO completion:^{
-        
-        //[self dismissViewControllerAnimated:NO completion:nil];
-    }];
-}
 
 -(void)dealloc{
     //NSLog(@"dealloc is YES");

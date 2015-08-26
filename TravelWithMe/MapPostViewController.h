@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^SendStatusBack)(BOOL isSave);
-
 @interface MapPostViewController : UIViewController
-@property (nonatomic,strong) SendStatusBack block;
+@property(nonatomic,strong) NSString *selectedtypeString;
 @end

@@ -158,6 +158,9 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="DR4-IO-8Ac"/>
+                                <exclude reference="2xr-pn-zrp"/>
+                                <exclude reference="WSx-rO-ihr"/>
+                                <exclude reference="aka-01-bfT"/>
                             </mask>
                         </variation>
                     </view>

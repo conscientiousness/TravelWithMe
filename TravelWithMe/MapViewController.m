@@ -11,20 +11,21 @@
 #import <CoreLocation/CoreLocation.h>
 #import "VBFPopFlatButton.h"
 #import "MapPostViewController.h"
+#import "SelectTypeViewController.h"
 
 
 @interface MapViewController ()<MKMapViewDelegate,CLLocationManagerDelegate>
+{
+    CLLocationManager*locationManager;
+    BOOL isFirstLocationReceived;
+    PFUser *user;
+}
 @property (weak, nonatomic) IBOutlet UIView *AnimationsView;
 @property (weak, nonatomic) IBOutlet MKMapView *theMapView;
 @property (nonatomic, strong) VBFPopFlatButton *mapFlatRoundedButton;
 @end
 
 @implementation MapViewController
-{
-   CLLocationManager*locationManager;
-    BOOL isFirstLocationReceived;
-    PFUser *user;
-}
 
 
 - (void)viewDidLoad {
@@ -55,13 +56,13 @@
     
     [[NSNotificationCenter defaultCenter]addObserver:self
                                             selector:@selector(initFlatRoundedButton)
-                                                name:@"TopChildDismissed"
+                                                name:TOP_CHILD_DISMISSED_NOTIFICATION
                                               object:nil];
     
 
     [[NSNotificationCenter defaultCenter]addObserver:self
-                                            selector:@selector(presentToMapPost)
-                                                name:@"PresentToMapPost"
+                                            selector:@selector(presentToMapPost:)
+                                                name:PRESENT_TO_MAPPOSTVIEW_NOTIFICATION
                                               object:nil];
 }
 
@@ -96,19 +97,25 @@
     [_theMapView addSubview:self.mapFlatRoundedButton];
 }
 
-
-- (IBAction)backClick:(UIButton *)sender {
-    [self.theMapView setCenterCoordinate:self.theMapView.userLocation.coordinate animated:YES];
-}
-
-- (void) presentToMapPost {
+#pragma mark - 當類別按鈕按下，present到PO文畫面
+- (void) presentToMapPost:(NSNotification*)notification {
+    
+    //NSLog(@"%@",[notification userInfo]);
+    
     MapPostViewController *targetViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"mapPostViewController"];
+    
+    //所選類別在丟到MapPostViewController
+    targetViewController.selectedtypeString = [notification userInfo][@"selectedType"];
+    
+    //以覆蓋方式在原本VC上面(注意:dismiss時,不會觸發viewWillAppear等)
     targetViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
     [self presentViewController:targetViewController animated:YES completion:nil];
 }
 
+#pragma mark - 按下新增按鈕，present到類別按鈕畫面
 - (void) didSelectedType {
-    
+        
+    //移除按鈕，當返回時在init才有按鈕特效
     [_mapFlatRoundedButton removeFromSuperview];
     
     UIViewController *targetViewController;
@@ -136,6 +143,11 @@
         [self presentViewController:targetViewController animated:YES completion:nil];
     }
     
+}
+
+#pragma mark - 回到User所在位置
+- (IBAction)backClick:(UIButton *)sender {
+    [self.theMapView setCenterCoordinate:self.theMapView.userLocation.coordinate animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

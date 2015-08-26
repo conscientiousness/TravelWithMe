@@ -7,6 +7,7 @@
 //
 
 #import "MapPostViewController.h"
+#import "SelectTypeViewController.h"
 #import "PostTypeTableViewCell.h"
 #import "PostMapPhotoTableViewCell.h"
 #import "PostMapMemoTableViewCell.h"
@@ -36,9 +37,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
     if (!user) {
         user = [PFUser currentUser];
     }
+    
+    //NSLog(@"%@",_selectedtypeString);
     
     [self initUI];
 }
@@ -98,7 +102,7 @@
     
     
     [self dismissViewControllerAnimated:YES completion:^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"TopChildDismissed" object:self];
+        [[NSNotificationCenter defaultCenter] postNotificationName:TOP_CHILD_DISMISSED_NOTIFICATION object:self];
     }];
 }
 
@@ -106,7 +110,7 @@
     
     
     [self dismissViewControllerAnimated:YES completion:^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"TopChildDismissed" object:self];
+        [[NSNotificationCenter defaultCenter] postNotificationName:TOP_CHILD_DISMISSED_NOTIFICATION object:self];
     }];
 }
 
