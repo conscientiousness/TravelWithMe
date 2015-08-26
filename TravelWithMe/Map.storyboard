@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -130,6 +130,11 @@
                                     <constraint firstAttribute="trailing" secondItem="QUM-pf-INY" secondAttribute="trailing" constant="8" id="pO2-Md-5nx"/>
                                     <constraint firstItem="YYq-gb-ABI" firstAttribute="top" secondItem="pYD-3Q-OiU" secondAttribute="top" constant="27" id="q1p-MH-yCB"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Q0y-ff-67b"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -219,7 +224,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="PY3-YW-3W1" customClass="TPKeyboardAvoidingTableView">
-                                <rect key="frame" x="0.0" y="69" width="600" height="931"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="936"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1070" id="kGN-DM-c7M"/>
@@ -349,31 +354,32 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wqc-qO-dxh">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="69"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map-post-location-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="R63-3p-Os4">
-                                        <rect key="frame" x="276" y="35.5" width="18" height="18"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map-post-location-white-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="R63-3p-Os4">
+                                        <rect key="frame" x="276" y="33" width="18" height="18"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="18" id="p8G-Zl-QBG"/>
                                             <constraint firstAttribute="height" constant="18" id="xPL-IN-LjW"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="台中" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbs-Xv-3B3">
-                                        <rect key="frame" x="297" y="36.5" width="232" height="14.5"/>
+                                        <rect key="frame" x="297" y="34" width="232" height="14.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="232" id="lEk-fI-qee"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <color key="textColor" red="0.74117647060000003" green="0.74117647060000003" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <color key="backgroundColor" red="0.21356445418565337" green="0.65216874628639343" blue="0.5257006549198493" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="jbs-Xv-3B3" secondAttribute="trailing" constant="60" id="3Gd-Az-yaO"/>
                                     <constraint firstAttribute="centerY" secondItem="R63-3p-Os4" secondAttribute="centerY" id="5Vv-YP-ReF"/>
                                     <constraint firstItem="jbs-Xv-3B3" firstAttribute="centerY" secondItem="R63-3p-Os4" secondAttribute="centerY" id="Kox-jD-XYe"/>
                                     <constraint firstAttribute="height" constant="65" id="fqY-CQ-OML"/>
-                                    <constraint firstAttribute="height" constant="69" id="mpR-r7-WRT"/>
+                                    <constraint firstAttribute="height" constant="64" id="mpR-r7-WRT"/>
                                     <constraint firstAttribute="centerY" secondItem="R63-3p-Os4" secondAttribute="centerY" constant="-10" id="nEc-wk-uYi"/>
                                     <constraint firstItem="jbs-Xv-3B3" firstAttribute="leading" secondItem="R63-3p-Os4" secondAttribute="trailing" constant="3" id="pwU-qs-CUg"/>
                                     <constraint firstAttribute="centerX" secondItem="R63-3p-Os4" secondAttribute="centerX" constant="15" id="ukZ-uX-nUH"/>
@@ -455,7 +461,7 @@
         <image name="Compass Filled-100.png" width="100" height="100"/>
         <image name="Define Location Filled-100.png" width="100" height="100"/>
         <image name="join-icon.png" width="64" height="64"/>
-        <image name="map-post-location-icon.png" width="32" height="32"/>
+        <image name="map-post-location-white-icon.png" width="32" height="32"/>
         <image name="share_photo.png" width="718" height="728"/>
     </resources>
 </document>

@@ -10,7 +10,7 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "VBFPopFlatButton.h"
-
+#import "MapPostViewController.h"
 
 
 @interface MapViewController ()<MKMapViewDelegate,CLLocationManagerDelegate>
@@ -55,9 +55,14 @@
     
     [[NSNotificationCenter defaultCenter]addObserver:self
                                             selector:@selector(initFlatRoundedButton)
-                                                name:@"isDismiss"
+                                                name:@"TopChildDismissed"
                                               object:nil];
+    
 
+    [[NSNotificationCenter defaultCenter]addObserver:self
+                                            selector:@selector(presentToMapPost)
+                                                name:@"PresentToMapPost"
+                                              object:nil];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -96,6 +101,12 @@
     [self.theMapView setCenterCoordinate:self.theMapView.userLocation.coordinate animated:YES];
 }
 
+- (void) presentToMapPost {
+    MapPostViewController *targetViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"mapPostViewController"];
+    targetViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    [self presentViewController:targetViewController animated:YES completion:nil];
+}
+
 - (void) didSelectedType {
     
     [_mapFlatRoundedButton removeFromSuperview];
@@ -113,7 +124,7 @@
         //[self presentViewController:targetViewController animated:NO completion:nil];
         
         targetViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-        self.navigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        //self.navigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
         [self presentViewController:targetViewController animated:NO completion:nil];
         
     } else {

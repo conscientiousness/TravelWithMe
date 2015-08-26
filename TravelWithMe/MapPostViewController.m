@@ -70,9 +70,9 @@
     //送出
     _flatSendBtn = [[VBFPopFlatButton alloc]initWithFrame:CGRectMake(_topView.frame.size.width-30, _topView.center.y, 20, 20)
                                                buttonType:buttonOkType
-                                              buttonStyle:buttonRoundedStyle
+                                              buttonStyle:buttonPlainStyle
                                     animateToInitialState:YES];
-    _flatSendBtn.roundBackgroundColor = [UIColor customGreenColor];
+    //_flatSendBtn.roundBackgroundColor = [UIColor whiteColor];
     _flatSendBtn.lineThickness = 2;
     _flatSendBtn.tintColor = [UIColor whiteColor];
     [_flatSendBtn addTarget:self
@@ -83,9 +83,9 @@
     //取消
     _flatCancelBtn = [[VBFPopFlatButton alloc]initWithFrame:CGRectMake(12, _topView.center.y, 20, 20)
                                                buttonType:buttonCloseType
-                                              buttonStyle:buttonRoundedStyle
+                                              buttonStyle:buttonPlainStyle
                                     animateToInitialState:YES];
-    _flatCancelBtn.roundBackgroundColor = [UIColor redColor];
+    //_flatCancelBtn.roundBackgroundColor = [UIColor redColor];
     _flatCancelBtn.lineThickness = 2;
     _flatCancelBtn.tintColor = [UIColor whiteColor];
     [_flatCancelBtn addTarget:self
@@ -94,6 +94,21 @@
     [_topView addSubview:_flatCancelBtn];
 }
 
+- (void) sendBtnPressed:(UIButton*)button{
+    
+    
+    [self dismissViewControllerAnimated:YES completion:^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"TopChildDismissed" object:self];
+    }];
+}
+
+- (void) cancelBtnPressed:(UIButton*)button{
+    
+    
+    [self dismissViewControllerAnimated:YES completion:^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"TopChildDismissed" object:self];
+    }];
+}
 
 - (void)publishBtnPressed:(id *)sender {
     [self.view endEditing:YES];
@@ -461,19 +476,8 @@
     //[self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void) sendBtnPressed:(UIButton*)button{
- 
-    
-    [self dismissViewControllerAnimated:NO completion:^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"TopChildDismissed" object:self];
-    }];
-}
 
-- (void) cancelBtnPressed:(UIButton*)button{
-    
-    
-    [self dismissViewControllerAnimated:NO completion:nil];
-}
+
 
 @end
 

@@ -55,6 +55,7 @@
 		F43F90741B8C80A300E509F3 /* PostTypeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F43F90731B8C80A300E509F3 /* PostTypeTableViewCell.m */; };
 		F43F90771B8C80C700E509F3 /* PostMapPhotoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F43F90761B8C80C700E509F3 /* PostMapPhotoTableViewCell.m */; };
 		F43F907A1B8C80EB00E509F3 /* PostMapMemoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F43F90791B8C80EB00E509F3 /* PostMapMemoTableViewCell.m */; };
+		F440B8D11B8D573000D56D9B /* map-post-location-white-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F440B8D01B8D573000D56D9B /* map-post-location-white-icon.png */; };
 		F44282FE1B875A9700D1F776 /* edit-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F44282FB1B875A9700D1F776 /* edit-icon.png */; };
 		F44282FF1B875A9700D1F776 /* search-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F44282FC1B875A9700D1F776 /* search-icon.png */; };
 		F44283001B875A9700D1F776 /* watch-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F44282FD1B875A9700D1F776 /* watch-icon.png */; };
@@ -209,6 +210,7 @@
 		F43F90761B8C80C700E509F3 /* PostMapPhotoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostMapPhotoTableViewCell.m; sourceTree = "<group>"; };
 		F43F90781B8C80EB00E509F3 /* PostMapMemoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostMapMemoTableViewCell.h; sourceTree = "<group>"; };
 		F43F90791B8C80EB00E509F3 /* PostMapMemoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostMapMemoTableViewCell.m; sourceTree = "<group>"; };
+		F440B8D01B8D573000D56D9B /* map-post-location-white-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-post-location-white-icon.png"; sourceTree = "<group>"; };
 		F44282FB1B875A9700D1F776 /* edit-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit-icon.png"; sourceTree = "<group>"; };
 		F44282FC1B875A9700D1F776 /* search-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-icon.png"; sourceTree = "<group>"; };
 		F44282FD1B875A9700D1F776 /* watch-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "watch-icon.png"; sourceTree = "<group>"; };
@@ -428,6 +430,7 @@
 				F43F90781B8C80EB00E509F3 /* PostMapMemoTableViewCell.h */,
 				F43F90791B8C80EB00E509F3 /* PostMapMemoTableViewCell.m */,
 				F43F90701B8C7EAC00E509F3 /* map-post-location-icon.png */,
+				F440B8D01B8D573000D56D9B /* map-post-location-white-icon.png */,
 			);
 			name = MapView;
 			sourceTree = "<group>";
@@ -833,6 +836,7 @@
 				F44283021B875C2200D1F776 /* back-icon.png in Resources */,
 				F42EBDA41B68C8D400606D9B /* (null) in Resources */,
 				F47556AA1B4BACF2008CEE3A /* Main.storyboard in Resources */,
+				F440B8D11B8D573000D56D9B /* map-post-location-white-icon.png in Resources */,
 				F4CEF12F1B81D251006D2B71 /* share_photo.png in Resources */,
 				F47556AF1B4BACF2008CEE3A /* LaunchScreen.xib in Resources */,
 				F43F906F1B8C415000E509F3 /* no-interested-add-icon.png in Resources */,

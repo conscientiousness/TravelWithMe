@@ -65,6 +65,10 @@
     [self setBtnDynamicAnimator];
 }
 
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+}
+
 #pragma mark - 初始化動態行為
 - (void) initAnimator {
     animator = [[UIDynamicAnimator alloc]initWithReferenceView:self.view];
@@ -112,7 +116,7 @@
 
 #pragma mark - 點選取消按鈕
 -(void) flatRoundedButtonPressed {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"isDismiss" object:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"TopChildDismissed" object:self];
     [self dismissViewControllerAnimated:NO completion:nil];
 }
 
@@ -120,25 +124,29 @@
 #pragma mark - 點選類別按鈕
 
 -(void) foodBtnPressed:(UIButton *)button {
-    MapPostViewController *targetViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"mapPostViewController"];
     
-    //targetViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-    
-    [self presentViewController:targetViewController animated:NO completion:nil];
+    [self willPrestentToMapPost];
 }
 
 -(void) landscapePressed:(UIButton *)button {
     
+    [self willPrestentToMapPost];
 }
 
 -(void) peoplePressed:(UIButton *)button {
     
+    [self willPrestentToMapPost];
+}
+
+-(void) willPrestentToMapPost {
+    [self dismissViewControllerAnimated:NO completion:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"PresentToMapPost" object:self];
 }
 
 -(void)topChildDismissed {
     [self dismissViewControllerAnimated:NO completion:^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"isDismiss" object:self];
-        [self dismissViewControllerAnimated:NO completion:nil];
+        
+        //[self dismissViewControllerAnimated:NO completion:nil];
     }];
 }
 
