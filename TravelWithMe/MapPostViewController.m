@@ -57,8 +57,6 @@
     [super viewDidAppear:animated];
     
     [self initUI];
-    
-    
 }
 
 - (void)initUI {
@@ -68,9 +66,6 @@
     //關閉分隔線
     [_mapPostTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
-    //設定所在地點
-    _loactionLabel.text = [NSString stringWithFormat:@"%@,%@",_dictDatas[MAPPOST_COUNTRY_KEY],_dictDatas[MAPPOST_LOCALITY_KEY]];
-    
     //初始化送出取消按鈕
     [self initFlatBtn];
 }
@@ -78,7 +73,7 @@
 #pragma mark - 初始化送出與取消按鈕
 - (void)initFlatBtn {
     //送出
-    _flatSendBtn = [[VBFPopFlatButton alloc]initWithFrame:CGRectMake(_topView.frame.size.width-30, _topView.center.y-5, 25, 25)
+    _flatSendBtn = [[VBFPopFlatButton alloc]initWithFrame:CGRectMake(_topView.frame.size.width-30, _topView.center.y-5, 20, 20)
                                                buttonType:buttonOkType
                                               buttonStyle:buttonPlainStyle
                                     animateToInitialState:YES];
@@ -452,6 +447,8 @@
     
     CLGeocoder *gecorder = [CLGeocoder new];
 
+    //NSLog(@"%f,%f",[_dictDatas[MAPPOST_LATITUDE_KEY] doubleValue],[_dictDatas[MAPPOST_LONGITUDE_KEY] doubleValue]);
+    
     CLLocation *location =[[CLLocation alloc] initWithLatitude:[_dictDatas[MAPPOST_LATITUDE_KEY] doubleValue] longitude:[_dictDatas[MAPPOST_LONGITUDE_KEY] doubleValue]];
     
     [gecorder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks,NSError *error){
@@ -464,9 +461,12 @@
 //            NSLog(@"address dic %@",placemark.addressDictionary);
 //        }
         
-        //NSLog(@"1:%@,  2:%@  3:%@",placemark.country,placemark.c,placemark.locality);
+        //NSLog(@"1:%@,  2:%@  3:%@",placemark.country,placemark.administrativeArea,placemark.locality);
         
         //country  國家 administrativeArea 縣市(台灣沒有這一級) locality 鄉鎮區市
+        
+        //設定所在地點
+        _loactionLabel.text = [NSString stringWithFormat:@"%@,%@",placemark.country,placemark.locality];
         
         [_dictDatas setObject:placemark.country forKey:MAPPOST_COUNTRY_KEY];
         [_dictDatas setObject:placemark.locality forKey:MAPPOST_LOCALITY_KEY];

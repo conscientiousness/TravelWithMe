@@ -20,7 +20,6 @@
     BOOL isFirstLocationReceived;
     PFUser *user;
     NSMutableDictionary *passDataDict;
-    CLLocation *currentLocation;
     CLGeocoder *gecorder;
 }
 @property (weak, nonatomic) IBOutlet UIView *AnimationsView;
@@ -46,7 +45,7 @@
     
     // Prepare locationManager
     // 定位需求 10公尺 Wifi
-    locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     // 定位等級 行走
     locationManager.activityType=CLActivityTypeFitness;
     locationManager.delegate=self;
@@ -112,9 +111,9 @@
 - (void) presentToMapPost:(NSNotification*)notification {
     
     //prepare passing value
-    [passDataDict setValue:[NSNumber numberWithDouble:currentLocation.coordinate.latitude] forKey:MAPPOST_LATITUDE_KEY];
-    [passDataDict setValue:[NSNumber numberWithDouble:currentLocation.coordinate.longitude] forKey:MAPPOST_LONGITUDE_KEY];
     [passDataDict setValue:[notification userInfo][MAPPOST_TYPE_KEY] forKey:MAPPOST_TYPE_KEY];
+    
+    //NSLog(@"%@",passDataDict);
 
     //丟字典給PO文畫面
     //self.block(passDataDict);
@@ -272,11 +271,15 @@
 //取得所在位置
 -(void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
     
-    currentLocation = locations.lastObject;
+    CLLocation *currentLocation = locations.lastObject;
     
     //顯示小數點
     //NSLog(@"Current Location:%.8f,%.8f",currentLocation.coordinate.latitude,currentLocation.coordinate.longitude);
     
+    [passDataDict setValue:[NSNumber numberWithDouble:currentLocation.coordinate.latitude] forKey:MAPPOST_LATITUDE_KEY];
+    [passDataDict setValue:[NSNumber numberWithDouble:currentLocation.coordinate.longitude] forKey:MAPPOST_LONGITUDE_KEY];
+    
+    //取得USER位置後，依設定置中USER縮放地圖
     if(isFirstLocationReceived == false)
     {
         MKCoordinateRegion region = _theMapView.region;
