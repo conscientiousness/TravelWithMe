@@ -32,10 +32,10 @@
 }
 - (void)initUI {
     
-    _favoriteTableView.backgroundColor = [UIColor homeCellbgColor];
+ //   _favoriteTableView.backgroundColor = [UIColor homeCellbgColor];
     //透明度
     _favoriteTableView.opaque = NO;
-    
+    [_favoriteTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
 
 - (void)didReceiveMemoryWarning {

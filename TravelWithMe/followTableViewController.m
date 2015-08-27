@@ -31,10 +31,10 @@
 }
 - (void)initUI {
     
-    _followTableView.backgroundColor = [UIColor homeCellbgColor];
+ //   _followTableView.backgroundColor = [UIColor homeCellbgColor];
     //透明度
     _followTableView.opaque = NO;
-    
+[_followTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
     
 }

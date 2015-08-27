@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -25,7 +26,7 @@
             <objects>
                 <tableViewController id="xg1-5p-8xQ" customClass="favoriteTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="kmx-Ok-64g">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="530"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -47,7 +48,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RCD-Jx-1pD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-833" y="1186"/>
+            <point key="canvasLocation" x="-509" y="1162"/>
         </scene>
         <!--Favorite Detail View Controller-->
         <scene sceneID="JbY-p4-MwN">
@@ -83,25 +84,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WaU-a7-hPy">
-                                <rect key="frame" x="0.0" y="28" width="600" height="620"/>
+                                <rect key="frame" x="0.0" y="36" width="600" height="564"/>
                                 <connections>
                                     <segue destination="QXW-ge-TAD" kind="embed" id="m7P-zD-GcN"/>
                                 </connections>
                             </containerView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="QkN-W2-ehl">
-                                <rect key="frame" x="0.0" y="64" width="600" height="29"/>
-                                <color key="backgroundColor" red="1" green="0.83211312150000005" blue="0.5507469546" alpha="1" colorSpace="calibratedRGB"/>
-                                <segments>
-                                    <segment title="我參加的"/>
-                                    <segment title="我追蹤的"/>
-                                </segments>
-                                <color key="tintColor" red="0.49479337979999999" green="1" blue="0.93790749240000004" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="btn:" destination="Z3G-jl-y2E" eventType="valueChanged" id="2b4-ew-mqP"/>
-                                </connections>
-                            </segmentedControl>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RqM-JI-ZVM">
+                                <rect key="frame" x="0.0" y="64" width="600" height="36"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="QkN-W2-ehl">
+                                        <rect key="frame" x="158" y="4" width="290" height="29"/>
+                                        <segments>
+                                            <segment title="我參加的" width="145"/>
+                                            <segment title="我追蹤的" width="145"/>
+                                        </segments>
+                                        <color key="tintColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="btn:" destination="Z3G-jl-y2E" eventType="valueChanged" id="2b4-ew-mqP"/>
+                                        </connections>
+                                    </segmentedControl>
+                                </subviews>
+                                <color key="backgroundColor" red="0.52549019610000003" green="1" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="QkN-W2-ehl" secondAttribute="centerX" constant="-3" id="EaW-hM-1fl"/>
+                                    <constraint firstItem="QkN-W2-ehl" firstAttribute="top" secondItem="RqM-JI-ZVM" secondAttribute="top" constant="4" id="Jdh-nw-9c0"/>
+                                </constraints>
+                            </view>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8mo-81-2Db">
-                                <rect key="frame" x="0.0" y="92" width="600" height="530"/>
+                                <rect key="frame" x="0.0" y="100" width="600" height="500"/>
                                 <connections>
                                     <segue destination="xg1-5p-8xQ" kind="embed" id="od6-9y-Gjy"/>
                                 </connections>
@@ -109,9 +119,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="QkN-W2-ehl" firstAttribute="leading" secondItem="gus-IG-L7W" secondAttribute="leading" id="ARh-fx-biO"/>
-                            <constraint firstAttribute="trailing" secondItem="QkN-W2-ehl" secondAttribute="trailing" id="Oba-bK-Ct1"/>
-                            <constraint firstItem="QkN-W2-ehl" firstAttribute="top" secondItem="3EY-e4-tCo" secondAttribute="bottom" id="j9T-X7-JWX"/>
+                            <constraint firstItem="RqM-JI-ZVM" firstAttribute="top" secondItem="3EY-e4-tCo" secondAttribute="bottom" id="FIv-FT-59k"/>
+                            <constraint firstItem="RqM-JI-ZVM" firstAttribute="leading" secondItem="gus-IG-L7W" secondAttribute="leadingMargin" constant="-16" id="YHE-Tj-Qf4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="RqM-JI-ZVM" secondAttribute="trailing" constant="-16" id="c2Z-ye-mW7"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="27b-lv-gPF">
@@ -131,7 +141,7 @@
             <objects>
                 <tableViewController id="QXW-ge-TAD" customClass="followTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="RJn-5u-Pi1">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="620"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="564"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
