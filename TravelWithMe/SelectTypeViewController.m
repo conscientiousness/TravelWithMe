@@ -141,7 +141,7 @@
     if(userInfoDict==nil)
         userInfoDict = [NSDictionary new];
     
-    userInfoDict = @{@"selectedType":typeString};
+    userInfoDict = @{MAPPOST_TYPE_KEY:typeString};
     
     [self dismissViewControllerAnimated:NO completion:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:PRESENT_TO_MAPPOSTVIEW_NOTIFICATION object:self userInfo:userInfoDict];

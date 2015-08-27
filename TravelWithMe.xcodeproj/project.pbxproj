@@ -12,7 +12,6 @@
 		A50ED4411B7852D200651C3E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A50ED4401B7852D200651C3E /* Foundation.framework */; };
 		A519F60A1B8C0FFF001D0A78 /* login-background-video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = A519F6091B8C0FFF001D0A78 /* login-background-video.mp4 */; };
 		A519F60C1B8C1012001D0A78 /* Delete Sign Filled-100.png in Resources */ = {isa = PBXBuildFile; fileRef = A519F60B1B8C1012001D0A78 /* Delete Sign Filled-100.png */; };
-		A521DE041B864E5400A0173D /* Delete Sign-100.png in Resources */ = {isa = PBXBuildFile; fileRef = A521DE031B864E5400A0173D /* Delete Sign-100.png */; };
 		A521DE0A1B864F5200A0173D /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A52B782F1B81BE1E00F8DEF2 /* NotificationCenter.framework */; };
 		A521DE101B864F5200A0173D /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A521DE0F1B864F5200A0173D /* TodayViewController.m */; };
 		A521DE121B864F5200A0173D /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A521DE111B864F5200A0173D /* MainInterface.storyboard */; };
@@ -24,8 +23,6 @@
 		A55669951B80EAE300F588E3 /* CExpandHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = A55669941B80EAE300F588E3 /* CExpandHeader.m */; };
 		A55AD25F1B8AF803009AC07B /* demo_7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A55AD25E1B8AF803009AC07B /* demo_7.jpg */; };
 		A56DC6261B80EC3E009C621F /* 22.png in Resources */ = {isa = PBXBuildFile; fileRef = A56DC6251B80EC3E009C621F /* 22.png */; };
-		A57D5BD31B8CD451000D3239 /* Define Location Filled-100.png in Resources */ = {isa = PBXBuildFile; fileRef = A57D5BD21B8CD451000D3239 /* Define Location Filled-100.png */; };
-		A57D5BD51B8CD45C000D3239 /* Compass Filled-100.png in Resources */ = {isa = PBXBuildFile; fileRef = A57D5BD41B8CD45C000D3239 /* Compass Filled-100.png */; };
 		A5D374921B646BEC00A57791 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5D374911B646BEC00A57791 /* MessageUI.framework */; };
 		A5E1670D1B6903B70036ABE4 /* SettingTableViewControlle.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E1670C1B6903B70036ABE4 /* SettingTableViewControlle.m */; };
 		B51A23321B7A5C9900CFD674 /* favoriteMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51A232B1B7A5C9900CFD674 /* favoriteMainViewController.m */; };
@@ -47,7 +44,6 @@
 		F42EBDB01B68D1EE00606D9B /* (null) in Resources */ = {isa = PBXBuildFile; };
 		F42EBDB21B68FF1400606D9B /* (null) in Resources */ = {isa = PBXBuildFile; };
 		F43B3B7F1B75C03F0034B20F /* JL3MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F43B3B7D1B75C03F0034B20F /* JL3MessageTableViewCell.xib */; };
-		F43C831A1B71B13200D2A389 /* tmp900X640.png in Resources */ = {isa = PBXBuildFile; fileRef = F43C83191B71B13200D2A389 /* tmp900X640.png */; };
 		F43F90681B8AF46D00E509F3 /* exclamation-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F43F90671B8AF46D00E509F3 /* exclamation-icon.png */; };
 		F43F906B1B8B2C0700E509F3 /* SelectTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43F906A1B8B2C0700E509F3 /* SelectTypeViewController.m */; };
 		F43F906F1B8C415000E509F3 /* no-interested-add-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F43F906E1B8C415000E509F3 /* no-interested-add-icon.png */; };
@@ -157,7 +153,6 @@
 		A50ED4401B7852D200651C3E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A519F6091B8C0FFF001D0A78 /* login-background-video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "login-background-video.mp4"; sourceTree = "<group>"; };
 		A519F60B1B8C1012001D0A78 /* Delete Sign Filled-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Delete Sign Filled-100.png"; sourceTree = "<group>"; };
-		A521DE031B864E5400A0173D /* Delete Sign-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Delete Sign-100.png"; sourceTree = "<group>"; };
 		A521DE091B864F5200A0173D /* TraveIWithMe.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TraveIWithMe.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		A521DE0D1B864F5200A0173D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A521DE0E1B864F5200A0173D /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
@@ -176,8 +171,6 @@
 		A55669941B80EAE300F588E3 /* CExpandHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CExpandHeader.m; sourceTree = "<group>"; };
 		A55AD25E1B8AF803009AC07B /* demo_7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = demo_7.jpg; sourceTree = "<group>"; };
 		A56DC6251B80EC3E009C621F /* 22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 22.png; sourceTree = "<group>"; };
-		A57D5BD21B8CD451000D3239 /* Define Location Filled-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Define Location Filled-100.png"; sourceTree = "<group>"; };
-		A57D5BD41B8CD45C000D3239 /* Compass Filled-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Compass Filled-100.png"; sourceTree = "<group>"; };
 		A5D374911B646BEC00A57791 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		A5E1670B1B6903B70036ABE4 /* SettingTableViewControlle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingTableViewControlle.h; sourceTree = "<group>"; };
 		A5E1670C1B6903B70036ABE4 /* SettingTableViewControlle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewControlle.m; sourceTree = "<group>"; };
@@ -198,7 +191,6 @@
 		F420E1581B846FA500D3627F /* no-interested-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no-interested-icon.png"; sourceTree = "<group>"; };
 		F420E15B1B84719800D3627F /* interested-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "interested-icon.png"; sourceTree = "<group>"; };
 		F43B3B7D1B75C03F0034B20F /* JL3MessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JL3MessageTableViewCell.xib; sourceTree = "<group>"; };
-		F43C83191B71B13200D2A389 /* tmp900X640.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tmp900X640.png; sourceTree = "<group>"; };
 		F43F90671B8AF46D00E509F3 /* exclamation-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exclamation-icon.png"; sourceTree = "<group>"; };
 		F43F90691B8B2C0700E509F3 /* SelectTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectTypeViewController.h; sourceTree = "<group>"; };
 		F43F906A1B8B2C0700E509F3 /* SelectTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectTypeViewController.m; sourceTree = "<group>"; };
@@ -414,8 +406,6 @@
 		F443FB411B60FB9A00F30847 /* MapView */ = {
 			isa = PBXGroup;
 			children = (
-				A57D5BD41B8CD45C000D3239 /* Compass Filled-100.png */,
-				A57D5BD21B8CD451000D3239 /* Define Location Filled-100.png */,
 				F443FB421B60FBF300F30847 /* Map.storyboard */,
 				A53CBBB51B67FA630039369A /* MapViewController.h */,
 				A53CBBB61B67FA630039369A /* MapViewController.m */,
@@ -632,7 +622,6 @@
 				F43F906E1B8C415000E509F3 /* no-interested-add-icon.png */,
 				F420E1581B846FA500D3627F /* no-interested-icon.png */,
 				F43F90671B8AF46D00E509F3 /* exclamation-icon.png */,
-				F43C83191B71B13200D2A389 /* tmp900X640.png */,
 				F4CEF12E1B81D251006D2B71 /* share_photo.png */,
 				F44283011B875C2200D1F776 /* back-icon.png */,
 				F47556A81B4BACF2008CEE3A /* Main.storyboard */,
@@ -661,7 +650,6 @@
 			children = (
 				A55669961B80EAEF00F588E3 /* CExpandHeader */,
 				F486EF451B4C34D2008CB97B /* Setting.storyboard */,
-				A521DE031B864E5400A0173D /* Delete Sign-100.png */,
 				A56DC6251B80EC3E009C621F /* 22.png */,
 				A5E1670B1B6903B70036ABE4 /* SettingTableViewControlle.h */,
 				A5E1670C1B6903B70036ABE4 /* SettingTableViewControlle.m */,
@@ -844,7 +832,6 @@
 				F42EBDAC1B68CED800606D9B /* (null) in Resources */,
 				F42EBD661B6877BF00606D9B /* (null) in Resources */,
 				F420E15A1B846FA500D3627F /* no-interested-icon.png in Resources */,
-				A57D5BD31B8CD451000D3239 /* Define Location Filled-100.png in Resources */,
 				A56DC6261B80EC3E009C621F /* 22.png in Resources */,
 				F42EBD6B1B68790500606D9B /* (null) in Resources */,
 				F465736F1B5552D800DA3D7B /* JLTableViewCell.xib in Resources */,
@@ -853,16 +840,13 @@
 				F43F90681B8AF46D00E509F3 /* exclamation-icon.png in Resources */,
 				F42EBDB21B68FF1400606D9B /* (null) in Resources */,
 				F44282FF1B875A9700D1F776 /* search-icon.png in Resources */,
-				A521DE041B864E5400A0173D /* Delete Sign-100.png in Resources */,
 				F47556AC1B4BACF2008CEE3A /* Images.xcassets in Resources */,
 				F43B3B7F1B75C03F0034B20F /* JL3MessageTableViewCell.xib in Resources */,
-				F43C831A1B71B13200D2A389 /* tmp900X640.png in Resources */,
 				F42EBDB01B68D1EE00606D9B /* (null) in Resources */,
 				F420E15C1B84719800D3627F /* interested-icon.png in Resources */,
 				F44282FE1B875A9700D1F776 /* edit-icon.png in Resources */,
 				A519F60A1B8C0FFF001D0A78 /* login-background-video.mp4 in Resources */,
 				F42EBD6A1B68790500606D9B /* (null) in Resources */,
-				A57D5BD51B8CD45C000D3239 /* Compass Filled-100.png in Resources */,
 				F42EBDAE1B68D0C100606D9B /* (null) in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

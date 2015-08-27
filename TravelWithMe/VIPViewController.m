@@ -221,14 +221,14 @@
     lineView.frame=CGRectMake(0, _sectionView.frame.size.height-2, _sectionView.frame.size.width/2, 2);
     [UIView commitAnimations];
     
-    //AFTER(0.2)
-    //{
+    AFTER(0.2)
+    {
         index=0;
         [myViptableView reloadData];
         
         if(KNeedSaveOffset)
             myViptableView.contentOffset=tableOffset1;
-    //});
+    });
 }
 
 -(void) changeToTable2
@@ -247,31 +247,15 @@
     lineView.frame=CGRectMake(_sectionView.frame.size.width/2, _sectionView.frame.size.height-2, _sectionView.frame.size.width/2, 2);
     [UIView commitAnimations];
     
-    //AFTER(0.2)
-    //{
+    AFTER(0.2)
+    {
         index=2;
-    //[myViptableView reloadData];
-    //[_tableView2 reloadData];
-    
-    
-//        MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-//        hud.labelText = @"讀取中...";
-//        
-//        dispatch_queue_t loadingQueue = dispatch_queue_create("loading", nil);
-//        dispatch_async(loadingQueue, ^{
-//            [self getFootprintDatas];
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                //NSLog(@"%ld",myFootprintArrayDatas.count);
-//                _tableView2.frame=CGRectMake(0, 0, self.view.frame.size.width, VIPMYACTIVITYCELL_HEIGHT*myFootprintArrayDatas.count);
-//                [myViptableView reloadData];
-//                [_tableView2 reloadData];
-//                [MBProgressHUD hideHUDForView:self.view animated:YES];
-//            });
-//        });
+        [myViptableView reloadData];
+        [_tableView2 reloadData];
     
         if(KNeedSaveOffset)
             myViptableView.contentOffset=tableOffset2;
-    //});
+    });
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -339,13 +323,13 @@
         
         VIPMyActivityTableViewCell *myFootprintCell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
         
-        myFootprintCell.myActivityCountryCityLabel.text = myFootprintArrayDatas[indexPath.row][TRAVELMATEPOST_COUNTRYCITY_KEY];
+        myFootprintCell.myActivityCountryCityLabel.text = myFootprintArrayDatas[indexPath.row][MAPPOST_COUNTRY_KEY];
         
-        myFootprintCell.myActivityStartDate.text = myFootprintArrayDatas[indexPath.row][TRAVELMATEPOST_STARTDATE_KEY];
+        myFootprintCell.myActivityStartDate.text = myFootprintArrayDatas[indexPath.row][MAPPOST_LOCALITY_KEY];
         
-        myFootprintCell.myActivityMemo.text = myFootprintArrayDatas[indexPath.row][TRAVELMATEPOST_MEMO_KEY];
+        myFootprintCell.myActivityMemo.text = myFootprintArrayDatas[indexPath.row][MAPPOST_MEMO_KEY];
         
-        PFFile *photo = (PFFile *)myFootprintArrayDatas[indexPath.row][TRAVELMATEPOST_SMALLPHOTO_KEY];
+        PFFile *photo = (PFFile *)myFootprintArrayDatas[indexPath.row][MAPPOST_SMALLPHOTO_KEY];
         [myFootprintCell.myActivityShareSmallPhoto sd_setImageWithURL:(NSURL*)photo.url placeholderImage:[UIImage imageNamed:@"intrested-icon"]];
         
         myFootprintCell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -364,7 +348,8 @@
         else
         {
             _tableView2.frame=CGRectMake(0, 0, self.view.frame.size.width, VIPMYACTIVITYCELL_HEIGHT*myFootprintArrayDatas.count);
-            //myViptableView.contentSize=CGSizeMake(self.view.frame.size.width, _tableView2.frame.size.height+40);
+            myViptableView.contentSize=CGSizeMake(self.view.frame.size.width, _tableView2.frame.size.height+235);
+            NSLog(@"%f",VIPMYACTIVITYCELL_HEIGHT*myFootprintArrayDatas.count);
             [cell.contentView addSubview:_tableView2];
         }
         
@@ -480,7 +465,7 @@ return cell;
     
     //userObjectId = @"iSoRfCRWKu";
 
-    PFRelation *relation = [user relationForKey:@"travelMatePosts"];
+    PFRelation *relation = [user relationForKey:@"mapPosts"];
     PFQuery *query = [relation query];
     [query orderByDescending:@"createdAt"];
     //query.limit = 3;

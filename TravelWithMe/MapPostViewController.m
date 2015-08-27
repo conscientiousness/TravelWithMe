@@ -6,6 +6,7 @@
 //  Copyright (c) 2015年 Jesse. All rights reserved.
 //
 
+#import "MapViewController.h"
 #import "MapPostViewController.h"
 #import "SelectTypeViewController.h"
 #import "PostTypeTableViewCell.h"
@@ -18,7 +19,6 @@
 @interface MapPostViewController ()<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate>
 {
     UIImage *pickImage;
-    NSMutableDictionary *datas;
     UIImagePickerController *imagePicker;
     UIImageView *selectedImageView;
     UIDatePicker *datepicker;
@@ -26,6 +26,7 @@
     PFUser *user;
 }
 @property (weak, nonatomic) IBOutlet UIView *topView;
+@property (weak, nonatomic) IBOutlet UILabel *loactionLabel;
 @property (weak, nonatomic) IBOutlet UITableView *mapPostTableView;
 @property (nonatomic, strong) VBFPopFlatButton *flatSendBtn;
 @property (nonatomic, strong) VBFPopFlatButton *flatCancelBtn;
@@ -41,10 +42,10 @@
     if (!user) {
         user = [PFUser currentUser];
     }
+    //NSLog(@"%@",_dictDatas[MAPVIEW_LATITUDE_DICT_KEY]);
+    [self getGeoCoderPlacemarks];
     
-    //NSLog(@"%@",_selectedtypeString);
     
-    [self initUI];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,10 +56,8 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [self initFlatBtn];
+    [self initUI];
 }
-
-
 
 - (void)initUI {
     
@@ -66,13 +65,15 @@
     
     //關閉分隔線
     [_mapPostTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    
+    //初始化送出取消按鈕
+    [self initFlatBtn];
 }
 
 #pragma mark - 初始化送出與取消按鈕
-
 - (void)initFlatBtn {
     //送出
-    _flatSendBtn = [[VBFPopFlatButton alloc]initWithFrame:CGRectMake(_topView.frame.size.width-30, _topView.center.y, 20, 20)
+    _flatSendBtn = [[VBFPopFlatButton alloc]initWithFrame:CGRectMake(_topView.frame.size.width-30, _topView.center.y-5, 20, 20)
                                                buttonType:buttonOkType
                                               buttonStyle:buttonPlainStyle
                                     animateToInitialState:YES];
@@ -85,7 +86,7 @@
     [_topView addSubview:_flatSendBtn];
     
     //取消
-    _flatCancelBtn = [[VBFPopFlatButton alloc]initWithFrame:CGRectMake(12, _topView.center.y, 20, 20)
+    _flatCancelBtn = [[VBFPopFlatButton alloc]initWithFrame:CGRectMake(12, _topView.center.y, 25, 25)
                                                buttonType:buttonCloseType
                                               buttonStyle:buttonPlainStyle
                                     animateToInitialState:YES];
@@ -98,12 +99,71 @@
     [_topView addSubview:_flatCancelBtn];
 }
 
+#pragma mark - 送出資料
 - (void) sendBtnPressed:(UIButton*)button{
+    //全部相關uitext結束編輯，才會執行didEndEdit
+    [self.view endEditing:YES];
+    
+    if([self isDataNotEmpty]) {
+        
+        MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.labelText = @"發送中...";
+        
+        dispatch_queue_t publishQueue = dispatch_queue_create("publish", nil);
+        dispatch_async(publishQueue, ^{
+            
+            PFObject *mapPost = [PFObject objectWithClassName:MAPPOST_TABLENAME];
+            
+            //類別
+            mapPost[MAPPOST_TYPE_KEY] = _dictDatas[MAPPOST_TYPE_KEY];
+            //城市
+            mapPost[MAPPOST_COUNTRY_KEY] = _dictDatas[MAPPOST_COUNTRY_KEY];
+            //鄉鎮市區
+            mapPost[MAPPOST_LOCALITY_KEY] = _dictDatas[MAPPOST_LOCALITY_KEY];
+            //緯度
+            mapPost[MAPPOST_LATITUDE_KEY] = _dictDatas[MAPPOST_LATITUDE_KEY];
+            //經度
+            mapPost[MAPPOST_LONGITUDE_KEY] = _dictDatas[MAPPOST_LONGITUDE_KEY];
+            //GEO
+            PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:[_dictDatas[MAPPOST_LATITUDE_KEY] doubleValue]
+                                                       longitude:[_dictDatas[MAPPOST_LONGITUDE_KEY] doubleValue]];
+            mapPost[MAPPOST_USERLOCATION_KEY] = point;
+            //顯示用方形照片
+            PFFile *imageFile = [PFFile fileWithName:[NSString stringWithFormat:@"photo.jpg"] data:_dictDatas[MAPPOST_PHOTO_KEY]];
+            //小方形照片
+            PFFile *smallImageFile = [PFFile fileWithName:[NSString stringWithFormat:@"smallPhoto.jpg"] data:_dictDatas[MAPPOST_SMALLPHOTO_KEY]];
+            //原始大小縮圖照片
+            PFFile *originalImageFile = [PFFile fileWithName:[NSString stringWithFormat:@"originalPhoto.jpg"] data:_dictDatas[MAPPOST_ORIGINALPHOTO_KEY]];
+            mapPost[MAPPOST_PHOTO_KEY] = imageFile;
+            mapPost[MAPPOST_SMALLPHOTO_KEY] = smallImageFile;
+            mapPost[MAPPOST_ORIGINALPHOTO_KEY] = originalImageFile;
+            //訊息
+            mapPost[MAPPOST_MEMO_KEY] = _dictDatas[MAPPOST_MEMO_KEY];
+            //喜歡數
+            mapPost[MAPPOST_LIKECOUNT_KEY] = @0;
+            //建立者
+            mapPost[COMMON_POINTER_CREATEUSER_KEY] = user;
+            //存檔
+            [mapPost save];
+            
+            //使用者關聯
+            PFRelation *relation = [user relationForKey:USER_RELATION_MAPPOSTS_KEY];
+            [relation addObject:mapPost];
+            [user save];
+
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                
+                //返回地圖
+                [self dismissViewControllerAnimated:YES completion:^{
+                    [[NSNotificationCenter defaultCenter] postNotificationName:TOP_CHILD_DISMISSED_NOTIFICATION object:self];
+                }];
+            });
+            
+        });
+    }
     
     
-    [self dismissViewControllerAnimated:YES completion:^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:TOP_CHILD_DISMISSED_NOTIFICATION object:self];
-    }];
 }
 
 - (void) cancelBtnPressed:(UIButton*)button{
@@ -114,78 +174,9 @@
     }];
 }
 
-- (void)publishBtnPressed:(id *)sender {
-    [self.view endEditing:YES];
-    
-    //NSLog(@"%@",datas);
-    
-    if([self isDataNotEmpty]){
-        if(user) {
-            
-            MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            hud.labelText = @"發送中...";
-            
-            dispatch_queue_t publishQueue = dispatch_queue_create("publish", nil);
-            
-            dispatch_async(publishQueue, ^{
-                
-                PFObject *travelMatePost = [PFObject objectWithClassName:TRAVELMATEPOST_TABLENAME];
-                travelMatePost[TRAVELMATEPOST_COUNTRYCITY_KEY] = [datas objectForKey:[NSNumber numberWithInteger: TEXTFIELD_COUNTRYCITY_TAG]];
-                travelMatePost[TRAVELMATEPOST_MEMO_KEY] = [datas objectForKey:[NSNumber numberWithInteger: TEXTVIEW_MEMO_TAG]];
-                
-                //出發日期
-                //NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-                //[dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-                //NSDate *startDate = [dateFormatter dateFromString:[NSString stringWithFormat:@"%@ 00:00:00",[datas objectForKey:[NSNumber numberWithInteger: TEXTFIELD_STARTDATE_TAG]]]];
-                //NSLog(@"%@ => %@",[NSString stringWithFormat:@"%@ 00:00:00",[datas objectForKey:[NSNumber numberWithInteger: TEXTFIELD_STARTDATE_TAG]]],startDate);
-                NSString *startDate = [datas objectForKey:[NSNumber numberWithInteger: TEXTFIELD_STARTDATE_TAG]];
-                //NSLog(@"%@",startDate);
-                travelMatePost[TRAVELMATEPOST_STARTDATE_KEY] = startDate;
-                
-                //顯示用方形照片
-                PFFile *imageFile = [PFFile fileWithName:[NSString stringWithFormat:@"photo.jpg"] data:[datas objectForKey:[NSNumber numberWithInteger: IMAGEVIEW_SHAREPHOTO_TAG]]];
-                //小方形照片
-                PFFile *smallImageFile = [PFFile fileWithName:[NSString stringWithFormat:@"smallPhoto.jpg"] data:[datas objectForKey:TRAVELMATEPOST_SMALLPHOTO_KEY]];
-                //原始大小縮圖照片
-                PFFile *originalImageFile = [PFFile fileWithName:[NSString stringWithFormat:@"originalPhoto.jpg"] data:[datas objectForKey:TRAVELMATEPOST_ORIGINALPHOTO_KEY]];
-                
-                travelMatePost[TRAVELMATEPOST_PHOTO_KEY] = imageFile;
-                travelMatePost[TRAVELMATEPOST_SMALLPHOTO_KEY] = smallImageFile;
-                travelMatePost[TRAVELMATEPOST_ORIGINALPHOTO_KEY] = originalImageFile;
-                
-                
-                //出發天數
-                travelMatePost[TRAVELMATEPOST_DAYS_KEY] = [NSNumber numberWithInteger:[[datas objectForKey:[NSNumber numberWithInteger: TEXTFIELD_DAYS_TAG]] integerValue]];
-                
-                travelMatePost[COMMON_POINTER_CREATEUSER_KEY] = user;
-                
-                //計數
-                travelMatePost[TRAVELMATEPOST_COMMENTCOUNT_KEY] = @0;
-                travelMatePost[TRAVELMATEPOST_JOINCOUNT_KEY] = @0;
-                travelMatePost[TRAVELMATEPOST_INTERESTEDCOUNT_KEY] = @0;
-                travelMatePost[TRAVELMATEPOST_WATCHCOUNT_KEY] = @0;
-                
-                [travelMatePost save];
-                
-                PFRelation *relation = [user relationForKey:USER_RELATION_TRAVELMATEPOSTS_KEY];
-                [relation addObject:travelMatePost];
-                [user save];
-                
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [MBProgressHUD hideHUDForView:self.view animated:YES];
-                    
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"isDataSave" object:self];
-                    
-                    [self.navigationController popViewControllerAnimated:YES];
-                });
-            });
-        }
-    } else {
-        
-    }
-    
-}
 
+
+#pragma mark - 判斷是否有欄位為nil
 - (BOOL) isDataNotEmpty {
     
     BOOL result = YES;
@@ -195,44 +186,19 @@
     NSString *title;
     NSString *subTitle;
     
-    NSString *countryCityStr = [datas objectForKey:[NSNumber numberWithInteger: TEXTFIELD_COUNTRYCITY_TAG]];
+    NSString *memoStr = [_dictDatas objectForKey:MAPPOST_MEMO_KEY];
+    NSData *sharePhotoData = [_dictDatas objectForKey:MAPPOST_PHOTO_KEY];
     
-    NSString *memoStr = [datas objectForKey:[NSNumber numberWithInteger: TEXTVIEW_MEMO_TAG]];
-    
-    NSString *startDateStr = [datas objectForKey:[NSNumber numberWithInteger: TEXTFIELD_STARTDATE_TAG]];
-    
-    NSString *daysStr = [datas objectForKey:[NSNumber numberWithInteger: TEXTFIELD_DAYS_TAG]];
-    
-    NSData *sharePhotoData = [datas objectForKey:[NSNumber numberWithInteger: IMAGEVIEW_SHAREPHOTO_TAG]];
-    
-    if (countryCityStr==nil || [countryCityStr isEqualToString:@""])
+    if (memoStr==nil || [memoStr isEqualToString:@""])
     {
         title = @"還沒填唷!";
-        subTitle = @"前往國家,城市或地區";
-        result = NO;
-    }
-    else if (startDateStr==nil || [startDateStr isEqualToString:@""])
-    {
-        title = @"還沒填唷!";
-        subTitle = @"出發時間";
-        result = NO;
-    }
-    else if (daysStr==nil || [daysStr isEqualToString:@""])
-    {
-        title = @"還沒填唷!";
-        subTitle = @"旅遊天數";
-        result = NO;
-    }
-    else if (memoStr==nil || [memoStr isEqualToString:@""])
-    {
-        title = @"還沒填唷!";
-        subTitle = @"行程介紹";
+        subTitle = @"在現在做什麼呢?";
         result = NO;
     }
     else if (sharePhotoData==nil)
     {
         title = @"沒照片唷!";
-        subTitle = @"上傳一張自己喜愛的美景吧";
+        subTitle = @"隨手分享張照片吧!";
         result = NO;
     }
     
@@ -266,9 +232,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if(datas == nil) {
-        datas = [NSMutableDictionary new];
-    }
+//    if(datas == nil) {
+//        datas = [NSMutableDictionary new];
+//    }
     
     NSString *identifier;
     
@@ -316,6 +282,8 @@
         [cell.mapPostMemoTextView.layer setMasksToBounds:YES];
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        cell.mapPostMemoTextView.delegate = self;
         
         return cell;
         
@@ -408,27 +376,21 @@
     }];
 }
 
-#pragma mark - TextField Delegate Method
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
-    
-    [datas setObject:textField.text forKey:[NSNumber numberWithInteger:textField.tag]];
-}
 
 #pragma mark - TextView Delegate Method
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
-    if((textView.tag == TEXTVIEW_MEMO_TAG) && ([textView.text isEqual:@""]||textView.text==nil)) {
+    if((textView.tag == TEXTVIEW_MAPMEMO_TAG) && ([textView.text isEqual:@""]||textView.text==nil)) {
         [textView.layer setBorderColor: [[UIColor colorWithRed:0.533 green:0.544 blue:0.562 alpha:1.000] CGColor]];
     }
     
     
-    [datas setObject:textView.text forKey:[NSNumber numberWithInteger:textView.tag]];
+    [_dictDatas setObject:textView.text forKey:MAPPOST_MEMO_KEY];
 }
 
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
     
-    if(textView.tag == TEXTVIEW_MEMO_TAG) {
+    if(textView.tag == TEXTVIEW_MAPMEMO_TAG) {
         
         [textView.layer setBorderColor: [[UIColor colorWithRed:0.263 green:0.718 blue:0.608 alpha:1.000] CGColor]];
     }
@@ -452,7 +414,7 @@
         //原始大小
         UIImage *originaImage = info[UIImagePickerControllerOriginalImage];
         //原始大小圖縮圖和壓縮
-        NSData *originaImageData = [PAPUtility resizeImage:originaImage width:1080.0 height:1080.0 contentMode:UIViewContentModeScaleAspectFill];
+        NSData *originaImageData = [PAPUtility resizeImage:originaImage width:750.0 height:750.0 contentMode:UIViewContentModeScaleAspectFill];
         
         //方形圖
         UIImage *editedImage = info[UIImagePickerControllerEditedImage];
@@ -461,9 +423,9 @@
         //方形圖縮小圖和壓縮
         NSData *smallImageData = [PAPUtility resizeImage:editedImage width:100.0 height:100.0 contentMode:UIViewContentModeScaleAspectFill];
         
-        [datas setObject:imageData forKey:[NSNumber numberWithInteger:IMAGEVIEW_SHAREPHOTO_TAG]];
-        [datas setObject:smallImageData forKey:TRAVELMATEPOST_SMALLPHOTO_KEY];
-        [datas setObject:originaImageData forKey:TRAVELMATEPOST_ORIGINALPHOTO_KEY];
+        [_dictDatas setObject:imageData forKey:MAPPOST_PHOTO_KEY];
+        [_dictDatas setObject:smallImageData forKey:MAPPOST_SMALLPHOTO_KEY];
+        [_dictDatas setObject:originaImageData forKey:MAPPOST_ORIGINALPHOTO_KEY];
         
         
         [selectedImageView setImage:[UIImage imageWithData:imageData]];
@@ -480,7 +442,37 @@
     //[self dismissViewControllerAnimated:YES completion:nil];
 }
 
+#pragma mark - 反查地點
+-(void)getGeoCoderPlacemarks{
+    
+    CLGeocoder *gecorder = [CLGeocoder new];
 
+    //NSLog(@"%f,%f",[_dictDatas[MAPPOST_LATITUDE_KEY] doubleValue],[_dictDatas[MAPPOST_LONGITUDE_KEY] doubleValue]);
+    
+    CLLocation *location =[[CLLocation alloc] initWithLatitude:[_dictDatas[MAPPOST_LATITUDE_KEY] doubleValue] longitude:[_dictDatas[MAPPOST_LONGITUDE_KEY] doubleValue]];
+    
+    [gecorder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks,NSError *error){
+        
+        //NSLog(@"Result:%@",placemarks.description);
+        CLPlacemark *placemark = placemarks[0];
+        
+//        for(CLPlacemark *placemark in placemarks)
+//        {
+//            NSLog(@"address dic %@",placemark.addressDictionary);
+//        }
+        
+        //NSLog(@"1:%@,  2:%@  3:%@",placemark.country,placemark.administrativeArea,placemark.locality);
+        
+        //country  國家 administrativeArea 縣市(台灣沒有這一級) locality 鄉鎮區市
+        
+        //設定所在地點
+        _loactionLabel.text = [NSString stringWithFormat:@"%@,%@",placemark.country,placemark.locality];
+        
+        [_dictDatas setObject:placemark.country forKey:MAPPOST_COUNTRY_KEY];
+        [_dictDatas setObject:placemark.locality forKey:MAPPOST_LOCALITY_KEY];
+    }];
+    
+}
 
 
 @end

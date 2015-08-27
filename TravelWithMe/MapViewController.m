@@ -13,16 +13,6 @@
 #import "MapPostViewController.h"
 #import "SelectTypeViewController.h"
 
-//類別
-#define MAPVIEW_SELECTEDTYPE_DICT_KEY @"selectedType"
-//緯度
-#define MAPVIEW_LATITUDE_DICT_KEY @"latitude"
-//經度
-#define MAPVIEW_LONGITUDE_DICT_KEY @"longitude"
-//國家
-#define MAPVIEW_COUNTRY_DICT_KEY @"country"
-//城市
-#define MAPVIEW_CITY_DICT_KEY @"city"
 
 @interface MapViewController ()<MKMapViewDelegate,CLLocationManagerDelegate>
 {
@@ -54,9 +44,8 @@
     }
     
     // Prepare locationManager
-    
     // 定位需求 10公尺 Wifi
-    locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     // 定位等級 行走
     locationManager.activityType=CLActivityTypeFitness;
     locationManager.delegate=self;
@@ -87,6 +76,7 @@
     if([PFUser currentUser]==nil) {
         user = nil;
     }
+    
     [self initFlatRoundedButton];
     
     if(passDataDict==nil)
@@ -96,8 +86,15 @@
 
 #pragma mark - 子畫面Dismiss
 - (void) didTopChildDismiss {
-    passDataDict = nil;
+    
+    if(!user){
+        user = [PFUser currentUser];
+    }
+    
     [self initFlatRoundedButton];
+    
+    if(passDataDict==nil)
+        passDataDict = [NSMutableDictionary new];
 }
 
 - (void) initFlatRoundedButton {
@@ -120,19 +117,16 @@
 - (void) presentToMapPost:(NSNotification*)notification {
     
     //prepare passing value
-    [passDataDict setValue:[NSNumber numberWithDouble:currentLocation.coordinate.latitude] forKey:MAPVIEW_LATITUDE_DICT_KEY];
-    [passDataDict setValue:[NSNumber numberWithDouble:currentLocation.coordinate.longitude] forKey:MAPVIEW_LONGITUDE_DICT_KEY];
-    [passDataDict setValue:[notification userInfo][@"selectedType"] forKey:MAPVIEW_SELECTEDTYPE_DICT_KEY];
-    //由緯經度反查地點
-    [self getGeoCoderPlacemarks];
-    
-    NSLog(@"%@",passDataDict.description);
-    
+    [passDataDict setValue:[notification userInfo][MAPPOST_TYPE_KEY] forKey:MAPPOST_TYPE_KEY];
+    [passDataDict setValue:[NSNumber numberWithDouble:currentLocation.coordinate.latitude] forKey:MAPPOST_LATITUDE_KEY];
+    [passDataDict setValue:[NSNumber numberWithDouble:currentLocation.coordinate.longitude] forKey:MAPPOST_LONGITUDE_KEY];
     
     MapPostViewController *targetViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"mapPostViewController"];
     
-    //所選類別在丟到MapPostViewController
-    targetViewController.selectedtypeString = [notification userInfo][@"selectedType"];
+    targetViewController.dictDatas = passDataDict;
+    
+    //釋放
+    passDataDict = nil;
     
     //以覆蓋方式在原本VC上面(注意:dismiss時,不會觸發viewWillAppear等)
     targetViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
@@ -141,9 +135,7 @@
 
 #pragma mark - 按下新增按鈕，present到類別按鈕畫面
 - (void) didSelectedType {
-    
-    [self getGeoCoderPlacemarks];
-    
+
     //移除按鈕，當返回時在init才有按鈕特效
     [_mapFlatRoundedButton removeFromSuperview];
     
@@ -290,6 +282,7 @@
     //顯示小數點
     //NSLog(@"Current Location:%.8f,%.8f",currentLocation.coordinate.latitude,currentLocation.coordinate.longitude);
     
+    //取得USER位置後，依設定置中USER縮放地圖
     if(isFirstLocationReceived == false)
     {
         MKCoordinateRegion region = _theMapView.region;
@@ -303,25 +296,5 @@
     }
 }
 
-#pragma mark - 反查地點
--(void)getGeoCoderPlacemarks{
-    
-    CLGeocoder *gecorder=[CLGeocoder new];
-    NSMutableArray *placeAry = [NSMutableArray new];
-    
-    [gecorder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks,NSError *error){
-        
-        //NSLog(@"Result:%@",placemarks.description);
-        CLPlacemark *placemark = placemarks[0];
-        
-        //NSLog(@"1:%@,2:%@,3:%@,4:%@,5:%@",placemark.country,placemark.location,placemark.administrativeArea,placemark.thoroughfare,placemark.subThoroughfare);
-        
-        [placeAry addObjectsFromArray:placemarks];
-        
-        [passDataDict setValue:placemark.country forKey:MAPVIEW_COUNTRY_DICT_KEY];
-        [passDataDict setValue:placemark.administrativeArea forKey:MAPVIEW_CITY_DICT_KEY];
-    }];
-
-}
 
 @end

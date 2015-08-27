@@ -437,7 +437,7 @@
         //原始大小
         UIImage *originaImage = info[UIImagePickerControllerOriginalImage];
         //原始大小圖縮圖和壓縮
-        NSData *originaImageData = [PAPUtility resizeImage:originaImage width:1080.0 height:1080.0 contentMode:UIViewContentModeScaleAspectFill];
+        NSData *originaImageData = [PAPUtility resizeImage:originaImage width:750.0 height:750.0 contentMode:UIViewContentModeScaleAspectFill];
         
         //方形圖
         UIImage *editedImage = info[UIImagePickerControllerEditedImage];
