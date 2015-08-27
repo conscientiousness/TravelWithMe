@@ -20,7 +20,7 @@
     BOOL isFirstLocationReceived;
     PFUser *user;
     NSMutableDictionary *passDataDict;
-    CLGeocoder *gecorder;
+    CLLocation *currentLocation;
 }
 @property (weak, nonatomic) IBOutlet UIView *AnimationsView;
 @property (weak, nonatomic) IBOutlet MKMapView *theMapView;
@@ -76,19 +76,25 @@
     if([PFUser currentUser]==nil) {
         user = nil;
     }
+    
     [self initFlatRoundedButton];
     
     if(passDataDict==nil)
         passDataDict = [NSMutableDictionary new];
-    
-    if(gecorder==nil)
-        gecorder=[CLGeocoder new];
 }
 
 
 #pragma mark - 子畫面Dismiss
 - (void) didTopChildDismiss {
+    
+    if(!user){
+        user = [PFUser currentUser];
+    }
+    
     [self initFlatRoundedButton];
+    
+    if(passDataDict==nil)
+        passDataDict = [NSMutableDictionary new];
 }
 
 - (void) initFlatRoundedButton {
@@ -112,15 +118,15 @@
     
     //prepare passing value
     [passDataDict setValue:[notification userInfo][MAPPOST_TYPE_KEY] forKey:MAPPOST_TYPE_KEY];
-    
-    //NSLog(@"%@",passDataDict);
-
-    //丟字典給PO文畫面
-    //self.block(passDataDict);
+    [passDataDict setValue:[NSNumber numberWithDouble:currentLocation.coordinate.latitude] forKey:MAPPOST_LATITUDE_KEY];
+    [passDataDict setValue:[NSNumber numberWithDouble:currentLocation.coordinate.longitude] forKey:MAPPOST_LONGITUDE_KEY];
     
     MapPostViewController *targetViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"mapPostViewController"];
     
     targetViewController.dictDatas = passDataDict;
+    
+    //釋放
+    passDataDict = nil;
     
     //以覆蓋方式在原本VC上面(注意:dismiss時,不會觸發viewWillAppear等)
     targetViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
@@ -271,13 +277,10 @@
 //取得所在位置
 -(void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
     
-    CLLocation *currentLocation = locations.lastObject;
+    currentLocation = locations.lastObject;
     
     //顯示小數點
     //NSLog(@"Current Location:%.8f,%.8f",currentLocation.coordinate.latitude,currentLocation.coordinate.longitude);
-    
-    [passDataDict setValue:[NSNumber numberWithDouble:currentLocation.coordinate.latitude] forKey:MAPPOST_LATITUDE_KEY];
-    [passDataDict setValue:[NSNumber numberWithDouble:currentLocation.coordinate.longitude] forKey:MAPPOST_LONGITUDE_KEY];
     
     //取得USER位置後，依設定置中USER縮放地圖
     if(isFirstLocationReceived == false)
@@ -293,30 +296,5 @@
     }
 }
 
-//#pragma mark - 反查地點
-//-(void)getGeoCoderPlacemarks{
-//    
-//    //NSMutableArray *placeAry = [NSMutableArray new];
-//    
-//    //CLLocation *location =[[CLLocation alloc] initWithLatitude:currentLocation.coordinate.latitude longitude:currentLocation.coordinate.longitude];
-//    
-//    [gecorder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks,NSError *error){
-//        
-//        //NSLog(@"Result:%@",placemarks.description);
-//        CLPlacemark *placemark = placemarks[0];
-//        
-//        //
-//        //NSLog(@"1:%@,2:%@,3:%@,4:%@,5:%@",placemark.country,placemark.location,placemark.administrativeArea,placemark.thoroughfare,placemark.subThoroughfare);
-//        
-//        //[placeAry addObjectsFromArray:placemarks];
-//        
-//        //country  administrativeArea  locality 國家 縣市 鄉鎮區市
-//        
-//        [passDataDict setValue:placemark.country forKey:MAPVIEW_COUNTRY_DICT_KEY];
-//        [passDataDict setValue:placemark.administrativeArea forKey:MAPVIEW_CITY_DICT_KEY];
-//        [passDataDict setValue:placemark.locality forKey:MAPVIEW_LOCALITY_DICT_KEY];
-//    }];
-//
-//}
 
 @end
