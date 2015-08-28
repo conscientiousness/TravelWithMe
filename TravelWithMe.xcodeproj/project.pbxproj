@@ -28,7 +28,6 @@
 		A5D374921B646BEC00A57791 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5D374911B646BEC00A57791 /* MessageUI.framework */; };
 		A5E1670D1B6903B70036ABE4 /* SettingTableViewControlle.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E1670C1B6903B70036ABE4 /* SettingTableViewControlle.m */; };
 		B51A23321B7A5C9900CFD674 /* favoriteMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51A232B1B7A5C9900CFD674 /* favoriteMainViewController.m */; };
-		B51A23331B7A5C9900CFD674 /* FavoriteDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51A232D1B7A5C9900CFD674 /* FavoriteDetailViewController.m */; };
 		B51A23341B7A5C9900CFD674 /* favoriteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51A232F1B7A5C9900CFD674 /* favoriteTableViewController.m */; };
 		B51A23351B7A5C9900CFD674 /* followTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51A23311B7A5C9900CFD674 /* followTableViewController.m */; };
 		B5453E271B7A670E008964CE /* MapPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5453E261B7A670E008964CE /* MapPostViewController.m */; };
@@ -180,8 +179,6 @@
 		A5E1670C1B6903B70036ABE4 /* SettingTableViewControlle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewControlle.m; sourceTree = "<group>"; };
 		B51A232A1B7A5C9900CFD674 /* favoriteMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = favoriteMainViewController.h; sourceTree = "<group>"; };
 		B51A232B1B7A5C9900CFD674 /* favoriteMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = favoriteMainViewController.m; sourceTree = "<group>"; };
-		B51A232C1B7A5C9900CFD674 /* FavoriteDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteDetailViewController.h; sourceTree = "<group>"; };
-		B51A232D1B7A5C9900CFD674 /* FavoriteDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteDetailViewController.m; sourceTree = "<group>"; };
 		B51A232E1B7A5C9900CFD674 /* favoriteTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = favoriteTableViewController.h; sourceTree = "<group>"; };
 		B51A232F1B7A5C9900CFD674 /* favoriteTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = favoriteTableViewController.m; sourceTree = "<group>"; };
 		B51A23301B7A5C9900CFD674 /* followTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = followTableViewController.h; sourceTree = "<group>"; };
@@ -656,8 +653,6 @@
 				F47556C41B4BD40F008CEE3A /* Favorite.storyboard */,
 				B51A232A1B7A5C9900CFD674 /* favoriteMainViewController.h */,
 				B51A232B1B7A5C9900CFD674 /* favoriteMainViewController.m */,
-				B51A232C1B7A5C9900CFD674 /* FavoriteDetailViewController.h */,
-				B51A232D1B7A5C9900CFD674 /* FavoriteDetailViewController.m */,
 				B51A232E1B7A5C9900CFD674 /* favoriteTableViewController.h */,
 				B51A232F1B7A5C9900CFD674 /* favoriteTableViewController.m */,
 				B51A23301B7A5C9900CFD674 /* followTableViewController.h */,
@@ -986,7 +981,6 @@
 				A53CBBB71B67FA630039369A /* MapViewController.m in Sources */,
 				F4457C201B7755D000A4952B /* ParallaxHeaderView.m in Sources */,
 				F4457C231B7756B900A4952B /* DetailMessageViewController.m in Sources */,
-				B51A23331B7A5C9900CFD674 /* FavoriteDetailViewController.m in Sources */,
 				F43F90771B8C80C700E509F3 /* PostMapPhotoTableViewCell.m in Sources */,
 				F443FB4C1B6124D600F30847 /* WallViewController.m in Sources */,
 				F4461ECC1B7622CE00052C94 /* JL3MessageTableViewCell.m in Sources */,
