@@ -177,6 +177,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="設定" id="DXq-s9-rFW"/>
+                    <connections>
+                        <outlet property="loginCell" destination="Ka5-74-qbc" id="Qq2-2K-TE4"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QCH-EV-jOl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

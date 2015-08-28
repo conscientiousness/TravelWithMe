@@ -183,7 +183,7 @@
             }
         }];
     }
-  NSLog(@"Processed profile picture");
+  //NSLog(@"Processed profile picture");
 }
 
 //+ (BOOL)userHasValidFacebookData:(PFUser *)user {

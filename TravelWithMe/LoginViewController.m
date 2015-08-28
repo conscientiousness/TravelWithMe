@@ -95,19 +95,19 @@
 
         [PFFacebookUtils logInInBackgroundWithReadPermissions:@[@"public_profile", @"email",@"user_about_me", @"user_birthday", @"user_location"] block:^(PFUser *user, NSError *error) {
             if (!user) {
-                NSLog(@"Uh oh. The user cancelled the Facebook login.");
+                //NSLog(@"Uh oh. The user cancelled the Facebook login.");
                 
                 //} else if (user.isNew) {
                 //NSLog(@"User signed up and logged in through Facebook!");
             } else {
-                NSLog(@"User logged in through Facebook! ,%@",user.objectId);
+                //NSLog(@"User logged in through Facebook! ,%@",user.objectId);
                 
                 [self saveFacebookProfileData:user completion:^void(NSError *error) {
                     //NSLog(@"profilePictureURL: %@ ",user);
                     if (!error) {
                         [self dismissViewControllerAnimated:true completion:nil];
                     } else {
-                        NSLog(@"Can't Save Data to Parse %@",error);
+                        //NSLog(@"Can't Save Data to Parse %@",error);
                     }
                 }];
             }

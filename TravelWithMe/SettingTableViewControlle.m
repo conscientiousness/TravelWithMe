@@ -14,6 +14,9 @@
 {
     PFUser *user;
 }
+
+@property (weak, nonatomic) IBOutlet UITableViewCell *loginCell;
+
 @end
 
 
@@ -41,12 +44,17 @@
     
     // FB 判斷
     self.tabBarController.tabBar.hidden = NO;
+    
     if(!user){
         user = [PFUser currentUser];
     }
     
     if([PFUser currentUser]==nil) {
         user = nil;
+        _loginCell.textLabel.text = @"登入";
+    }
+    else{
+        _loginCell.textLabel.text = @"登出";
     }
 }
 
@@ -101,13 +109,25 @@
         }
     }
     
-    // 登出
+    // 登出x登入
     if(indexPath.section == 2){
         if(indexPath.row == 0){
-            // NSLog(@"%@",user);
-            [PFUser logOut];
-            user=nil;
-            // NSLog(@"%@",user);
+  
+            if(user){
+                [PFUser logOut];
+                user=nil;
+                _loginCell.textLabel.text = @"登入";
+            }else{
+                
+                UIViewController *targetViewController;
+                UIStoryboard *storyboard;
+                
+                storyboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+                targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"loginViewController"];
+                
+                [self presentViewController:targetViewController animated:YES completion:nil];
+            }
+
         }
     }
 }

@@ -93,9 +93,6 @@
 		F47D8EC11B900B5B0020A768 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = F47D8EC01B900B5B0020A768 /* Reachability.m */; };
 		F47D8EC41B901CF30020A768 /* MapMKPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = F47D8EC31B901CF30020A768 /* MapMKPointAnnotation.m */; };
 		F47D8EC71B9023B30020A768 /* DPAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = F47D8EC61B9023B30020A768 /* DPAnnotationView.m */; };
-		F47D8ECB1B90648B0020A768 /* landscape-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F47D8ECA1B90648B0020A768 /* landscape-icon.png */; };
-		F47D8ECD1B9065310020A768 /* people-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F47D8ECC1B9065310020A768 /* people-icon.png */; };
-		F47D8ECF1B90662A0020A768 /* food-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F47D8ECE1B90662A0020A768 /* food-icon.png */; };
 		F47D8ED11B9068260020A768 /* MapPhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = F47D8ED01B9068260020A768 /* MapPhoto.png */; };
 		F486EF461B4C34D2008CB97B /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F486EF451B4C34D2008CB97B /* Setting.storyboard */; };
 		F48B16CC1B5F405600E96B0D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48B16CB1B5F405600E96B0D /* AudioToolbox.framework */; };
@@ -118,6 +115,9 @@
 		F4CEF1571B81F4CE006D2B71 /* CountryCityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CEF1561B81F4CE006D2B71 /* CountryCityTableViewCell.m */; };
 		F4DA4C5C1B4E9D0500421F2F /* UIColors.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DA4C5B1B4E9D0500421F2F /* UIColors.m */; };
 		F4DA4C601B4EC96F00421F2F /* HomePostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DA4C5F1B4EC96F00421F2F /* HomePostViewController.m */; };
+		F4DB29BE1B90A2EB00E6F245 /* food-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F4DB29BB1B90A2EB00E6F245 /* food-icon.png */; };
+		F4DB29BF1B90A2EB00E6F245 /* landscape-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F4DB29BC1B90A2EB00E6F245 /* landscape-icon.png */; };
+		F4DB29C01B90A2EB00E6F245 /* people-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F4DB29BD1B90A2EB00E6F245 /* people-icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -277,9 +277,6 @@
 		F47D8EC31B901CF30020A768 /* MapMKPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapMKPointAnnotation.m; sourceTree = "<group>"; };
 		F47D8EC51B9023B30020A768 /* DPAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPAnnotationView.h; sourceTree = "<group>"; };
 		F47D8EC61B9023B30020A768 /* DPAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPAnnotationView.m; sourceTree = "<group>"; };
-		F47D8ECA1B90648B0020A768 /* landscape-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "landscape-icon.png"; sourceTree = "<group>"; };
-		F47D8ECC1B9065310020A768 /* people-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "people-icon.png"; sourceTree = "<group>"; };
-		F47D8ECE1B90662A0020A768 /* food-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "food-icon.png"; sourceTree = "<group>"; };
 		F47D8ED01B9068260020A768 /* MapPhoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MapPhoto.png; sourceTree = "<group>"; };
 		F486EF451B4C34D2008CB97B /* Setting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		F48B16CB1B5F405600E96B0D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -310,6 +307,9 @@
 		F4DA4C5B1B4E9D0500421F2F /* UIColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIColors.m; sourceTree = "<group>"; };
 		F4DA4C5E1B4EC96F00421F2F /* HomePostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePostViewController.h; sourceTree = "<group>"; };
 		F4DA4C5F1B4EC96F00421F2F /* HomePostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePostViewController.m; sourceTree = "<group>"; };
+		F4DB29BB1B90A2EB00E6F245 /* food-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "food-icon.png"; sourceTree = "<group>"; };
+		F4DB29BC1B90A2EB00E6F245 /* landscape-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "landscape-icon.png"; sourceTree = "<group>"; };
+		F4DB29BD1B90A2EB00E6F245 /* people-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "people-icon.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -457,10 +457,10 @@
 				F43F90791B8C80EB00E509F3 /* PostMapMemoTableViewCell.m */,
 				F43F90701B8C7EAC00E509F3 /* map-post-location-icon.png */,
 				F440B8D01B8D573000D56D9B /* map-post-location-white-icon.png */,
-				F47D8ECA1B90648B0020A768 /* landscape-icon.png */,
-				F47D8ECC1B9065310020A768 /* people-icon.png */,
-				F47D8ECE1B90662A0020A768 /* food-icon.png */,
 				F47D8ED01B9068260020A768 /* MapPhoto.png */,
+				F4DB29BB1B90A2EB00E6F245 /* food-icon.png */,
+				F4DB29BC1B90A2EB00E6F245 /* landscape-icon.png */,
+				F4DB29BD1B90A2EB00E6F245 /* people-icon.png */,
 			);
 			name = MapView;
 			sourceTree = "<group>";
@@ -854,14 +854,13 @@
 				F445E3671B6E09CD00818A18 /* Login.storyboard in Resources */,
 				F43F90711B8C7EAC00E509F3 /* map-post-location-icon.png in Resources */,
 				F44283001B875A9700D1F776 /* watch-icon.png in Resources */,
-				F47D8ECB1B90648B0020A768 /* landscape-icon.png in Resources */,
 				F443FB431B60FBF300F30847 /* Map.storyboard in Resources */,
-				F47D8ECD1B9065310020A768 /* people-icon.png in Resources */,
 				F44899EF1B88AC20009ABF4C /* VIPMyActivityTableViewCell.xib in Resources */,
 				F465736E1B5552D800DA3D7B /* JL2TableViewCell.xib in Resources */,
 				F442CE151B64B8FC001CD62B /* (null) in Resources */,
 				F44283021B875C2200D1F776 /* back-icon.png in Resources */,
 				F42EBDA41B68C8D400606D9B /* (null) in Resources */,
+				F4DB29BE1B90A2EB00E6F245 /* food-icon.png in Resources */,
 				F47556AA1B4BACF2008CEE3A /* Main.storyboard in Resources */,
 				F440B8D11B8D573000D56D9B /* map-post-location-white-icon.png in Resources */,
 				F47D8ED11B9068260020A768 /* MapPhoto.png in Resources */,
@@ -872,13 +871,14 @@
 				F42EBDAC1B68CED800606D9B /* (null) in Resources */,
 				F42EBD661B6877BF00606D9B /* (null) in Resources */,
 				F420E15A1B846FA500D3627F /* no-interested-icon.png in Resources */,
+				F4DB29C01B90A2EB00E6F245 /* people-icon.png in Resources */,
 				F42EBD6B1B68790500606D9B /* (null) in Resources */,
 				F465736F1B5552D800DA3D7B /* JLTableViewCell.xib in Resources */,
+				F4DB29BF1B90A2EB00E6F245 /* landscape-icon.png in Resources */,
 				F486EF461B4C34D2008CB97B /* Setting.storyboard in Resources */,
 				F47556C51B4BD40F008CEE3A /* Favorite.storyboard in Resources */,
 				F43F90681B8AF46D00E509F3 /* exclamation-icon.png in Resources */,
 				F42EBDB21B68FF1400606D9B /* (null) in Resources */,
-				F47D8ECF1B90662A0020A768 /* food-icon.png in Resources */,
 				F44282FF1B875A9700D1F776 /* search-icon.png in Resources */,
 				F47556AC1B4BACF2008CEE3A /* Images.xcassets in Resources */,
 				F43B3B7F1B75C03F0034B20F /* JL3MessageTableViewCell.xib in Resources */,
