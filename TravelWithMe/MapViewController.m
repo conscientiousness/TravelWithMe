@@ -383,8 +383,8 @@
  
    if(view.annotation == mapView.userLocation) return;
    
-   MapMKPointAnnotation *myAnnotion = (MapMKPointAnnotation*)view.annotation;
-   NSDictionary *extraInfo = myAnnotion.extraInfo;
+   //MapMKPointAnnotation *myAnnotion = (MapMKPointAnnotation*)view.annotation;
+   //NSDictionary *extraInfo = myAnnotion.extraInfo;
    //NSLog(@"extraInfo:%@,dataIndex:%@",extraInfo.description,myAnnotion.selectedObjectId);
 }
 

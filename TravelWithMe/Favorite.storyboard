@@ -63,8 +63,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RqM-JI-ZVM">
                                 <rect key="frame" x="0.0" y="64" width="600" height="36"/>
                                 <subviews>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="QkN-W2-ehl">
-                                        <rect key="frame" x="154" y="4" width="291" height="29"/>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="QkN-W2-ehl">
+                                        <rect key="frame" x="155" y="4" width="290" height="29"/>
                                         <color key="backgroundColor" red="0.18823529410000001" green="0.61568627450000002" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="290" id="ux0-6m-moj"/>
