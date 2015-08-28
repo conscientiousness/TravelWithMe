@@ -19,7 +19,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xu6-FH-4sX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-879" y="331"/>
+            <point key="canvasLocation" x="-1165" y="299"/>
         </scene>
         <!--Favorite Table View Controller-->
         <scene sceneID="Uvx-Tj-HbM">
@@ -50,27 +50,6 @@
             </objects>
             <point key="canvasLocation" x="-509" y="1162"/>
         </scene>
-        <!--Favorite Detail View Controller-->
-        <scene sceneID="JbY-p4-MwN">
-            <objects>
-                <viewController storyboardIdentifier="FavoriteDetailViewController" id="nE1-za-A1S" customClass="FavoriteDetailViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Hxu-rb-Hie"/>
-                        <viewControllerLayoutGuide type="bottom" id="gvn-UU-CQz"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="nTc-xa-UXf">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <connections>
-                        <outlet property="detailTableView" destination="nTc-xa-UXf" id="24Z-Qg-vfA"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bj9-hR-OC3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="206" y="-433"/>
-        </scene>
         <!--Favorite Main View Controller-->
         <scene sceneID="wqu-0z-9AA">
             <objects>
@@ -89,11 +68,15 @@
                                     <segue destination="QXW-ge-TAD" kind="embed" id="m7P-zD-GcN"/>
                                 </connections>
                             </containerView>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RqM-JI-ZVM">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RqM-JI-ZVM">
                                 <rect key="frame" x="0.0" y="64" width="600" height="36"/>
                                 <subviews>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="QkN-W2-ehl">
-                                        <rect key="frame" x="158" y="4" width="290" height="29"/>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="QkN-W2-ehl">
+                                        <rect key="frame" x="155" y="4" width="290" height="29"/>
+                                        <color key="backgroundColor" red="0.18823529410000001" green="0.61568627450000002" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="290" id="ux0-6m-moj"/>
+                                        </constraints>
                                         <segments>
                                             <segment title="我參加的" width="145"/>
                                             <segment title="我追蹤的" width="145"/>
@@ -104,10 +87,11 @@
                                         </connections>
                                     </segmentedControl>
                                 </subviews>
-                                <color key="backgroundColor" red="0.52549019610000003" green="1" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.18823529411764706" green="0.61568627450980395" blue="0.49411764705882355" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="centerX" secondItem="QkN-W2-ehl" secondAttribute="centerX" constant="-3" id="EaW-hM-1fl"/>
-                                    <constraint firstItem="QkN-W2-ehl" firstAttribute="top" secondItem="RqM-JI-ZVM" secondAttribute="top" constant="4" id="Jdh-nw-9c0"/>
+                                    <constraint firstItem="QkN-W2-ehl" firstAttribute="centerX" secondItem="RqM-JI-ZVM" secondAttribute="centerX" id="glb-p1-qgV"/>
+                                    <constraint firstAttribute="height" constant="36" id="knQ-0Z-hJD"/>
+                                    <constraint firstItem="QkN-W2-ehl" firstAttribute="centerY" secondItem="RqM-JI-ZVM" secondAttribute="centerY" id="vyc-Wi-cH9"/>
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8mo-81-2Db">
@@ -119,9 +103,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="RqM-JI-ZVM" firstAttribute="top" secondItem="3EY-e4-tCo" secondAttribute="bottom" id="FIv-FT-59k"/>
-                            <constraint firstItem="RqM-JI-ZVM" firstAttribute="leading" secondItem="gus-IG-L7W" secondAttribute="leadingMargin" constant="-16" id="YHE-Tj-Qf4"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="RqM-JI-ZVM" secondAttribute="trailing" constant="-16" id="c2Z-ye-mW7"/>
+                            <constraint firstItem="RqM-JI-ZVM" firstAttribute="top" secondItem="3EY-e4-tCo" secondAttribute="bottom" id="GzQ-7P-beh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="RqM-JI-ZVM" secondAttribute="trailing" constant="-16" id="uGo-hV-ocf"/>
+                            <constraint firstItem="RqM-JI-ZVM" firstAttribute="leading" secondItem="gus-IG-L7W" secondAttribute="leadingMargin" constant="-16" id="zOt-gH-ZEY"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="27b-lv-gPF">
@@ -134,7 +118,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tx0-gE-8EW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="259" y="308"/>
+            <point key="canvasLocation" x="-92" y="299"/>
         </scene>
         <!--Follow Table View Controller-->
         <scene sceneID="1u4-8o-8Wn">

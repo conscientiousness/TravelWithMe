@@ -8,10 +8,9 @@
 
 #import "favoriteTableViewController.h"
 #import "UIColors.h"
-#import "FavoriteDetailViewController.h"
+
 @interface favoriteTableViewController ()
 @property (strong, nonatomic) IBOutlet UITableView *favoriteTableView;
-
 @end
 
 @implementation favoriteTableViewController
@@ -21,9 +20,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initUI];
-    
-    list = [[NSMutableArray alloc]initWithObjects:@"東南亞",@"東北亞",@"亞洲",@"歐洲",@"美洲", nil];
-    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -31,10 +27,6 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 - (void)initUI {
-    
- //   _favoriteTableView.backgroundColor = [UIColor homeCellbgColor];
-    //透明度
-    _favoriteTableView.opaque = NO;
     [_favoriteTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
 
@@ -52,7 +44,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
+    
     // Return the number of rows in the section.
     return [list count];
 }
@@ -62,22 +54,14 @@
     static NSString *identifier =@"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"identifier" ];
     if(cell == nil){
-        
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-        
     }
-    cell.textLabel.text = [list objectAtIndex:[indexPath row]];
     // Configure the cell...
-    
-    return cell;}
+    return cell;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    //透過標簽取得目標實體
-    FavoriteDetailViewController *detailView = [self.storyboard instantiateViewControllerWithIdentifier:@"FavoriteDetailViewController"];
-    
-    
-    //切換畫面
-    [self.navigationController pushViewController:detailView animated:YES];
 }
 
 /*

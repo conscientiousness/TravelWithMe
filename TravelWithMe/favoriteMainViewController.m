@@ -9,19 +9,14 @@
 #import "favoriteMainViewController.h"
 #import "UIColors.h"
 @interface favoriteMainViewController ()
-
 @property (weak, nonatomic) IBOutlet UIView *favoriteView;
 @property (weak, nonatomic) IBOutlet UIView *followView;
-
 @end
 
 @implementation favoriteMainViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
-    
     // Do any additional setup after loading the view.
 }
 

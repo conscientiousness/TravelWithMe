@@ -8,12 +8,16 @@
 
 #import "SettingTableViewControlle.h"
 #import <MessageUI/MessageUI.h>
+#import "Reachability.h"
+#import "TWMessageBarManager.h"
 
 @interface SettingTableViewControlle ()<MFMailComposeViewControllerDelegate>
 {
     PFUser *user;
+    Reachability *serverReach;
 }
 @end
+
 
 @implementation SettingTableViewControlle
 
@@ -28,7 +32,55 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    
+    // Prepare Rechability
+    //使用NSNotificationCenter來通知網路狀態改變
+    [[NSNotificationCenter defaultCenter] addObserver:self
+     selector:@selector(networkStatusChanged:) name:kReachabilityChangedNotification object:nil];
+    
+    serverReach = [Reachability reachabilityWithHostName:@"www.parse.com"];
+    [serverReach startNotifier];
+
 }
+// 判斷網路是否存在
+-(void) networkStatusChanged:(NSNotification*)notify{
+    NetworkStatus status = [serverReach currentReachabilityStatus];
+    if(status == NotReachable)
+    {
+    //斷線
+    //NSLog(@"Not Reachable.");
+    [[TWMessageBarManager sharedInstance]
+     showMessageWithTitle:@"TravelWithMe" //標頭
+     description:@"無法連線上網,請檢查您的網路唷！" //內容
+     type:TWMessageBarMessageTypeInfo // 主題(底層有三種效果＆顏色自訂)
+     duration:60.0]; // 秒數
+    }
+    else{
+        //連線
+        //NSLog(@"Reach with: %ld",status);
+        [self update];
+        [[TWMessageBarManager sharedInstance] hideAllAnimated:YES];
+        
+    }
+    
+}
+// 如果網路重整時
+-(void) update{
+    
+    if([serverReach currentReachabilityStatus] == NotReachable){
+        // Remin User ... etc
+        return;
+    }
+}
+// 停止接收
+-(void) dealloc{
+    
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:kReachabilityChangedNotification object:nil];
+    
+    [serverReach stopNotifier];
+    
+}
+
 
 
 - (void)viewWillAppear:(BOOL)animated {

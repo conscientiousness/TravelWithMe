@@ -19,14 +19,15 @@
 		A524E7FA1B86C54F0094A684 /* LegalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A524E7F91B86C54F0094A684 /* LegalViewController.m */; };
 		A52E4EB91B63817400285C83 /* VIPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A52E4EB81B63817400285C83 /* VIPViewController.m */; };
 		A53CBBB71B67FA630039369A /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A53CBBB61B67FA630039369A /* MapViewController.m */; };
+		A540D3F91B9029FB00FA5D75 /* TWMessageBarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A540D3F81B9029FB00FA5D75 /* TWMessageBarManager.m */; };
 		A55171831B86151A002841AB /* PolicyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55171821B86151A002841AB /* PolicyViewController.m */; };
 		A55669951B80EAE300F588E3 /* CExpandHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = A55669941B80EAE300F588E3 /* CExpandHeader.m */; };
 		A55AD25F1B8AF803009AC07B /* demo_7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A55AD25E1B8AF803009AC07B /* demo_7.jpg */; };
 		A56DC6261B80EC3E009C621F /* 22.png in Resources */ = {isa = PBXBuildFile; fileRef = A56DC6251B80EC3E009C621F /* 22.png */; };
+		A56DFE1A1B903E7E00C0922C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48B16D91B5F40A200E96B0D /* SystemConfiguration.framework */; };
 		A5D374921B646BEC00A57791 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5D374911B646BEC00A57791 /* MessageUI.framework */; };
 		A5E1670D1B6903B70036ABE4 /* SettingTableViewControlle.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E1670C1B6903B70036ABE4 /* SettingTableViewControlle.m */; };
 		B51A23321B7A5C9900CFD674 /* favoriteMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51A232B1B7A5C9900CFD674 /* favoriteMainViewController.m */; };
-		B51A23331B7A5C9900CFD674 /* FavoriteDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51A232D1B7A5C9900CFD674 /* FavoriteDetailViewController.m */; };
 		B51A23341B7A5C9900CFD674 /* favoriteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51A232F1B7A5C9900CFD674 /* favoriteTableViewController.m */; };
 		B51A23351B7A5C9900CFD674 /* followTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51A23311B7A5C9900CFD674 /* followTableViewController.m */; };
 		B5453E271B7A670E008964CE /* MapPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5453E261B7A670E008964CE /* MapPostViewController.m */; };
@@ -170,7 +171,9 @@
 		A52E4EB71B63817400285C83 /* VIPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VIPViewController.h; sourceTree = "<group>"; };
 		A52E4EB81B63817400285C83 /* VIPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VIPViewController.m; sourceTree = "<group>"; };
 		A53CBBB51B67FA630039369A /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
-		A53CBBB61B67FA630039369A /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 3; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		A53CBBB61B67FA630039369A /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		A540D3F71B9029FB00FA5D75 /* TWMessageBarManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWMessageBarManager.h; sourceTree = "<group>"; };
+		A540D3F81B9029FB00FA5D75 /* TWMessageBarManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWMessageBarManager.m; sourceTree = "<group>"; };
 		A55171811B86151A002841AB /* PolicyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PolicyViewController.h; sourceTree = "<group>"; };
 		A55171821B86151A002841AB /* PolicyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PolicyViewController.m; sourceTree = "<group>"; };
 		A55669931B80EAE300F588E3 /* CExpandHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CExpandHeader.h; sourceTree = "<group>"; };
@@ -182,8 +185,6 @@
 		A5E1670C1B6903B70036ABE4 /* SettingTableViewControlle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewControlle.m; sourceTree = "<group>"; };
 		B51A232A1B7A5C9900CFD674 /* favoriteMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = favoriteMainViewController.h; sourceTree = "<group>"; };
 		B51A232B1B7A5C9900CFD674 /* favoriteMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = favoriteMainViewController.m; sourceTree = "<group>"; };
-		B51A232C1B7A5C9900CFD674 /* FavoriteDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteDetailViewController.h; sourceTree = "<group>"; };
-		B51A232D1B7A5C9900CFD674 /* FavoriteDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteDetailViewController.m; sourceTree = "<group>"; };
 		B51A232E1B7A5C9900CFD674 /* favoriteTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = favoriteTableViewController.h; sourceTree = "<group>"; };
 		B51A232F1B7A5C9900CFD674 /* favoriteTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = favoriteTableViewController.m; sourceTree = "<group>"; };
 		B51A23301B7A5C9900CFD674 /* followTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = followTableViewController.h; sourceTree = "<group>"; };
@@ -318,6 +319,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A56DFE1A1B903E7E00C0922C /* SystemConfiguration.framework in Frameworks */,
 				A521DE0A1B864F5200A0173D /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -397,6 +399,24 @@
 				A521DE0D1B864F5200A0173D /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A540D3F51B9029C000FA5D75 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				F47D8EBF1B900B5B0020A768 /* Reachability.h */,
+				F47D8EC01B900B5B0020A768 /* Reachability.m */,
+			);
+			name = Reachability;
+			sourceTree = "<group>";
+		};
+		A540D3F61B9029E900FA5D75 /* TWMessageBarManager */ = {
+			isa = PBXGroup;
+			children = (
+				A540D3F71B9029FB00FA5D75 /* TWMessageBarManager.h */,
+				A540D3F81B9029FB00FA5D75 /* TWMessageBarManager.m */,
+			);
+			name = TWMessageBarManager;
 			sourceTree = "<group>";
 		};
 		A55669961B80EAEF00F588E3 /* CExpandHeader */ = {
@@ -655,8 +675,6 @@
 				F47556C41B4BD40F008CEE3A /* Favorite.storyboard */,
 				B51A232A1B7A5C9900CFD674 /* favoriteMainViewController.h */,
 				B51A232B1B7A5C9900CFD674 /* favoriteMainViewController.m */,
-				B51A232C1B7A5C9900CFD674 /* FavoriteDetailViewController.h */,
-				B51A232D1B7A5C9900CFD674 /* FavoriteDetailViewController.m */,
 				B51A232E1B7A5C9900CFD674 /* favoriteTableViewController.h */,
 				B51A232F1B7A5C9900CFD674 /* favoriteTableViewController.m */,
 				B51A23301B7A5C9900CFD674 /* followTableViewController.h */,
@@ -700,8 +718,8 @@
 		F4DA4C5D1B4E9D0C00421F2F /* Comm */ = {
 			isa = PBXGroup;
 			children = (
-				F47D8EBF1B900B5B0020A768 /* Reachability.h */,
-				F47D8EC01B900B5B0020A768 /* Reachability.m */,
+				A540D3F61B9029E900FA5D75 /* TWMessageBarManager */,
+				A540D3F51B9029C000FA5D75 /* Reachability */,
 				F47556A21B4BACF2008CEE3A /* AppDelegate.h */,
 				F47556A31B4BACF2008CEE3A /* AppDelegate.m */,
 				F4DA4C5A1B4E9D0500421F2F /* UIColors.h */,
@@ -947,6 +965,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A540D3F91B9029FB00FA5D75 /* TWMessageBarManager.m in Sources */,
 				F4B387441B831250007740D5 /* SharePhotoTableViewCell.m in Sources */,
 				A52E4EB91B63817400285C83 /* VIPViewController.m in Sources */,
 				F44829951B6FB9D800ED0EA1 /* UIImage+ResizeAdditions.m in Sources */,
@@ -990,7 +1009,6 @@
 				A53CBBB71B67FA630039369A /* MapViewController.m in Sources */,
 				F4457C201B7755D000A4952B /* ParallaxHeaderView.m in Sources */,
 				F4457C231B7756B900A4952B /* DetailMessageViewController.m in Sources */,
-				B51A23331B7A5C9900CFD674 /* FavoriteDetailViewController.m in Sources */,
 				F43F90771B8C80C700E509F3 /* PostMapPhotoTableViewCell.m in Sources */,
 				F443FB4C1B6124D600F30847 /* WallViewController.m in Sources */,
 				F4461ECC1B7622CE00052C94 /* JL3MessageTableViewCell.m in Sources */,
