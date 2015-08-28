@@ -14,6 +14,7 @@
 #import "ParallaxHeaderView.h"
 #import "UIImage+ImageEffects.h"
 #import "SSBouncyButton.h"
+#import "DateTools.h"
 
 //個人資料cell高度
 #define HEIGHT_FOR_INFO_CELL 330.0
@@ -51,7 +52,7 @@
     _detailTableView.scrollEnabled = YES;
     _detailTableView.delegate = self;
     _detailTableView.dataSource = self;
-
+    
     if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_7_1)
     {
         blurImage = [UIImage imageNamed:@"bg-blur-image"];
@@ -283,6 +284,45 @@
     return 1;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+        CGFloat result;
+    NSString *tmpStr;
+    
+    if(indexPath.section == 0){
+        result = HEIGHT_FOR_INFO_CELL;
+        
+        tmpStr = _cellDictData[@"memo"];
+        NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:13]};
+        NSAttributedString * attrString = [[NSAttributedString alloc] initWithString:tmpStr attributes:attributes];
+        
+        //寬度固定計算行高(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
+        CGRect rect = [attrString boundingRectWithSize:CGSizeMake(WIDTH_FOR_MEMO_LABEL, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin context:nil];
+        //NSLog(@"rect:%@",NSStringFromCGRect(rect));
+        //NSLog(@"rect height = %f",rect.size.height);
+        result += rect.size.height;
+        
+        //如果使用者為原PO,參加按鈕隱藏
+        if([user.objectId isEqualToString:_cellDictData[@"userObjectId"]])
+            result -= 50.0;
+        
+    }else if(indexPath.section == 2){
+        result = HEIGHT_FOR_MESSAGE_CELL
+        ;
+        
+        tmpStr = commentAry[indexPath.row][COMMENT_MESSAGE_KEY];
+        NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:12]};
+        NSAttributedString * attrString = [[NSAttributedString alloc] initWithString:tmpStr attributes:attributes];
+        
+        //寬度固定計算行高(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
+        CGRect rect = [attrString boundingRectWithSize:CGSizeMake(296.0, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin context:nil];
+        
+        result += rect.size.height;
+    }else {
+        result = 80.0;
+    }
+    
+    return result;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -307,24 +347,24 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     
     //NSLog(@"cell = %@ ,section = %ld,row = %ld",cell,indexPath.section,indexPath.row);
- 
-        if(indexPath.section == 0) {
-            [self prepareJLCellstyle:(JLTableViewCell *)cell cellForRowAtIndexPath:indexPath];
-            [self setJLCellData:(JLTableViewCell*)cell cellForRowAtIndexPath:indexPath];
-            
-        } else if(indexPath.section == 1) {
-            [self prepareJL2Cellstyle:(JL2TableViewCell *)cell cellForRowAtIndexPath:indexPath];
-            //[self setJLCellData:(JLTableViewCell*)cell cellForRowAtIndexPath:indexPath];
-            
-        } else if(indexPath.section == 2) {
-            [self prepareJL3MessageCellstyle:(JL3MessageTableViewCell *)cell cellForRowAtIndexPath:indexPath];
-            [self setJL3MessageCellData:(JL3MessageTableViewCell *)cell cellForRowAtIndexPath:indexPath];
-        }
-
+    
+    if(indexPath.section == 0) {
+        [self prepareJLCellstyle:(JLTableViewCell *)cell cellForRowAtIndexPath:indexPath];
+        [self setJLCellData:(JLTableViewCell*)cell cellForRowAtIndexPath:indexPath];
+        
+    } else if(indexPath.section == 1) {
+        [self prepareJL2Cellstyle:(JL2TableViewCell *)cell cellForRowAtIndexPath:indexPath];
+        //[self setJLCellData:(JLTableViewCell*)cell cellForRowAtIndexPath:indexPath];
+        
+    } else if(indexPath.section == 2) {
+        [self prepareJL3MessageCellstyle:(JL3MessageTableViewCell *)cell cellForRowAtIndexPath:indexPath];
+        [self setJL3MessageCellData:(JL3MessageTableViewCell *)cell cellForRowAtIndexPath:indexPath];
+    }
+    
     return cell;
 }
 
-
+#pragma mark - 個人資料UI
 - (void) prepareJLCellstyle:(JLTableViewCell *)cell cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     //點選時的顏色
@@ -399,6 +439,7 @@
     [cell.interestedBtn addTarget:self action:@selector(interestedBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
 }
 
+#pragma mark - 個人資料Data
 - (void) setJLCellData:(JLTableViewCell *)cell cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     //大頭照
@@ -431,7 +472,7 @@
     cell.commentLabel.text = [NSString stringWithFormat:@"%@ 則留言",dictCountData[@"commentCount"]];
     //參加數
     cell.joinLabel.text = [NSString stringWithFormat:@"%@ 人參加",dictCountData[@"joinCount"]];
-
+    
 }
 
 - (void) prepareJL2Cellstyle:(JL2TableViewCell *)cell cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -461,30 +502,8 @@
     //cell.joinBtn.layer.cornerRadius = 15.0;
 }
 
-- (void) setJL3MessageCellData:(JL3MessageTableViewCell *)cell cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    //大頭照
-    //[cell.messageUserPhoto setImage:commentAry[indexPath.row][USER_PROFILEPICTURESMALL_KEY]];
-    
-    //名字
-    //cell.messageUserName.text = commentAry[indexPath.row][USER_DISPLAYNAME_KEY];
-    
-    [cell.messageUserPhoto setImage:[UIImage imageNamed:@"tmp-head-icon"]];
-    PFFile *PFPhoto = (PFFile*)commentAry[indexPath.row][@"createUser"][@"profilePictureSmall"];
-    [PFPhoto getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-        if (!error) {
-            [cell.messageUserPhoto setImage:[UIImage imageWithData:imageData]];
-        }
-    }];
-    
-    //名字
-    cell.messageUserName.text = commentAry[indexPath.row][@"createUser"][@"displayName"];
-    
-    //訊息
-    cell.messageLabel.text = commentAry[indexPath.row][COMMENT_MESSAGE_KEY];
-    //NSLog(@"commentAry[indexPath.row]= %@",commentAry[indexPath.row][@"createUser"][@"displayName"]);
-    
-}
+
+#pragma mark - 留言UI
 
 - (void) prepareJL3MessageCellstyle:(JL3MessageTableViewCell *)cell cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -515,52 +534,42 @@
     //cell.headPhoto.layer.borderColor = [UIColor boyPhotoBorderColor].CGColor;
     //cell.headPhoto.clipsToBounds = YES;
     
-    //按鈕
-    //cell.joinBtn.layer.cornerRadius = 15.0;
 }
 
-
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+#pragma mark - 留言Data
+- (void) setJL3MessageCellData:(JL3MessageTableViewCell *)cell cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    CGFloat result;
-    NSString *tmpStr;
+    //大頭照
+    //[cell.messageUserPhoto setImage:commentAry[indexPath.row][USER_PROFILEPICTURESMALL_KEY]];
     
-    if(indexPath.section == 0){
-        result = HEIGHT_FOR_INFO_CELL;
-        
-        tmpStr = _cellDictData[@"memo"];
-        NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:13]};
-        NSAttributedString * attrString = [[NSAttributedString alloc] initWithString:tmpStr attributes:attributes];
-        
-        //寬度固定計算行高(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
-        CGRect rect = [attrString boundingRectWithSize:CGSizeMake(WIDTH_FOR_MEMO_LABEL, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin context:nil];
-        //NSLog(@"rect:%@",NSStringFromCGRect(rect));
-        //NSLog(@"rect height = %f",rect.size.height);
-        result += rect.size.height;
-        
-        //如果使用者為原PO,參加按鈕隱藏
-        if([user.objectId isEqualToString:_cellDictData[@"userObjectId"]])
-            result -= 50.0;
-        
-    }else if(indexPath.section == 2){
-        result = HEIGHT_FOR_MESSAGE_CELL;
-        
-        tmpStr = commentAry[indexPath.row][COMMENT_MESSAGE_KEY];
-        NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:12]};
-        NSAttributedString * attrString = [[NSAttributedString alloc] initWithString:tmpStr attributes:attributes];
-        
-        //寬度固定計算行高(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
-        CGRect rect = [attrString boundingRectWithSize:CGSizeMake(296.0, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin context:nil];
-        
-        result += rect.size.height;
-    }else {
-        result = 80.0;
-    }
+    //名字
+    //cell.messageUserName.text = commentAry[indexPath.row][USER_DISPLAYNAME_KEY];
     
-    return result;
+    [cell.messageUserPhoto setImage:[UIImage imageNamed:@"tmp-head-icon"]];
+    PFFile *PFPhoto = (PFFile*)commentAry[indexPath.row][@"createUser"][@"profilePictureSmall"];
+    [PFPhoto getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+        if (!error) {
+            [cell.messageUserPhoto setImage:[UIImage imageWithData:imageData]];
+        }
+    }];
+    
+    //名字
+    cell.messageUserName.text = commentAry[indexPath.row][@"createUser"][@"displayName"];
+    
+    //訊息
+    cell.messageLabel.text = commentAry[indexPath.row][COMMENT_MESSAGE_KEY];
+    
+    //NSLog(@"%@",((PFObject*)commentAry[indexPath.row]).createdAt);
+    
+    NSDate *timeAgoDate = ((PFObject*)commentAry[indexPath.row]).createdAt;
+    cell.messageTime.text = timeAgoDate.timeAgoSinceNow;
+    
+    //NSLog(@"Time Ago: %@", timeAgoDate.timeAgoSinceNow);
+    //NSLog(@"Time Ago: %@", timeAgoDate.shortTimeAgoSinceNow);
+    
 }
 
+#pragma mark - Scroll View Delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if (scrollView == _detailTableView)
@@ -598,7 +607,7 @@
 }
 
 - (void)getRelationData {
-        
+    
     //取得目前使用者是否有參加該活動
     //PFObject *post = [PFObject objectWithoutDataWithClassName:@"TravelMatePost" objectId:_cellDictData[@"objectId"]];
     PFRelation *relation = [user relationForKey:@"joinPosts"];
@@ -624,33 +633,33 @@
     [query includeKey:@"createUser.User"];
     commentAry = [[NSMutableArray alloc] initWithArray:[query findObjects]];
     
-//    commentAry = [NSMutableArray new];
-//    for(id object in [query findObjects]){
-//        NSMutableDictionary *dictComment = [NSMutableDictionary new];
-//        
-//        UIImage *picture = [UIImage new];
-//        //大頭照
-//        if(object[@"createUser"][@"profilePictureSmall"]!=nil) {
-//            PFFile *PFPhoto = (PFFile*)object[@"createUser"][@"profilePictureSmall"];
-//            NSData *photoData = [PFPhoto getData];
-//            picture = [UIImage imageWithData:photoData];
-//        
-//        } else {
-//            picture = [UIImage imageNamed:@"tmp-head-icon"];
-//        }
-//        
-//        [dictComment setObject:picture forKey:USER_PROFILEPICTURESMALL_KEY];
-//        
-//        //名字
-//        [dictComment setObject:object[TRAVELMATEPOST_POINTER_CREATEUSER_KEY][USER_DISPLAYNAME_KEY] forKey:USER_DISPLAYNAME_KEY];
-//        
-//        //訊息
-//        [dictComment setObject:object[COMMENT_MESSAGE_KEY] forKey:COMMENT_MESSAGE_KEY];
-//        
-//        //留言時間
-//        
-//        [commentAry addObject:dictComment];
-//    }
+    //    commentAry = [NSMutableArray new];
+    //    for(id object in [query findObjects]){
+    //        NSMutableDictionary *dictComment = [NSMutableDictionary new];
+    //
+    //        UIImage *picture = [UIImage new];
+    //        //大頭照
+    //        if(object[@"createUser"][@"profilePictureSmall"]!=nil) {
+    //            PFFile *PFPhoto = (PFFile*)object[@"createUser"][@"profilePictureSmall"];
+    //            NSData *photoData = [PFPhoto getData];
+    //            picture = [UIImage imageWithData:photoData];
+    //
+    //        } else {
+    //            picture = [UIImage imageNamed:@"tmp-head-icon"];
+    //        }
+    //
+    //        [dictComment setObject:picture forKey:USER_PROFILEPICTURESMALL_KEY];
+    //
+    //        //名字
+    //        [dictComment setObject:object[TRAVELMATEPOST_POINTER_CREATEUSER_KEY][USER_DISPLAYNAME_KEY] forKey:USER_DISPLAYNAME_KEY];
+    //
+    //        //訊息
+    //        [dictComment setObject:object[COMMENT_MESSAGE_KEY] forKey:COMMENT_MESSAGE_KEY];
+    //
+    //        //留言時間
+    //
+    //        [commentAry addObject:dictComment];
+    //    }
     
 }
 
@@ -681,21 +690,21 @@
 //更新置頂照片 和 解除霧化
 - (void) didGotDatasUpdateUI {
     
-        CGFloat tableViewWidth = [_cellDictData[@"tableViewWidth"] floatValue];
-        headerView = [ParallaxHeaderView parallaxHeaderViewWithImage:headerPhoto forSize:CGSizeMake(tableViewWidth, 300)];
-        //置頂標題:國家城市
-        headerView.headerTitleLabel.text = _cellDictData[@"countryCity"];
-        [_detailTableView setTableHeaderView:headerView];
-        
-        if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_7_1)
-        {
-            [blurImageView removeFromSuperview];
-        } else {
-            [blurredView removeFromSuperview];
-        }
-        
-        [_detailTableView reloadData];
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    CGFloat tableViewWidth = [_cellDictData[@"tableViewWidth"] floatValue];
+    headerView = [ParallaxHeaderView parallaxHeaderViewWithImage:headerPhoto forSize:CGSizeMake(tableViewWidth, 300)];
+    //置頂標題:國家城市
+    headerView.headerTitleLabel.text = _cellDictData[@"countryCity"];
+    [_detailTableView setTableHeaderView:headerView];
+    
+    if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_7_1)
+    {
+        [blurImageView removeFromSuperview];
+    } else {
+        [blurredView removeFromSuperview];
+    }
+    
+    [_detailTableView reloadData];
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 
 
@@ -745,3 +754,4 @@
 }
 
 @end
+

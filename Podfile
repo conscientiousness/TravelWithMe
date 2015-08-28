@@ -13,6 +13,7 @@ pod "SSBouncyButton", '~> 1.0'
 pod "MJRefresh"
 pod "SCLAlertView-Objective-C"
 pod "VBFPopFlatButton"
+pod "DateTools"
 
 use_frameworks!
 pod "TextFieldEffects"

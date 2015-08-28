@@ -9,9 +9,9 @@
 #import "WallViewController.h"
 #import "WallTableViewCell.h"
 #import "PostViewController.h"
-#import "HomeDetailViewController.h"
 #import "MJRefresh.h"
 #import "VIPViewController.h"
+#import "DateTools.h"
 
 //#import "JDFPeekabooCoordinator.h"
 
@@ -67,8 +67,8 @@
                                             selector:@selector(reloadTableView)
                                                 name:@"isDataSave"
                                               object:nil];
-
-
+    
+    
 }
 
 
@@ -127,7 +127,7 @@
     _wallTableView.backgroundColor = [UIColor homeCellbgColor];
     //透明度
     _wallTableView.opaque = NO;
-        
+    
     //Add post Button
     //UIBarButtonItem *postButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(postBtnPressed:)];
     
@@ -152,7 +152,7 @@
     
     //設定返回按鈕
     self.navigationController.navigationBar.tintColor = [UIColor customGreenColor];
-        
+    
     //navigation bar color
     //[self.navigationController.navigationBar setBackgroundColor:[UIColor navigationBarColor]];
     self.navigationController.navigationBar.barTintColor = [UIColor navigationBarColor];
@@ -168,7 +168,7 @@
     self.tabBarController.tabBar.layer.borderWidth = 0.5;
     self.tabBarController.tabBar.layer.borderColor = self.tabBarController.tabBar.barTintColor.CGColor;
     self.tabBarController.tabBar.clipsToBounds = YES;
-
+    
 }
 
 - (void) preparePullRefresh {
@@ -191,7 +191,7 @@
     footer.stateLabel.font = [UIFont systemFontOfSize:16];
     footer.stateLabel.textColor = [UIColor grayColor];
     _wallTableView.footer = footer;
-
+    
 }
 
 #pragma mark - Pull Refresh Method
@@ -232,11 +232,11 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [_wallTableView reloadData];
             
-//            if([currentCount integerValue] == arrayDatas.count){//筆數相等表示沒資料
-                [_wallTableView.footer endRefreshing];
-//            } else {
-//                [_wallTableView.footer noticeNoMoreData];
-//            }
+            //            if([currentCount integerValue] == arrayDatas.count){//筆數相等表示沒資料
+            [_wallTableView.footer endRefreshing];
+            //            } else {
+            //                [_wallTableView.footer noticeNoMoreData];
+            //            }
             
         });
     });
@@ -265,7 +265,7 @@
         
         [self presentViewController:targetViewController animated:YES completion:nil];
     }
- 
+    
     //[self presentViewController:postVC animated:YES completion:nil];
     //[self performSegueWithIdentifier:@"goPostView" sender:nil];
 }
@@ -331,7 +331,7 @@
                  
                  //性別gender
                  USER_GENDER_KEY:arrayDatas[indexPath.row][COMMON_POINTER_CREATEUSER_KEY][USER_GENDER_KEY],
-
+                 
                  
                  //城市地區countryCity
                  TRAVELMATEPOST_COUNTRYCITY_KEY:arrayDatas[indexPath.row][TRAVELMATEPOST_COUNTRYCITY_KEY],
@@ -400,7 +400,7 @@
     
     //[user objectForKey:kPAPUserProfilePicSmallKey];
     [cell.wallHeadPhoto sd_setImageWithURL:(NSURL*)((PFFile*)arrayDatas[indexPath.row][COMMON_POINTER_CREATEUSER_KEY][USER_PROFILEPICTUREMEDIUM_KEY]).url placeholderImage:[UIImage imageNamed:@"pic1.jpg"]];
-        
+    
     //國家城市
     cell.countryCityLabel.text = [[arrayDatas objectAtIndex:indexPath.row] objectForKey:TRAVELMATEPOST_COUNTRYCITY_KEY];
     
@@ -419,6 +419,10 @@
     PFFile *photo = (PFFile *)[[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"photo"];
     [cell.cellImageView sd_setImageWithURL:(NSURL*)photo.url placeholderImage:[UIImage imageNamed:@"tmp900X640.png"]];
     
+    //PO文時間
+    NSDate *timeAgoDate = ((PFObject*)arrayDatas[indexPath.row]).createdAt;
+    cell.postTimeLabel.text = timeAgoDate.timeAgoSinceNow;
+    //NSLog(@"%@,%@",timeAgoDate.timeAgoSinceNow,[[[arrayDatas objectAtIndex:indexPath.row] objectForKey:TRAVELMATEPOST_COMMENTCOUNT_KEY] stringValue]);
     //興趣數
     cell.interestedCountLabel.text = [[[arrayDatas objectAtIndex:indexPath.row] objectForKey:TRAVELMATEPOST_INTERESTEDCOUNT_KEY] stringValue];
     
@@ -491,7 +495,7 @@
     tapped.numberOfTapsRequired = 1;
     [cell.wallHeadPhoto addGestureRecognizer:tapped];
     cell.wallHeadPhoto.userInteractionEnabled = YES;
-
+    
     return cell;
     
 }
@@ -516,27 +520,27 @@
     
     if(arrayDatas==nil)
         arrayDatas = [NSMutableArray new];
-   
+    
     [arrayDatas addObjectsFromArray:[query findObjects]];
     
     
     //每次上拉查詢增加筆數
     dataCount = [NSNumber numberWithInt:[dataCount intValue] + 3];
     
-//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//        if (!error) {
-//            
-//            if(arrayDatas==nil){
-//                arrayDatas = [[NSMutableArray alloc] initWithArray:objects];
-//            } else {
-//                [arrayDatas addObjectsFromArray:objects];
-//            }
-//            
-//        } else {
-//            // Log details of the failure
-//            NSLog(@"Error: %@ %@", error, [error userInfo]);
-//        }
-//    }];
+    //    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+    //        if (!error) {
+    //
+    //            if(arrayDatas==nil){
+    //                arrayDatas = [[NSMutableArray alloc] initWithArray:objects];
+    //            } else {
+    //                [arrayDatas addObjectsFromArray:objects];
+    //            }
+    //
+    //        } else {
+    //            // Log details of the failure
+    //            NSLog(@"Error: %@ %@", error, [error userInfo]);
+    //        }
+    //    }];
     
 }
 
@@ -563,75 +567,75 @@
 
 
 /*
-#pragma mark - UIScrollViewDelegate Method
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    CGRect frame = self.navigationController.navigationBar.frame;
-    CGFloat size = frame.size.height - 21;
-    CGFloat framePercentageHidden = ((20 - frame.origin.y) / (frame.size.height - 1));
-    CGFloat scrollOffset = scrollView.contentOffset.y;
-    CGFloat scrollDiff = scrollOffset - self.previousScrollViewYOffset;
-    CGFloat scrollHeight = scrollView.frame.size.height;
-    CGFloat scrollContentSizeHeight = scrollView.contentSize.height + scrollView.contentInset.bottom;
-    
-    if (scrollOffset <= -scrollView.contentInset.top) {
-        frame.origin.y = 20;
-    } else if ((scrollOffset + scrollHeight) >= scrollContentSizeHeight) {
-        frame.origin.y = -size;
-    } else {
-        frame.origin.y = MIN(20, MAX(-size, frame.origin.y - scrollDiff));
-    }
-    
-    [self.navigationController.navigationBar setFrame:frame];
-    [self updateBarButtonItems:(1 - framePercentageHidden)];
-    self.previousScrollViewYOffset = scrollOffset;
-    
-    //NSLog(@"y=%f, height=%f",frame.origin.y, frame.size.height);
-}
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{
-    [self stoppedScrolling];
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView
-                  willDecelerate:(BOOL)decelerate
-{
-    if (!decelerate) {
-        [self stoppedScrolling];
-    }
-}
-
-- (void)stoppedScrolling
-{
-    CGRect frame = self.navigationController.navigationBar.frame;
-    if (frame.origin.y < 20) {
-        [self animateNavBarTo:-(frame.size.height - 21)];
-    }
-}
-
-- (void)updateBarButtonItems:(CGFloat)alpha
-{
-    [self.navigationItem.leftBarButtonItems enumerateObjectsUsingBlock:^(UIBarButtonItem* item, NSUInteger i, BOOL *stop) {
-        item.customView.alpha = alpha;
-    }];
-    [self.navigationItem.rightBarButtonItems enumerateObjectsUsingBlock:^(UIBarButtonItem* item, NSUInteger i, BOOL *stop) {
-        item.customView.alpha = alpha;
-    }];
-    self.navigationItem.titleView.alpha = alpha;
-    self.navigationController.navigationBar.tintColor = [self.navigationController.navigationBar.tintColor colorWithAlphaComponent:alpha];
-}
-
-- (void)animateNavBarTo:(CGFloat)y
-{
-    [UIView animateWithDuration:0.2 animations:^{
-        CGRect frame = self.navigationController.navigationBar.frame;
-        CGFloat alpha = (frame.origin.y >= y ? 0 : 1);
-        frame.origin.y = y;
-        [self.navigationController.navigationBar setFrame:frame];
-        [self updateBarButtonItems:alpha];
-    }];
-}
-*/
+ #pragma mark - UIScrollViewDelegate Method
+ - (void)scrollViewDidScroll:(UIScrollView *)scrollView
+ {
+ CGRect frame = self.navigationController.navigationBar.frame;
+ CGFloat size = frame.size.height - 21;
+ CGFloat framePercentageHidden = ((20 - frame.origin.y) / (frame.size.height - 1));
+ CGFloat scrollOffset = scrollView.contentOffset.y;
+ CGFloat scrollDiff = scrollOffset - self.previousScrollViewYOffset;
+ CGFloat scrollHeight = scrollView.frame.size.height;
+ CGFloat scrollContentSizeHeight = scrollView.contentSize.height + scrollView.contentInset.bottom;
+ 
+ if (scrollOffset <= -scrollView.contentInset.top) {
+ frame.origin.y = 20;
+ } else if ((scrollOffset + scrollHeight) >= scrollContentSizeHeight) {
+ frame.origin.y = -size;
+ } else {
+ frame.origin.y = MIN(20, MAX(-size, frame.origin.y - scrollDiff));
+ }
+ 
+ [self.navigationController.navigationBar setFrame:frame];
+ [self updateBarButtonItems:(1 - framePercentageHidden)];
+ self.previousScrollViewYOffset = scrollOffset;
+ 
+ //NSLog(@"y=%f, height=%f",frame.origin.y, frame.size.height);
+ }
+ 
+ - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+ {
+ [self stoppedScrolling];
+ }
+ 
+ - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView
+ willDecelerate:(BOOL)decelerate
+ {
+ if (!decelerate) {
+ [self stoppedScrolling];
+ }
+ }
+ 
+ - (void)stoppedScrolling
+ {
+ CGRect frame = self.navigationController.navigationBar.frame;
+ if (frame.origin.y < 20) {
+ [self animateNavBarTo:-(frame.size.height - 21)];
+ }
+ }
+ 
+ - (void)updateBarButtonItems:(CGFloat)alpha
+ {
+ [self.navigationItem.leftBarButtonItems enumerateObjectsUsingBlock:^(UIBarButtonItem* item, NSUInteger i, BOOL *stop) {
+ item.customView.alpha = alpha;
+ }];
+ [self.navigationItem.rightBarButtonItems enumerateObjectsUsingBlock:^(UIBarButtonItem* item, NSUInteger i, BOOL *stop) {
+ item.customView.alpha = alpha;
+ }];
+ self.navigationItem.titleView.alpha = alpha;
+ self.navigationController.navigationBar.tintColor = [self.navigationController.navigationBar.tintColor colorWithAlphaComponent:alpha];
+ }
+ 
+ - (void)animateNavBarTo:(CGFloat)y
+ {
+ [UIView animateWithDuration:0.2 animations:^{
+ CGRect frame = self.navigationController.navigationBar.frame;
+ CGFloat alpha = (frame.origin.y >= y ? 0 : 1);
+ frame.origin.y = y;
+ [self.navigationController.navigationBar setFrame:frame];
+ [self updateBarButtonItems:alpha];
+ }];
+ }
+ */
 
 @end

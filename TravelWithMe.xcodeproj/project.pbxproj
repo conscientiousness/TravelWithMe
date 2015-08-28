@@ -111,7 +111,6 @@
 		F4CEF1571B81F4CE006D2B71 /* CountryCityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CEF1561B81F4CE006D2B71 /* CountryCityTableViewCell.m */; };
 		F4DA4C5C1B4E9D0500421F2F /* UIColors.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DA4C5B1B4E9D0500421F2F /* UIColors.m */; };
 		F4DA4C601B4EC96F00421F2F /* HomePostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DA4C5F1B4EC96F00421F2F /* HomePostViewController.m */; };
-		F4DA4C661B4FF09200421F2F /* HomeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DA4C651B4FF09200421F2F /* HomeDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -295,8 +294,6 @@
 		F4DA4C5B1B4E9D0500421F2F /* UIColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIColors.m; sourceTree = "<group>"; };
 		F4DA4C5E1B4EC96F00421F2F /* HomePostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePostViewController.h; sourceTree = "<group>"; };
 		F4DA4C5F1B4EC96F00421F2F /* HomePostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePostViewController.m; sourceTree = "<group>"; };
-		F4DA4C641B4FF09200421F2F /* HomeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeDetailViewController.h; sourceTree = "<group>"; };
-		F4DA4C651B4FF09200421F2F /* HomeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -428,8 +425,6 @@
 		F443FB461B611CD500F30847 /* DetailView */ = {
 			isa = PBXGroup;
 			children = (
-				F4DA4C641B4FF09200421F2F /* HomeDetailViewController.h */,
-				F4DA4C651B4FF09200421F2F /* HomeDetailViewController.m */,
 				F4457C211B7756B900A4952B /* DetailMessageViewController.h */,
 				F4457C221B7756B900A4952B /* DetailMessageViewController.m */,
 				F46573661B5552D800DA3D7B /* JLTableViewCell.h */,
@@ -955,7 +950,6 @@
 				F44829941B6FB9D800ED0EA1 /* UIImage+AlphaAdditions.m in Sources */,
 				B51A23321B7A5C9900CFD674 /* favoriteMainViewController.m in Sources */,
 				F44829A01B6FBAFF00ED0EA1 /* PAPCache.m in Sources */,
-				F4DA4C661B4FF09200421F2F /* HomeDetailViewController.m in Sources */,
 				A55669951B80EAE300F588E3 /* CExpandHeader.m in Sources */,
 				F43F906B1B8B2C0700E509F3 /* SelectTypeViewController.m in Sources */,
 				B5453E271B7A670E008964CE /* MapPostViewController.m in Sources */,

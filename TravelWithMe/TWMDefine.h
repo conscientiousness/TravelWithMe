@@ -81,4 +81,17 @@
 #define COMMON_CREATEDAT_KEY @"createdAt"
 #define COMMON_POINTER_CREATEUSER_KEY @"createUser"
 
+#pragma mark - MapView
+
+//地圖ADD按鈕位置//
+#define MAP_FLAT_BTN_CGRECTMAKE self.view.frame.size.width/2 - 15, self.view.frame.size.height - 100, 30, 30
+//類別按鈕初始位置
+#define FOOT_BTN_CGRECTMAKE self.view.frame.size.width/2 - 40, self.view.frame.size.height - 150, 80, 80
+#define LANSCAPE_BTN_CGRECTMAKE self.view.frame.size.width/2 - 40, self.view.frame.size.height - 150, 80, 80
+#define PEOPLE_BTN_CGRECTMAKE self.view.frame.size.width/2 - 40, self.view.frame.size.height - 150, 80, 80
+//類別按鈕動態移動結束位置
+#define FOOD_BTN_SNAP_BEHAVIOR_CGPOINT self.view.frame.size.width/2, self.view.frame.size.height/2 - 50
+#define LANSCAPE_BTN_SNAP_BEHAVIOR_CGPOINT self.view.frame.size.width/2 - 110, self.view.frame.size.height/2 - 25
+#define PEOPLE_BTN_SNAP_BEHAVIOR_CGPOINT self.view.frame.size.width/2 + 110, self.view.frame.size.height/2 - 25
+
 @end

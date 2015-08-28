@@ -24,5 +24,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *cellLeftLineLabel;
 @property (weak, nonatomic) IBOutlet UILabel *cellObjectId;
 @property (weak, nonatomic) IBOutlet UILabel *cellUserObjectId;
+@property (weak, nonatomic) IBOutlet UILabel *postTimeLabel;
 
 @end
