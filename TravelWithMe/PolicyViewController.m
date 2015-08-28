@@ -42,7 +42,7 @@
     // 邊框粗細
     _policyTextview.layer.borderWidth = 1.0f;
     // 邊框顏色
-    _policyTextview.layer.borderColor = [UIColor colorWithRed:0.255 green:0.698 blue:0.592 alpha:1.000].CGColor;
+    _policyTextview.layer.borderColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0].CGColor;
 
 }
 

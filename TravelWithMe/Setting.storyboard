@@ -51,35 +51,6 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="推播" id="xZU-17-WBQ">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="uEL-pT-fWZ">
-                                        <rect key="frame" x="0.0" y="243.5" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uEL-pT-fWZ" id="qcD-5J-ftI">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="推播通知" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ynr-e5-3eD">
-                                                    <rect key="frame" x="8" y="12" width="60" height="18"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jXV-p5-YDC">
-                                                    <rect key="frame" x="543" y="7" width="51" height="31"/>
-                                                </switch>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="centerY" secondItem="jXV-p5-YDC" secondAttribute="centerY" id="7LA-Ca-JSD"/>
-                                                <constraint firstAttribute="centerY" secondItem="Ynr-e5-3eD" secondAttribute="centerY" id="DBc-MD-V1O"/>
-                                                <constraint firstItem="jXV-p5-YDC" firstAttribute="trailing" secondItem="qcD-5J-ftI" secondAttribute="trailingMargin" id="vBr-PY-GIf"/>
-                                                <constraint firstItem="Ynr-e5-3eD" firstAttribute="leading" secondItem="qcD-5J-ftI" secondAttribute="leadingMargin" id="yiz-rW-YIv"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
                             <tableViewSection headerTitle="關於我們" id="Avc-jz-jkb">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="detailButton" indentationWidth="10" textLabel="ynG-WX-inY" style="IBUITableViewCellStyleDefault" id="ENz-rM-FUE">

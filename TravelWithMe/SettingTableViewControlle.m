@@ -82,14 +82,14 @@
     
     // NSLog(@"indexPath :%@",indexPath);
     // 待上架後開啟
-    /*if(indexPath.section == 2){
+    /*if(indexPath.section == 1){
      if(indexPath.row == 3){
      [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"網址"]];
      }
      }*/
     
     // 意見回饋及問題回報
-    if(indexPath.section == 2){
+    if(indexPath.section == 1){
         if(indexPath.row == 0){
      
             MFMailComposeViewController * mailViewController = [[MFMailComposeViewController alloc] init];
@@ -102,7 +102,7 @@
     }
     
     // 登出
-    if(indexPath.section == 3){
+    if(indexPath.section == 2){
         if(indexPath.row == 0){
             // NSLog(@"%@",user);
             [PFUser logOut];

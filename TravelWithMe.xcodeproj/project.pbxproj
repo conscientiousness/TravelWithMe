@@ -23,7 +23,6 @@
 		A55171831B86151A002841AB /* PolicyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55171821B86151A002841AB /* PolicyViewController.m */; };
 		A55669951B80EAE300F588E3 /* CExpandHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = A55669941B80EAE300F588E3 /* CExpandHeader.m */; };
 		A55AD25F1B8AF803009AC07B /* demo_7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A55AD25E1B8AF803009AC07B /* demo_7.jpg */; };
-		A56DC6261B80EC3E009C621F /* 22.png in Resources */ = {isa = PBXBuildFile; fileRef = A56DC6251B80EC3E009C621F /* 22.png */; };
 		A56DFE1A1B903E7E00C0922C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48B16D91B5F40A200E96B0D /* SystemConfiguration.framework */; };
 		A5D374921B646BEC00A57791 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5D374911B646BEC00A57791 /* MessageUI.framework */; };
 		A5E1670D1B6903B70036ABE4 /* SettingTableViewControlle.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E1670C1B6903B70036ABE4 /* SettingTableViewControlle.m */; };
@@ -179,7 +178,6 @@
 		A55669931B80EAE300F588E3 /* CExpandHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CExpandHeader.h; sourceTree = "<group>"; };
 		A55669941B80EAE300F588E3 /* CExpandHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CExpandHeader.m; sourceTree = "<group>"; };
 		A55AD25E1B8AF803009AC07B /* demo_7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = demo_7.jpg; sourceTree = "<group>"; };
-		A56DC6251B80EC3E009C621F /* 22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 22.png; sourceTree = "<group>"; };
 		A5D374911B646BEC00A57791 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		A5E1670B1B6903B70036ABE4 /* SettingTableViewControlle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingTableViewControlle.h; sourceTree = "<group>"; };
 		A5E1670C1B6903B70036ABE4 /* SettingTableViewControlle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewControlle.m; sourceTree = "<group>"; };
@@ -688,7 +686,6 @@
 			children = (
 				A55669961B80EAEF00F588E3 /* CExpandHeader */,
 				F486EF451B4C34D2008CB97B /* Setting.storyboard */,
-				A56DC6251B80EC3E009C621F /* 22.png */,
 				A5E1670B1B6903B70036ABE4 /* SettingTableViewControlle.h */,
 				A5E1670C1B6903B70036ABE4 /* SettingTableViewControlle.m */,
 				A52E4EB71B63817400285C83 /* VIPViewController.h */,
@@ -875,7 +872,6 @@
 				F42EBDAC1B68CED800606D9B /* (null) in Resources */,
 				F42EBD661B6877BF00606D9B /* (null) in Resources */,
 				F420E15A1B846FA500D3627F /* no-interested-icon.png in Resources */,
-				A56DC6261B80EC3E009C621F /* 22.png in Resources */,
 				F42EBD6B1B68790500606D9B /* (null) in Resources */,
 				F465736F1B5552D800DA3D7B /* JLTableViewCell.xib in Resources */,
 				F486EF461B4C34D2008CB97B /* Setting.storyboard in Resources */,

@@ -94,7 +94,7 @@
     //  build image 位置
     imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200 + self.navigationController.navigationBar.bounds.size.height)];
     //  image Name
-    [imageView setImage:[UIImage imageNamed:@"22.png"]];
+    [imageView setImage:[UIImage imageNamed:@"my_pages.png"]];
 
     
     // build section view 位置和顏色
