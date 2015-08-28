@@ -8,7 +8,7 @@
 
 #import "followTableViewController.h"
 #import "UIColors.h"
-#import "FavoriteDetailViewController.h"
+
 @interface followTableViewController ()
 @property (strong, nonatomic) IBOutlet UITableView *followTableView;
 @end
@@ -20,24 +20,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initUI];
-    
-    list2 = [[NSMutableArray alloc]initWithObjects:@"東京",@"北京",@"南京",@"西京",@"中空", nil];
-    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+
 - (void)initUI {
-    
- //   _followTableView.backgroundColor = [UIColor homeCellbgColor];
-    //透明度
-    _followTableView.opaque = NO;
-[_followTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    
-    
+   [_followTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -63,20 +56,13 @@
     if(cell == nil){
         
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-        
     }
-    cell.textLabel.text = [list2 objectAtIndex:[indexPath row]];
     // Configure the cell...
-    
-    return cell;}
+    return cell;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    //透過標簽取得目標實體
-    FavoriteDetailViewController *detailView = [self.storyboard instantiateViewControllerWithIdentifier:@"FavoriteDetailViewController"];
-    
-    
-    //切換畫面
-    [self.navigationController pushViewController:detailView animated:YES];
 }
 
 
