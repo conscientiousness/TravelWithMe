@@ -23,6 +23,8 @@
 #define MAPPOST_NUMBER_OF_SECTIONS 1
 #define MAPPOST_NUMBER_OF_ROWS 3
 
+#define SEND_FLAT_BTN_CGRECTMAKE _topView.frame.size.width-40, _topView.center.y-5, 25, 25
+#define CANCEL_FLAT_BTN_CGRECTMAKE 12, _topView.center.y, 25, 25
 
 @interface MapPostViewController ()<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate>
 {
@@ -81,7 +83,7 @@
 #pragma mark - 初始化送出與取消按鈕
 - (void)initFlatBtn {
     //送出
-    _flatSendBtn = [[VBFPopFlatButton alloc]initWithFrame:CGRectMake(_topView.frame.size.width-30, _topView.center.y-5, 20, 20)
+    _flatSendBtn = [[VBFPopFlatButton alloc]initWithFrame:CGRectMake(SEND_FLAT_BTN_CGRECTMAKE)
                                                buttonType:buttonOkType
                                               buttonStyle:buttonPlainStyle
                                     animateToInitialState:YES];
@@ -94,7 +96,7 @@
     [_topView addSubview:_flatSendBtn];
     
     //取消
-    _flatCancelBtn = [[VBFPopFlatButton alloc]initWithFrame:CGRectMake(12, _topView.center.y, 25, 25)
+    _flatCancelBtn = [[VBFPopFlatButton alloc]initWithFrame:CGRectMake(CANCEL_FLAT_BTN_CGRECTMAKE)
                                                buttonType:buttonCloseType
                                               buttonStyle:buttonPlainStyle
                                     animateToInitialState:YES];
