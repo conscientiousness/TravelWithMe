@@ -391,7 +391,7 @@
 // 模擬點下大頭針的方法 可跳轉至PO文畫面
 -(void) buttonPressed:(id)sender{
    
-   NSLog(@"extraInfo:%@",[sender superview]);
+   //NSLog(@"extraInfo:%@",[sender superview]);
    
    UIAlertController *alert=[UIAlertController alertControllerWithTitle:nil message:@"目前沒有資訊" preferredStyle:UIAlertControllerStyleAlert];
    UIAlertAction *ok =[UIAlertAction actionWithTitle:@"ok" style:UIAlertActionStyleDefault handler:nil];

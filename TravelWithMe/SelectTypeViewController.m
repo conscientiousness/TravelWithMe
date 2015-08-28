@@ -80,16 +80,22 @@
     [_foodBtn setBackgroundColor:[UIColor clearColor]];
     [_foodBtn setImage:[UIImage imageNamed:@"food-icon"] forState:UIControlStateNormal];
     [_foodBtn addTarget:self action:@selector(foodBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [_foodBtn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentFill];
+    [_foodBtn setContentVerticalAlignment:UIControlContentVerticalAlignmentFill];
     [self.view addSubview:_foodBtn];
     
     _landscapeBtn = [[UIButton alloc] initWithFrame:CGRectMake(LANSCAPE_BTN_CGRECTMAKE)];
     [_landscapeBtn setImage:[UIImage imageNamed:@"landscape-icon"] forState:UIControlStateNormal];
     [_landscapeBtn addTarget:self action:@selector(landscapePressed:) forControlEvents:UIControlEventTouchUpInside];
+    [_landscapeBtn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentFill];
+    [_landscapeBtn setContentVerticalAlignment:UIControlContentVerticalAlignmentFill];
     [self.view addSubview:_landscapeBtn];
     
     _peopleBtn = [[UIButton alloc] initWithFrame:CGRectMake(PEOPLE_BTN_CGRECTMAKE)];
     [_peopleBtn setImage:[UIImage imageNamed:@"people-icon"] forState:UIControlStateNormal];
     [_peopleBtn addTarget:self action:@selector(peoplePressed:) forControlEvents:UIControlEventTouchUpInside];
+    [_peopleBtn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentFill];
+    [_peopleBtn setContentVerticalAlignment:UIControlContentVerticalAlignmentFill];
     [self.view addSubview:_peopleBtn];
 }
 
