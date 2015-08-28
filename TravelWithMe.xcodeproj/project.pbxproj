@@ -91,6 +91,12 @@
 		F47556BB1B4BACF2008CEE3A /* TravelWithMeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F47556BA1B4BACF2008CEE3A /* TravelWithMeTests.m */; };
 		F47556C51B4BD40F008CEE3A /* Favorite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F47556C41B4BD40F008CEE3A /* Favorite.storyboard */; };
 		F47D8EC11B900B5B0020A768 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = F47D8EC01B900B5B0020A768 /* Reachability.m */; };
+		F47D8EC41B901CF30020A768 /* MapMKPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = F47D8EC31B901CF30020A768 /* MapMKPointAnnotation.m */; };
+		F47D8EC71B9023B30020A768 /* DPAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = F47D8EC61B9023B30020A768 /* DPAnnotationView.m */; };
+		F47D8ECB1B90648B0020A768 /* landscape-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F47D8ECA1B90648B0020A768 /* landscape-icon.png */; };
+		F47D8ECD1B9065310020A768 /* people-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F47D8ECC1B9065310020A768 /* people-icon.png */; };
+		F47D8ECF1B90662A0020A768 /* food-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F47D8ECE1B90662A0020A768 /* food-icon.png */; };
+		F47D8ED11B9068260020A768 /* MapPhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = F47D8ED01B9068260020A768 /* MapPhoto.png */; };
 		F486EF461B4C34D2008CB97B /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F486EF451B4C34D2008CB97B /* Setting.storyboard */; };
 		F48B16CC1B5F405600E96B0D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48B16CB1B5F405600E96B0D /* AudioToolbox.framework */; };
 		F48B16CE1B5F406300E96B0D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48B16CD1B5F406300E96B0D /* CFNetwork.framework */; };
@@ -164,7 +170,7 @@
 		A52E4EB71B63817400285C83 /* VIPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VIPViewController.h; sourceTree = "<group>"; };
 		A52E4EB81B63817400285C83 /* VIPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VIPViewController.m; sourceTree = "<group>"; };
 		A53CBBB51B67FA630039369A /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
-		A53CBBB61B67FA630039369A /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		A53CBBB61B67FA630039369A /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 3; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		A55171811B86151A002841AB /* PolicyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PolicyViewController.h; sourceTree = "<group>"; };
 		A55171821B86151A002841AB /* PolicyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PolicyViewController.m; sourceTree = "<group>"; };
 		A55669931B80EAE300F588E3 /* CExpandHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CExpandHeader.h; sourceTree = "<group>"; };
@@ -268,6 +274,14 @@
 		F47556C41B4BD40F008CEE3A /* Favorite.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Favorite.storyboard; sourceTree = "<group>"; };
 		F47D8EBF1B900B5B0020A768 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		F47D8EC01B900B5B0020A768 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		F47D8EC21B901CF30020A768 /* MapMKPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapMKPointAnnotation.h; sourceTree = "<group>"; };
+		F47D8EC31B901CF30020A768 /* MapMKPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapMKPointAnnotation.m; sourceTree = "<group>"; };
+		F47D8EC51B9023B30020A768 /* DPAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPAnnotationView.h; sourceTree = "<group>"; };
+		F47D8EC61B9023B30020A768 /* DPAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPAnnotationView.m; sourceTree = "<group>"; };
+		F47D8ECA1B90648B0020A768 /* landscape-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "landscape-icon.png"; sourceTree = "<group>"; };
+		F47D8ECC1B9065310020A768 /* people-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "people-icon.png"; sourceTree = "<group>"; };
+		F47D8ECE1B90662A0020A768 /* food-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "food-icon.png"; sourceTree = "<group>"; };
+		F47D8ED01B9068260020A768 /* MapPhoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MapPhoto.png; sourceTree = "<group>"; };
 		F486EF451B4C34D2008CB97B /* Setting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		F48B16CB1B5F405600E96B0D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		F48B16CD1B5F406300E96B0D /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -409,6 +423,10 @@
 				F443FB421B60FBF300F30847 /* Map.storyboard */,
 				A53CBBB51B67FA630039369A /* MapViewController.h */,
 				A53CBBB61B67FA630039369A /* MapViewController.m */,
+				F47D8EC21B901CF30020A768 /* MapMKPointAnnotation.h */,
+				F47D8EC31B901CF30020A768 /* MapMKPointAnnotation.m */,
+				F47D8EC51B9023B30020A768 /* DPAnnotationView.h */,
+				F47D8EC61B9023B30020A768 /* DPAnnotationView.m */,
 				B5453E251B7A670E008964CE /* MapPostViewController.h */,
 				B5453E261B7A670E008964CE /* MapPostViewController.m */,
 				F43F90691B8B2C0700E509F3 /* SelectTypeViewController.h */,
@@ -421,6 +439,10 @@
 				F43F90791B8C80EB00E509F3 /* PostMapMemoTableViewCell.m */,
 				F43F90701B8C7EAC00E509F3 /* map-post-location-icon.png */,
 				F440B8D01B8D573000D56D9B /* map-post-location-white-icon.png */,
+				F47D8ECA1B90648B0020A768 /* landscape-icon.png */,
+				F47D8ECC1B9065310020A768 /* people-icon.png */,
+				F47D8ECE1B90662A0020A768 /* food-icon.png */,
+				F47D8ED01B9068260020A768 /* MapPhoto.png */,
 			);
 			name = MapView;
 			sourceTree = "<group>";
@@ -817,7 +839,9 @@
 				F445E3671B6E09CD00818A18 /* Login.storyboard in Resources */,
 				F43F90711B8C7EAC00E509F3 /* map-post-location-icon.png in Resources */,
 				F44283001B875A9700D1F776 /* watch-icon.png in Resources */,
+				F47D8ECB1B90648B0020A768 /* landscape-icon.png in Resources */,
 				F443FB431B60FBF300F30847 /* Map.storyboard in Resources */,
+				F47D8ECD1B9065310020A768 /* people-icon.png in Resources */,
 				F44899EF1B88AC20009ABF4C /* VIPMyActivityTableViewCell.xib in Resources */,
 				F465736E1B5552D800DA3D7B /* JL2TableViewCell.xib in Resources */,
 				F442CE151B64B8FC001CD62B /* (null) in Resources */,
@@ -825,6 +849,7 @@
 				F42EBDA41B68C8D400606D9B /* (null) in Resources */,
 				F47556AA1B4BACF2008CEE3A /* Main.storyboard in Resources */,
 				F440B8D11B8D573000D56D9B /* map-post-location-white-icon.png in Resources */,
+				F47D8ED11B9068260020A768 /* MapPhoto.png in Resources */,
 				F4CEF12F1B81D251006D2B71 /* share_photo.png in Resources */,
 				F47556AF1B4BACF2008CEE3A /* LaunchScreen.xib in Resources */,
 				F43F906F1B8C415000E509F3 /* no-interested-add-icon.png in Resources */,
@@ -839,6 +864,7 @@
 				F47556C51B4BD40F008CEE3A /* Favorite.storyboard in Resources */,
 				F43F90681B8AF46D00E509F3 /* exclamation-icon.png in Resources */,
 				F42EBDB21B68FF1400606D9B /* (null) in Resources */,
+				F47D8ECF1B90662A0020A768 /* food-icon.png in Resources */,
 				F44282FF1B875A9700D1F776 /* search-icon.png in Resources */,
 				F47556AC1B4BACF2008CEE3A /* Images.xcassets in Resources */,
 				F43B3B7F1B75C03F0034B20F /* JL3MessageTableViewCell.xib in Resources */,
@@ -929,6 +955,7 @@
 				F465736D1B5552D800DA3D7B /* JL2TableViewCell.m in Sources */,
 				A524E7FA1B86C54F0094A684 /* LegalViewController.m in Sources */,
 				B51A23351B7A5C9900CFD674 /* followTableViewController.m in Sources */,
+				F47D8EC71B9023B30020A768 /* DPAnnotationView.m in Sources */,
 				F4DA4C5C1B4E9D0500421F2F /* UIColors.m in Sources */,
 				F47D8EC11B900B5B0020A768 /* Reachability.m in Sources */,
 				F4CEF12D1B81B87C006D2B71 /* PostViewController.m in Sources */,
@@ -949,6 +976,7 @@
 				F44F3E331B8210CD007CE9C1 /* TPKeyboardAvoidingTableView.m in Sources */,
 				A5E1670D1B6903B70036ABE4 /* SettingTableViewControlle.m in Sources */,
 				A55171831B86151A002841AB /* PolicyViewController.m in Sources */,
+				F47D8EC41B901CF30020A768 /* MapMKPointAnnotation.m in Sources */,
 				B51A23341B7A5C9900CFD674 /* favoriteTableViewController.m in Sources */,
 				F465736C1B5552D800DA3D7B /* JLTableViewCell.m in Sources */,
 				F44F3E301B8207F9007CE9C1 /* StartDateDaysTableViewCell.m in Sources */,

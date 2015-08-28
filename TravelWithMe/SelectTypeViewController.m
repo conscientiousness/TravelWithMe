@@ -78,17 +78,17 @@
     
     _foodBtn = [[UIButton alloc] initWithFrame:CGRectMake(FOOT_BTN_CGRECTMAKE)];
     [_foodBtn setBackgroundColor:[UIColor clearColor]];
-    [_foodBtn setImage:[UIImage imageNamed:@"interested-icon"] forState:UIControlStateNormal];
+    [_foodBtn setImage:[UIImage imageNamed:@"food-icon"] forState:UIControlStateNormal];
     [_foodBtn addTarget:self action:@selector(foodBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_foodBtn];
     
     _landscapeBtn = [[UIButton alloc] initWithFrame:CGRectMake(LANSCAPE_BTN_CGRECTMAKE)];
-    [_landscapeBtn setImage:[UIImage imageNamed:@"comment-icon"] forState:UIControlStateNormal];
+    [_landscapeBtn setImage:[UIImage imageNamed:@"landscape-icon"] forState:UIControlStateNormal];
     [_landscapeBtn addTarget:self action:@selector(landscapePressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_landscapeBtn];
     
     _peopleBtn = [[UIButton alloc] initWithFrame:CGRectMake(PEOPLE_BTN_CGRECTMAKE)];
-    [_peopleBtn setImage:[UIImage imageNamed:@"join-icon"] forState:UIControlStateNormal];
+    [_peopleBtn setImage:[UIImage imageNamed:@"people-icon"] forState:UIControlStateNormal];
     [_peopleBtn addTarget:self action:@selector(peoplePressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_peopleBtn];
 }

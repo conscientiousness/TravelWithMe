@@ -172,10 +172,9 @@
             
         });
     }
-    
-    
 }
 
+#pragma mark - 結束畫面
 - (void) cancelBtnPressed:(UIButton*)button{
     
     
@@ -258,6 +257,8 @@
     
     if (indexPath.row == 0) {
          PostTypeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+        
+        
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
@@ -431,7 +432,7 @@
         //方形圖縮圖和壓縮
         NSData *imageData = [PAPUtility resizeImage:editedImage width:500.0 height:500.0 contentMode:UIViewContentModeScaleAspectFill];
         //方形圖縮小圖和壓縮
-        NSData *smallImageData = [PAPUtility resizeImage:editedImage width:100.0 height:100.0 contentMode:UIViewContentModeScaleAspectFill];
+        NSData *smallImageData = [PAPUtility resizeImage:editedImage width:50.0 height:50.0 contentMode:UIViewContentModeScaleAspectFill];
         
         [_dictDatas setObject:imageData forKey:MAPPOST_PHOTO_KEY];
         [_dictDatas setObject:smallImageData forKey:MAPPOST_SMALLPHOTO_KEY];

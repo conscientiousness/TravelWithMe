@@ -181,6 +181,51 @@
             </objects>
             <point key="canvasLocation" x="38" y="185"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="fpJ-gW-BuY">
+            <objects>
+                <viewController id="jch-GB-Ptv" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KOb-bf-Ksu"/>
+                        <viewControllerLayoutGuide type="bottom" id="WEx-mJ-Fbe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="p8S-aI-qyI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="D47-kD-3fd">
+                                <rect key="frame" x="16" y="28" width="343" height="619"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="QoX-C5-yg4">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QoX-C5-yg4" id="eIg-ig-kNO">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="D47-kD-3fd" firstAttribute="trailing" secondItem="p8S-aI-qyI" secondAttribute="trailingMargin" id="8cS-Bb-g1U"/>
+                            <constraint firstItem="D47-kD-3fd" firstAttribute="leading" secondItem="p8S-aI-qyI" secondAttribute="leadingMargin" id="cHw-CP-gXv"/>
+                            <constraint firstItem="D47-kD-3fd" firstAttribute="top" secondItem="KOb-bf-Ksu" secondAttribute="bottom" constant="8" id="lUR-LX-cKq"/>
+                            <constraint firstItem="WEx-mJ-Fbe" firstAttribute="top" secondItem="D47-kD-3fd" secondAttribute="bottom" constant="20" id="mkg-g5-lpv"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="lUR-LX-cKq"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hFh-uv-CG0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="623.5" y="218.5"/>
+        </scene>
         <!--Select Type View Controller-->
         <scene sceneID="Y8N-du-VmX">
             <objects>
@@ -193,9 +238,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view alpha="0.49999999999999961" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aer-mL-5cH">
+                            <view alpha="0.44999999999999962" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aer-mL-5cH">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -285,7 +330,7 @@
                                                     <color key="textColor" red="0.30196078430000001" green="0.35686274509999999" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="share_photo.png" translatesAutoresizingMaskIntoConstraints="NO" id="kxh-a0-9Z5">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MapPhoto.png" translatesAutoresizingMaskIntoConstraints="NO" id="kxh-a0-9Z5">
                                                     <rect key="frame" x="24" y="32" width="552" height="552"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="kxh-a0-9Z5" secondAttribute="height" multiplier="1:1" id="U9O-YC-h2d"/>
@@ -471,14 +516,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aIM-RZ-ODJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="717" y="1105"/>
+            <point key="canvasLocation" x="-683" y="517"/>
         </scene>
     </scenes>
     <resources>
         <image name="Compass Filled-100.png" width="100" height="100"/>
         <image name="Define Location Filled-100.png" width="100" height="100"/>
+        <image name="MapPhoto.png" width="500" height="500"/>
         <image name="join-icon.png" width="64" height="64"/>
         <image name="map-post-location-white-icon.png" width="32" height="32"/>
-        <image name="share_photo.png" width="718" height="728"/>
     </resources>
 </document>
