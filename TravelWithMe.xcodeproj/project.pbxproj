@@ -22,10 +22,10 @@
 		A540D3F91B9029FB00FA5D75 /* TWMessageBarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A540D3F81B9029FB00FA5D75 /* TWMessageBarManager.m */; };
 		A55171831B86151A002841AB /* PolicyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55171821B86151A002841AB /* PolicyViewController.m */; };
 		A55669951B80EAE300F588E3 /* CExpandHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = A55669941B80EAE300F588E3 /* CExpandHeader.m */; };
-		A55AD25F1B8AF803009AC07B /* demo_7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A55AD25E1B8AF803009AC07B /* demo_7.jpg */; };
 		A56DFE1A1B903E7E00C0922C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48B16D91B5F40A200E96B0D /* SystemConfiguration.framework */; };
 		A5D374921B646BEC00A57791 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5D374911B646BEC00A57791 /* MessageUI.framework */; };
 		A5E1670D1B6903B70036ABE4 /* SettingTableViewControlle.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E1670C1B6903B70036ABE4 /* SettingTableViewControlle.m */; };
+		A5E49B2A1B90974C00BEEF34 /* Widget.png in Resources */ = {isa = PBXBuildFile; fileRef = A5E49B291B90974C00BEEF34 /* Widget.png */; };
 		B51A23321B7A5C9900CFD674 /* favoriteMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51A232B1B7A5C9900CFD674 /* favoriteMainViewController.m */; };
 		B51A23341B7A5C9900CFD674 /* favoriteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51A232F1B7A5C9900CFD674 /* favoriteTableViewController.m */; };
 		B51A23351B7A5C9900CFD674 /* followTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51A23311B7A5C9900CFD674 /* followTableViewController.m */; };
@@ -177,10 +177,10 @@
 		A55171821B86151A002841AB /* PolicyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PolicyViewController.m; sourceTree = "<group>"; };
 		A55669931B80EAE300F588E3 /* CExpandHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CExpandHeader.h; sourceTree = "<group>"; };
 		A55669941B80EAE300F588E3 /* CExpandHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CExpandHeader.m; sourceTree = "<group>"; };
-		A55AD25E1B8AF803009AC07B /* demo_7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = demo_7.jpg; sourceTree = "<group>"; };
 		A5D374911B646BEC00A57791 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		A5E1670B1B6903B70036ABE4 /* SettingTableViewControlle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingTableViewControlle.h; sourceTree = "<group>"; };
 		A5E1670C1B6903B70036ABE4 /* SettingTableViewControlle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewControlle.m; sourceTree = "<group>"; };
+		A5E49B291B90974C00BEEF34 /* Widget.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Widget.png; sourceTree = "<group>"; };
 		B51A232A1B7A5C9900CFD674 /* favoriteMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = favoriteMainViewController.h; sourceTree = "<group>"; };
 		B51A232B1B7A5C9900CFD674 /* favoriteMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = favoriteMainViewController.m; sourceTree = "<group>"; };
 		B51A232E1B7A5C9900CFD674 /* favoriteTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = favoriteTableViewController.h; sourceTree = "<group>"; };
@@ -382,7 +382,7 @@
 		A521DE0B1B864F5200A0173D /* TraveIWithMe */ = {
 			isa = PBXGroup;
 			children = (
-				A55AD25E1B8AF803009AC07B /* demo_7.jpg */,
+				A5E49B291B90974C00BEEF34 /* Widget.png */,
 				A521DE0E1B864F5200A0173D /* TodayViewController.h */,
 				A521DE0F1B864F5200A0173D /* TodayViewController.m */,
 				A521DE111B864F5200A0173D /* MainInterface.storyboard */,
@@ -840,8 +840,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A55AD25F1B8AF803009AC07B /* demo_7.jpg in Resources */,
 				A521DE121B864F5200A0173D /* MainInterface.storyboard in Resources */,
+				A5E49B2A1B90974C00BEEF34 /* Widget.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
