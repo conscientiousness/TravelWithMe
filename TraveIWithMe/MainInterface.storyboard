@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="M4Y-Lb-cyx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="M4Y-Lb-cyx">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Today View Controller-->
@@ -17,13 +16,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="demo_7.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="hFb-V4-1mx">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Widget.png" translatesAutoresizingMaskIntoConstraints="NO" id="hFb-V4-1mx">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="usJ-OW-OOD">
-                                <rect key="frame" x="236" y="8" width="68" height="26"/>
+                                <rect key="frame" x="124.5" y="37" width="72" height="26"/>
                                 <fontDescription key="fontDescription" name="STHeitiTC-Medium" family="Heiti TC" pointSize="14"/>
-                                <state key="normal" title="更多主題 ❯">
+                                <state key="normal" title="更多主題 ...">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -33,12 +32,12 @@
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="hFb-V4-1mx" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" id="5Mx-UI-jHh"/>
-                            <constraint firstItem="hFb-V4-1mx" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" id="9aM-c1-VEc"/>
-                            <constraint firstAttribute="trailing" secondItem="hFb-V4-1mx" secondAttribute="trailing" id="D6j-mb-Sya"/>
-                            <constraint firstItem="hFb-V4-1mx" firstAttribute="bottom" secondItem="FKl-LY-JtV" secondAttribute="top" id="HWl-A4-nKt"/>
-                            <constraint firstItem="usJ-OW-OOD" firstAttribute="trailing" secondItem="S3S-Oj-5AN" secondAttribute="trailingMargin" id="Mm9-ze-eNb"/>
-                            <constraint firstItem="usJ-OW-OOD" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="8" id="NWt-sS-NFN"/>
+                            <constraint firstAttribute="trailing" secondItem="hFb-V4-1mx" secondAttribute="trailing" id="4cZ-HB-RUI"/>
+                            <constraint firstItem="hFb-V4-1mx" firstAttribute="bottom" secondItem="FKl-LY-JtV" secondAttribute="top" id="BVK-r3-NpS"/>
+                            <constraint firstItem="hFb-V4-1mx" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" id="YCv-am-cI7"/>
+                            <constraint firstItem="usJ-OW-OOD" firstAttribute="centerX" secondItem="S3S-Oj-5AN" secondAttribute="centerX" id="f0p-LC-bTK"/>
+                            <constraint firstItem="usJ-OW-OOD" firstAttribute="centerY" secondItem="S3S-Oj-5AN" secondAttribute="centerY" id="hK5-Jo-tiP"/>
+                            <constraint firstItem="hFb-V4-1mx" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" id="iwl-rw-ibA"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
@@ -54,7 +53,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="demo_7.jpg" width="890" height="538"/>
+        <image name="Widget.png" width="320" height="100"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
