@@ -10,10 +10,13 @@
 #import "ParallaxTableViewCell.h"
 #import "MJRefresh.h"
 #import "AppDelegate.h"
+#import "Reachability.h"
+#import "TWMessageBarManager.h"
 
 @interface HomePageViewController ()
 {
     NSMutableArray *arrayDatas;
+    Reachability *serverReach;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
@@ -58,8 +61,52 @@
 //                        [UIImage imageNamed:@"demo_12.jpg"],
 //                        [UIImage imageNamed:@"demo_13.jpg"],
 //                        [UIImage imageNamed:@"demo_14.jpg"]];
-//   
+    
+    // Prepare Rechability
+    //使用NSNotificationCenter來通知網路狀態改變
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(networkStatusChanged:) name:kReachabilityChangedNotification object:nil];
+    
+    serverReach = [Reachability reachabilityWithHostName:@"www.parse.com"];
+    [serverReach startNotifier];
+    
+    
+ 
 }
+
+// 判斷網路是否存在
+-(void) networkStatusChanged:(NSNotification*)notify{
+    NetworkStatus status = [serverReach currentReachabilityStatus];
+    if(status == NotReachable)
+    {
+        //斷線
+        //NSLog(@"Not Reachable.");
+        [[TWMessageBarManager sharedInstance]
+         showMessageWithTitle:@"TravelWithMe" //標頭
+         description:@"無法連線上網,請檢查您的網路唷！" //內容
+         type:TWMessageBarMessageTypeInfo // 主題(底層有三種效果＆顏色自訂)
+         duration:60.0]; // 秒數
+    }
+    else{
+        //連線
+        //NSLog(@"Reach with: %ld",status);
+        [self update];
+        [[TWMessageBarManager sharedInstance] hideAllAnimated:YES];
+        
+    }
+    
+}
+// 如果網路重整時
+-(void) update{
+    
+    if([serverReach currentReachabilityStatus] == NotReachable){
+        // Remin User ... etc
+        return;
+    }
+}
+// 停止接收
+
+
 
 - (void) jumpToWallTableviewCell:(NSNotification*) notify {
     [self performSegueWithIdentifier:@"4ni2" sender:nil];
@@ -127,6 +174,9 @@
 -(void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self forKeyPath:JUMP_TO_WallTableviewCell];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:kReachabilityChangedNotification object:nil];
+    
+    [serverReach stopNotifier];
 }
 
 @end
