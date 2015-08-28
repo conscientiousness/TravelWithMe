@@ -15,9 +15,12 @@
 #import "UIImage+ImageEffects.h"
 #import "SSBouncyButton.h"
 
-#define HEIGHT_FOR_INFO_SECTION 330.0
-#define HEIGHT_FOR_MESSAGE_SECTION 64.0
-#define WIDTH_FOR_MEMO 227.0
+//個人資料cell高度
+#define HEIGHT_FOR_INFO_CELL 330.0
+//訊息cell高度
+#define HEIGHT_FOR_MESSAGE_CELL 64.0
+//行程介紹Label寬度:影響系統動態變更高度
+#define WIDTH_FOR_MEMO_LABEL 227.0
 
 @interface DetailMessageViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *detailTableView;
@@ -524,14 +527,14 @@
     NSString *tmpStr;
     
     if(indexPath.section == 0){
-        result = HEIGHT_FOR_INFO_SECTION;
+        result = HEIGHT_FOR_INFO_CELL;
         
         tmpStr = _cellDictData[@"memo"];
         NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:13]};
         NSAttributedString * attrString = [[NSAttributedString alloc] initWithString:tmpStr attributes:attributes];
         
         //寬度固定計算行高(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
-        CGRect rect = [attrString boundingRectWithSize:CGSizeMake(WIDTH_FOR_MEMO, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin context:nil];
+        CGRect rect = [attrString boundingRectWithSize:CGSizeMake(WIDTH_FOR_MEMO_LABEL, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin context:nil];
         //NSLog(@"rect:%@",NSStringFromCGRect(rect));
         //NSLog(@"rect height = %f",rect.size.height);
         result += rect.size.height;
@@ -541,7 +544,7 @@
             result -= 50.0;
         
     }else if(indexPath.section == 2){
-        result = HEIGHT_FOR_MESSAGE_SECTION;
+        result = HEIGHT_FOR_MESSAGE_CELL;
         
         tmpStr = commentAry[indexPath.row][COMMENT_MESSAGE_KEY];
         NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:12]};

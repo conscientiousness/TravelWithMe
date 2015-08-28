@@ -93,7 +93,7 @@
     dispatch_queue_t loginFacebookQueue = dispatch_queue_create("loginFacebookQueue", nil);
     dispatch_async(loginFacebookQueue, ^{
 
-        [PFFacebookUtils logInInBackgroundWithReadPermissions:@[@"public_profile", @"email"] block:^(PFUser *user, NSError *error) {
+        [PFFacebookUtils logInInBackgroundWithReadPermissions:@[@"public_profile", @"email",@"user_about_me", @"user_birthday", @"user_location"] block:^(PFUser *user, NSError *error) {
             if (!user) {
                 NSLog(@"Uh oh. The user cancelled the Facebook login.");
                 
@@ -103,7 +103,7 @@
                 NSLog(@"User logged in through Facebook! ,%@",user.objectId);
                 
                 [self saveFacebookProfileData:user completion:^void(NSError *error) {
-                    
+                    //NSLog(@"profilePictureURL: %@ ",user);
                     if (!error) {
                         [self dismissViewControllerAnimated:true completion:nil];
                     } else {
@@ -126,7 +126,7 @@
                 NSURL *profilePictureURL = [NSURL URLWithString: result [@"picture"][@"data"][@"url"]];
                 NSData *profilePictureData = [NSData dataWithContentsOfURL:profilePictureURL];
                 [PAPUtility processFacebookProfilePictureData:profilePictureData];
-                //NSLog(@"profilePictureURL: %@ ",profilePictureURL);
+                //NSLog(@"profilePictureURL: %@ ",result);
                 
                 [user setObject:[result objectForKey:@"id"] forKey:@"facebookId"];
                 [user setObject:[result objectForKey:@"name"] forKey:@"displayName"];
@@ -136,7 +136,7 @@
                 [user setObject:[result objectForKey:@"birthday"]?[result objectForKey:@"birthday"]:[NSNull null] forKey:@"birthday"];
                 [user setObject:[[result objectForKey:@"location"] objectForKey:@"name"]?[[result objectForKey:@"location"] objectForKey:@"name"]:[NSNull null] forKey:@"location"];
                 [user setObject:[result objectForKey:@"link"]?[result objectForKey:@"link"]:[NSNull null] forKey:@"link"];
-                
+                [user setObject:[result objectForKey:@"about"]?[result objectForKey:@"about"]:[NSNull null] forKey:@"aboutMe"];
                 
                 [user saveInBackground];
             }

@@ -15,49 +15,8 @@
  */
 #pragma mark - NSNotification
 
-#define PUBLISH_DONE_NOTIFICATION
 #define TOP_CHILD_DISMISSED_NOTIFICATION @"TopChildDismissed"
 #define PRESENT_TO_MAPPOSTVIEW_NOTIFICATION @"PresentToMapPost"
-
-/*
- * PostViewControllert - 發文畫面 常數定義
- */
-#pragma mark - PostViewController
-
-#define NUMBER_OF_SECTIONS 1
-#define NUMBER_OF_ROWS 4
-
-#define TEXTFIELD_COUNTRYCITY_TAG 1000
-#define TEXTFIELD_STARTDATE_TAG 2000
-#define TEXTFIELD_DAYS_TAG 2001
-#define IMAGEVIEW_SHAREPHOTO_TAG 3000
-#define TEXTVIEW_MEMO_TAG 4000
-
-
-/*
- * MapViewControllert - 地圖畫面 常數定義
-*/
-#pragma mark - MapViewControllert
-
-//地圖ADD按鈕位置//
-#define MAP_FLAT_BTN_CGRECTMAKE self.view.frame.size.width/2 - 15, self.view.frame.size.height - 100, 30, 30
-//類別按鈕初始位置
-#define FOOT_BTN_CGRECTMAKE self.view.frame.size.width/2 - 40, self.view.frame.size.height - 150, 80, 80
-#define LANSCAPE_BTN_CGRECTMAKE self.view.frame.size.width/2 - 40, self.view.frame.size.height - 150, 80, 80
-#define PEOPLE_BTN_CGRECTMAKE self.view.frame.size.width/2 - 40, self.view.frame.size.height - 150, 80, 80
-//類別按鈕動態移動結束位置
-#define FOOD_BTN_SNAP_BEHAVIOR_CGPOINT self.view.frame.size.width/2, self.view.frame.size.height/2 - 50
-#define LANSCAPE_BTN_SNAP_BEHAVIOR_CGPOINT self.view.frame.size.width/2 - 110, self.view.frame.size.height/2 - 25
-#define PEOPLE_BTN_SNAP_BEHAVIOR_CGPOINT self.view.frame.size.width/2 + 110, self.view.frame.size.height/2 - 25
-
-#pragma mark - MapPostViewControllert
-//地圖Po文TAG
-#define IMAGEVIEW_MAPSHAREPHOTO_TAG 2000
-#define TEXTVIEW_MAPMEMO_TAG 3000
-//ROW & SECTION 數
-#define MAPPOST_NUMBER_OF_SECTIONS 1
-#define MAPPOST_NUMBER_OF_ROWS 3
-
 
 /*
  * PARSE 欄位定義
@@ -86,6 +45,8 @@
 
 #define USER_DISPLAYNAME_KEY @"displayName"
 #define USER_GENDER_KEY @"gender"
+#define USER_LOCATION_KEY @"location"
+#define USER_BIRTHDAY_KEY @"birthday"
 #define USER_PROFILEPICTUREMEDIUM_KEY @"profilePictureMedium"
 #define USER_PROFILEPICTURESMALL_KEY @"profilePictureSmall"
 #define USER_RELATION_TRAVELMATEPOSTS_KEY @"travelMatePosts"

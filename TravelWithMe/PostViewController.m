@@ -14,6 +14,15 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "SCLAlertView.h"
 
+#define NUMBER_OF_SECTIONS 1
+#define NUMBER_OF_ROWS 4
+
+#define TEXTFIELD_COUNTRYCITY_TAG 1000
+#define TEXTFIELD_STARTDATE_TAG 2000
+#define TEXTFIELD_DAYS_TAG 2001
+#define IMAGEVIEW_SHAREPHOTO_TAG 3000
+#define TEXTVIEW_MEMO_TAG 4000
+
 @interface PostViewController ()<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate>
 {
     UIImage *pickImage;
