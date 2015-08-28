@@ -66,25 +66,44 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    UIViewController *targetViewController;
+    UIStoryboard *storyboard;
     // 我的頁面
     if(indexPath.section == 0){
     if(indexPath.row == 0){
-        UIViewController *targetViewController;
-        UIStoryboard *storyboard;
-    //[FBSDKAccessToken currentAccessToken]
-    // 判斷是否已經登入若無跳轉登入若有顯示我的頁面
-    if(user) {
-        targetViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"VIPViewController"];
+        
+        //[FBSDKAccessToken currentAccessToken]
+        // 判斷是否已經登入若無跳轉登入若有顯示我的頁面
+        if(user) {
+            targetViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"VIPViewController"];
+            
+            [self.navigationController pushViewController:targetViewController animated:YES];
+        }
+        else {
+            storyboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+            targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"loginViewController"];
+            
+            [self presentViewController:targetViewController animated:YES completion:nil];
+        }
     
-        [self.navigationController pushViewController:targetViewController animated:YES];
     }
-    else {
-        storyboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
-        targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"loginViewController"];
-    
-        [self presentViewController:targetViewController animated:YES completion:nil];
-      }
+    else if(indexPath.row == 1){
+        
+        
+        if(user) {
+            storyboard = [UIStoryboard storyboardWithName:@"Favorite" bundle:nil];
+            
+            targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"favoriteMainVC"];
+            
+            [self.navigationController pushViewController:targetViewController animated:YES];
+        }
+        else {
+            storyboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+            targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"loginViewController"];
+            
+            [self presentViewController:targetViewController animated:YES completion:nil];
+        }
+        
     }
 }
     
@@ -102,7 +121,7 @@
      
             MFMailComposeViewController * mailViewController = [[MFMailComposeViewController alloc] init];
             mailViewController.mailComposeDelegate = self;
-            [mailViewController setSubject:@"Travelwithme_Questione"];
+            [mailViewController setSubject:@"TravelwithMe_Q"];
             [mailViewController setToRecipients:@[@"travelwithme.tw@gmail.com"]];
             [self presentViewController:mailViewController animated:YES completion:^{
             }];
@@ -118,9 +137,6 @@
                 user=nil;
                 _loginCell.textLabel.text = @"登入";
             }else{
-                
-                UIViewController *targetViewController;
-                UIStoryboard *storyboard;
                 
                 storyboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
                 targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"loginViewController"];
