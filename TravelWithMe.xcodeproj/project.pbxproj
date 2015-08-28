@@ -90,6 +90,7 @@
 		F47556AF1B4BACF2008CEE3A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F47556AD1B4BACF2008CEE3A /* LaunchScreen.xib */; };
 		F47556BB1B4BACF2008CEE3A /* TravelWithMeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F47556BA1B4BACF2008CEE3A /* TravelWithMeTests.m */; };
 		F47556C51B4BD40F008CEE3A /* Favorite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F47556C41B4BD40F008CEE3A /* Favorite.storyboard */; };
+		F47D8EC11B900B5B0020A768 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = F47D8EC01B900B5B0020A768 /* Reachability.m */; };
 		F486EF461B4C34D2008CB97B /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F486EF451B4C34D2008CB97B /* Setting.storyboard */; };
 		F48B16CC1B5F405600E96B0D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48B16CB1B5F405600E96B0D /* AudioToolbox.framework */; };
 		F48B16CE1B5F406300E96B0D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48B16CD1B5F406300E96B0D /* CFNetwork.framework */; };
@@ -265,6 +266,8 @@
 		F47556B91B4BACF2008CEE3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F47556BA1B4BACF2008CEE3A /* TravelWithMeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TravelWithMeTests.m; sourceTree = "<group>"; };
 		F47556C41B4BD40F008CEE3A /* Favorite.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Favorite.storyboard; sourceTree = "<group>"; };
+		F47D8EBF1B900B5B0020A768 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		F47D8EC01B900B5B0020A768 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		F486EF451B4C34D2008CB97B /* Setting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		F48B16CB1B5F405600E96B0D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		F48B16CD1B5F406300E96B0D /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -675,6 +678,8 @@
 		F4DA4C5D1B4E9D0C00421F2F /* Comm */ = {
 			isa = PBXGroup;
 			children = (
+				F47D8EBF1B900B5B0020A768 /* Reachability.h */,
+				F47D8EC01B900B5B0020A768 /* Reachability.m */,
 				F47556A21B4BACF2008CEE3A /* AppDelegate.h */,
 				F47556A31B4BACF2008CEE3A /* AppDelegate.m */,
 				F4DA4C5A1B4E9D0500421F2F /* UIColors.h */,
@@ -925,6 +930,7 @@
 				A524E7FA1B86C54F0094A684 /* LegalViewController.m in Sources */,
 				B51A23351B7A5C9900CFD674 /* followTableViewController.m in Sources */,
 				F4DA4C5C1B4E9D0500421F2F /* UIColors.m in Sources */,
+				F47D8EC11B900B5B0020A768 /* Reachability.m in Sources */,
 				F4CEF12D1B81B87C006D2B71 /* PostViewController.m in Sources */,
 				F4DA4C601B4EC96F00421F2F /* HomePostViewController.m in Sources */,
 				F43F907A1B8C80EB00E509F3 /* PostMapMemoTableViewCell.m in Sources */,
