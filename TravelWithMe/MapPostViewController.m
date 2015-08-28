@@ -55,7 +55,7 @@
     //NSLog(@"%@",_dictDatas[MAPVIEW_LATITUDE_DICT_KEY]);
     [self getGeoCoderPlacemarks];
     
-    
+    [self initUI];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,7 +66,9 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [self initUI];
+    
+    //初始化送出取消按鈕
+    [self initFlatBtn];
 }
 
 - (void)initUI {
@@ -75,9 +77,6 @@
     
     //關閉分隔線
     [_mapPostTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    
-    //初始化送出取消按鈕
-    [self initFlatBtn];
 }
 
 #pragma mark - 初始化送出與取消按鈕
@@ -258,9 +257,18 @@
     if (indexPath.row == 0) {
          PostTypeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
         
-        
-        
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        if([_dictDatas[MAPPOST_TYPE_KEY] isEqualToString:@"food"]){
+            [cell.mapPostTypeImageView setImage:[UIImage imageNamed:@"food-icon"]];
+        }
+        else if([_dictDatas[MAPPOST_TYPE_KEY] isEqualToString:@"landscape"]){
+            [cell.mapPostTypeImageView setImage:[UIImage imageNamed:@"landscape-icon"]];
+        }
+        else if([_dictDatas[MAPPOST_TYPE_KEY] isEqualToString:@"people"]){
+            [cell.mapPostTypeImageView setImage:[UIImage imageNamed:@"people-icon"]];
+        }
+        
         
         return cell;
         
