@@ -20,9 +20,9 @@
     // Override point for customization after application launch.
     UITabBarController *tabBarController = (UITabBarController*)_window.rootViewController;
     
-    UIStoryboard *favoriteStoryboard = [UIStoryboard storyboardWithName:@"Favorite" bundle:nil];
+    //UIStoryboard *favoriteStoryboard = [UIStoryboard storyboardWithName:@"Favorite" bundle:nil];
     
-    UIViewController *favoriteViewController = [favoriteStoryboard instantiateViewControllerWithIdentifier:@"favoriteViewController"];
+    //UIViewController *favoriteViewController = [favoriteStoryboard instantiateViewControllerWithIdentifier:@"favoriteViewController"];
     
     
     UIStoryboard *settingStoryboard = [UIStoryboard storyboardWithName:@"Setting" bundle:nil];
@@ -39,7 +39,7 @@
     
     NSMutableArray *newArray = [NSMutableArray arrayWithArray:tabBarController.viewControllers];
     
-    [newArray addObject:favoriteViewController];
+    //[newArray addObject:favoriteViewController];
     [newArray addObject:mapViewController];
     [newArray addObject:settingViewController];
     
@@ -53,19 +53,21 @@
     tabBarItem0.image = [[UIImage imageNamed:@"tabbar0-unselect-icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     [tabBarItem0 setImageInsets:UIEdgeInsetsMake(8, 0, -8, 0)];
 
+    /*
     UITabBarItem *tabBarItem1 = [tabBarController.tabBar.items objectAtIndex:1];
     
     tabBarItem1.selectedImage = [[UIImage imageNamed:@"tabbar1-selected-icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     tabBarItem1.image = [[UIImage imageNamed:@"tabbar1-unselect-icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     [tabBarItem1 setImageInsets:UIEdgeInsetsMake(8, 0, -8, 0)];
-    
-    UITabBarItem *tabBarItem2 = [tabBarController.tabBar.items objectAtIndex:2];
+    */
+     
+    UITabBarItem *tabBarItem2 = [tabBarController.tabBar.items objectAtIndex:1];
     
     tabBarItem2.selectedImage = [[UIImage imageNamed:@"tabbar2-selected-icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     tabBarItem2.image = [[UIImage imageNamed:@"tabbar2-unselect-icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     [tabBarItem2 setImageInsets:UIEdgeInsetsMake(8, 0, -8, 0)];
     
-    UITabBarItem *tabBarItem3 = [tabBarController.tabBar.items objectAtIndex:3];
+    UITabBarItem *tabBarItem3 = [tabBarController.tabBar.items objectAtIndex:2];
     
     tabBarItem3.selectedImage = [[UIImage imageNamed:@"tabbar3-selected-icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     tabBarItem3.image = [[UIImage imageNamed:@"tabbar3-unselect-icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];

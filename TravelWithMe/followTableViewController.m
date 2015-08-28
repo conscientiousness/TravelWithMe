@@ -7,24 +7,69 @@
 //
 
 #import "followTableViewController.h"
-#import "UIColors.h"
+#import "VIPMyActivityTableViewCell.h"
+
 
 @interface followTableViewController ()
+{
+    PFUser *user;
+}
 @property (strong, nonatomic) IBOutlet UITableView *followTableView;
 @end
 
 @implementation followTableViewController
 {
-    NSMutableArray *list2;
+    NSMutableArray *arrayDatas;
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initUI];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+
+    if (!user) {
+        user = [PFUser currentUser];
+    }
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    if([PFUser currentUser]==nil) {
+        user = nil;
+    }
+    
+    UIViewController *targetViewController;
+    UIStoryboard *storyboard;
+    if(!user)
+    { //抓不到user權限，導向LOGIN畫面
+        
+        storyboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+        
+        targetViewController = [storyboard instantiateViewControllerWithIdentifier:@"loginViewController"];
+        
+        [self presentViewController:targetViewController animated:YES completion:nil];
+    }
+
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if (!user) {
+        user = [PFUser currentUser];
+    }
+    
+    if([PFUser currentUser]==nil) {
+        user = nil;
+    }
+    
+    dispatch_queue_t loadingQueue = dispatch_queue_create("loading", nil);
+    dispatch_async(loadingQueue, ^{
+        [self getTravelMatePostDatas];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+            
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        });
+    });
+
 }
 
 - (void)initUI {
@@ -47,24 +92,64 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
     // Return the number of rows in the section.
-    return [list2 count];
+    return arrayDatas.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *identifier =@"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"identifier" ];
-    if(cell == nil){
-        
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-    }
-    // Configure the cell...
+    
+    NSString *identifier;
+    NSString *nibName;
+    UINib *nib;
+    
+    identifier = @"cell";
+    nibName = @"VIPMyActivityTableViewCell";
+    nib = [UINib nibWithNibName:nibName bundle:nil];
+    [tableView registerNib:nib forCellReuseIdentifier:identifier];
+    
+    VIPMyActivityTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+    
+    cell.myActivityCountryCityLabel.text = arrayDatas[indexPath.row][TRAVELMATEPOST_COUNTRYCITY_KEY];
+    
+    cell.myActivityStartDate.text = arrayDatas[indexPath.row][TRAVELMATEPOST_STARTDATE_KEY];
+    
+    cell.myActivityMemo.text = arrayDatas[indexPath.row][TRAVELMATEPOST_MEMO_KEY];
+    
+    PFFile *photo = (PFFile *)arrayDatas[indexPath.row][TRAVELMATEPOST_SMALLPHOTO_KEY];
+    [cell.myActivityShareSmallPhoto sd_setImageWithURL:(NSURL*)photo.url placeholderImage:[UIImage imageNamed:@"intrested-icon"]];
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return 80.0;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
 
+#pragma mark - 取得USER所有參加
+
+- (void) getTravelMatePostDatas
+{
+    //userObjectId = @"fWcSONXdmc";
+    
+    PFRelation *relation = [user relationForKey:@"interestedPosts"];
+    PFQuery *query = [relation query];
+    [query orderByDescending:@"createdAt"];
+    //query.limit = 3;
+    
+    //if(arrayDatas==nil)
+    //arrayDatas = [NSMutableArray new];
+    
+    arrayDatas = [[NSMutableArray alloc] initWithArray:[query findObjects]];
+    
+    //每次上拉查詢增加筆數
+    //dataCount = [NSNumber numberWithInt:[dataCount intValue] + 3];
+}
 
 /*
 // Override to support conditional editing of the table view.

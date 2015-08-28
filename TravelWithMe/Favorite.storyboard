@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -24,19 +24,11 @@
         <!--Favorite Table View Controller-->
         <scene sceneID="Uvx-Tj-HbM">
             <objects>
-                <tableViewController id="xg1-5p-8xQ" customClass="favoriteTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="favoriteVC1" id="xg1-5p-8xQ" customClass="favoriteTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="kmx-Ok-64g">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="identifier" id="U7O-4Z-8on">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U7O-4Z-8on" id="0s7-qz-GOq">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="xg1-5p-8xQ" id="pcJ-F1-f0D"/>
                             <outlet property="delegate" destination="xg1-5p-8xQ" id="IoM-iI-ZtZ"/>
@@ -53,7 +45,7 @@
         <!--Favorite Main View Controller-->
         <scene sceneID="wqu-0z-9AA">
             <objects>
-                <viewController id="Z3G-jl-y2E" customClass="favoriteMainViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="favoriteMainVC" id="Z3G-jl-y2E" customClass="favoriteMainViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3EY-e4-tCo"/>
                         <viewControllerLayoutGuide type="bottom" id="tse-yZ-eE4"/>
@@ -71,15 +63,15 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RqM-JI-ZVM">
                                 <rect key="frame" x="0.0" y="64" width="600" height="36"/>
                                 <subviews>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="QkN-W2-ehl">
-                                        <rect key="frame" x="155" y="4" width="290" height="29"/>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="QkN-W2-ehl">
+                                        <rect key="frame" x="154" y="4" width="291" height="29"/>
                                         <color key="backgroundColor" red="0.18823529410000001" green="0.61568627450000002" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="290" id="ux0-6m-moj"/>
                                         </constraints>
                                         <segments>
-                                            <segment title="我參加的" width="145"/>
-                                            <segment title="我追蹤的" width="145"/>
+                                            <segment title="我已參加" width="145"/>
+                                            <segment title="我有興趣" width="145"/>
                                         </segments>
                                         <color key="tintColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
@@ -123,22 +115,14 @@
         <!--Follow Table View Controller-->
         <scene sceneID="1u4-8o-8Wn">
             <objects>
-                <tableViewController id="QXW-ge-TAD" customClass="followTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="favoriteVC2" id="QXW-ge-TAD" customClass="followTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="RJn-5u-Pi1">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="564"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="identifier" id="eHZ-ES-OmQ">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eHZ-ES-OmQ" id="iul-GF-gcY">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="QXW-ge-TAD" id="8vt-TI-iKg"/>
-                            <outlet property="delegate" destination="QXW-ge-TAD" id="id3-gD-w7U"/>
+                            <outlet property="dataSource" destination="QXW-ge-TAD" id="4EL-nS-q6L"/>
+                            <outlet property="delegate" destination="QXW-ge-TAD" id="n16-Rw-SH3"/>
                         </connections>
                     </tableView>
                     <connections>
