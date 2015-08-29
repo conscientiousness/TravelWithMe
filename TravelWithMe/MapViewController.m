@@ -15,6 +15,7 @@
 #import "SelectTypeViewController.h"
 #import "DPAnnotationView.h"
 #import "DateTools.h"
+#import "SCLAlertView.h"
 
 
 @interface MapViewController ()<MKMapViewDelegate,CLLocationManagerDelegate>
@@ -120,21 +121,43 @@
 #pragma mark - 當類別按鈕按下，present到PO文畫面
 - (void) presentToMapPost:(NSNotification*)notification {
     
-    //prepare passing value
-    [passDataDict setValue:[notification userInfo][MAPPOST_TYPE_KEY] forKey:MAPPOST_TYPE_KEY];
-    [passDataDict setValue:[NSNumber numberWithDouble:currentLocation.coordinate.latitude] forKey:MAPPOST_LATITUDE_KEY];
-    [passDataDict setValue:[NSNumber numberWithDouble:currentLocation.coordinate.longitude] forKey:MAPPOST_LONGITUDE_KEY];
+    //NSLog(@"%f",currentLocation.coordinate.latitude);
+    if(currentLocation == nil){
+        
+        SCLAlertView *alert = [[SCLAlertView alloc] init];
+        UIColor *color = [UIColor customGreenColor];
+        NSString *icon = @"crying-icon";
+        NSString *title = @"無法取得位置資訊";
+        NSString *subTitle = @"請檢查連線狀態或開啟定位權限唷";
+        
+        [alert showCustom:self image:[UIImage imageNamed:icon] color:color title:title subTitle:subTitle closeButtonTitle:@"OK" duration:0.0f];
+        
+        if(!user){
+            user = [PFUser currentUser];
+        }
+        
+        [self initFlatRoundedButton];
+        
+    }else{
+        
+        //prepare passing value
+        [passDataDict setValue:[notification userInfo][MAPPOST_TYPE_KEY] forKey:MAPPOST_TYPE_KEY];
+        [passDataDict setValue:[NSNumber numberWithDouble:currentLocation.coordinate.latitude] forKey:MAPPOST_LATITUDE_KEY];
+        [passDataDict setValue:[NSNumber numberWithDouble:currentLocation.coordinate.longitude] forKey:MAPPOST_LONGITUDE_KEY];
+        
+        MapPostViewController *targetViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"mapPostViewController"];
+        
+        targetViewController.dictDatas = passDataDict;
+        
+        //釋放
+        passDataDict = nil;
+        
+        //以覆蓋方式在原本VC上面(注意:dismiss時,不會觸發viewWillAppear等)
+        targetViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+        [self presentViewController:targetViewController animated:YES completion:nil];
+        
+    }
     
-    MapPostViewController *targetViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"mapPostViewController"];
-    
-    targetViewController.dictDatas = passDataDict;
-    
-    //釋放
-    passDataDict = nil;
-    
-    //以覆蓋方式在原本VC上面(注意:dismiss時,不會觸發viewWillAppear等)
-    targetViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-    [self presentViewController:targetViewController animated:YES completion:nil];
 }
 
 #pragma mark - 按下新增按鈕，present到類別按鈕畫面
@@ -368,12 +391,12 @@
    //NSLog(@"%f,%f",resultView.frame.size.height,resultView.frame.size.width);
    
    // Add Right Callout Accessory View 跳轉至PO文畫面
-   UIButton *rightButton =[UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+   /*UIButton *rightButton =[UIButton buttonWithType:UIButtonTypeDetailDisclosure];
    [rightButton addTarget:self
                    action:@selector(buttonPressed:)
          forControlEvents:UIControlEventTouchUpInside];
    resultView.rightCalloutAccessoryView=rightButton;
-
+    */
    
    return resultView;
 }

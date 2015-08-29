@@ -118,6 +118,7 @@
 		F4DB29C41B90C66500E6F245 /* food-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F4DB29C11B90C66500E6F245 /* food-icon.png */; };
 		F4DB29C51B90C66500E6F245 /* landscape-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F4DB29C21B90C66500E6F245 /* landscape-icon.png */; };
 		F4DB29C61B90C66500E6F245 /* people-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F4DB29C31B90C66500E6F245 /* people-icon.png */; };
+		F4DB29C81B914CA100E6F245 /* crying-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F4DB29C71B914CA100E6F245 /* crying-icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -310,6 +311,7 @@
 		F4DB29C11B90C66500E6F245 /* food-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "food-icon.png"; sourceTree = "<group>"; };
 		F4DB29C21B90C66500E6F245 /* landscape-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "landscape-icon.png"; sourceTree = "<group>"; };
 		F4DB29C31B90C66500E6F245 /* people-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "people-icon.png"; sourceTree = "<group>"; };
+		F4DB29C71B914CA100E6F245 /* crying-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "crying-icon.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -461,6 +463,7 @@
 				F4DB29C11B90C66500E6F245 /* food-icon.png */,
 				F4DB29C21B90C66500E6F245 /* landscape-icon.png */,
 				F4DB29C31B90C66500E6F245 /* people-icon.png */,
+				F4DB29C71B914CA100E6F245 /* crying-icon.png */,
 			);
 			name = MapView;
 			sourceTree = "<group>";
@@ -869,6 +872,7 @@
 				F43F906F1B8C415000E509F3 /* no-interested-add-icon.png in Resources */,
 				F420E1551B846B5D00D3627F /* comment-icon.png in Resources */,
 				F42EBDAC1B68CED800606D9B /* (null) in Resources */,
+				F4DB29C81B914CA100E6F245 /* crying-icon.png in Resources */,
 				F42EBD661B6877BF00606D9B /* (null) in Resources */,
 				F420E15A1B846FA500D3627F /* no-interested-icon.png in Resources */,
 				F4DB29C61B90C66500E6F245 /* people-icon.png in Resources */,
