@@ -20,12 +20,13 @@
 
 @interface MapViewController ()<MKMapViewDelegate,CLLocationManagerDelegate>
 {
-   CLLocationManager *locationManager;
-   BOOL isFirstLocationReceived;
-   PFUser *user;
-   NSMutableDictionary *passDataDict;
-   CLLocation *currentLocation;
-   NSMutableArray *arrayDatas;
+    CLLocationManager *locationManager;
+    BOOL isFirstLocationReceived;
+    PFUser *user;
+    NSMutableDictionary *passDataDict;
+    CLLocation *currentLocation;
+    NSMutableArray *arrayDatas;
+    NSMutableArray *allAnnotationsAry;
 }
 @property (weak, nonatomic) IBOutlet UIView *AnimationsView;
 @property (weak, nonatomic) IBOutlet MKMapView *theMapView;
@@ -34,6 +35,10 @@
 
 @implementation MapViewController
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -100,6 +105,25 @@
         NSString *subTitle = @"請檢查連線狀態或開啟定位權限唷";
         
         [alert showCustom:self image:[UIImage imageNamed:icon] color:color title:title subTitle:subTitle closeButtonTitle:@"OK" duration:0.0f];
+    }
+    
+    if([notification userInfo][@"saveSuccess"]){
+        [_theMapView removeAnnotations:allAnnotationsAry];
+        
+        MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.labelText = @"Loading...";
+        
+        dispatch_queue_t publishQueue = dispatch_queue_create("qryAnnotations", nil);
+        dispatch_async(publishQueue, ^{
+            
+            [self getdata];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [self addAnnotation];
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+            });
+        });
     }
     
     if(!user){
@@ -208,10 +232,7 @@
     [self.theMapView setCenterCoordinate:self.theMapView.userLocation.coordinate animated:YES];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 
 // Segmented 地圖顯示方式切換
@@ -299,47 +320,15 @@
        MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
        hud.labelText = @"Loading...";
        
-       dispatch_queue_t publishQueue = dispatch_queue_create("qry", nil);
-       
+       dispatch_queue_t publishQueue = dispatch_queue_create("qryAnnotations", nil);
        dispatch_async(publishQueue, ^{
           
           [self getdata];
           
           dispatch_async(dispatch_get_main_queue(), ^{
-             [MBProgressHUD hideHUDForView:self.view animated:YES];
              
-             CLLocationCoordinate2D coordicate;
-             
-             for(PFObject *data in arrayDatas){
-                
-                //float randomNum = (float)(arc4random()%9)/1000;
-                
-                //設定大頭針位置
-                coordicate.latitude = ((PFGeoPoint*)data[MAPPOST_USERLOCATION_KEY]).latitude;//+randomNum;
-                coordicate.longitude = ((PFGeoPoint*)data[MAPPOST_USERLOCATION_KEY]).longitude;//+randomNum;
-                
-                
-                MapMKPointAnnotation *annotation =[MapMKPointAnnotation new];
-                
-                annotation.extraInfo = @{
-                //分類
-                MAPPOST_TYPE_KEY:data[MAPPOST_TYPE_KEY]
-                //照片
-                ,MAPPOST_SMALLPHOTO_KEY:data[MAPPOST_SMALLPHOTO_KEY]
-                };
-                
-                //位置
-                annotation.coordinate = coordicate;
-                //標題：名字
-                annotation.title = data[COMMON_POINTER_CREATEUSER_KEY][USER_DISPLAYNAME_KEY];
-                //副標題：發文時間
-                NSDate *timeAgoDate = data.createdAt;
-                annotation.subtitle=timeAgoDate.timeAgoSinceNow;
-                //po文ID
-                annotation.selectedObjectId = data.objectId;
-                
-                [_theMapView addAnnotation:annotation];
-             }
+              [self addAnnotation];
+              [MBProgressHUD hideHUDForView:self.view animated:YES];
           });
        });
        
@@ -441,10 +430,54 @@
 
    PFQuery *query = [PFQuery queryWithClassName:MAPPOST_TABLENAME];
    [query includeKey:@"createUser.User"];
+    
+    //兩天
+    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:-172800];
+   [query whereKey:@"createdAt" greaterThan:date];
    
    arrayDatas = [NSMutableArray new];
    [arrayDatas addObjectsFromArray:[query findObjects]];
 }
 
+#pragma mark - 新增地圖大頭針
+
+- (void) addAnnotation
+{
+    CLLocationCoordinate2D coordicate;
+    
+    allAnnotationsAry = [NSMutableArray new];
+    
+    for(PFObject *data in arrayDatas){
+        
+        //float randomNum = (float)(arc4random()%9)/1000;
+        
+        //設定大頭針位置
+        coordicate.latitude = ((PFGeoPoint*)data[MAPPOST_USERLOCATION_KEY]).latitude;//+randomNum;
+        coordicate.longitude = ((PFGeoPoint*)data[MAPPOST_USERLOCATION_KEY]).longitude;//+randomNum;
+        
+        
+        MapMKPointAnnotation *annotation =[MapMKPointAnnotation new];
+        
+        annotation.extraInfo = @{
+                                 //分類
+                                 MAPPOST_TYPE_KEY:data[MAPPOST_TYPE_KEY]
+                                 //照片
+                                 ,MAPPOST_SMALLPHOTO_KEY:data[MAPPOST_SMALLPHOTO_KEY]
+                                 };
+        
+        //位置
+        annotation.coordinate = coordicate;
+        //標題：名字
+        annotation.title = data[COMMON_POINTER_CREATEUSER_KEY][USER_DISPLAYNAME_KEY];
+        //副標題：發文時間
+        NSDate *timeAgoDate = data.createdAt;
+        annotation.subtitle=timeAgoDate.timeAgoSinceNow;
+        //po文ID
+        annotation.selectedObjectId = data.objectId;
+        
+        [_theMapView addAnnotation:annotation];
+        [allAnnotationsAry addObject:annotation];
+    }
+}
 
 @end

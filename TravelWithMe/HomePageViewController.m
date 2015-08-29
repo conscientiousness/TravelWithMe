@@ -29,26 +29,24 @@
     _tableView.dataSource=self;
     
     
+    MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Loading...";
+    
+    dispatch_queue_t loadingQueue = dispatch_queue_create("HomePageLoading", nil);
+    dispatch_async(loadingQueue, ^{
+        [self getdata];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_tableView reloadData];
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        });
+    });
+    
     self.navigationItem.backBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector
     (jumpToWallTableviewCell:) name:JUMP_TO_WallTableviewCell object:nil];
 
-//    self.tableItems = @[[UIImage imageNamed:@"demo_1.jpg"],
-//                        [UIImage imageNamed:@"demo_2.jpg"],
-//                        [UIImage imageNamed:@"demo_3.jpg"],
-//                        [UIImage imageNamed:@"demo_4.jpg"],
-//                        [UIImage imageNamed:@"demo_5.jpg"],
-//                        [UIImage imageNamed:@"demo_6.jpg"],
-//                        [UIImage imageNamed:@"demo_7.jpg"],
-//                        [UIImage imageNamed:@"demo_8.jpg"],
-//                        [UIImage imageNamed:@"demo_9.jpg"],
-//                        [UIImage imageNamed:@"demo_10.jpg"],
-//                        [UIImage imageNamed:@"demo_11.jpg"],
-//                        [UIImage imageNamed:@"demo_12.jpg"],
-//                        [UIImage imageNamed:@"demo_13.jpg"],
-//                        [UIImage imageNamed:@"demo_14.jpg"]];
     
     // Prepare Rechability
     //使用NSNotificationCenter來通知網路狀態改變
@@ -71,17 +69,18 @@
     [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 
     
-    MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"讀取中...";
-    
-    dispatch_queue_t loadingQueue = dispatch_queue_create("loading", nil);
-    dispatch_async(loadingQueue, ^{
-        [self getdata];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [_tableView reloadData];
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
+    if(arrayDatas.count==0){
+        
+        dispatch_queue_t loadingQueue = dispatch_queue_create("HomePageLoading2", nil);
+        dispatch_async(loadingQueue, ^{
+            [self getdata];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [_tableView reloadData];
+            });
         });
-    });
+    }
+    
+
 }
 
 // 判斷網路是否存在
@@ -95,7 +94,7 @@
          showMessageWithTitle:@"TravelWithMe" //標頭
          description:@"無法連線上網,請檢查您的網路唷！" //內容
          type:TWMessageBarMessageTypeInfo // 主題(底層有三種效果＆顏色自訂)
-         duration:60.0]; // 秒數
+         duration:600.0]; // 秒數
     }
     else{
         //連線

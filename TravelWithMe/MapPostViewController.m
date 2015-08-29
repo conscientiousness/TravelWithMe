@@ -163,9 +163,12 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 [MBProgressHUD hideHUDForView:self.view animated:YES];
                 
+                NSDictionary *dict = [NSDictionary new];
+                dict = @{@"saveSuccess":@true};
+                
                 //返回地圖
                 [self dismissViewControllerAnimated:YES completion:^{
-                    [[NSNotificationCenter defaultCenter] postNotificationName:TOP_CHILD_DISMISSED_NOTIFICATION object:self];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:TOP_CHILD_DISMISSED_NOTIFICATION object:self userInfo:dict];
                 }];
             });
             
@@ -433,12 +436,12 @@
         //原始大小
         UIImage *originaImage = info[UIImagePickerControllerOriginalImage];
         //原始大小圖縮圖和壓縮
-        NSData *originaImageData = [PAPUtility resizeImage:originaImage width:750.0 height:750.0 contentMode:UIViewContentModeScaleAspectFill];
+        NSData *originaImageData = [PAPUtility resizeImage:originaImage width:600.0 height:600.0 contentMode:UIViewContentModeScaleAspectFill];
         
         //方形圖
         UIImage *editedImage = info[UIImagePickerControllerEditedImage];
         //方形圖縮圖和壓縮
-        NSData *imageData = [PAPUtility resizeImage:editedImage width:500.0 height:500.0 contentMode:UIViewContentModeScaleAspectFill];
+        NSData *imageData = [PAPUtility resizeImage:editedImage width:450.0 height:450.0 contentMode:UIViewContentModeScaleAspectFill];
         //方形圖縮小圖和壓縮
         NSData *smallImageData = [PAPUtility resizeImage:editedImage width:50.0 height:50.0 contentMode:UIViewContentModeScaleAspectFill];
         
