@@ -487,8 +487,21 @@
         //設定所在地點
         _loactionLabel.text = [NSString stringWithFormat:@"%@,%@",placemark.country,placemark.locality];
         
-        [_dictDatas setObject:placemark.country forKey:MAPPOST_COUNTRY_KEY];
-        [_dictDatas setObject:placemark.locality forKey:MAPPOST_LOCALITY_KEY];
+        if(placemark==nil){
+            
+            NSDictionary *dict = [NSDictionary new];
+            dict = @{@"offLine":@true};
+            
+            [self dismissViewControllerAnimated:YES completion:^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:TOP_CHILD_DISMISSED_NOTIFICATION object:self userInfo:dict];
+            }];
+        }
+        else{
+            [_dictDatas setObject:placemark.country forKey:MAPPOST_COUNTRY_KEY];
+            [_dictDatas setObject:placemark.locality forKey:MAPPOST_LOCALITY_KEY];
+        }
+        
+        
     }];
     
 }

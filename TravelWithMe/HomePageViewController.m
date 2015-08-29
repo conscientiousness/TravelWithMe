@@ -31,18 +31,6 @@
     
     self.navigationItem.backBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     
-    MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"讀取中...";
-    
-    dispatch_queue_t loadingQueue = dispatch_queue_create("loading", nil);
-    dispatch_async(loadingQueue, ^{
-        [self getdata];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [_tableView reloadData];
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-        });
-    });
-    
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector
     (jumpToWallTableviewCell:) name:JUMP_TO_WallTableviewCell object:nil];
@@ -72,6 +60,28 @@
     
     
  
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    self.navigationController.navigationBar.hidden = YES;
+    //關閉分隔線
+    [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+
+    
+    MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"讀取中...";
+    
+    dispatch_queue_t loadingQueue = dispatch_queue_create("loading", nil);
+    dispatch_async(loadingQueue, ^{
+        [self getdata];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_tableView reloadData];
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        });
+    });
 }
 
 // 判斷網路是否存在
@@ -112,13 +122,6 @@
     [self performSegueWithIdentifier:@"4ni2" sender:nil];
 }
 
--(void) viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    
-    self.navigationController.navigationBar.hidden = YES;
-    //關閉分隔線
-    [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

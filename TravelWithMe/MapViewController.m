@@ -59,7 +59,7 @@
     
     
     [[NSNotificationCenter defaultCenter]addObserver:self
-                                            selector:@selector(didTopChildDismiss)
+                                            selector:@selector(didTopChildDismiss:)
                                                 name:TOP_CHILD_DISMISSED_NOTIFICATION
                                               object:nil];
     
@@ -90,7 +90,17 @@
 
 
 #pragma mark - 子畫面Dismiss
-- (void) didTopChildDismiss {
+- (void) didTopChildDismiss:(NSNotification*)notification {
+    
+    if([notification userInfo][@"offLine"]){
+        SCLAlertView *alert = [[SCLAlertView alloc] init];
+        UIColor *color = [UIColor customGreenColor];
+        NSString *icon = @"crying-icon";
+        NSString *title = @"無法取得位置資訊";
+        NSString *subTitle = @"請檢查連線狀態或開啟定位權限唷";
+        
+        [alert showCustom:self image:[UIImage imageNamed:icon] color:color title:title subTitle:subTitle closeButtonTitle:@"OK" duration:0.0f];
+    }
     
     if(!user){
         user = [PFUser currentUser];
