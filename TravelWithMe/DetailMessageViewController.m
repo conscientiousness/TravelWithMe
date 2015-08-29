@@ -21,7 +21,7 @@
 //訊息cell高度
 #define HEIGHT_FOR_MESSAGE_CELL 64.0
 //行程介紹Label寬度:影響系統動態變更高度
-#define WIDTH_FOR_MEMO_LABEL 227.0
+#define WIDTH_FOR_MEMO_LABEL 210.0
 
 @interface DetailMessageViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *detailTableView;
