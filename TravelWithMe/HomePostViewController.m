@@ -35,7 +35,7 @@
     [_postScrollView setContentSize:CGSizeMake(self.view.frame.size.width, 3000)];
     _postScrollView.delegate = self;
     
-    NSLog(@"%f,%f",self.view.frame.size.width,self.view.frame.size.height);
+    //NSLog(@"%f,%f",self.view.frame.size.width,self.view.frame.size.height);
     
     [self initUI];
     

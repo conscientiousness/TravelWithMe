@@ -103,22 +103,22 @@
 // no use
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-	NSLog(@"scrollViewDidEndDragging");
+	//NSLog(@"scrollViewDidEndDragging");
 }
 
 - (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
 {
-	NSLog(@"scrollViewWillBeginDecelerating");
+	//NSLog(@"scrollViewWillBeginDecelerating");
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-	NSLog(@"scrollViewDidEndDecelerating");
+	//NSLog(@"scrollViewDidEndDecelerating");
 }
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
 {
-	NSLog(@"scrollViewDidEndScrollingAnimation");
+	//NSLog(@"scrollViewDidEndScrollingAnimation");
 }
 
 @end

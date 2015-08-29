@@ -76,6 +76,7 @@
             [self getdata];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [_tableView reloadData];
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
             });
         });
     }

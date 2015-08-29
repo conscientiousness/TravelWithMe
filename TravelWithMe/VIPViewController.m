@@ -349,7 +349,7 @@
         {
             _tableView2.frame=CGRectMake(0, 0, self.view.frame.size.width, VIPMYACTIVITYCELL_HEIGHT*myFootprintArrayDatas.count);
             myViptableView.contentSize=CGSizeMake(self.view.frame.size.width, _tableView2.frame.size.height+235);
-            NSLog(@"%f",VIPMYACTIVITYCELL_HEIGHT*myFootprintArrayDatas.count);
+            //NSLog(@"%f",VIPMYACTIVITYCELL_HEIGHT*myFootprintArrayDatas.count);
             [cell.contentView addSubview:_tableView2];
         }
         

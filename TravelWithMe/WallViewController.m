@@ -17,6 +17,9 @@
 
 #define CELL_OBJECTID_LABEL_TAG 1000
 #define CELL_USEROBJECTID_LABEL_TAG 1001
+#define ROW_HEIGHT_OFFSET_SCREEN_320 50
+#define ROW_HEIGHT_OFFSET_SCREEN_375 5
+#define ROW_HEIGHT_OFFSET_SCREEN_BIGGER -15
 
 @interface WallViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *wallTableView;
@@ -292,9 +295,11 @@
     float result = 500.0;
     
     if(self.view.frame.size.width<=320.0) {//5s
-        result -= 50.0;
+        result -= ROW_HEIGHT_OFFSET_SCREEN_320;
     } else if (self.view.frame.size.width<=375.0) { //6
-        result -= 5.0;
+        result -= ROW_HEIGHT_OFFSET_SCREEN_375;
+    }else {
+        result -= ROW_HEIGHT_OFFSET_SCREEN_BIGGER;
     }
     
     return result;
