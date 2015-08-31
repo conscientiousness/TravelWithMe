@@ -86,6 +86,8 @@
 
 //地圖ADD按鈕位置//
 #define MAP_FLAT_BTN_CGRECTMAKE self.view.frame.size.width/2 - 15, self.view.frame.size.height - 100, 30, 30
+//地圖大頭針註解按鈕//
+#define MAP_ANNOTATION_FLAT_BTN_CGRECTMAKE 0, 0, 22, 22
 //類別按鈕初始位置
 #define FOOT_BTN_CGRECTMAKE self.view.frame.size.width/2 - 40, self.view.frame.size.height - 150, 90, 105
 #define LANSCAPE_BTN_CGRECTMAKE self.view.frame.size.width/2 - 40, self.view.frame.size.height - 150, 90, 105

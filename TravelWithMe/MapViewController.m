@@ -31,6 +31,7 @@
 @property (weak, nonatomic) IBOutlet UIView *AnimationsView;
 @property (weak, nonatomic) IBOutlet MKMapView *theMapView;
 @property (nonatomic, strong) VBFPopFlatButton *mapFlatRoundedButton;
+@property (nonatomic, strong) VBFPopFlatButton *mapAnnotationButton;
 @end
 
 @implementation MapViewController
@@ -150,6 +151,20 @@
                                   action:@selector(didSelectedType)
                         forControlEvents:UIControlEventTouchUpInside];
     [_theMapView addSubview:self.mapFlatRoundedButton];
+}
+
+- (void) initAnnotationButton {
+    
+    _mapAnnotationButton = [[VBFPopFlatButton alloc]initWithFrame:CGRectMake(MAP_ANNOTATION_FLAT_BTN_CGRECTMAKE)
+                                                            buttonType:buttonForwardType
+                                                           buttonStyle:buttonRoundedStyle
+                                                 animateToInitialState:YES];
+    _mapAnnotationButton.roundBackgroundColor = [UIColor customGreenColor];
+    _mapAnnotationButton.lineThickness = 3;
+    _mapAnnotationButton.tintColor = [UIColor whiteColor];
+    [_mapAnnotationButton addTarget:self
+                                  action:@selector(didSelectedType)
+                        forControlEvents:UIControlEventTouchUpInside];
 }
 
 #pragma mark - 當類別按鈕按下，present到PO文畫面
@@ -337,67 +352,74 @@
 }
 
 -(MKAnnotationView*) mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
-   
-   // 藍點我的位置
-   if (annotation == mapView.userLocation)
-      return nil;
-   
-   MapMKPointAnnotation *myAnnotion = annotation;
-   NSDictionary *extraInfo = myAnnotion.extraInfo;
-   
-   // 產生大頭針
-   /*MKPinAnnotationView *resultView = (MKPinAnnotationView*)
-    [mapView dequeueReusableAnnotationViewWithIdentifier:@""];
+    
+    // 藍點我的位置
+    if (annotation == mapView.userLocation)
+        return nil;
+    
+    MapMKPointAnnotation *myAnnotion = annotation;
+    NSDictionary *extraInfo = myAnnotion.extraInfo;
+    
+    // 產生大頭針
+    /*MKPinAnnotationView *resultView = (MKPinAnnotationView*)
+     [mapView dequeueReusableAnnotationViewWithIdentifier:@""];
+     if(resultView == nil)
+     {
+     resultView = [[MKPinAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:@"Store"];
+     }*/
+    
+    
+    // 自訂大頭針圖片
+    MKAnnotationView *resultView = (MKAnnotationView*)
+    [mapView dequeueReusableAnnotationViewWithIdentifier:@"Store"];
+    
     if(resultView == nil)
     {
-    resultView = [[MKPinAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:@"Store"];
-    }*/
-   
-   
-   // 自訂大頭針圖片
-   MKAnnotationView *resultView = (MKAnnotationView*)
-   [mapView dequeueReusableAnnotationViewWithIdentifier:@"Store"];
-   
-   if(resultView == nil)
-   {
-      resultView = [[MKAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:@"Store"];
-   }
-   
-   else resultView.annotation =annotation;
-   
-   resultView.canShowCallout=true; // 大頭針顯示框框
-   // resultView.animatesDrop =true; // 大頭針動畫效果
-   // resultView.pinColor = MKPinAnnotationColorGreen; //大頭針顏色 只有三種顏色 紅綠紫 自訂畫面不支援
-   
-   // Use image as annotationView 自訂圖標 (圖測試用 建議大小25*25)
-   resultView.image = [UIImage imageNamed:@"map-green-pin.png"];
-   
-   
-   // Add Left Callout Accessory View 大頭針點下去放圖片
-   UIImage *leftImage = [UIImage imageNamed:@"intrested-icon.png"];
-   resultView.leftCalloutAccessoryView =[[UIImageView alloc]
-                                         initWithImage:leftImage];
-   
-   PFFile *PFPhoto = (PFFile*)extraInfo[MAPPOST_SMALLPHOTO_KEY];
-   [PFPhoto getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-      if (!error) {
-         UIImage *leftImage = [UIImage imageWithData:imageData];
-         resultView.leftCalloutAccessoryView =[[UIImageView alloc]
-                                               initWithImage:leftImage];
-      }
-   }];
-   
-   //NSLog(@"%f,%f",resultView.frame.size.height,resultView.frame.size.width);
-   
-   // Add Right Callout Accessory View 跳轉至PO文畫面
-   /*UIButton *rightButton =[UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-   [rightButton addTarget:self
-                   action:@selector(buttonPressed:)
-         forControlEvents:UIControlEventTouchUpInside];
-   resultView.rightCalloutAccessoryView=rightButton;
-    */
-   
-   return resultView;
+        resultView = [[MKAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:@"Store"];
+    }
+    
+    else resultView.annotation =annotation;
+    
+    resultView.canShowCallout=true; // 大頭針顯示框框
+    // resultView.animatesDrop =true; // 大頭針動畫效果
+    // resultView.pinColor = MKPinAnnotationColorGreen; //大頭針顏色 只有三種顏色 紅綠紫 自訂畫面不支援
+    
+    // Use image as annotationView 自訂圖標 (圖測試用 建議大小25*25)
+    resultView.image = [UIImage imageNamed:@"map-green-pin.png"];
+    
+    
+    // Add Left Callout Accessory View 大頭針點下去放圖片
+    UIImage *leftImage = [UIImage imageNamed:@"intrested-icon.png"];
+    resultView.leftCalloutAccessoryView =[[UIImageView alloc]
+                                          initWithImage:leftImage];
+    
+    PFFile *PFPhoto = (PFFile*)extraInfo[MAPPOST_SMALLPHOTO_KEY];
+    [PFPhoto getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+        if (!error) {
+            UIImage *leftImage = [UIImage imageWithData:imageData];
+            resultView.leftCalloutAccessoryView =[[UIImageView alloc]
+                                                  initWithImage:leftImage];
+        }
+    }];
+    
+    //NSLog(@"%f,%f",resultView.frame.size.height,resultView.frame.size.width);
+    
+    // Add Right Callout Accessory View 跳轉至PO文畫面
+    //UIButton *rightButton =[UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+//    [self initAnnotationButton];
+//    [_mapAnnotationButton addTarget:self
+//                             action:@selector(buttonPressed:)
+//                   forControlEvents:UIControlEventTouchUpInside];
+//    resultView.rightCalloutAccessoryView=_mapAnnotationButton;
+    
+    UIButton* infoButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 22, 22)];
+    [infoButton setImage:[UIImage imageNamed:@"map-forward-icon"] forState:UIControlStateNormal];
+    //NSLog(@"%@",infoButton.description);
+    [infoButton setAutoresizingMask:UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleTopMargin];
+    [resultView setRightCalloutAccessoryView:infoButton];
+    
+    
+    return resultView;
 }
 
 -(void) mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
