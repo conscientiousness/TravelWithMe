@@ -335,7 +335,7 @@
         result += rect.size.height;*/
         
     }else if(indexPath.row == 2) {
-        result = 350.0;
+        result = 360.0;
     
     }else if(indexPath.row == 3) {
         result = 180.0;

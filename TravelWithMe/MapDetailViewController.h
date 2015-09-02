@@ -10,4 +10,6 @@
 
 @interface MapDetailViewController : UIViewController
 
+@property (nonatomic,strong) NSString *mapPostObjectId;
+
 @end

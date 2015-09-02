@@ -16,9 +16,12 @@
 #import "DPAnnotationView.h"
 #import "DateTools.h"
 #import "SCLAlertView.h"
+#import "PresentingAnimator.h"
+#import "DismissingAnimator.h"
 
 
-@interface MapViewController ()<MKMapViewDelegate,CLLocationManagerDelegate>
+
+@interface MapViewController ()<MKMapViewDelegate,CLLocationManagerDelegate,UIViewControllerTransitioningDelegate>
 {
     CLLocationManager *locationManager;
     BOOL isFirstLocationReceived;
@@ -27,6 +30,7 @@
     CLLocation *currentLocation;
     NSMutableArray *arrayDatas;
     NSMutableArray *allAnnotationsAry;
+    NSString *selectedObjectId;
 }
 @property (weak, nonatomic) IBOutlet UIView *AnimationsView;
 @property (weak, nonatomic) IBOutlet MKMapView *theMapView;
@@ -416,6 +420,7 @@
     [infoButton setImage:[UIImage imageNamed:@"map-forward-icon"] forState:UIControlStateNormal];
     //NSLog(@"%@",infoButton.description);
     [infoButton setAutoresizingMask:UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleTopMargin];
+    [infoButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [resultView setRightCalloutAccessoryView:infoButton];
     
     
@@ -424,26 +429,48 @@
 
 -(void) mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
- 
-   if(view.annotation == mapView.userLocation) return;
-   
-   //MapMKPointAnnotation *myAnnotion = (MapMKPointAnnotation*)view.annotation;
-   //NSDictionary *extraInfo = myAnnotion.extraInfo;
-   //NSLog(@"extraInfo:%@,dataIndex:%@",extraInfo.description,myAnnotion.selectedObjectId);
+    if(view.annotation == mapView.userLocation) return;
+    
+    MapMKPointAnnotation *myAnnotion = (MapMKPointAnnotation*)view.annotation;
+    selectedObjectId = myAnnotion.selectedObjectId;
+    
+    //NSDictionary *extraInfo = myAnnotion.extraInfo;
+    //NSLog(@"extraInfo:%@,selectedObjectId:%@",extraInfo.description,myAnnotion.selectedObjectId);
+    
 }
 
+#pragma mark - 點選大頭針跳轉按鈕
 // 模擬點下大頭針的方法 可跳轉至PO文畫面
 -(void) buttonPressed:(id)sender{
-   
-   //NSLog(@"extraInfo:%@",[sender superview]);
-   
-   UIAlertController *alert=[UIAlertController alertControllerWithTitle:nil message:@"目前沒有資訊" preferredStyle:UIAlertControllerStyleAlert];
-   UIAlertAction *ok =[UIAlertAction actionWithTitle:@"ok" style:UIAlertActionStyleDefault handler:nil];
-   
-   [alert addAction:ok];
-   [self presentViewController:alert animated:YES completion:nil];
-   
+    
+    //NSLog(@"extraInfo:%@",[sender superview]);
+    
+    UIViewController *targetVC = [self.storyboard instantiateViewControllerWithIdentifier:@"mapDetailViewController"];
+    targetVC.transitioningDelegate = self;
+    targetVC.modalPresentationStyle = UIModalPresentationCustom;
+    [targetVC setValue:selectedObjectId forKey:@"mapPostObjectId"];
+    
+    //targetVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    [self presentViewController:targetVC animated:YES completion:nil];
+    
+    
 }
+
+#pragma mark - UIViewControllerTransitioningDelegate
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented
+                                                                  presentingController:(UIViewController *)presenting
+                                                                      sourceController:(UIViewController *)source
+{
+    return [PresentingAnimator new];
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed
+{
+    return [DismissingAnimator new];
+}
+
+
 
 #pragma mark - Load Parse Data
 

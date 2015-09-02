@@ -422,7 +422,7 @@
     
     //照片
     PFFile *photo = (PFFile *)[[arrayDatas objectAtIndex:indexPath.row] objectForKey:@"photo"];
-    [cell.cellImageView sd_setImageWithURL:(NSURL*)photo.url placeholderImage:[UIImage imageNamed:@"tmp900X640.png"]];
+    [cell.cellImageView sd_setImageWithURL:(NSURL*)photo.url placeholderImage:[UIImage imageNamed:@"tmp-loading-image"]];
     
     //PO文時間
     NSDate *timeAgoDate = ((PFObject*)arrayDatas[indexPath.row]).createdAt;

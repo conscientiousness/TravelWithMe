@@ -285,7 +285,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-        CGFloat result;
+    CGFloat result;
     NSString *tmpStr;
     
     if(indexPath.section == 0){
@@ -443,7 +443,7 @@
 - (void) setJLCellData:(JLTableViewCell *)cell cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     //大頭照
-    [cell.headPhoto setImage:[UIImage imageNamed:@"pic1.jpg"]];
+    [cell.headPhoto setImage:[UIImage imageNamed:@"tmp-head-icon"]];
     PFFile *PFPhoto = (PFFile*)_cellDictData[@"profilePictureMedium"];
     [PFPhoto getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
         if (!error) {
