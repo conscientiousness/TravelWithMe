@@ -12,4 +12,5 @@ typedef void(^SendDictToMapPost)(NSDictionary* dict);
 
 @interface MapViewController : UIViewController
 @property (nonatomic,strong) SendDictToMapPost block;
+
 @end

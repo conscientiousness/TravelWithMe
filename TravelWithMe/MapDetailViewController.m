@@ -9,11 +9,16 @@
 #import "MapDetailViewController.h"
 #import "MapDetailInfoCell.h"
 #import "DateTools.h"
+#import <CoreLocation/CoreLocation.h>
+#import <MapKit/MapKit.h>
 
 @interface MapDetailViewController()<UITableViewDelegate, UITableViewDataSource>
 {
     PFObject *dataObject;
 }
+@property (weak, nonatomic) IBOutlet UIButton *comeHereButton;
+@property (weak, nonatomic) IBOutlet UIButton *backButton;
+@property (weak, nonatomic) IBOutlet UIView *bottomView;
 @property (weak, nonatomic) IBOutlet UITableView *mapDetailTableView;
 @end
 
@@ -49,42 +54,49 @@
     
     self.view.layer.cornerRadius = 8.f;
     self.view.backgroundColor = [UIColor whiteColor];
-    [self addDismissButton];
+    //[self addDismissButton];
+    
 }
 
 #pragma mark - Private Instance methods
 
-- (void)addDismissButton
-{
-    UIButton *dismissButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    dismissButton.translatesAutoresizingMaskIntoConstraints = NO;
-    dismissButton.tintColor = [UIColor customGreenColor];
-    dismissButton.titleLabel.font = [UIFont fontWithName:@"Avenir" size:20];
-    [dismissButton setTitle:@"Dismiss" forState:UIControlStateNormal];
-    [dismissButton addTarget:self action:@selector(dismiss:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:dismissButton];
-    
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:dismissButton
-                                                          attribute:NSLayoutAttributeCenterX
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:self.view
-                                                          attribute:NSLayoutAttributeCenterX
-                                                         multiplier:1.f
-                                                           constant:0.f]];
-    
-    [self.view addConstraints:[NSLayoutConstraint
-                               constraintsWithVisualFormat:@"V:[dismissButton]-|"
-                               options:0
-                               metrics:nil
-                               views:NSDictionaryOfVariableBindings(dismissButton)]];
-}
+//- (void)addDismissButton
+//{
+//    UIButton *dismissButton = [UIButton buttonWithType:UIButtonTypeSystem];
+//    dismissButton.translatesAutoresizingMaskIntoConstraints = NO;
+//    dismissButton.tintColor = [UIColor customGreenColor];
+//    dismissButton.titleLabel.font = [UIFont fontWithName:@"Avenir" size:20];
+//    [dismissButton setTitle:@"Dismiss" forState:UIControlStateNormal];
+//    [dismissButton addTarget:self action:@selector(dismiss:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:dismissButton];
+//    
+//    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:dismissButton
+//                                                          attribute:NSLayoutAttributeCenterX
+//                                                          relatedBy:NSLayoutRelationEqual
+//                                                             toItem:self.view
+//                                                          attribute:NSLayoutAttributeCenterX
+//                                                         multiplier:1.f
+//                                                           constant:0.f]];
+//    
+//    [self.view addConstraints:[NSLayoutConstraint
+//                               constraintsWithVisualFormat:@"V:[dismissButton]-|"
+//                               options:0
+//                               metrics:nil
+//                               views:NSDictionaryOfVariableBindings(dismissButton)]];
+//}
+//
+//- (void)dismiss:(id)sender
+//{
+//    [self dismissViewControllerAnimated:YES completion:nil];
+//}
 
-- (void)dismiss:(id)sender
-{
+- (IBAction)backBtnPressed:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-
+- (IBAction)comeHereBtnPressed:(id)sender {
+    [self launchMaps];
+}
 
 #pragma mark - Table View Delegate Method
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -153,6 +165,38 @@
 //    
 //    result = 100.0;
 //}
+
+- (void) launchMaps{
+    
+    //[self.theMapView setCenterCoordinate:self.theMapView.userLocation.coordinate animated:YES];
+
+    
+    // Decide Source MapItem
+    CLLocationCoordinate2D sourceCoordinate = CLLocationCoordinate2DMake(((MKUserLocation*)_crrrentUserCoordinate).coordinate.latitude, ((MKUserLocation*)_crrrentUserCoordinate).coordinate.longitude);
+    MKPlacemark *sourcePlace = [[MKPlacemark alloc] initWithCoordinate:sourceCoordinate
+                                                     addressDictionary:nil];
+    
+    MKMapItem *sourceMapItem = [[MKMapItem alloc]initWithPlacemark:sourcePlace];
+    
+    
+    // Decide Target MapItem
+    CLLocationCoordinate2D targetCoordinate = CLLocationCoordinate2DMake([dataObject[MAPPOST_LATITUDE_KEY] doubleValue], [dataObject[MAPPOST_LONGITUDE_KEY] doubleValue]);
+    
+    MKPlacemark *targetPlace = [[MKPlacemark alloc] initWithCoordinate:targetCoordinate
+                                                     addressDictionary:nil];
+    
+    MKMapItem *targetMapItem = [[MKMapItem alloc]initWithPlacemark:targetPlace];
+    
+    
+    // Directions Options
+    NSDictionary *options = @{
+                              MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving
+                              };
+    
+    [MKMapItem openMapsWithItems:@[sourceMapItem,targetMapItem]
+                   launchOptions:options];
+}
+
 
 
 - (void) getData {

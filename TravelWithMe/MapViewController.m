@@ -7,7 +7,6 @@
 //
 
 #import "MapViewController.h"
-#import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "VBFPopFlatButton.h"
 #import "MapPostViewController.h"
@@ -18,7 +17,7 @@
 #import "SCLAlertView.h"
 #import "PresentingAnimator.h"
 #import "DismissingAnimator.h"
-
+#import <MapKit/MapKit.h>
 
 
 @interface MapViewController ()<MKMapViewDelegate,CLLocationManagerDelegate,UIViewControllerTransitioningDelegate>
@@ -246,13 +245,11 @@
     
 }
 
+
 #pragma mark - 回到User所在位置
 - (IBAction)backClick:(UIButton *)sender {
     [self.theMapView setCenterCoordinate:self.theMapView.userLocation.coordinate animated:YES];
 }
-
-
-
 
 // Segmented 地圖顯示方式切換
 - (IBAction)mapTypeChanged:(id)sender {
@@ -449,6 +446,7 @@
     targetVC.transitioningDelegate = self;
     targetVC.modalPresentationStyle = UIModalPresentationCustom;
     [targetVC setValue:selectedObjectId forKey:@"mapPostObjectId"];
+    [targetVC setValue:self.theMapView.userLocation forKey:@"crrrentUserCoordinate"];
     
     //targetVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
     [self presentViewController:targetVC animated:YES completion:nil];

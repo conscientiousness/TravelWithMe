@@ -9,7 +9,7 @@
 #import "LoginViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import "PolicyViewController.h"
-
+#import "Singleton.h"
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *FBLoginBtn;
 @property (weak, nonatomic) IBOutlet UIView *videoView;
@@ -21,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    //[Singleton sharedInstance];
     //Not affecting background music playing
     NSError *sessionError = nil;
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:&sessionError];
@@ -118,7 +118,7 @@
 - (void) saveFacebookProfileData:(PFUser*)user completion:(void (^)(NSError *error))handler
 {
     if ([FBSDKAccessToken currentAccessToken]) {
-        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields":@"id,about,email,name,gender,locale,age_range,location,link,birthday,picture.type(large)"}] startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields":@"id,email,name,gender,locale,age_range,location,link,birthday,picture.type(large)"}] startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
             //            NSLog(@"result:%@",result);
             if (!error) {
                 //NSLog(@"PFUser: %@ ,picture: %@",[PFUser currentUser],result [@"picture"][@"data"][@"url"]);
@@ -136,7 +136,6 @@
                 [user setObject:[result objectForKey:@"birthday"]?[result objectForKey:@"birthday"]:[NSNull null] forKey:@"birthday"];
                 [user setObject:[[result objectForKey:@"location"] objectForKey:@"name"]?[[result objectForKey:@"location"] objectForKey:@"name"]:[NSNull null] forKey:@"location"];
                 [user setObject:[result objectForKey:@"link"]?[result objectForKey:@"link"]:[NSNull null] forKey:@"link"];
-                [user setObject:[result objectForKey:@"about"]?[result objectForKey:@"about"]:[NSNull null] forKey:@"aboutMe"];
                 
                 [user saveInBackground];
             }

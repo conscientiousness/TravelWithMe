@@ -374,7 +374,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbs-Xv-3B3">
-                                        <rect key="frame" x="262" y="34" width="200" height="14.5"/>
+                                        <rect key="frame" x="262" y="34" width="200" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="232" id="lEk-fI-qee"/>
                                         </constraints>
@@ -602,22 +602,30 @@
                                 <rect key="frame" x="16" y="629" width="343" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Nn-xx-SqA">
-                                        <rect key="frame" x="297" y="0.0" width="46" height="30"/>
-                                        <state key="normal" title="Button">
+                                        <rect key="frame" x="313" y="0.0" width="30" height="30"/>
+                                        <state key="normal" title="導航">
+                                            <color key="titleColor" red="0.2135644542" green="0.65216874629999999" blue="0.52570065489999995" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="comeHereBtnPressed:" destination="LeS-df-Dee" eventType="touchUpInside" id="O5N-hO-VTm"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w68-Qe-aGH">
-                                        <rect key="frame" x="8" y="0.0" width="46" height="30"/>
-                                        <state key="normal" title="Button">
+                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                        <state key="normal" title="返回">
+                                            <color key="titleColor" red="0.20392156859999999" green="0.61176470589999998" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="backBtnPressed:" destination="LeS-df-Dee" eventType="touchUpInside" id="FCq-0Y-Efs"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="8Nn-xx-SqA" secondAttribute="trailing" id="Hro-hp-bLz"/>
-                                    <constraint firstItem="w68-Qe-aGH" firstAttribute="leading" secondItem="Kje-kt-uL9" secondAttribute="leading" constant="8" id="O8I-MV-nA0"/>
+                                    <constraint firstItem="w68-Qe-aGH" firstAttribute="leading" secondItem="Kje-kt-uL9" secondAttribute="leading" id="O8I-MV-nA0"/>
                                     <constraint firstAttribute="height" constant="30" id="fFd-kh-RDC"/>
                                     <constraint firstAttribute="bottom" secondItem="w68-Qe-aGH" secondAttribute="bottom" id="fIF-LH-Opg"/>
                                     <constraint firstAttribute="bottom" secondItem="8Nn-xx-SqA" secondAttribute="bottom" id="yJV-Cl-aY7"/>
@@ -643,6 +651,9 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="backButton" destination="w68-Qe-aGH" id="f0n-j0-Xqj"/>
+                        <outlet property="bottomView" destination="Kje-kt-uL9" id="fyG-Rh-aTe"/>
+                        <outlet property="comeHereButton" destination="8Nn-xx-SqA" id="2qP-NZ-OvE"/>
                         <outlet property="mapDetailTableView" destination="d2P-Hm-jFJ" id="hsT-Dr-bEE"/>
                     </connections>
                 </viewController>

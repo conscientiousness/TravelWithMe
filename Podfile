@@ -5,11 +5,11 @@ pod "FBSDKLoginKit"
 pod "FBSDKShareKit"
 pod "Parse"
 pod "ParseUI"
-pod "SDWebImage", '~>3.7'
-pod "MBProgressHUD", '~> 0.9.1'
+pod "SDWebImage"
+pod "MBProgressHUD"
 pod "ParseFacebookUtilsV4"
 pod "JDFPeekaboo"
-pod "SSBouncyButton", '~> 1.0'
+pod "SSBouncyButton"
 pod "MJRefresh"
 pod "SCLAlertView-Objective-C"
 pod "VBFPopFlatButton"

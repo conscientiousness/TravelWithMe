@@ -112,6 +112,7 @@
 		F4CEF12D1B81B87C006D2B71 /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CEF12C1B81B87C006D2B71 /* PostViewController.m */; };
 		F4CEF12F1B81D251006D2B71 /* share_photo.png in Resources */ = {isa = PBXBuildFile; fileRef = F4CEF12E1B81D251006D2B71 /* share_photo.png */; };
 		F4CEF1571B81F4CE006D2B71 /* CountryCityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CEF1561B81F4CE006D2B71 /* CountryCityTableViewCell.m */; };
+		F4D9881D1B97E762003D24D8 /* Singleton.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D9881C1B97E762003D24D8 /* Singleton.m */; };
 		F4DA4C5C1B4E9D0500421F2F /* UIColors.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DA4C5B1B4E9D0500421F2F /* UIColors.m */; };
 		F4DA4C601B4EC96F00421F2F /* HomePostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DA4C5F1B4EC96F00421F2F /* HomePostViewController.m */; };
 		F4DB29C41B90C66500E6F245 /* food-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F4DB29C11B90C66500E6F245 /* food-icon.png */; };
@@ -304,6 +305,8 @@
 		F4CEF12E1B81D251006D2B71 /* share_photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share_photo.png; sourceTree = "<group>"; };
 		F4CEF1551B81F4CE006D2B71 /* CountryCityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryCityTableViewCell.h; sourceTree = "<group>"; };
 		F4CEF1561B81F4CE006D2B71 /* CountryCityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryCityTableViewCell.m; sourceTree = "<group>"; };
+		F4D9881B1B97E762003D24D8 /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
+		F4D9881C1B97E762003D24D8 /* Singleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Singleton.m; sourceTree = "<group>"; };
 		F4DA4C5A1B4E9D0500421F2F /* UIColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIColors.h; sourceTree = "<group>"; };
 		F4DA4C5B1B4E9D0500421F2F /* UIColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIColors.m; sourceTree = "<group>"; };
 		F4DA4C5E1B4EC96F00421F2F /* HomePostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePostViewController.h; sourceTree = "<group>"; };
@@ -447,10 +450,10 @@
 				F47D8EC31B901CF30020A768 /* MapMKPointAnnotation.m */,
 				F47D8EC51B9023B30020A768 /* DPAnnotationView.h */,
 				F47D8EC61B9023B30020A768 /* DPAnnotationView.m */,
-				B5453E251B7A670E008964CE /* MapPostViewController.h */,
-				B5453E261B7A670E008964CE /* MapPostViewController.m */,
 				F43F90691B8B2C0700E509F3 /* SelectTypeViewController.h */,
 				F43F906A1B8B2C0700E509F3 /* SelectTypeViewController.m */,
+				B5453E251B7A670E008964CE /* MapPostViewController.h */,
+				B5453E261B7A670E008964CE /* MapPostViewController.m */,
 				F43F90721B8C80A300E509F3 /* PostTypeTableViewCell.h */,
 				F43F90731B8C80A300E509F3 /* PostTypeTableViewCell.m */,
 				F43F90751B8C80C700E509F3 /* PostMapPhotoTableViewCell.h */,
@@ -722,6 +725,8 @@
 				A540D3F51B9029C000FA5D75 /* Reachability */,
 				F47556A21B4BACF2008CEE3A /* AppDelegate.h */,
 				F47556A31B4BACF2008CEE3A /* AppDelegate.m */,
+				F4D9881B1B97E762003D24D8 /* Singleton.h */,
+				F4D9881C1B97E762003D24D8 /* Singleton.m */,
 				F4DA4C5A1B4E9D0500421F2F /* UIColors.h */,
 				F4DA4C5B1B4E9D0500421F2F /* UIColors.m */,
 				F420E1501B8432B100D3627F /* TWMDefine.h */,
@@ -944,6 +949,7 @@
 				F4DA4C5C1B4E9D0500421F2F /* UIColors.m in Sources */,
 				F47D8EC11B900B5B0020A768 /* Reachability.m in Sources */,
 				F4CEF12D1B81B87C006D2B71 /* PostViewController.m in Sources */,
+				F4D9881D1B97E762003D24D8 /* Singleton.m in Sources */,
 				F4DA4C601B4EC96F00421F2F /* HomePostViewController.m in Sources */,
 				F43F907A1B8C80EB00E509F3 /* PostMapMemoTableViewCell.m in Sources */,
 				F4B3874A1B83465C007740D5 /* MemoTableViewCell.m in Sources */,
