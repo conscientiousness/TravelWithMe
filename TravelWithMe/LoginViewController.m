@@ -93,7 +93,7 @@
     dispatch_queue_t loginFacebookQueue = dispatch_queue_create("loginFacebookQueue", nil);
     dispatch_async(loginFacebookQueue, ^{
 
-        [PFFacebookUtils logInInBackgroundWithReadPermissions:@[@"public_profile", @"email",@"user_about_me", @"user_birthday", @"user_location"] block:^(PFUser *user, NSError *error) {
+        [PFFacebookUtils logInInBackgroundWithReadPermissions:@[@"public_profile"] block:^(PFUser *user, NSError *error) {
             if (!user) {
                 //NSLog(@"Uh oh. The user cancelled the Facebook login.");
                 
@@ -117,8 +117,9 @@
 
 - (void) saveFacebookProfileData:(PFUser*)user completion:(void (^)(NSError *error))handler
 {
+    //@"fields":@"id,email,name,gender,locale,age_range,location,link,birthday,picture.type(large)"
     if ([FBSDKAccessToken currentAccessToken]) {
-        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields":@"id,email,name,gender,locale,age_range,location,link,birthday,picture.type(large)"}] startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields":@"id,name,gender,picture.type(large)"}] startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
             //            NSLog(@"result:%@",result);
             if (!error) {
                 //NSLog(@"PFUser: %@ ,picture: %@",[PFUser currentUser],result [@"picture"][@"data"][@"url"]);
@@ -131,11 +132,11 @@
                 [user setObject:[result objectForKey:@"id"] forKey:@"facebookId"];
                 [user setObject:[result objectForKey:@"name"] forKey:@"displayName"];
                 
-                [user setObject:[result objectForKey:@"email"]?[result objectForKey:@"email"]:[NSNull null] forKey:@"email"];
+                //[user setObject:[result objectForKey:@"email"]?[result objectForKey:@"email"]:[NSNull null] forKey:@"email"];
                 [user setObject:[result objectForKey:@"gender"]?[result objectForKey:@"gender"]:[NSNull null] forKey:@"gender"];
-                [user setObject:[result objectForKey:@"birthday"]?[result objectForKey:@"birthday"]:[NSNull null] forKey:@"birthday"];
-                [user setObject:[[result objectForKey:@"location"] objectForKey:@"name"]?[[result objectForKey:@"location"] objectForKey:@"name"]:[NSNull null] forKey:@"location"];
-                [user setObject:[result objectForKey:@"link"]?[result objectForKey:@"link"]:[NSNull null] forKey:@"link"];
+                //[user setObject:[result objectForKey:@"birthday"]?[result objectForKey:@"birthday"]:[NSNull null] forKey:@"birthday"];
+                //[user setObject:[[result objectForKey:@"location"] objectForKey:@"name"]?[[result objectForKey:@"location"] objectForKey:@"name"]:[NSNull null] forKey:@"location"];
+                //[user setObject:[result objectForKey:@"link"]?[result objectForKey:@"link"]:[NSNull null] forKey:@"link"];
                 
                 [user saveInBackground];
             }

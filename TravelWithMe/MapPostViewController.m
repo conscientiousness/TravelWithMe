@@ -115,8 +115,16 @@
     
     if([self isDataNotEmpty]) {
         
-        MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.labelText = @"發送中...";
+        
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.mode = MBProgressHUDModeAnnularDeterminate;
+        hud.labelText = @"Loading";
+//        [self doSomethingInBackgroundWithProgressCallback:^(float progress) {
+//            hud.progress = progress;
+//        } completionCallback:^{
+//            [hud hide:YES];
+//        }];
+        
         
         dispatch_queue_t publishQueue = dispatch_queue_create("publish", nil);
         dispatch_async(publishQueue, ^{
