@@ -741,6 +741,7 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 _messageTextField.text = @"";
                 [_detailTableView reloadData];
+                [self sendPushToPostCreater];
                 [MBProgressHUD hideHUDForView:self.view animated:YES];
             });
         });
@@ -752,6 +753,29 @@
         [self presentViewController:targetViewController animated:YES completion:nil];
     }
 }
+
+#pragma mark - 送出推撥給貼文主
+- (void)sendPushToPostCreater{
+    if(![user.objectId isEqualToString:_cellDictData[@"userObjectId"]]){
+        
+        // Find user
+        PFUser *createUser = [PFUser objectWithoutDataWithObjectId:_cellDictData[@"userObjectId"]];
+        
+        // Find devices associated with these users
+        PFQuery *pushQuery = [PFInstallation query];
+        //NSLog(@"%@",createUser[@"installation"][@"objectId"]);
+        [pushQuery whereKey:@"objectId" equalTo:((PFInstallation*)createUser[@"installation"]).objectId];
+        
+        NSString *pushString = [NSString stringWithFormat:@"%@ %@【%@】%@",user[USER_DISPLAYNAME_KEY],@"在您的貼文",_cellDictData[TRAVELMATEPOST_COUNTRYCITY_KEY],@"留言"];
+        
+        // Send push notification to query
+        PFPush *push = [[PFPush alloc] init];
+        [push setQuery:pushQuery]; // Set our Installation query
+        [push setMessage:pushString];
+        [push sendPushInBackground];
+    }
+}
+
 
 @end
 

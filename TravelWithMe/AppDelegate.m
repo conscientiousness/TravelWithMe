@@ -109,7 +109,7 @@
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    NSLog(@"%@",userInfo);
+    //NSLog(@"%@",userInfo);
     [PFPush handlePush:userInfo];
 }
 

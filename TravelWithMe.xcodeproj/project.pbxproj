@@ -78,6 +78,7 @@
 		F465736D1B5552D800DA3D7B /* JL2TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F46573691B5552D800DA3D7B /* JL2TableViewCell.m */; };
 		F465736E1B5552D800DA3D7B /* JL2TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F465736A1B5552D800DA3D7B /* JL2TableViewCell.xib */; };
 		F465736F1B5552D800DA3D7B /* JLTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F465736B1B5552D800DA3D7B /* JLTableViewCell.xib */; };
+		F4663F821B9BE75700B6111A /* PushCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = F4663F811B9BE75700B6111A /* PushCommunicator.m */; };
 		F47556A11B4BACF2008CEE3A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F47556A01B4BACF2008CEE3A /* main.m */; };
 		F47556A41B4BACF2008CEE3A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F47556A31B4BACF2008CEE3A /* AppDelegate.m */; };
 		F47556AA1B4BACF2008CEE3A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F47556A81B4BACF2008CEE3A /* Main.storyboard */; };
@@ -253,6 +254,8 @@
 		F46573691B5552D800DA3D7B /* JL2TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JL2TableViewCell.m; sourceTree = "<group>"; };
 		F465736A1B5552D800DA3D7B /* JL2TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JL2TableViewCell.xib; sourceTree = "<group>"; };
 		F465736B1B5552D800DA3D7B /* JLTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JLTableViewCell.xib; sourceTree = "<group>"; };
+		F4663F801B9BE75700B6111A /* PushCommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushCommunicator.h; sourceTree = "<group>"; };
+		F4663F811B9BE75700B6111A /* PushCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushCommunicator.m; sourceTree = "<group>"; };
 		F4667B361B91F9130025A06A /* TraveIWithMe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TraveIWithMe.entitlements; sourceTree = "<group>"; };
 		F475569B1B4BACF2008CEE3A /* TravelWithMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelWithMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F475569F1B4BACF2008CEE3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -731,6 +734,8 @@
 				F4DA4C5B1B4E9D0500421F2F /* UIColors.m */,
 				F420E1501B8432B100D3627F /* TWMDefine.h */,
 				F420E1511B8432B100D3627F /* TWMDefine.m */,
+				F4663F801B9BE75700B6111A /* PushCommunicator.h */,
+				F4663F811B9BE75700B6111A /* PushCommunicator.m */,
 			);
 			name = Comm;
 			sourceTree = "<group>";
@@ -943,6 +948,7 @@
 				F4BC50E31B7E54ED008C3EC4 /* ParallaxTableViewCell.m in Sources */,
 				F4BC50E21B7E54ED008C3EC4 /* HomePageViewController.m in Sources */,
 				F465736D1B5552D800DA3D7B /* JL2TableViewCell.m in Sources */,
+				F4663F821B9BE75700B6111A /* PushCommunicator.m in Sources */,
 				A524E7FA1B86C54F0094A684 /* LegalViewController.m in Sources */,
 				B51A23351B7A5C9900CFD674 /* followTableViewController.m in Sources */,
 				F47D8EC71B9023B30020A768 /* DPAnnotationView.m in Sources */,
