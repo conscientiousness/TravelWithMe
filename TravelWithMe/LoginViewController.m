@@ -13,6 +13,7 @@
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *FBLoginBtn;
 @property (weak, nonatomic) IBOutlet UIView *videoView;
+@property (weak, nonatomic) IBOutlet UIButton *emailLoginBtn;
 @property (nonatomic, strong) AVPlayer *avplayer;
 @end
 
@@ -36,7 +37,8 @@
     [avPlayerLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
     [avPlayerLayer setFrame:[[UIScreen mainScreen] bounds]];
     [self.videoView.layer addSublayer:avPlayerLayer];
-    
+    [self.view.layer insertSublayer:avPlayerLayer below:self.videoView.layer];
+//[self.view insertSubview:blurView belowSubview:_infoView];
     //Config player
     [self.avplayer seekToTime:kCMTimeZero];
     [self.avplayer setVolume:0.0f];
