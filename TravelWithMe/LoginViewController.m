@@ -61,7 +61,13 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self.avplayer play];
+    
+    // using dispatch_after
+    //dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW,(int64_t)(3 * NSEC_PER_SEC));
+    //dispatch_after(time, dispatch_get_main_queue(), ^{
+        [self.avplayer play];
+    //});
+    
 }
 
 - (void)dealloc
