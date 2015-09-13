@@ -24,6 +24,8 @@
     // Do any additional setup after loading the view.
     //[Singleton sharedInstance];
     //Not affecting background music playing
+    
+    
     NSError *sessionError = nil;
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:&sessionError];
     [[AVAudioSession sharedInstance] setActive:YES error:&sessionError];
@@ -50,6 +52,12 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(playerStartPlaying)
                                                  name:UIApplicationDidBecomeActiveNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self
+                                            selector:@selector(emailLoginDone)
+                                                name:EMAIL_LOGIN_PROCESS_DONE
+                                              object:nil];
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -58,10 +66,15 @@
     [self.avplayer pause];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = YES;
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
     // using dispatch_after
     //dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW,(int64_t)(3 * NSEC_PER_SEC));
     //dispatch_after(time, dispatch_get_main_queue(), ^{
@@ -73,6 +86,10 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
+}
+
+- (void)emailLoginDone{
+    [self dismissViewControllerAnimated:true completion:nil];
 }
 
 - (void)playerItemDidReachEnd:(NSNotification *)notification {

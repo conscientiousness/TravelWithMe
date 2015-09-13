@@ -120,6 +120,8 @@
 		F4DB29C51B90C66500E6F245 /* landscape-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F4DB29C21B90C66500E6F245 /* landscape-icon.png */; };
 		F4DB29C61B90C66500E6F245 /* people-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F4DB29C31B90C66500E6F245 /* people-icon.png */; };
 		F4DB29C81B914CA100E6F245 /* crying-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F4DB29C71B914CA100E6F245 /* crying-icon.png */; };
+		F4E8289A1BA5D46900FD3B29 /* LoginProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E828991BA5D46900FD3B29 /* LoginProcess.m */; };
+		F4E8289D1BA5D9E400FD3B29 /* EmailLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E8289C1BA5D9E400FD3B29 /* EmailLoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -318,6 +320,10 @@
 		F4DB29C21B90C66500E6F245 /* landscape-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "landscape-icon.png"; sourceTree = "<group>"; };
 		F4DB29C31B90C66500E6F245 /* people-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "people-icon.png"; sourceTree = "<group>"; };
 		F4DB29C71B914CA100E6F245 /* crying-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "crying-icon.png"; sourceTree = "<group>"; };
+		F4E828981BA5D46900FD3B29 /* LoginProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginProcess.h; sourceTree = "<group>"; };
+		F4E828991BA5D46900FD3B29 /* LoginProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginProcess.m; sourceTree = "<group>"; };
+		F4E8289B1BA5D9E400FD3B29 /* EmailLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailLoginViewController.h; sourceTree = "<group>"; };
+		F4E8289C1BA5D9E400FD3B29 /* EmailLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailLoginViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -571,6 +577,10 @@
 				F445E3661B6E09CD00818A18 /* Login.storyboard */,
 				F445E3691B6E0A1100818A18 /* LoginViewController.h */,
 				F445E36A1B6E0A1100818A18 /* LoginViewController.m */,
+				F4E8289B1BA5D9E400FD3B29 /* EmailLoginViewController.h */,
+				F4E8289C1BA5D9E400FD3B29 /* EmailLoginViewController.m */,
+				F4E828981BA5D46900FD3B29 /* LoginProcess.h */,
+				F4E828991BA5D46900FD3B29 /* LoginProcess.m */,
 			);
 			name = LoginView;
 			sourceTree = "<group>";
@@ -975,6 +985,7 @@
 				A55171831B86151A002841AB /* PolicyViewController.m in Sources */,
 				F47D8EC41B901CF30020A768 /* MapMKPointAnnotation.m in Sources */,
 				B51A23341B7A5C9900CFD674 /* favoriteTableViewController.m in Sources */,
+				F4E8289D1BA5D9E400FD3B29 /* EmailLoginViewController.m in Sources */,
 				F465736C1B5552D800DA3D7B /* JLTableViewCell.m in Sources */,
 				F44F3E301B8207F9007CE9C1 /* StartDateDaysTableViewCell.m in Sources */,
 				F44307E21B78A1C900DE5625 /* UIImage+ImageEffects.m in Sources */,
@@ -988,6 +999,7 @@
 				A53CBBB71B67FA630039369A /* MapViewController.m in Sources */,
 				F4457C201B7755D000A4952B /* ParallaxHeaderView.m in Sources */,
 				F4457C231B7756B900A4952B /* DetailMessageViewController.m in Sources */,
+				F4E8289A1BA5D46900FD3B29 /* LoginProcess.m in Sources */,
 				F43F90771B8C80C700E509F3 /* PostMapPhotoTableViewCell.m in Sources */,
 				F443FB4C1B6124D600F30847 /* WallViewController.m in Sources */,
 				F4461ECC1B7622CE00052C94 /* JL3MessageTableViewCell.m in Sources */,

@@ -18,6 +18,7 @@
 #define TOP_CHILD_DISMISSED_NOTIFICATION @"TopChildDismissed"
 #define PRESENT_TO_MAPPOSTVIEW_NOTIFICATION @"PresentToMapPost"
 #define OFF_LINE_NOTIFICATION @"OffLine"
+#define EMAIL_LOGIN_PROCESS_DONE @"emailLoginProcessDone"
 
 /*
  * PARSE 欄位定義
