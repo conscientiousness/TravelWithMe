@@ -174,6 +174,26 @@
     
 }
 
+
+- (IBAction)moreBtnPressed:(id)sender {
+    
+    UIAlertController * alertController = [UIAlertController new];
+    
+    UIAlertAction * action1 = [UIAlertAction actionWithTitle:@"檢舉貼文" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    }];
+    
+    UIAlertAction * cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        //NSLog(@"cancel");
+    }];
+    
+    [alertController addAction:action1];
+    [alertController addAction:cancel];
+    
+    [self presentViewController:alertController animated:YES completion:^{
+        //NSLog(@"didshow");
+    }];
+}
+
 - (void) preparePullRefresh {
     
     //下拉刷最新
@@ -244,6 +264,7 @@
         });
     });
 }
+
 
 #pragma mark - Navigation Bar Item Method
 - (void)postBtnPressed:(id *)sender {

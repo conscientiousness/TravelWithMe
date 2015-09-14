@@ -120,6 +120,9 @@
 		F4DB29C51B90C66500E6F245 /* landscape-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F4DB29C21B90C66500E6F245 /* landscape-icon.png */; };
 		F4DB29C61B90C66500E6F245 /* people-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F4DB29C31B90C66500E6F245 /* people-icon.png */; };
 		F4DB29C81B914CA100E6F245 /* crying-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F4DB29C71B914CA100E6F245 /* crying-icon.png */; };
+		F4DF5AFC1BA68CFA00029D91 /* EmailRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DF5AFB1BA68CFA00029D91 /* EmailRegisterViewController.m */; };
+		F4DF5AFE1BA7462E00029D91 /* head-image.png in Resources */ = {isa = PBXBuildFile; fileRef = F4DF5AFD1BA7462E00029D91 /* head-image.png */; };
+		F4DF5B001BA7476E00029D91 /* more-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F4DF5AFF1BA7476E00029D91 /* more-icon.png */; };
 		F4E8289A1BA5D46900FD3B29 /* LoginProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E828991BA5D46900FD3B29 /* LoginProcess.m */; };
 		F4E8289D1BA5D9E400FD3B29 /* EmailLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E8289C1BA5D9E400FD3B29 /* EmailLoginViewController.m */; };
 /* End PBXBuildFile section */
@@ -320,6 +323,10 @@
 		F4DB29C21B90C66500E6F245 /* landscape-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "landscape-icon.png"; sourceTree = "<group>"; };
 		F4DB29C31B90C66500E6F245 /* people-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "people-icon.png"; sourceTree = "<group>"; };
 		F4DB29C71B914CA100E6F245 /* crying-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "crying-icon.png"; sourceTree = "<group>"; };
+		F4DF5AFA1BA68CFA00029D91 /* EmailRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailRegisterViewController.h; sourceTree = "<group>"; };
+		F4DF5AFB1BA68CFA00029D91 /* EmailRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailRegisterViewController.m; sourceTree = "<group>"; };
+		F4DF5AFD1BA7462E00029D91 /* head-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "head-image.png"; sourceTree = "<group>"; };
+		F4DF5AFF1BA7476E00029D91 /* more-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "more-icon.png"; sourceTree = "<group>"; };
 		F4E828981BA5D46900FD3B29 /* LoginProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginProcess.h; sourceTree = "<group>"; };
 		F4E828991BA5D46900FD3B29 /* LoginProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginProcess.m; sourceTree = "<group>"; };
 		F4E8289B1BA5D9E400FD3B29 /* EmailLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailLoginViewController.h; sourceTree = "<group>"; };
@@ -579,8 +586,11 @@
 				F445E36A1B6E0A1100818A18 /* LoginViewController.m */,
 				F4E8289B1BA5D9E400FD3B29 /* EmailLoginViewController.h */,
 				F4E8289C1BA5D9E400FD3B29 /* EmailLoginViewController.m */,
+				F4DF5AFA1BA68CFA00029D91 /* EmailRegisterViewController.h */,
+				F4DF5AFB1BA68CFA00029D91 /* EmailRegisterViewController.m */,
 				F4E828981BA5D46900FD3B29 /* LoginProcess.h */,
 				F4E828991BA5D46900FD3B29 /* LoginProcess.m */,
+				F4DF5AFD1BA7462E00029D91 /* head-image.png */,
 			);
 			name = LoginView;
 			sourceTree = "<group>";
@@ -681,6 +691,7 @@
 				F43F90671B8AF46D00E509F3 /* exclamation-icon.png */,
 				F4CEF12E1B81D251006D2B71 /* share_photo.png */,
 				F44283011B875C2200D1F776 /* back-icon.png */,
+				F4DF5AFF1BA7476E00029D91 /* more-icon.png */,
 				F47556A81B4BACF2008CEE3A /* Main.storyboard */,
 			);
 			name = HomeVIew;
@@ -870,6 +881,7 @@
 				F4DB29C61B90C66500E6F245 /* people-icon.png in Resources */,
 				F42EBD6B1B68790500606D9B /* (null) in Resources */,
 				F465736F1B5552D800DA3D7B /* JLTableViewCell.xib in Resources */,
+				F4DF5AFE1BA7462E00029D91 /* head-image.png in Resources */,
 				F4DB29C51B90C66500E6F245 /* landscape-icon.png in Resources */,
 				F486EF461B4C34D2008CB97B /* Setting.storyboard in Resources */,
 				F47556C51B4BD40F008CEE3A /* Favorite.storyboard in Resources */,
@@ -881,6 +893,7 @@
 				F42EBDB01B68D1EE00606D9B /* (null) in Resources */,
 				F420E15C1B84719800D3627F /* interested-icon.png in Resources */,
 				F44282FE1B875A9700D1F776 /* edit-icon.png in Resources */,
+				F4DF5B001BA7476E00029D91 /* more-icon.png in Resources */,
 				A519F60A1B8C0FFF001D0A78 /* login-background-video.mp4 in Resources */,
 				F42EBD6A1B68790500606D9B /* (null) in Resources */,
 				F42EBDAE1B68D0C100606D9B /* (null) in Resources */,
@@ -991,6 +1004,7 @@
 				F44307E21B78A1C900DE5625 /* UIImage+ImageEffects.m in Sources */,
 				F44ED1181B969F2500ADFDC8 /* MapDetailInfoCell.m in Sources */,
 				F44829941B6FB9D800ED0EA1 /* UIImage+AlphaAdditions.m in Sources */,
+				F4DF5AFC1BA68CFA00029D91 /* EmailRegisterViewController.m in Sources */,
 				B51A23321B7A5C9900CFD674 /* favoriteMainViewController.m in Sources */,
 				F44829A01B6FBAFF00ED0EA1 /* PAPCache.m in Sources */,
 				A55669951B80EAE300F588E3 /* CExpandHeader.m in Sources */,

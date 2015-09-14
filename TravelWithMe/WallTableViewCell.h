@@ -25,5 +25,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *cellObjectId;
 @property (weak, nonatomic) IBOutlet UILabel *cellUserObjectId;
 @property (weak, nonatomic) IBOutlet UILabel *postTimeLabel;
+@property (weak, nonatomic) IBOutlet UIButton *moreBtn;
 
 @end

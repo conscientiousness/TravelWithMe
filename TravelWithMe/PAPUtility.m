@@ -186,6 +186,39 @@
   //NSLog(@"Processed profile picture");
 }
 
++ (void)processEmailAccountProfilePictureData:(NSData *)newProfilePictureData {
+    //NSLog(@"Processing profile picture of size: %@", @(newProfilePictureData.length));
+    if (newProfilePictureData.length == 0) {
+        return;
+    }
+    
+    UIImage *image = [UIImage imageWithData:newProfilePictureData];
+    
+    NSData *mediumImageData = UIImagePNGRepresentation(image); // using JPEG for larger pictures
+    NSData *smallRoundedImageData = UIImagePNGRepresentation(image);
+    
+    if (mediumImageData.length > 0) {
+        PFFile *fileMediumImage = [PFFile fileWithData:mediumImageData];
+        [fileMediumImage saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (!error) {
+                [[PFUser currentUser] setObject:fileMediumImage forKey:kPAPUserProfilePicMediumKey];
+                [[PFUser currentUser] saveInBackground];
+            }
+        }];
+    }
+    
+    if (smallRoundedImageData.length > 0) {
+        PFFile *fileSmallRoundedImage = [PFFile fileWithData:smallRoundedImageData];
+        [fileSmallRoundedImage saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (!error) {
+                [[PFUser currentUser] setObject:fileSmallRoundedImage forKey:kPAPUserProfilePicSmallKey];
+                [[PFUser currentUser] saveInBackground];
+            }
+        }];
+    }
+    //NSLog(@"Processed profile picture");
+}
+
 //+ (BOOL)userHasValidFacebookData:(PFUser *)user {
 //    // Check that PFUser has valid fbid that matches current FBSessions userId
 //    return [FBSDKAccessToken currentAccessToken];

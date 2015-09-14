@@ -317,10 +317,10 @@
             </objects>
             <point key="canvasLocation" x="1146.5" y="542.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Email Register View Controller-->
         <scene sceneID="gMc-En-OWP">
             <objects>
-                <viewController id="apx-I9-bVU" sceneMemberID="viewController">
+                <viewController id="apx-I9-bVU" customClass="EmailRegisterViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="H6D-p4-sVv"/>
                         <viewControllerLayoutGuide type="bottom" id="bTQ-nq-7Qs"/>
@@ -351,6 +351,9 @@
                                 <state key="normal" title="註冊">
                                     <color key="titleColor" red="0.2135644542" green="0.65216874629999999" blue="0.52570065489999995" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="registerBtnPressed:" destination="apx-I9-bVU" eventType="touchUpInside" id="eBQ-XQ-wHq"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="DisplayName*" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3U0-1B-CfP" customClass="KaedeTextField" customModule="TextFieldEffects">
                                 <rect key="frame" x="16" y="208" width="337" height="60"/>
@@ -476,6 +479,11 @@
                         </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="displayNameTextField" destination="3U0-1B-CfP" id="Log-QH-V1T"/>
+                        <outlet property="emailTextField" destination="vNR-LQ-XHc" id="E7W-e2-HZc"/>
+                        <outlet property="passwordTextField" destination="mi3-vA-kW6" id="EIB-Cy-PFE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HXb-kU-lHv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
