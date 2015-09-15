@@ -9,7 +9,7 @@
 #import "EmailLoginViewController.h"
 #import "SCLAlertView.h"
 
-@interface EmailLoginViewController ()
+@interface EmailLoginViewController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 
@@ -46,6 +46,12 @@
             [alert showCustom:self image:[UIImage imageNamed:icon] color:color title:title subTitle:subTitle closeButtonTitle:@"OK" duration:0.0f];
         }
     }];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    [self.view endEditing:YES];
+    return NO;
 }
 
 @end

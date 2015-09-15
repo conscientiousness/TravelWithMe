@@ -425,7 +425,6 @@
                                             <outlet property="interestedCountLabel" destination="fgM-ku-FPf" id="gv2-YU-x7J"/>
                                             <outlet property="joinCountLabel" destination="59g-bJ-kp5" id="xcd-VV-qUg"/>
                                             <outlet property="memoLabel" destination="VVp-xr-5O5" id="RXV-xL-np2"/>
-                                            <outlet property="moreBtn" destination="OvE-wN-U4H" id="whT-Vn-uDw"/>
                                             <outlet property="postTimeLabel" destination="usK-ZA-iWo" id="0gT-aD-F3l"/>
                                             <outlet property="travelDateLabel" destination="2ql-KD-OA8" id="Gvm-Bq-bJD"/>
                                             <outlet property="userNameLabel" destination="E0N-tA-xXP" id="qEt-4G-DKH"/>
