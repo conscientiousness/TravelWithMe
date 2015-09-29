@@ -14,6 +14,7 @@ pod "MJRefresh"
 pod "SCLAlertView-Objective-C"
 pod "VBFPopFlatButton"
 pod "DateTools"
+pod "JTSImageViewController@bulusoy"
 
 use_frameworks!
 pod "TextFieldEffects"
