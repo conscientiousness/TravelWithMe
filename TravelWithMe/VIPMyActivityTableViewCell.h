@@ -13,5 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *myActivityCountryCityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *myActivityStartDate;
 @property (weak, nonatomic) IBOutlet UILabel *myActivityMemo;
+@property (weak, nonatomic) IBOutlet UILabel *objectIdLabel;
+@property (weak, nonatomic) IBOutlet UILabel *typeLabel;
 
 @end

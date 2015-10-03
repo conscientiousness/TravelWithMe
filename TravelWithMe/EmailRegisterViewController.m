@@ -37,6 +37,7 @@
     user.username = _emailTextField.text;
     user.password = _passwordTextField.text;
     user[USER_DISPLAYNAME_KEY] = _displayNameTextField.text;
+    user[USER_GENDER_KEY] = @"none";
     
     if([self validateInputDatas]) {
         [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
@@ -96,7 +97,6 @@
         
     }
     else if([_passwordTextField.text isEqualToString:@""]||_passwordTextField.text==nil) {
-        
         title = @"暱稱";
         subTitle = @"沒輸入喔";
         flag = NO;

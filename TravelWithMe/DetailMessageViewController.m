@@ -15,6 +15,7 @@
 #import "UIImage+ImageEffects.h"
 #import "SSBouncyButton.h"
 #import "DateTools.h"
+#import "VIPViewController.h"
 
 //個人資料cell高度
 #define HEIGHT_FOR_INFO_CELL 330.0
@@ -113,7 +114,9 @@
     }
     
     hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"讀取中...";
+    //hud.labelText = @"讀取中...";
+    hud.mode = MBProgressHUDModeCustomView;
+    hud.customView = [[CustomAnimationImageView alloc] initWithFrame:CGRectMake(0, 0, 70, 70)];
     dispatch_queue_t downloadDatasQueue = dispatch_queue_create("Download", nil);
     //dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
     dispatch_async(downloadDatasQueue, ^{
@@ -451,6 +454,13 @@
         }
     }];
     
+    //給予imageView手勢行為：點一次觸發
+    UITapGestureRecognizer *tapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(headPhotoTapped:)];
+    tapped.numberOfTapsRequired = 1;
+    [cell.headPhoto addGestureRecognizer:tapped];
+    //確保觸發手勢
+    cell.headPhoto.userInteractionEnabled = YES;
+    
     //名字
     cell.displayName.text = _cellDictData[@"displayName"];
     //出發日期
@@ -776,6 +786,28 @@
     }
 }
 
+#pragma mark - Gesture Method
+
+//Method controlling what happens when cell's UIImage is tapped
+-(void)headPhotoTapped:(UIGestureRecognizer*)gesture
+{
+    
+    //UIView *selectedheadPhoto = (UIView*)[gesture view];
+    //UIView *superView = [selectedheadPhoto superview];
+    
+    //NSString *objectId = ((UILabel*)[superView viewWithTag:CELL_OBJECTID_LABEL_TAG]).text;
+    
+    NSString *userObjectId = _cellDictData[@"userObjectId"];
+    
+    //NSLog(@"%@ ,%@",objectId,userObjectId);
+    UIStoryboard *targetStoryboard = [UIStoryboard storyboardWithName:@"Setting" bundle:nil];
+    
+    VIPViewController *targetViewController = [targetStoryboard instantiateViewControllerWithIdentifier:@"VIPViewController"];
+    
+    targetViewController.userObjectId = userObjectId;
+    
+    [self.navigationController pushViewController:targetViewController animated:YES];
+}
 
 @end
 

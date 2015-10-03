@@ -9,11 +9,15 @@
 #import "VIPViewController.h"
 #import "CExpandHeader.h" //import 第三方 CExpandHeader
 #import "VIPMyActivityTableViewCell.h"
+#import "JTSImageInfo.h"
+#import "JTSImageViewController.h"
 
 #define CExpandContentOffset @"contentOffset"
 #define AFTER(s) dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(s * NSEC_PER_SEC)),    dispatch_get_main_queue(), ^
 #define KNeedSaveOffset NO
 #define VIPMYACTIVITYCELL_HEIGHT 80.0
+#define CELL_IDLABEL_TAG 1000
+#define CELL_TABLENAME_LABEL_TAG 1001
 
 @interface VIPViewController ()
 
@@ -23,14 +27,14 @@
 {
     __weak IBOutlet UITableView *myViptableView;
     __weak UIImageView *_expandView;
-
+    
     CExpandHeader *_headerPhoto;
     UIImageView *imageView;
-
+    
     UIView* _headBg;
     UIView* _headView;
     UIView *_sectionView;
-
+    
     int index;
     UITableView *_tableView1;
     UITableView *_tableView2;
@@ -95,7 +99,7 @@
     imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200 + self.navigationController.navigationBar.bounds.size.height)];
     //  image Name
     [imageView setImage:[UIImage imageNamed:@"my_pages.png"]];
-
+    
     
     // build section view 位置和顏色
     _sectionView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
@@ -252,7 +256,7 @@
         index=2;
         [myViptableView reloadData];
         [_tableView2 reloadData];
-    
+        
         if(KNeedSaveOffset)
             myViptableView.contentOffset=tableOffset2;
     });
@@ -274,7 +278,7 @@
     {
         return myFootprintArrayDatas.count;
     }
-        
+    
     
     return 0;
 }
@@ -286,6 +290,8 @@
     NSString *nibName;
     UINib *nib;
     //NSLog(@"%ld",indexPath.row);
+    UITapGestureRecognizer *tapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(headPhotoTapped:)];
+    tapped.numberOfTapsRequired = 1;
     
     if(tableView==_tableView1)
     {
@@ -294,23 +300,35 @@
         nib = [UINib nibWithNibName:nibName bundle:nil];
         [tableView registerNib:nib forCellReuseIdentifier:identifier];
         
-       VIPMyActivityTableViewCell *myActivityCell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+        VIPMyActivityTableViewCell *myActivityCell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+        
+        myActivityCell.objectIdLabel.text = ((PFObject*)myActivityArrayDatas[indexPath.row]).objectId;
+        myActivityCell.objectIdLabel.tag = CELL_IDLABEL_TAG;
+        
+        myActivityCell.typeLabel.text = TRAVELMATEPOST_TABLENAME;
+        myActivityCell.typeLabel.tag = CELL_TABLENAME_LABEL_TAG;
         
         myActivityCell.myActivityCountryCityLabel.text = myActivityArrayDatas[indexPath.row][TRAVELMATEPOST_COUNTRYCITY_KEY];
         
         myActivityCell.myActivityStartDate.text = myActivityArrayDatas[indexPath.row][TRAVELMATEPOST_STARTDATE_KEY];
-
+        
         myActivityCell.myActivityMemo.text = myActivityArrayDatas[indexPath.row][TRAVELMATEPOST_MEMO_KEY];
         
         PFFile *photo = (PFFile *)myActivityArrayDatas[indexPath.row][TRAVELMATEPOST_SMALLPHOTO_KEY];
         [myActivityCell.myActivityShareSmallPhoto sd_setImageWithURL:(NSURL*)photo.url placeholderImage:[UIImage imageNamed:@"intrested-icon"]];
         
+        
+        [myActivityCell.myActivityShareSmallPhoto addGestureRecognizer:tapped];
+        //確保觸發手勢
+        myActivityCell.myActivityShareSmallPhoto.userInteractionEnabled = YES;
+        
+        
         myActivityCell.selectionStyle = UITableViewCellSelectionStyleNone;
-
+        
         return myActivityCell;
         
         //if (!cell)
-            //cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        //cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     
     else if(tableView==_tableView2)
@@ -323,6 +341,12 @@
         
         VIPMyActivityTableViewCell *myFootprintCell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
         
+        myFootprintCell.objectIdLabel.text = ((PFObject*)myFootprintArrayDatas[indexPath.row]).objectId;
+        myFootprintCell.objectIdLabel.tag = CELL_IDLABEL_TAG;
+        
+        myFootprintCell.typeLabel.text = MAPPOST_TABLENAME;
+        myFootprintCell.typeLabel.tag = CELL_TABLENAME_LABEL_TAG;
+        
         myFootprintCell.myActivityCountryCityLabel.text = myFootprintArrayDatas[indexPath.row][MAPPOST_COUNTRY_KEY];
         
         myFootprintCell.myActivityStartDate.text = myFootprintArrayDatas[indexPath.row][MAPPOST_LOCALITY_KEY];
@@ -331,6 +355,10 @@
         
         PFFile *photo = (PFFile *)myFootprintArrayDatas[indexPath.row][MAPPOST_SMALLPHOTO_KEY];
         [myFootprintCell.myActivityShareSmallPhoto sd_setImageWithURL:(NSURL*)photo.url placeholderImage:[UIImage imageNamed:@"intrested-icon"]];
+        
+        [myFootprintCell.myActivityShareSmallPhoto addGestureRecognizer:tapped];
+        //確保觸發手勢
+        myFootprintCell.myActivityShareSmallPhoto.userInteractionEnabled = YES;
         
         myFootprintCell.selectionStyle = UITableViewCellSelectionStyleNone;
         
@@ -359,43 +387,43 @@
 }
 
 /*
-NSString *identifier;
-NSString *nibName;
-
-if (indexPath.section == 0) {
-    identifier = @"JLCell";
-    nibName = @"JLTableViewCell";
-} else if (indexPath.section == 1){
-    identifier = @"JL2Cell";
-    nibName = @"JL2TableViewCell";
-} else if (indexPath.section == 2){
-    identifier = @"JL3MessageCell";
-    nibName = @"JL3MessageTableViewCell";
-}
-
-UINib *nib = [UINib nibWithNibName:nibName bundle:nil];
-
-
-[tableView registerNib:nib forCellReuseIdentifier:identifier];
-UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
-
-//NSLog(@"cell = %@ ,section = %ld,row = %ld",cell,indexPath.section,indexPath.row);
-
-if(indexPath.section == 0) {
-    [self prepareJLCellstyle:(JLTableViewCell *)cell cellForRowAtIndexPath:indexPath];
-    [self setJLCellData:(JLTableViewCell*)cell cellForRowAtIndexPath:indexPath];
-    
-} else if(indexPath.section == 1) {
-    [self prepareJL2Cellstyle:(JL2TableViewCell *)cell cellForRowAtIndexPath:indexPath];
-    //[self setJLCellData:(JLTableViewCell*)cell cellForRowAtIndexPath:indexPath];
-    
-} else if(indexPath.section == 2) {
-    [self prepareJL3MessageCellstyle:(JL3MessageTableViewCell *)cell cellForRowAtIndexPath:indexPath];
-    [self setJL3MessageCellData:(JL3MessageTableViewCell *)cell cellForRowAtIndexPath:indexPath];
-}
-
-return cell;
-*/
+ NSString *identifier;
+ NSString *nibName;
+ 
+ if (indexPath.section == 0) {
+ identifier = @"JLCell";
+ nibName = @"JLTableViewCell";
+ } else if (indexPath.section == 1){
+ identifier = @"JL2Cell";
+ nibName = @"JL2TableViewCell";
+ } else if (indexPath.section == 2){
+ identifier = @"JL3MessageCell";
+ nibName = @"JL3MessageTableViewCell";
+ }
+ 
+ UINib *nib = [UINib nibWithNibName:nibName bundle:nil];
+ 
+ 
+ [tableView registerNib:nib forCellReuseIdentifier:identifier];
+ UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+ 
+ //NSLog(@"cell = %@ ,section = %ld,row = %ld",cell,indexPath.section,indexPath.row);
+ 
+ if(indexPath.section == 0) {
+ [self prepareJLCellstyle:(JLTableViewCell *)cell cellForRowAtIndexPath:indexPath];
+ [self setJLCellData:(JLTableViewCell*)cell cellForRowAtIndexPath:indexPath];
+ 
+ } else if(indexPath.section == 1) {
+ [self prepareJL2Cellstyle:(JL2TableViewCell *)cell cellForRowAtIndexPath:indexPath];
+ //[self setJLCellData:(JLTableViewCell*)cell cellForRowAtIndexPath:indexPath];
+ 
+ } else if(indexPath.section == 2) {
+ [self prepareJL3MessageCellstyle:(JL3MessageTableViewCell *)cell cellForRowAtIndexPath:indexPath];
+ [self setJL3MessageCellData:(JL3MessageTableViewCell *)cell cellForRowAtIndexPath:indexPath];
+ }
+ 
+ return cell;
+ */
 
 - (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(tableView==myViptableView)
@@ -439,19 +467,49 @@ return cell;
     return nil;
 }
 
+#pragma mark - Gesture Method
+
+//Method controlling what happens when cell's UIImage is tapped
+-(void)headPhotoTapped:(UIGestureRecognizer*)gesture
+{
+    
+    UIView *selectedheadPhoto = (UIView*)[gesture view];
+    UIView *superView = [selectedheadPhoto superview];
+    
+    NSString *objectId = ((UILabel*)[superView viewWithTag:CELL_IDLABEL_TAG]).text;
+    NSString *tableName = ((UILabel*)[superView viewWithTag:CELL_TABLENAME_LABEL_TAG]).text;
+    //NSLog(@"%@",objectId);
+    PFObject *pfObject = [PFObject objectWithoutDataWithClassName:tableName objectId:objectId];
+    PFFile *originalPhoto = pfObject[TRAVELMATEPOST_ORIGINALPHOTO_KEY];
+    if(originalPhoto==nil) originalPhoto = pfObject[MAPPOST_ORIGINALPHOTO_KEY];
+    
+    // Create image info
+    JTSImageInfo *imageInfo = [[JTSImageInfo alloc] init];
+    imageInfo.imageURL = [NSURL URLWithString:originalPhoto.url];
+    
+    // Setup view controller
+    JTSImageViewController *imageViewer = [[JTSImageViewController alloc]
+                                           initWithImageInfo:imageInfo
+                                           mode:JTSImageViewControllerMode_Image
+                                           backgroundStyle:JTSImageViewControllerBackgroundOption_Scaled];
+    
+    // Present the view controller.
+    [imageViewer showFromViewController:self transition:JTSImageViewControllerTransition_FromOriginalPosition];
+}
+
 #pragma mark - 取得USER徵求旅伴所有貼文
 
 - (void) getTravelMatePostDatas
 {
     //userObjectId = @"fWcSONXdmc";
-                          
+    
     PFRelation *relation = [user relationForKey:@"travelMatePosts"];
     PFQuery *query = [relation query];
     [query orderByDescending:@"createdAt"];
     //query.limit = 3;
     
     //if(arrayDatas==nil)
-        //arrayDatas = [NSMutableArray new];
+    //arrayDatas = [NSMutableArray new];
     
     myActivityArrayDatas = [[NSMutableArray alloc] initWithArray:[query findObjects]];
     
@@ -464,7 +522,7 @@ return cell;
 {
     
     //userObjectId = @"iSoRfCRWKu";
-
+    
     PFRelation *relation = [user relationForKey:@"mapPosts"];
     PFQuery *query = [relation query];
     [query orderByDescending:@"createdAt"];

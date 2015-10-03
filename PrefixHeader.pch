@@ -16,6 +16,7 @@
 #import "UIColors.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "CustomAnimationImageView.h"
 #import "PAPConstants.h"
 #import "PAPUtility.h"
 #import "PAPCache.h"
