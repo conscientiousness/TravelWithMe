@@ -18,8 +18,8 @@
 #define CELL_OBJECTID_LABEL_TAG 1000
 #define CELL_USEROBJECTID_LABEL_TAG 1001
 #define ROW_HEIGHT_OFFSET_SCREEN_320 50
-#define ROW_HEIGHT_OFFSET_SCREEN_375 5
-#define ROW_HEIGHT_OFFSET_SCREEN_BIGGER -15
+#define ROW_HEIGHT_OFFSET_SCREEN_375 -5
+#define ROW_HEIGHT_OFFSET_SCREEN_BIGGER -35
 
 @interface WallViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *wallTableView;
@@ -44,7 +44,9 @@
     [super viewDidLoad];
     
     MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"讀取中...";
+    hud.mode = MBProgressHUDModeCustomView;
+    hud.customView = [[CustomAnimationImageView alloc] initWithFrame:CGRectMake(0, 0, 64,64)];
+    hud.labelText = @"Loading...";
     
     dispatch_queue_t loadingQueue = dispatch_queue_create("loading", nil);
     dispatch_async(loadingQueue, ^{
@@ -313,13 +315,13 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    //NSLog(@"height=>%f",self.view.frame.size.width);
+    //NSLog(@"SCREEN_SIZE=>%f",SCREEN_SIZE.size.width);
     
     float result = 500.0;
     
-    if(self.view.frame.size.width<=320.0) {//5s
+    if(SCREEN_SIZE.size.width<=320.0) {//5s
         result -= ROW_HEIGHT_OFFSET_SCREEN_320;
-    } else if (self.view.frame.size.width<=375.0) { //6
+    } else if (SCREEN_SIZE.size.width<=375.0) { //6
         result -= ROW_HEIGHT_OFFSET_SCREEN_375;
     }else {
         result -= ROW_HEIGHT_OFFSET_SCREEN_BIGGER;

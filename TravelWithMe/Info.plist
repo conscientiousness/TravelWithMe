@@ -35,8 +35,13 @@
 	<string>978244635569380</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>執行定位時會使用GPS取得您的座標資料</string>
+	<string>分享足跡時才會使用GPS取得您的座標資料，請確認才能跟大家分享喜悅唷！</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

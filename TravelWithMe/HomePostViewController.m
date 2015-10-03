@@ -101,7 +101,9 @@
     if(user) {
         
         MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.labelText = @"發送中...";
+        hud.mode = MBProgressHUDModeCustomView;
+        hud.customView = [[CustomAnimationImageView alloc] initWithFrame:CGRectMake(0, 0, 64,64)];
+        hud.labelText = @"Loading...";
         
         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             

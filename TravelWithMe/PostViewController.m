@@ -100,7 +100,10 @@
         if(user) {
             
             MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            hud.labelText = @"發送中...";
+            hud.mode = MBProgressHUDModeCustomView;
+            hud.customView = [[CustomAnimationImageView alloc] initWithFrame:CGRectMake(0, 0, 64,64)];
+            hud.labelText = @"Sending...";
+            
             self.navigationItem.rightBarButtonItem.enabled = NO;
             
             dispatch_queue_t publishQueue = dispatch_queue_create("publish", nil);

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CustomAnimationImageView : UIImageView
+@interface CustomAnimationImageView : UIView
 - (id)initWithFrame:(CGRect)frame;
 @end

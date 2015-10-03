@@ -113,10 +113,11 @@
         user = nil;
     }
     
-    hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    //hud.labelText = @"讀取中...";
+    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDModeCustomView;
-    hud.customView = [[CustomAnimationImageView alloc] initWithFrame:CGRectMake(0, 0, 70, 70)];
+    hud.customView = [[CustomAnimationImageView alloc] initWithFrame:CGRectMake(0, 0, 64,64)];
+    hud.labelText = @"Loading...";
+    
     dispatch_queue_t downloadDatasQueue = dispatch_queue_create("Download", nil);
     //dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
     dispatch_async(downloadDatasQueue, ^{
@@ -158,7 +159,9 @@
     if(user) {
         
         hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        //hud.labelText = @"Loading...";
+        hud.mode = MBProgressHUDModeCustomView;
+        hud.customView = [[CustomAnimationImageView alloc] initWithFrame:CGRectMake(0, 0, 64,64)];
+        hud.labelText = @"Loading...";
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
             
@@ -214,7 +217,9 @@
     if(user) {
         
         hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        //hud.labelText = @"Loading...";
+        hud.mode = MBProgressHUDModeCustomView;
+        hud.customView = [[CustomAnimationImageView alloc] initWithFrame:CGRectMake(0, 0, 64,64)];
+        hud.labelText = @"Loading...";
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
             
@@ -728,7 +733,10 @@
         [self clickMethof:nil];
         
         hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.labelText = @"發送中...";
+        hud.mode = MBProgressHUDModeCustomView;
+        hud.customView = [[CustomAnimationImageView alloc] initWithFrame:CGRectMake(0, 0, 64,64)];
+        hud.labelText = @"Sending...";
+        
         dispatch_queue_t sendQueue = dispatch_queue_create("Send", nil);
         dispatch_async(sendQueue, ^{
             
@@ -771,18 +779,20 @@
         // Find user
         PFUser *createUser = [PFUser objectWithoutDataWithObjectId:_cellDictData[@"userObjectId"]];
         
-        // Find devices associated with these users
-        PFQuery *pushQuery = [PFInstallation query];
-        //NSLog(@"%@",createUser[@"installation"][@"objectId"]);
-        [pushQuery whereKey:@"objectId" equalTo:((PFInstallation*)createUser[@"installation"]).objectId];
-        
-        NSString *pushString = [NSString stringWithFormat:@"%@ %@【%@】%@",user[USER_DISPLAYNAME_KEY],@"在您的貼文",_cellDictData[TRAVELMATEPOST_COUNTRYCITY_KEY],@"留言"];
-        
-        // Send push notification to query
-        PFPush *push = [[PFPush alloc] init];
-        [push setQuery:pushQuery]; // Set our Installation query
-        [push setMessage:pushString];
-        [push sendPushInBackground];
+        if(createUser[@"installation"]!=nil){
+            // Find devices associated with these users
+            PFQuery *pushQuery = [PFInstallation query];
+            //NSLog(@"%@",createUser[@"installation"][@"objectId"]);
+            [pushQuery whereKey:@"objectId" equalTo:((PFInstallation*)createUser[@"installation"]).objectId];
+            
+            NSString *pushString = [NSString stringWithFormat:@"%@ %@【%@】%@",user[USER_DISPLAYNAME_KEY],@"在您的貼文",_cellDictData[TRAVELMATEPOST_COUNTRYCITY_KEY],@"留言"];
+            
+            // Send push notification to query
+            PFPush *push = [[PFPush alloc] init];
+            [push setQuery:pushQuery]; // Set our Installation query
+            [push setMessage:pushString];
+            [push sendPushInBackground];
+        }      
     }
 }
 

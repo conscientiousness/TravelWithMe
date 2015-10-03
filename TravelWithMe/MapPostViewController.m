@@ -117,7 +117,10 @@
         
         
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.labelText = @"Loading...";
+        hud.mode = MBProgressHUDModeCustomView;
+        hud.customView = [[CustomAnimationImageView alloc] initWithFrame:CGRectMake(0, 0, 64,64)];
+        hud.labelText = @"Sending...";
+        
         //hud.mode = MBProgressHUDModeCustomView;
         //hud.customView = [[CustomAnimationImageView alloc] initWithFrame:CGRectMake(0, 0, 70, 70)];
 //        [self doSomethingInBackgroundWithProgressCallback:^(float progress) {

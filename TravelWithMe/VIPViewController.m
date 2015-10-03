@@ -73,7 +73,9 @@
     [self prepareTableViewUI];
     
     MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"讀取中...";
+    hud.mode = MBProgressHUDModeCustomView;
+    hud.customView = [[CustomAnimationImageView alloc] initWithFrame:CGRectMake(0, 0, 64,64)];
+    hud.labelText = @"Loading...";
     
     dispatch_queue_t loadingQueue = dispatch_queue_create("loading", nil);
     dispatch_async(loadingQueue, ^{
@@ -94,6 +96,21 @@
 
 - (void) prepareTableViewUI {
     
+    
+    if(user == [PFUser currentUser]){
+        //編輯按鈕
+        UIImage *image = [UIImage imageNamed:@"edit-icon"];
+        CGRect frame = CGRectMake(0, 0, 32, 32);
+        //init a normal UIButton using that image
+        UIButton *button = [[UIButton alloc] initWithFrame:frame];
+        [button setBackgroundImage:image forState:UIControlStateNormal];
+        [button setShowsTouchWhenHighlighted:YES];
+        //設定觸發事件
+        [button addTarget:self action:@selector(editBtnPressed:) forControlEvents:UIControlEventTouchDown];
+        //finally, create UIBarButtonItem using that button
+        UIBarButtonItem *postBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+        self.navigationItem.rightBarButtonItem = postBarButtonItem;
+    }
     
     //  build image 位置
     imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200 + self.navigationController.navigationBar.bounds.size.height)];
@@ -209,6 +226,10 @@
     [super viewWillAppear:animated];
     
     [self.tabBarController.tabBar setHidden:YES];
+    
+}
+
+-(void)editBtnPressed:(id)sender {
     
 }
 

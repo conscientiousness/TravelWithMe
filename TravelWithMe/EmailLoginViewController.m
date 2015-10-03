@@ -33,7 +33,9 @@
 
     
     MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"登入中...";
+    hud.mode = MBProgressHUDModeCustomView;
+    hud.customView = [[CustomAnimationImageView alloc] initWithFrame:CGRectMake(0, 0, 64,64)];
+    hud.labelText = @"Loading...";
     
     [PFUser logInWithUsernameInBackground:_emailTextField.text password:_passwordTextField.text block:^(PFUser *user, NSError *error) {
         if (user) {

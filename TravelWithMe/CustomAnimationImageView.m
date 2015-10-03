@@ -16,7 +16,7 @@
     if (self) {
         // Initialization code
         
-        UIImageView *explosion = [[UIImageView alloc] initWithFrame:self.bounds];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:frame];
         
         NSMutableArray *images = [NSMutableArray new];
         for (int i=0; i<=51; i++) {
@@ -24,18 +24,18 @@
         }
         
         //Add images which will be used for the animation using an array. Here I have created an array on the fly
-        explosion.animationImages =  images;
+        imageView.animationImages =  images;
         
         //Set the duration of the entire animation
-        explosion.animationDuration = 1.3;
+        imageView.animationDuration = 1.3;
         
         //Set the repeat count. If you don't set that value, by default will be a loop (infinite)
         //explosion.animationRepeatCount = 1;
         
         //Start the animationrepeatcount
-        [explosion startAnimating];
+        [imageView startAnimating];
         
-        [self addSubview:explosion];
+        [self addSubview:imageView];
     }
     return self;
 }

@@ -41,7 +41,9 @@
     [super viewDidLoad];
     
     MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"讀取中...";
+    hud.mode = MBProgressHUDModeCustomView;
+    hud.customView = [[CustomAnimationImageView alloc] initWithFrame:CGRectMake(0, 0, 64,64)];
+    hud.labelText = @"Loading...";
     
     dispatch_queue_t loadingQueue = dispatch_queue_create("mapDetailLoading", nil);
     dispatch_async(loadingQueue, ^{

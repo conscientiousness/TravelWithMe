@@ -98,4 +98,6 @@
 #define LANSCAPE_BTN_SNAP_BEHAVIOR_CGPOINT self.view.frame.size.width/2 - 110, self.view.frame.size.height/2 - 25
 #define PEOPLE_BTN_SNAP_BEHAVIOR_CGPOINT self.view.frame.size.width/2 + 110, self.view.frame.size.height/2 - 25
 
+//螢幕大小
+#define SCREEN_SIZE [[UIScreen mainScreen] bounds]
 @end

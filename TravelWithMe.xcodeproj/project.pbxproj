@@ -143,6 +143,7 @@
 		F47D8EC41B901CF30020A768 /* MapMKPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = F47D8EC31B901CF30020A768 /* MapMKPointAnnotation.m */; };
 		F47D8EC71B9023B30020A768 /* DPAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = F47D8EC61B9023B30020A768 /* DPAnnotationView.m */; };
 		F47D8ED11B9068260020A768 /* MapPhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = F47D8ED01B9068260020A768 /* MapPhoto.png */; };
+		F47F1A651BC04B4F000EF710 /* edit_profile_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F47F1A641BC04B4F000EF710 /* edit_profile_bg.jpg */; settings = {ASSET_TAGS = (); }; };
 		F486EF461B4C34D2008CB97B /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F486EF451B4C34D2008CB97B /* Setting.storyboard */; };
 		F48B16CC1B5F405600E96B0D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48B16CB1B5F405600E96B0D /* AudioToolbox.framework */; };
 		F48B16CE1B5F406300E96B0D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48B16CD1B5F406300E96B0D /* CFNetwork.framework */; };
@@ -388,6 +389,7 @@
 		F47D8EC51B9023B30020A768 /* DPAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPAnnotationView.h; sourceTree = "<group>"; };
 		F47D8EC61B9023B30020A768 /* DPAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPAnnotationView.m; sourceTree = "<group>"; };
 		F47D8ED01B9068260020A768 /* MapPhoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MapPhoto.png; sourceTree = "<group>"; };
+		F47F1A641BC04B4F000EF710 /* edit_profile_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = edit_profile_bg.jpg; sourceTree = "<group>"; };
 		F486EF451B4C34D2008CB97B /* Setting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		F48B16CB1B5F405600E96B0D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		F48B16CD1B5F406300E96B0D /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -904,6 +906,7 @@
 				A55171821B86151A002841AB /* PolicyViewController.m */,
 				A524E7F81B86C54F0094A684 /* LegalViewController.h */,
 				A524E7F91B86C54F0094A684 /* LegalViewController.m */,
+				F47F1A641BC04B4F000EF710 /* edit_profile_bg.jpg */,
 			);
 			name = SettingView;
 			sourceTree = "<group>";
@@ -1095,6 +1098,7 @@
 				F465736F1B5552D800DA3D7B /* JLTableViewCell.xib in Resources */,
 				F4DF5AFE1BA7462E00029D91 /* head-image.png in Resources */,
 				F4DB29C51B90C66500E6F245 /* landscape-icon.png in Resources */,
+				F47F1A651BC04B4F000EF710 /* edit_profile_bg.jpg in Resources */,
 				F447D4081BC01079009BD8DF /* PR_3_00034.png in Resources */,
 				F486EF461B4C34D2008CB97B /* Setting.storyboard in Resources */,
 				F47556C51B4BD40F008CEE3A /* Favorite.storyboard in Resources */,
@@ -1383,6 +1387,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1439,6 +1444,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: lin Jesse (X69W8ZBR5M)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: lin Jesse (X69W8ZBR5M)";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
