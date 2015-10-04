@@ -96,21 +96,18 @@
 
 - (void) prepareTableViewUI {
     
-    
-    if(user == [PFUser currentUser]){
-        //編輯按鈕
-        UIImage *image = [UIImage imageNamed:@"edit-icon"];
-        CGRect frame = CGRectMake(0, 0, 32, 32);
-        //init a normal UIButton using that image
-        UIButton *button = [[UIButton alloc] initWithFrame:frame];
-        [button setBackgroundImage:image forState:UIControlStateNormal];
-        [button setShowsTouchWhenHighlighted:YES];
-        //設定觸發事件
-        [button addTarget:self action:@selector(editBtnPressed:) forControlEvents:UIControlEventTouchDown];
-        //finally, create UIBarButtonItem using that button
-        UIBarButtonItem *postBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
-        self.navigationItem.rightBarButtonItem = postBarButtonItem;
-    }
+    //編輯or個人資料按鈕
+    UIImage *image = [UIImage imageNamed:(user==[PFUser currentUser])?@"edit-icon":@"detail-profile-icon"];
+    CGRect frame = CGRectMake(0, 0, 32, 32);
+    //init a normal UIButton using that image
+    UIButton *button = [[UIButton alloc] initWithFrame:frame];
+    [button setBackgroundImage:image forState:UIControlStateNormal];
+    [button setShowsTouchWhenHighlighted:YES];
+    //設定觸發事件
+    [button addTarget:self action:@selector(editBtnPressed:) forControlEvents:UIControlEventTouchDown];
+    //finally, create UIBarButtonItem using that button
+    UIBarButtonItem *postBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    self.navigationItem.rightBarButtonItem = postBarButtonItem;
     
     //  build image 位置
     imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200 + self.navigationController.navigationBar.bounds.size.height)];
@@ -231,6 +228,11 @@
 
 -(void)editBtnPressed:(id)sender {
     
+    UIViewController *targetViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"EditProfileViewController"];
+    
+    [targetViewController setValue:user forKey:@"user"];
+    
+    [self.navigationController pushViewController:targetViewController animated:YES];
 }
 
 -(void) changeToTable1

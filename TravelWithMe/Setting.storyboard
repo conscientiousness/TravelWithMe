@@ -242,15 +242,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vpq-tJ-2rp">
-                                <rect key="frame" x="16" y="20" width="568" height="526"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vpq-tJ-2rp">
+                                <rect key="frame" x="20" y="20" width="560" height="526"/>
                                 <animations/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <tabBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vMq-mL-8Uq">
-                                <rect key="frame" x="0.0" y="551" width="600" height="49"/>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vMq-mL-8Uq">
+                                <rect key="frame" x="4" y="551" width="592" height="49"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="29A-1N-BY2"/>
@@ -306,21 +306,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ps9-NS-KeG">
-                                <rect key="frame" x="16" y="20" width="568" height="526"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ps9-NS-KeG">
+                                <rect key="frame" x="20" y="20" width="560" height="526"/>
                                 <animations/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <tabBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FZM-uI-bkA">
-                                <rect key="frame" x="0.0" y="551" width="600" height="49"/>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FZM-uI-bkA">
+                                <rect key="frame" x="4" y="551" width="592" height="49"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="6NF-9I-vCW"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="49" id="EXM-q3-THH"/>
                                 </constraints>
                                 <items/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="EXM-q3-THH"/>
+                                    </mask>
+                                </variation>
                             </tabBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vqr-GB-FQG">
                                 <rect key="frame" x="280" y="556" width="40" height="40"/>
@@ -376,8 +381,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <animations/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="版本 : 1.0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfL-XJ-5tc">
-                                <rect key="frame" x="266" y="564" width="68" height="16"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="版本 : 1.0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfL-XJ-5tc">
+                                <rect key="frame" x="267.5" y="564" width="65" height="16"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.70196080207824707" green="0.70196080207824707" blue="0.70196080207824707" alpha="1" colorSpace="calibratedRGB"/>
@@ -456,7 +461,7 @@
         <!--View Controller-->
         <scene sceneID="D4V-9U-XIB">
             <objects>
-                <viewController storyboardIdentifier="profileEditViewController" id="asF-ST-Ccl" sceneMemberID="viewController">
+                <viewController restorationIdentifier="s" storyboardIdentifier="ggEditProfileViewController" id="asF-ST-Ccl" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bjX-TN-6aL"/>
                         <viewControllerLayoutGuide type="bottom" id="pJv-0H-e7J"/>
@@ -605,6 +610,237 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XMs-nb-qeW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="228.5" y="-771.5"/>
+        </scene>
+        <!--Edit Profile View Controller-->
+        <scene sceneID="k57-v7-DyF">
+            <objects>
+                <viewController restorationIdentifier="s" storyboardIdentifier="EditProfileViewController" id="jf7-Ql-4A8" customClass="EditProfileViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Rn4-Ls-FaI"/>
+                        <viewControllerLayoutGuide type="bottom" id="F20-GZ-0vE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ehs-La-Bg5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="edit_profile_bg.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="qjj-dT-UwI">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <animations/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ChJ-cV-r0j">
+                                <rect key="frame" x="144.5" y="72" width="85" height="85"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="85" id="1RZ-G4-7XQ"/>
+                                    <constraint firstAttribute="width" constant="85" id="Gco-Ui-JUQ"/>
+                                </constraints>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="V3j-Ag-9NF" customClass="TPKeyboardAvoidingTableView">
+                                <rect key="frame" x="0.0" y="175" width="375" height="492"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell1" rowHeight="400" id="NbU-hP-Dwp" customClass="ProfileTableViewCell">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="400"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NbU-hP-Dwp" id="ZdG-jU-xIs">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="399.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qPY-uE-8jC" customClass="YokoTextField" customModule="TextFieldEffects">
+                                                    <rect key="frame" x="16" y="8" width="343" height="66"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="66" id="Ndd-10-BPI"/>
+                                                    </constraints>
+                                                    <color key="textColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                            <color key="value" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="foregroundColor">
+                                                            <color key="value" red="0.97345132739999995" green="0.97345132739999995" blue="0.97345132739999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="jf7-Ql-4A8" id="chp-gy-sCu"/>
+                                                    </connections>
+                                                </textField>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OUL-Te-4Ko" customClass="YokoTextField" customModule="TextFieldEffects">
+                                                    <rect key="frame" x="16" y="82" width="343" height="66"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="66" id="abJ-VA-tS9"/>
+                                                    </constraints>
+                                                    <color key="textColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                            <color key="value" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="foregroundColor">
+                                                            <color key="value" red="0.97345132739999995" green="0.97345132739999995" blue="0.97345132739999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="jf7-Ql-4A8" id="ZRW-an-Vdj"/>
+                                                    </connections>
+                                                </textField>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rAl-Xh-YUg" customClass="YokoTextField" customModule="TextFieldEffects">
+                                                    <rect key="frame" x="16" y="156" width="343" height="66"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="66" id="TYV-2C-w04"/>
+                                                    </constraints>
+                                                    <color key="textColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                            <color key="value" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="foregroundColor">
+                                                            <color key="value" red="0.97345132739999995" green="0.97345132739999995" blue="0.97345132739999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="jf7-Ql-4A8" id="XIP-0J-sD3"/>
+                                                    </connections>
+                                                </textField>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="WeChat" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T7V-IV-lt6" customClass="YokoTextField" customModule="TextFieldEffects">
+                                                    <rect key="frame" x="16" y="230" width="343" height="66"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="66" id="yR8-Kk-52A"/>
+                                                    </constraints>
+                                                    <color key="textColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                            <color key="value" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="foregroundColor">
+                                                            <color key="value" red="0.97345132739999995" green="0.97345132739999995" blue="0.97345132739999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="jf7-Ql-4A8" id="NRG-kc-cek"/>
+                                                    </connections>
+                                                </textField>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Facebook" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NUG-Py-n7y" customClass="YokoTextField" customModule="TextFieldEffects">
+                                                    <rect key="frame" x="16" y="304" width="343" height="66"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="66" id="Poe-Ze-UpA"/>
+                                                    </constraints>
+                                                    <color key="textColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                            <color key="value" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="foregroundColor">
+                                                            <color key="value" red="0.97345132739999995" green="0.97345132739999995" blue="0.97345132739999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="jf7-Ql-4A8" id="gYg-3Z-NMF"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <animations/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="qPY-uE-8jC" secondAttribute="trailing" constant="8" id="62l-ty-Il4"/>
+                                                <constraint firstItem="qPY-uE-8jC" firstAttribute="centerX" secondItem="ZdG-jU-xIs" secondAttribute="centerX" id="Aaq-oY-dcS"/>
+                                                <constraint firstItem="OUL-Te-4Ko" firstAttribute="top" secondItem="qPY-uE-8jC" secondAttribute="bottom" constant="8" id="BAW-Bp-iRG"/>
+                                                <constraint firstItem="rAl-Xh-YUg" firstAttribute="top" secondItem="OUL-Te-4Ko" secondAttribute="bottom" constant="8" id="CLP-JW-yKv"/>
+                                                <constraint firstItem="T7V-IV-lt6" firstAttribute="width" secondItem="qPY-uE-8jC" secondAttribute="width" id="CPq-vG-wQu"/>
+                                                <constraint firstItem="T7V-IV-lt6" firstAttribute="top" secondItem="rAl-Xh-YUg" secondAttribute="bottom" constant="8" id="FjK-Ah-4ME"/>
+                                                <constraint firstItem="NUG-Py-n7y" firstAttribute="top" secondItem="T7V-IV-lt6" secondAttribute="bottom" constant="8" id="JTm-Lf-MV7"/>
+                                                <constraint firstItem="qPY-uE-8jC" firstAttribute="top" secondItem="ZdG-jU-xIs" secondAttribute="topMargin" id="MbD-4N-Vpj"/>
+                                                <constraint firstItem="OUL-Te-4Ko" firstAttribute="leading" secondItem="qPY-uE-8jC" secondAttribute="leading" id="PLP-d6-ww1"/>
+                                                <constraint firstItem="qPY-uE-8jC" firstAttribute="leading" secondItem="ZdG-jU-xIs" secondAttribute="leadingMargin" constant="8" id="Uce-Fl-VJE"/>
+                                                <constraint firstItem="NUG-Py-n7y" firstAttribute="leading" secondItem="qPY-uE-8jC" secondAttribute="leading" id="gy4-uS-PjO"/>
+                                                <constraint firstItem="NUG-Py-n7y" firstAttribute="width" secondItem="qPY-uE-8jC" secondAttribute="width" id="iJk-4d-hDp"/>
+                                                <constraint firstItem="rAl-Xh-YUg" firstAttribute="width" secondItem="qPY-uE-8jC" secondAttribute="width" id="pAp-DD-JjO"/>
+                                                <constraint firstItem="rAl-Xh-YUg" firstAttribute="leading" secondItem="qPY-uE-8jC" secondAttribute="leading" id="qnh-ks-Eaw"/>
+                                                <constraint firstItem="OUL-Te-4Ko" firstAttribute="width" secondItem="qPY-uE-8jC" secondAttribute="width" id="sYN-dT-hUk"/>
+                                                <constraint firstItem="qPY-uE-8jC" firstAttribute="centerY" secondItem="ZdG-jU-xIs" secondAttribute="centerY" id="unY-ZO-GLr"/>
+                                                <constraint firstItem="T7V-IV-lt6" firstAttribute="leading" secondItem="qPY-uE-8jC" secondAttribute="leading" id="yxK-Wm-NT5"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="unY-ZO-GLr"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="displayNme" destination="qPY-uE-8jC" id="zqj-5d-YhL"/>
+                                            <outlet property="email" destination="OUL-Te-4Ko" id="6Pq-gf-XK9"/>
+                                            <outlet property="facebook" destination="NUG-Py-n7y" id="hhW-Ub-0ee"/>
+                                            <outlet property="line" destination="rAl-Xh-YUg" id="OrX-31-ysc"/>
+                                            <outlet property="wechat" destination="NUG-Py-n7y" id="tx9-sn-n3C"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="jf7-Ql-4A8" id="4eW-Rs-8mc"/>
+                                    <outlet property="delegate" destination="jf7-Ql-4A8" id="cgJ-vo-Pno"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="V3j-Ag-9NF" secondAttribute="trailing" constant="-20" id="1PW-sk-uvN"/>
+                            <constraint firstItem="ChJ-cV-r0j" firstAttribute="top" secondItem="Rn4-Ls-FaI" secondAttribute="bottom" constant="8" id="4mc-He-lVi"/>
+                            <constraint firstItem="V3j-Ag-9NF" firstAttribute="width" secondItem="ehs-La-Bg5" secondAttribute="width" id="7Vf-bn-g3f"/>
+                            <constraint firstItem="qjj-dT-UwI" firstAttribute="bottom" secondItem="F20-GZ-0vE" secondAttribute="top" id="BrX-5s-hD5"/>
+                            <constraint firstAttribute="trailing" secondItem="qjj-dT-UwI" secondAttribute="trailing" id="E6h-vg-RrM"/>
+                            <constraint firstItem="qjj-dT-UwI" firstAttribute="leading" secondItem="ehs-La-Bg5" secondAttribute="leading" id="GWh-NT-exU"/>
+                            <constraint firstItem="V3j-Ag-9NF" firstAttribute="centerX" secondItem="ehs-La-Bg5" secondAttribute="centerX" id="Np8-EU-k8B"/>
+                            <constraint firstItem="ChJ-cV-r0j" firstAttribute="centerX" secondItem="ehs-La-Bg5" secondAttribute="centerX" id="Qpu-Y9-Mip"/>
+                            <constraint firstItem="F20-GZ-0vE" firstAttribute="top" secondItem="V3j-Ag-9NF" secondAttribute="bottom" id="Vlj-En-uZu"/>
+                            <constraint firstItem="qjj-dT-UwI" firstAttribute="top" secondItem="Rn4-Ls-FaI" secondAttribute="bottom" id="fkO-m2-yid"/>
+                            <constraint firstAttribute="trailing" secondItem="qjj-dT-UwI" secondAttribute="trailing" id="mzZ-ZK-jYP"/>
+                            <constraint firstItem="V3j-Ag-9NF" firstAttribute="top" secondItem="ChJ-cV-r0j" secondAttribute="bottom" constant="18" id="oQA-vp-FUm"/>
+                            <constraint firstItem="qjj-dT-UwI" firstAttribute="top" secondItem="Rn4-Ls-FaI" secondAttribute="bottom" id="pDc-I0-Y6T"/>
+                            <constraint firstItem="qjj-dT-UwI" firstAttribute="leading" secondItem="ehs-La-Bg5" secondAttribute="leading" id="pWh-42-h5M"/>
+                            <constraint firstItem="V3j-Ag-9NF" firstAttribute="leading" secondItem="ehs-La-Bg5" secondAttribute="leadingMargin" constant="-20" id="tD1-1W-ooV"/>
+                            <constraint firstItem="qjj-dT-UwI" firstAttribute="bottom" secondItem="F20-GZ-0vE" secondAttribute="top" id="tHo-yB-JzC"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="BrX-5s-hD5"/>
+                                <exclude reference="GWh-NT-exU"/>
+                                <exclude reference="fkO-m2-yid"/>
+                                <exclude reference="mzZ-ZK-jYP"/>
+                                <exclude reference="1PW-sk-uvN"/>
+                                <exclude reference="tD1-1W-ooV"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="headPhoto" destination="ChJ-cV-r0j" id="TZP-wc-IPc"/>
+                        <outlet property="tableview" destination="V3j-Ag-9NF" id="Quc-Rl-gX9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r0A-k7-tmf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="647.5" y="-771.5"/>
         </scene>
     </scenes>
     <resources>

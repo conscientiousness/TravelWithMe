@@ -144,6 +144,11 @@
 		F47D8EC71B9023B30020A768 /* DPAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = F47D8EC61B9023B30020A768 /* DPAnnotationView.m */; };
 		F47D8ED11B9068260020A768 /* MapPhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = F47D8ED01B9068260020A768 /* MapPhoto.png */; };
 		F47F1A651BC04B4F000EF710 /* edit_profile_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F47F1A641BC04B4F000EF710 /* edit_profile_bg.jpg */; settings = {ASSET_TAGS = (); }; };
+		F47F1A671BC0D0A4000EF710 /* save-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F47F1A661BC0D0A4000EF710 /* save-icon.png */; settings = {ASSET_TAGS = (); }; };
+		F47F1A6A1BC0D3F8000EF710 /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F47F1A691BC0D3F8000EF710 /* EditProfileViewController.m */; settings = {ASSET_TAGS = (); }; };
+		F47F1A6D1BC10127000EF710 /* ProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F47F1A6C1BC10127000EF710 /* ProfileTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		F47F1A701BC15D18000EF710 /* UIImageView+CircleLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = F47F1A6F1BC15D18000EF710 /* UIImageView+CircleLayer.m */; settings = {ASSET_TAGS = (); }; };
+		F47F1A721BC18911000EF710 /* detail-profile-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F47F1A711BC18911000EF710 /* detail-profile-icon.png */; settings = {ASSET_TAGS = (); }; };
 		F486EF461B4C34D2008CB97B /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F486EF451B4C34D2008CB97B /* Setting.storyboard */; };
 		F48B16CC1B5F405600E96B0D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48B16CB1B5F405600E96B0D /* AudioToolbox.framework */; };
 		F48B16CE1B5F406300E96B0D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48B16CD1B5F406300E96B0D /* CFNetwork.framework */; };
@@ -390,6 +395,14 @@
 		F47D8EC61B9023B30020A768 /* DPAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPAnnotationView.m; sourceTree = "<group>"; };
 		F47D8ED01B9068260020A768 /* MapPhoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MapPhoto.png; sourceTree = "<group>"; };
 		F47F1A641BC04B4F000EF710 /* edit_profile_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = edit_profile_bg.jpg; sourceTree = "<group>"; };
+		F47F1A661BC0D0A4000EF710 /* save-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "save-icon.png"; sourceTree = "<group>"; };
+		F47F1A681BC0D3F8000EF710 /* EditProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileViewController.h; sourceTree = "<group>"; };
+		F47F1A691BC0D3F8000EF710 /* EditProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileViewController.m; sourceTree = "<group>"; };
+		F47F1A6B1BC10127000EF710 /* ProfileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTableViewCell.h; sourceTree = "<group>"; };
+		F47F1A6C1BC10127000EF710 /* ProfileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTableViewCell.m; sourceTree = "<group>"; };
+		F47F1A6E1BC15D18000EF710 /* UIImageView+CircleLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+CircleLayer.h"; sourceTree = "<group>"; };
+		F47F1A6F1BC15D18000EF710 /* UIImageView+CircleLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+CircleLayer.m"; sourceTree = "<group>"; };
+		F47F1A711BC18911000EF710 /* detail-profile-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "detail-profile-icon.png"; sourceTree = "<group>"; };
 		F486EF451B4C34D2008CB97B /* Setting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		F48B16CB1B5F405600E96B0D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		F48B16CD1B5F406300E96B0D /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -906,7 +919,13 @@
 				A55171821B86151A002841AB /* PolicyViewController.m */,
 				A524E7F81B86C54F0094A684 /* LegalViewController.h */,
 				A524E7F91B86C54F0094A684 /* LegalViewController.m */,
+				F47F1A681BC0D3F8000EF710 /* EditProfileViewController.h */,
+				F47F1A691BC0D3F8000EF710 /* EditProfileViewController.m */,
+				F47F1A6B1BC10127000EF710 /* ProfileTableViewCell.h */,
+				F47F1A6C1BC10127000EF710 /* ProfileTableViewCell.m */,
 				F47F1A641BC04B4F000EF710 /* edit_profile_bg.jpg */,
+				F47F1A661BC0D0A4000EF710 /* save-icon.png */,
+				F47F1A711BC18911000EF710 /* detail-profile-icon.png */,
 			);
 			name = SettingView;
 			sourceTree = "<group>";
@@ -937,6 +956,8 @@
 				F420E1511B8432B100D3627F /* TWMDefine.m */,
 				F4663F801B9BE75700B6111A /* PushCommunicator.h */,
 				F4663F811B9BE75700B6111A /* PushCommunicator.m */,
+				F47F1A6E1BC15D18000EF710 /* UIImageView+CircleLayer.h */,
+				F47F1A6F1BC15D18000EF710 /* UIImageView+CircleLayer.m */,
 			);
 			name = Comm;
 			sourceTree = "<group>";
@@ -1082,6 +1103,7 @@
 				F420E15A1B846FA500D3627F /* no-interested-icon.png in Resources */,
 				F447D4071BC01079009BD8DF /* PR_3_00033.png in Resources */,
 				F447D4041BC01079009BD8DF /* PR_3_00030.png in Resources */,
+				F47F1A671BC0D0A4000EF710 /* save-icon.png in Resources */,
 				F447D3FC1BC01079009BD8DF /* PR_3_00022.png in Resources */,
 				F447D3F01BC01079009BD8DF /* PR_3_00010.png in Resources */,
 				F447D4061BC01079009BD8DF /* PR_3_00032.png in Resources */,
@@ -1099,6 +1121,7 @@
 				F4DF5AFE1BA7462E00029D91 /* head-image.png in Resources */,
 				F4DB29C51B90C66500E6F245 /* landscape-icon.png in Resources */,
 				F47F1A651BC04B4F000EF710 /* edit_profile_bg.jpg in Resources */,
+				F47F1A721BC18911000EF710 /* detail-profile-icon.png in Resources */,
 				F447D4081BC01079009BD8DF /* PR_3_00034.png in Resources */,
 				F486EF461B4C34D2008CB97B /* Setting.storyboard in Resources */,
 				F47556C51B4BD40F008CEE3A /* Favorite.storyboard in Resources */,
@@ -1227,9 +1250,11 @@
 				F43F90741B8C80A300E509F3 /* PostTypeTableViewCell.m in Sources */,
 				F47556A41B4BACF2008CEE3A /* AppDelegate.m in Sources */,
 				F44F3E331B8210CD007CE9C1 /* TPKeyboardAvoidingTableView.m in Sources */,
+				F47F1A6A1BC0D3F8000EF710 /* EditProfileViewController.m in Sources */,
 				A5E1670D1B6903B70036ABE4 /* SettingTableViewControlle.m in Sources */,
 				A55171831B86151A002841AB /* PolicyViewController.m in Sources */,
 				F47D8EC41B901CF30020A768 /* MapMKPointAnnotation.m in Sources */,
+				F47F1A701BC15D18000EF710 /* UIImageView+CircleLayer.m in Sources */,
 				B51A23341B7A5C9900CFD674 /* favoriteTableViewController.m in Sources */,
 				F4E8289D1BA5D9E400FD3B29 /* EmailLoginViewController.m in Sources */,
 				F465736C1B5552D800DA3D7B /* JLTableViewCell.m in Sources */,
@@ -1251,6 +1276,7 @@
 				F43F90771B8C80C700E509F3 /* PostMapPhotoTableViewCell.m in Sources */,
 				F443FB4C1B6124D600F30847 /* WallViewController.m in Sources */,
 				F4461ECC1B7622CE00052C94 /* JL3MessageTableViewCell.m in Sources */,
+				F47F1A6D1BC10127000EF710 /* ProfileTableViewCell.m in Sources */,
 				F448299A1B6FBA5800ED0EA1 /* PAPUtility.m in Sources */,
 				F47556A11B4BACF2008CEE3A /* main.m in Sources */,
 				F49DA2611B9496A200140FCF /* DismissingAnimator.m in Sources */,

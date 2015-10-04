@@ -46,6 +46,10 @@
 #pragma mark - Parse Table:USER
 
 #define USER_DISPLAYNAME_KEY @"displayName"
+#define USER_EMAIL_KEY @"email"
+#define USER_LINE_KEY @"line"
+#define USER_WECHAT_KEY @"wechat"
+#define USER_FACEBOOK_KEY @"facebook"
 #define USER_GENDER_KEY @"gender"
 #define USER_LOCATION_KEY @"location"
 #define USER_BIRTHDAY_KEY @"birthday"
