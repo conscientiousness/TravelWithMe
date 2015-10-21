@@ -15,13 +15,14 @@
 #define NUMBER_OF_SECTIONS 1
 #define NUMBER_OF_ROWS 1
 
-#define EDITPROFILE_TEXTFIELD_DISPLAYNAME_TAG 1000
-#define EDITPROFILE_TEXTFIELD_EMAIL_TAG 2000
-#define EDITPROFILE_TEXTFIELD_LINE_TAG 3000
-#define EDITPROFILE_TEXTFIELD_WECHAT_TAG 4000
-#define EDITPROFILE_TEXTFIELD_FACEBOOK_TAG 5000
+#define EDITPROFILE_TEXTFIELD_DISPLAYNAME_TAG 100
+#define EDITPROFILE_TEXTFIELD_EMAIL_TAG 200
+#define EDITPROFILE_TEXTFIELD_LINE_TAG 300
+#define EDITPROFILE_TEXTFIELD_WECHAT_TAG 400
+#define EDITPROFILE_TEXTFIELD_FACEBOOK_TAG 500
 
 #define GETDATA(KEY) [datas objectForKey:[NSNumber numberWithInteger: KEY]]
+#define SETDATA(KEY1,KEY2) [datas setObject:KEY1 forKey:[NSNumber numberWithInteger:KEY2]]
 
 @interface EditProfileViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 {
@@ -105,45 +106,48 @@
         
         dispatch_async(publishQueue, ^{
             
+            
+            
             //照片-小
             if(datas[USER_PROFILEPICTURESMALL_KEY]!=nil){
-                PFFile *smallImageFile = [PFFile fileWithName:[NSString stringWithFormat:@"smallPhoto.jpg"] data:[datas objectForKey:USER_PROFILEPICTURESMALL_KEY]];
-                _user[USER_PROFILEPICTURESMALL_KEY] = smallImageFile;
+                PFFile *smallImageFile = [PFFile fileWithData:[datas objectForKey:USER_PROFILEPICTURESMALL_KEY]];
+                [[PFUser currentUser] setObject:smallImageFile forKey:USER_PROFILEPICTURESMALL_KEY];
             }
             
             //照片-中
             if(datas[USER_PROFILEPICTUREMEDIUM_KEY]!=nil){
-                PFFile *originalImageFile = [PFFile fileWithName:[NSString stringWithFormat:@"originalPhoto.jpg"] data:[datas objectForKey:TRAVELMATEPOST_ORIGINALPHOTO_KEY]];
-                _user[TRAVELMATEPOST_ORIGINALPHOTO_KEY] = originalImageFile;
+                PFFile *originalImageFile = [PFFile fileWithData:[datas objectForKey:USER_PROFILEPICTUREMEDIUM_KEY]];
+                [[PFUser currentUser] setObject:originalImageFile forKey:USER_PROFILEPICTUREMEDIUM_KEY];
             }
             
             //NAME
             if(GETDATA(EDITPROFILE_TEXTFIELD_DISPLAYNAME_TAG)!=nil){
-                _user[USER_DISPLAYNAME_KEY] = GETDATA(EDITPROFILE_TEXTFIELD_DISPLAYNAME_TAG);
+                [[PFUser currentUser] setObject:GETDATA(EDITPROFILE_TEXTFIELD_DISPLAYNAME_TAG) forKey:USER_DISPLAYNAME_KEY];
             }
             
             //EMAIL
             if(GETDATA(EDITPROFILE_TEXTFIELD_EMAIL_TAG)!=nil){
-                _user[USER_EMAIL_KEY] = GETDATA(EDITPROFILE_TEXTFIELD_EMAIL_TAG);
+                [[PFUser currentUser] setObject:GETDATA(EDITPROFILE_TEXTFIELD_EMAIL_TAG) forKey:USER_EMAIL_KEY];
             }
             //LINE
             if(GETDATA(EDITPROFILE_TEXTFIELD_LINE_TAG)!=nil){
-                _user[USER_LINE_KEY] = GETDATA(EDITPROFILE_TEXTFIELD_LINE_TAG);
+                [[PFUser currentUser] setObject:GETDATA(EDITPROFILE_TEXTFIELD_LINE_TAG) forKey:USER_LINE_KEY];
             }
             //WECHAT
             if(GETDATA(EDITPROFILE_TEXTFIELD_WECHAT_TAG)!=nil){
-                _user[USER_WECHAT_KEY] = GETDATA(EDITPROFILE_TEXTFIELD_WECHAT_TAG);
+                [[PFUser currentUser] setObject:GETDATA(EDITPROFILE_TEXTFIELD_WECHAT_TAG) forKey:USER_WECHAT_KEY];
             }
             //FACEBOOK
             if(GETDATA(EDITPROFILE_TEXTFIELD_FACEBOOK_TAG)!=nil){
-                _user[USER_FACEBOOK_KEY] = GETDATA(EDITPROFILE_TEXTFIELD_FACEBOOK_TAG);
+                [[PFUser currentUser] setObject:GETDATA(EDITPROFILE_TEXTFIELD_FACEBOOK_TAG) forKey:USER_FACEBOOK_KEY];
             }
             
-            [_user save];
-            
+            [[PFUser currentUser] save];
+            [[PFUser currentUser] fetchIfNeeded];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [MBProgressHUD hideHUDForView:self.view animated:YES];
                  self.navigationItem.rightBarButtonItem.enabled = YES;
+                
             });
         });
     }
@@ -159,11 +163,18 @@
     NSString *subTitle;
     
     NSString *name = GETDATA(EDITPROFILE_TEXTFIELD_DISPLAYNAME_TAG);
+    NSString *email = GETDATA(EDITPROFILE_TEXTFIELD_EMAIL_TAG);
     
     if (name==nil || [name isEqualToString:@""])
     {
         title = @"名稱還沒填唷!";
         subTitle = @"這樣不知道怎麼稱呼您呢!";
+        result = NO;
+    }else if(![self validateEmail:email]) {
+        // user entered invalid email address
+        
+        title = @"Email";
+        subTitle = @"格式錯誤喔";
         result = NO;
     }
     
@@ -172,6 +183,13 @@
     
     return result;
 }
+
+- (BOOL)validateEmail:(NSString *)emailStr {
+    NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    return [emailTest evaluateWithObject:emailStr];
+}
+
 
 #pragma mark - Table View Delegate Method
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -200,18 +218,23 @@
         ProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
         [cell.displayNme setTag:EDITPROFILE_TEXTFIELD_DISPLAYNAME_TAG];
         cell.displayNme.text = _user[USER_DISPLAYNAME_KEY];
+        SETDATA(_user[USER_DISPLAYNAME_KEY],EDITPROFILE_TEXTFIELD_DISPLAYNAME_TAG);
         
         [cell.email setTag:EDITPROFILE_TEXTFIELD_EMAIL_TAG];
         cell.email.text = _user[USER_EMAIL_KEY];
+        if(_user[USER_EMAIL_KEY]!=nil) SETDATA(_user[USER_EMAIL_KEY],EDITPROFILE_TEXTFIELD_EMAIL_TAG);
         
         [cell.line setTag:EDITPROFILE_TEXTFIELD_LINE_TAG];
         cell.line.text = _user[USER_LINE_KEY];
+        if(_user[USER_LINE_KEY]!=nil) SETDATA(_user[USER_LINE_KEY],EDITPROFILE_TEXTFIELD_LINE_TAG);
         
         [cell.wechat setTag:EDITPROFILE_TEXTFIELD_WECHAT_TAG];
         cell.wechat.text = _user[USER_WECHAT_KEY];
+        if(_user[USER_WECHAT_KEY]!=nil) SETDATA(_user[USER_WECHAT_KEY],EDITPROFILE_TEXTFIELD_WECHAT_TAG);
         
         [cell.facebook setTag:EDITPROFILE_TEXTFIELD_FACEBOOK_TAG];
         cell.facebook.text = _user[USER_FACEBOOK_KEY];
+        if(_user[USER_FACEBOOK_KEY]!=nil) SETDATA(_user[USER_FACEBOOK_KEY],EDITPROFILE_TEXTFIELD_FACEBOOK_TAG);
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.backgroundColor = [UIColor clearColor];

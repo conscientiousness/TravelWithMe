@@ -70,27 +70,7 @@
     else
         user = [PFUser objectWithoutDataWithObjectId:_userObjectId];
     
-    [self prepareTableViewUI];
     
-    MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeCustomView;
-    hud.customView = [[CustomAnimationImageView alloc] initWithFrame:CGRectMake(0, 0, 64,64)];
-    hud.labelText = @"Loading...";
-    
-    dispatch_queue_t loadingQueue = dispatch_queue_create("loading", nil);
-    dispatch_async(loadingQueue, ^{
-        [self getTravelMatePostDatas];
-        [self getFootprintDatas];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            
-            _tableView1.frame=CGRectMake(0, 0, self.view.frame.size.width, VIPMYACTIVITYCELL_HEIGHT*myActivityArrayDatas.count);
-            _tableView2.frame=CGRectMake(0, 0, self.view.frame.size.width, VIPMYACTIVITYCELL_HEIGHT*myFootprintArrayDatas.count);
-            [myViptableView reloadData];
-            [_tableView1 reloadData];
-            [_tableView2 reloadData];
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-        });
-    });
     //self.navigationController.navigationBarHidden=YES;
 }
 
@@ -223,6 +203,29 @@
     [super viewWillAppear:animated];
     
     [self.tabBarController.tabBar setHidden:YES];
+    
+    [self prepareTableViewUI];
+    
+    MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeCustomView;
+    hud.customView = [[CustomAnimationImageView alloc] initWithFrame:CGRectMake(0, 0, 64,64)];
+    hud.labelText = @"Loading...";
+    
+    dispatch_queue_t loadingQueue = dispatch_queue_create("loading", nil);
+    dispatch_async(loadingQueue, ^{
+        [self getTravelMatePostDatas];
+        [self getFootprintDatas];
+        [[PFUser currentUser] fetch];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            _tableView1.frame=CGRectMake(0, 0, self.view.frame.size.width, VIPMYACTIVITYCELL_HEIGHT*myActivityArrayDatas.count);
+            _tableView2.frame=CGRectMake(0, 0, self.view.frame.size.width, VIPMYACTIVITYCELL_HEIGHT*myFootprintArrayDatas.count);
+            [myViptableView reloadData];
+            [_tableView1 reloadData];
+            [_tableView2 reloadData];
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        });
+    });
     
 }
 

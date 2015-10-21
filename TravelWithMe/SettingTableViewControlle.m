@@ -56,6 +56,7 @@
     else{
         _loginCell.textLabel.text = @"登出";
     }
+    [[PFUser currentUser] fetchIfNeededInBackground];
 }
 
 - (void)didReceiveMemoryWarning {

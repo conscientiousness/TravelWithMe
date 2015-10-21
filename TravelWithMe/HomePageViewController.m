@@ -37,6 +37,7 @@
     dispatch_queue_t loadingQueue = dispatch_queue_create("HomePageLoading", nil);
     dispatch_async(loadingQueue, ^{
         [self getdata];
+        [[PFUser currentUser] fetchIfNeeded];
         dispatch_async(dispatch_get_main_queue(), ^{
             [_tableView reloadData];
             [MBProgressHUD hideHUDForView:self.view animated:YES];

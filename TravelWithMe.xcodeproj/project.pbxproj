@@ -1451,6 +1451,7 @@
 					"-weak_framework",
 					"\"UIKit\"",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.4ni.TravelWithMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "TravelWithMe/TravelWithMe-Bridging-Header.h";
@@ -1508,6 +1509,7 @@
 					"-weak_framework",
 					"\"UIKit\"",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.4ni.TravelWithMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "TravelWithMe/TravelWithMe-Bridging-Header.h";
